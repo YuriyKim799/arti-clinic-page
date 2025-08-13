@@ -1,0 +1,95 @@
+@use '../styles/variables' as *;
+
+.section {
+  background: $bg;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  // align-items: stretch;
+}
+
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  @include card;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  text-align: center;
+  /* задаём стабильную высоту «лица» карточки (без зависимости от количества строк) */
+  --face-h: 150px; /* можно подправить под ваш контент */
+}
+
+.card:hover {
+  transform: translateY(-7px);
+}
+
+.card:focus-visible {
+  outline: 2px solid $blue-soft;
+  outline-offset: 2px;
+}
+
+/* Слой-контейнер для перекрывающихся экранов */
+.face {
+  position: relative;
+  min-height: var(--face-h); /* фиксируем высоту области — никаких прыжков */
+}
+
+/* Два перекрывающихся слоя */
+.titleLayer,
+.textLayer {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  line-height: 1.3;
+  transition: opacity 0.25s ease;
+  will-change: opacity;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titleLayer {
+  @include h3;
+  opacity: 1;
+}
+
+.textLayer {
+  color: $muted;
+  opacity: 0;
+  pointer-events: none; /* не перехватывает клики, пока скрыт */
+}
+
+/* Переключение по hover и по клавиатурному фокусу */
+.card:hover .titleLayer,
+.card:focus-visible .titleLayer {
+  opacity: 0;
+}
+.card:hover .textLayer,
+.card:focus-visible .textLayer {
+  opacity: 1;
+}
+
+/* Меньше анимаций — уважение системным настройкам */
+@media (prefers-reduced-motion: reduce) {
+  .titleLayer,
+  .textLayer {
+    transition: none;
+  }
+}

@@ -1,0 +1,119 @@
+@use '../styles/variables' as *;
+
+.wrapper {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: var(--header-h);
+  z-index: 50;
+  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, $bg-contrast 45%, transparent);
+  border-bottom: 1px solid $line;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.bar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.logoDot {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: $blue-soft;
+  box-shadow: inset 0 -2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.brandText {
+  font-size: 18px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  a {
+    padding: 8px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: background 0.2s ease, border-color 0.2s ease,
+      transform 0.15s ease;
+    &:hover {
+      background: $beige-100;
+      transform: translateY(-1px);
+    }
+  }
+
+  .cta {
+    background: $blue-soft;
+    color: #0d2230;
+    &:hover {
+      background: $blue-soft-600;
+    }
+  }
+}
+
+/* Бургер для мобильных */
+.burger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $line;
+  border-radius: 10px;
+  background: $bg-contrast;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+
+  span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: $text;
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+  }
+}
+
+@media (max-width: 860px) {
+  .burger {
+    display: inline-flex;
+  }
+  .nav {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 16px;
+    background: $bg-contrast;
+    border: 1px solid $line;
+    border-radius: $radius-lg;
+    box-shadow: $shadow;
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    min-width: 220px;
+
+    a {
+      padding: 10px 12px;
+    }
+  }
+  .open {
+    display: flex;
+  }
+}

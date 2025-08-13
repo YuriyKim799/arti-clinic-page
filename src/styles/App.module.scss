@@ -1,0 +1,8 @@
+
+@use './variables' as *;
+.app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}

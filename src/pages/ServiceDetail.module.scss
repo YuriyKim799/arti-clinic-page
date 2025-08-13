@@ -1,0 +1,45 @@
+@use '../styles/variables' as *;
+
+.page {
+  background: $bg;
+}
+.breadcrumbs {
+  color: $muted;
+  font-size: 14px;
+  margin-bottom: 12px;
+  a {
+    color: inherit;
+  }
+}
+.header {
+  margin-bottom: 16px;
+}
+.title {
+  @include h2;
+  margin: 0 0 6px;
+}
+.sectionBlock {
+  @include card;
+  padding: 18px;
+  margin: 12px 0;
+  background: $bg-contrast;
+}
+.list {
+  margin: 0;
+  padding-left: 18px;
+}
+.faq {
+  display: grid;
+  gap: 8px;
+}
+.q {
+  @include card;
+  padding: 14px;
+  background: $bg-contrast;
+}
+.ctaRow {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}

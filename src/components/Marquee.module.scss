@@ -1,0 +1,107 @@
+@use '../styles/variables' as *;
+
+/* Настройки по умолчанию (можно переопределить инлайном через style) */
+:root {
+  --duration: 22s; /* скорость цикла: меньше — быстрее */
+  --gap: 32px; /* расстояние между элементами */
+}
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+  // border-block: 1px solid $line;
+  background: $bg;
+}
+
+/* Дорожка, которая бежит бесконечно (дублируем items в JSX) */
+.track {
+  display: inline-flex;
+  gap: var(--gap);
+  padding-block: 12px;
+  white-space: nowrap;
+  animation: scroll var(--duration) linear infinite;
+}
+
+/* Элементы-«пилюли» */
+.item {
+  flex: 0 0 auto;
+  font-weight: 600;
+  color: $text;
+  opacity: 0.9;
+  font-size: clamp(14px, 2.2vw, 16px);
+  letter-spacing: 0.2px;
+  padding-inline: 2px;
+  font-family: 'Playfair Display', serif; /* Шрифт только для бегущей строки */
+  display: inline-block; /* чтобы scale не толкал соседей */
+  border-radius: 999px; /* округляем хитбокс */
+  transition: transform 0.25s ease, color 0.25s ease, box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+/* Ховер-эффекты — ТОЛЬКО на устройствах с «настоящей» мышью */
+@media (hover: hover) and (pointer: fine) {
+  .item:hover,
+  .item:focus-visible {
+    transform: translateY(-2px) scale(1.06);
+    color: $text;
+    background-color: rgba(
+      $blue-soft,
+      0.08
+    ); /* мягкий голубой акцент (без зелёного) */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    outline: none;
+  }
+
+  /* Видимый фокус по Tab */
+  .item:focus-visible {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06), 0 0 0 2px rgba($blue-soft, 0.35);
+  }
+}
+
+/* Плавные «грани» по краям, чтобы контент не обрывался резко */
+.fadeLeft,
+.fadeRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(90deg, $bg, rgba($bg, 0));
+}
+.fadeRight {
+  right: 0;
+  background: linear-gradient(-90deg, $bg, rgba($bg, 0));
+}
+
+/* Анимация бесконечного скролла: смещаем на половину ширины,
+   потому что список продублирован (items + items) */
+@keyframes scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Уважение системных настроек */
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
+
+/* Адаптив: компактнее на узких экранах */
+@media (max-width: 640px) {
+  :root {
+    --gap: 20px;
+  }
+  .track {
+    padding-block: 10px;
+  }
+}
