@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom';
 import { Hero } from './components/Hero';
 import { Benefits } from './components/Benefits';
 import { Services } from './components/Services';
-import { Reviews } from './components/Reviews';
 import { Blog } from './components/Blog';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -13,7 +12,8 @@ import { ServicesIndex } from './pages/ServicesIndex';
 import { ServiceDetail } from './pages/ServiceDetail';
 import { Indications } from './components/Indications';
 import { Marquee } from './components/Marquee';
-import { YandexBottomSheet } from './components/YandexBottomSheet';
+import { YandexReviewsFloating } from './components/YandexReviewsFloating';
+import SectionGallery from './components/SectionGallery';
 
 const Home = () => (
   <>
@@ -23,13 +23,14 @@ const Home = () => (
     <Services />
     <Indications />
     <Marquee />
-    <YandexBottomSheet
+    <SectionGallery />
+    <YandexReviewsFloating
       orgId="19149709238"
-      rating={4.9}
-      count={132}
-      showComments
+      compact // ниже по высоте
+      showSideInfo
+      rating={5.0}
+      reviewsCount={33}
     />
-    <Reviews />
     <Blog />
     <Contact />
     <Footer />

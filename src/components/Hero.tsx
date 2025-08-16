@@ -22,6 +22,14 @@ export const Hero: React.FC = () => {
         className={`container reveal ${isIntersecting ? 'is-visible' : ''}`}
       >
         <div className={styles.wrap}>
+          <div className={styles.photoCard} aria-hidden="true">
+            <img
+              src={heroDoctor}
+              alt="Врач проводит консультацию"
+              className={styles.photo}
+              loading="eager"
+            />
+          </div>
           <div className={styles.content}>
             <h1 className={styles.title}>
               ЛЕЧИМ БОЛИ
@@ -54,14 +62,6 @@ export const Hero: React.FC = () => {
                 {TelegramIcon()} Telegram
               </a>
             </div>
-          </div>
-          <div className={styles.photoCard} aria-hidden="true">
-            <img
-              src={heroDoctor}
-              alt="Врач проводит консультацию"
-              className={styles.photo}
-              loading="eager"
-            />
           </div>
         </div>
       </div>

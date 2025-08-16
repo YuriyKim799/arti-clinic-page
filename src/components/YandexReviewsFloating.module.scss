@@ -1,0 +1,302 @@
+@use '../styles/variables' as *;
+
+/* Общая обёртка */
+// .wrap {
+// }
+.container {
+  display: grid;
+  gap: clamp(16px, 2vw, 24px);
+}
+.header {
+  display: grid;
+  gap: 8px;
+}
+.title {
+  margin: 0;
+}
+.subtitle {
+  margin: 0;
+  color: $muted;
+}
+
+/* Карточка */
+.card {
+  position: relative;
+  border-radius: 26px;
+  background: $bg-contrast;
+  border: 1px solid $line;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  padding: clamp(12px, 1.6vw, 16px);
+  overflow: hidden;
+}
+
+/* деликатная анимированная линия по диагонали */
+.glow {
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 65%
+  );
+  transform: rotate(0deg) translate3d(0, 0, 0);
+  animation: glowSlide 8s linear infinite;
+  pointer-events: none;
+  opacity: 0.25;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+@keyframes glowSlide {
+  0% {
+    transform: rotate(8deg) translateX(-20%);
+  }
+  100% {
+    transform: rotate(8deg) translateX(20%);
+  }
+}
+
+/* Двухколоночная сетка на десктопе */
+.grid {
+  display: grid;
+  gap: clamp(12px, 1.6vw, 16px);
+  grid-template-columns: 1fr;
+  @media (min-width: 980px) {
+    grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  }
+}
+
+/* Левая зона (iframe) */
+.frame {
+  position: relative;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0));
+  aspect-ratio: 5 / 4; /* базовая */
+  max-height: 520px; /* ← перенесли выше media */
+
+  @media (max-width: 640px) {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* более компактная высота */
+.frameCompact {
+  aspect-ratio: 3 / 2;
+  max-height: 420px;
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: calc($radius-lg - 2px);
+  background: $bg;
+}
+
+/* Скелетон */
+.skeleton {
+  position: absolute;
+  inset: 8px;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.02));
+  z-index: 1;
+}
+.shimmer {
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 20%,
+    rgba(255, 255, 255, 0) 40%
+  );
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .shimmer {
+    animation: none;
+  }
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Кнопка «Развернуть» — компактная, премиум */
+.expandBtn {
+  position: absolute;
+  bottom: 44px;
+  right: 16px;
+  appearance: none;
+  border: 1px solid $line;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+  -webkit-backdrop-filter: saturate(120%) blur(6px);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $text;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease;
+  &:hover {
+    transform: translateY(-1px);
+    border-color: $blue-soft;
+  }
+}
+
+/* Правая панель — закрываем пустоту, но держим минимализм */
+.side {
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  padding: clamp(12px, 1.6vw, 16px);
+  background: $bg-contrast;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  min-height: 100%;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: $text;
+  border: 1px solid $line;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.ratingBlock {
+  display: grid;
+  gap: 6px;
+}
+.stars {
+  display: inline-flex;
+  gap: 4px;
+}
+.star {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid $line;
+  background: transparent;
+}
+.starFill {
+  background: $blue-soft;
+  border-color: transparent;
+}
+.ratingRow {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.ratingValue {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.ratingCount {
+  font-size: 12px;
+  color: $muted;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 600;
+  border: 1px solid $line;
+  background: transparent;
+  color: $text;
+  transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease;
+  &:hover {
+    border-color: $blue-soft;
+    transform: translateY(-1px);
+  }
+}
+
+.micro {
+  font-size: 12px;
+  color: $muted;
+  line-height: 1.5;
+}
+
+/* Модалка */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+}
+.modalBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(2px);
+}
+.modalBody {
+  position: relative;
+  width: min(95vw, 700px);
+  height: min(88vh, 880px);
+  border-radius: 20px;
+  background: $bg-contrast;
+  border: 1px solid $line;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  padding: 14px;
+  display: grid;
+  grid-template-rows: 1fr;
+}
+.modalClose {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid $line;
+  background: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 1;
+}
+.modalFrame {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: $bg;
+}
+.modalIframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.modalAttr {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  display: block;
+  text-align: center;
+  padding: 0 12px;
+  font-size: 10px;
+  line-height: 14px;
+  color: $muted;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

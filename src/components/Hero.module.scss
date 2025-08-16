@@ -20,7 +20,7 @@
 .wrap {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(20px, 3vw, 40px);
+  gap: clamp(30px, 3vw, 50px);
   align-items: start; /* чтобы начиналось сверху */
   padding-top: 25px; /* смещение вниз */
 }
