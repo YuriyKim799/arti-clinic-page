@@ -1,0 +1,276 @@
+---
+title: '5 ошибок при боли в спине, которые только ухудшают состояние'
+slug: 5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie
+date: '2025-04-12'
+cover: /blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/cover.jpg
+description: >-
+  /articlinic Арти Клиник /articlinic 16 подписчиков Подписаться 5 ошибок при
+  боли в спине, которые только ухудшают состояние 4 апреля4 апр 3 мин /blog/5
+  oshibok pri boli v spine kotorye tolko uhudshayu…
+source: 'https://dzen.ru/a/Z-pz1yPUs2uLV1wA'
+draft: false
+tags:
+  - arti-clinic
+  - dzen
+---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
+
+# 5 ошибок при боли в спине, которые только ухудшают состояние
+
+4 апреля4 апр
+
+3 мин
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-0.jpg)
+
+  
+  
+Боль в спине — это сигнал организма о том, что с позвоночником или окружающими его структурами что-то не так. Однако многие люди совершают распространенные ошибки, которые не только не помогают справиться с проблемой, но и могут усугубить ситуацию. Разберем 5 главных ошибок, которые вредят позвоночнику, и выясним, как правильно действовать при болях в спине.  
+  
+**Ошибка №1: Игнорировать боль и глушить ее таблетками**  
+  
+Многие люди привыкли не обращать внимания на дискомфорт в спине или снимают боль анальгетиками. Однако обезболивающие средства не устраняют причину, а лишь временно убирают симптомы. В результате заболевание продолжает развиваться, а человек продолжает нагружать поврежденные структуры позвоночника, что может привести к серьезным осложнениям.  
+  
+**Что делать правильно?**  
+При боли в спине важно не просто купировать симптомы, а разобраться в причине. Если боль длится более 3-5 дней, усиливается или сопровождается онемением конечностей, слабостью или другими тревожными признаками, необходимо обратиться к врачу.  
+  
+**Ошибка №2: Малоподвижный образ жизни**  
+  
+Часто люди с болями в спине стараются меньше двигаться, считая, что это поможет позвоночнику «отдохнуть». Однако гиподинамия только усугубляет проблему. Без движения ослабляются мышцы спины, ухудшается кровообращение, снижается питание межпозвоночных дисков, что может привести к их дальнейшему разрушению.  
+  
+**Что делать правильно?**  
+При болях в спине важно поддерживать умеренную физическую активность. Полезны плавание, прогулки, специальные упражнения для укрепления спины. Главное — избегать резких движений и чрезмерных нагрузок.  
+  
+**Ошибка №3: Неправильный выбор упражнений**  
+  
+Физическая активность важна для здоровья позвоночника, но не все упражнения одинаково полезны. Например, резкие наклоны, скручивания, подъем тяжестей могут усилить боль и даже привести к осложнениям, если у человека есть грыжа или протрузия.
+
+  
+**Что делать правильно?**  
+Прежде чем начинать тренировки, важно проконсультироваться со специалистом. Лечебная физкультура (ЛФК) подбирается индивидуально с учетом диагноза, возраста и общего состояния здоровья. Полезны упражнения на растяжку, укрепление мышц кора, йога и пилатес.  
+  
+**Ошибка №4: Самолечение и опасные процедуры**  
+  
+Когда болит спина, многие начинают использовать различные народные методы: прогревания, компрессы, растирки и даже агрессивные методы вроде грубого массажа или самостоятельного «правления» позвонков. Однако не все эти методы безопасны.  
+  
+Прогревание, например, при воспалительных процессах может усилить отек и усугубить боль. А непрофессиональный массаж или манипуляции могут привести к смещению позвонков или повреждению нервных корешков.  
+  
+**Что делать правильно?**  
+Лечение боли в спине должно быть профессиональным. Лучше обратиться к врачу, который назначит безопасные и эффективные методы терапии: физиопроцедуры, мануальную терапию, рефлексотерапию или медикаментозное лечение при необходимости.  
+  
+**Ошибка №5: Игнорирование профилактики**  
+  
+Многие начинают заботиться о здоровье спины только тогда, когда боль уже стала серьезной проблемой. Однако лучшее лечение — это профилактика.  
+  
+**Как правильно заботиться о позвоночнике?**  
+  
+\- **Следить за осанкой.** Долгое сидение в неправильной позе — одна из причин проблем с позвоночником.  
+\- **Правильно поднимать тяжести.** Подъем с пола должен происходить с ровной спиной и за счет сгибания ног.  
+\- **Спать на правильном матрасе.** Ортопедический матрас и подушка помогают поддерживать позвоночник в физиологически правильном положении.  
+\- **Регулярно делать упражнения.** Даже простая разминка утром поможет укрепить мышцы и снять напряжение.  
+  
+**Вывод**  
+  
+Боль в спине — это не просто временный дискомфорт, а сигнал организма о том, что позвоночнику нужна помощь. Игнорирование симптомов, неправильное лечение и недостаток движения могут усугубить ситуацию. Чтобы сохранить здоровье спины, важно вовремя обратиться к специалисту и скорректировать образ жизни.
+
+  
+Просто оставьте заявку на нашем сайте или свяжитесь с нами по телефону
+
+**Контакты Арти клиник:**
+
+\- Телефон: +79998310636
+
+\- Адрес: г. Москва, ул. 1812 г д.3 (м.Парк Победы)
+
+\- WhatsApp: [https://wa.me/message/FHPEY53FP6B5I1](https://dzen.ru/away?to=https%3A%2F%2Fwa.me%2Fmessage%2FFHPEY53FP6B5I1)
+
+\- Telegram: [https://t.me/articlinic](https://dzen.ru/away?to=https%3A%2F%2Ft.me%2Farticlinic)
+
+\- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
+
+Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!  
+  
+Позаботьтесь о своей спине уже сегодня!
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+1
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-1.jpg)
+
+Секреты долголетия
+
+](https://dzen.ru/topic/sekrety-dolgoletnja)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-2.jpg)
+
+Антибиотики
+
+](https://dzen.ru/topic/antibiotiki)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-3.jpg)
+
+Инсульт
+
+](https://dzen.ru/topic/insult)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-4.jpg)
+
+Профилактика кожных заболеваний
+
+](https://dzen.ru/topic/kozhnye-zabolevaniya)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-5.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-6.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-7.jpg)
+
+Болезни органов пищеварения
+
+](https://dzen.ru/topic/bolezni-organov-pishchevareniya)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-8.jpg)
+
+Гиппократ
+
+](https://dzen.ru/topic/gippokrat)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-9.jpg)
+
+Гормональные препараты
+
+](https://dzen.ru/topic/gormonalnye-preparaty)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-10.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)
+
+[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-11.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-12.jpg)
+
+Здоровый сон
+
+](https://dzen.ru/topic/zdorovyi-son)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-13.jpg)
+
+Здоровье мозга
+
+](https://dzen.ru/topic/zdorovje-mozga)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-14.jpg)
+
+Профилактика инфекционных заболеваний
+
+](https://dzen.ru/topic/infekcionnye-zabolevaniya)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-15.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-16.jpg)
+
+Женские болезни
+
+](https://dzen.ru/topic/zhenskie-bolezni)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-17.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-18.jpg)
+
+Справочник болезней
+
+](https://dzen.ru/topic/spravochnik-boleznej)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-19.jpg)
+
+Наталья Зубарева
+
+](https://dzen.ru/topic/natalya-zubareva)[
+
+![](/blog/5-oshibok-pri-boli-v-spine-kotorye-tolko-uhudshayut-sostoyanie/img-20.jpg)
+
+Тимур Хайдаров
+
+](https://dzen.ru/topic/timur-khajdarov)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама
+
+1

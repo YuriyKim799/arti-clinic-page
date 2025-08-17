@@ -1,0 +1,280 @@
+---
+title: 'Офисная спина: как сохранить здоровье позвоночника при сидячей работе'
+slug: ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote
+date: '2025-06-25'
+cover: >-
+  /blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/cover.jpg
+description: >-
+  /articlinic Арти Клиник /articlinic 16 подписчиков Подписаться Офисная спина:
+  как сохранить здоровье позвоночника при сидячей работе 25 июня25 июн 2 мин
+  /blog/ofisnaya spina kak sohranit zdorove pozvo…
+source: 'https://dzen.ru/a/aFfbB9bnvH9V9GwH'
+draft: false
+tags:
+  - arti-clinic
+  - dzen
+---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
+
+# Офисная спина: как сохранить здоровье позвоночника при сидячей работе
+
+25 июня25 июн
+
+2 мин
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-0.jpg)
+
+_Многим знакома ситуация: поработал несколько часов за компьютером — и к вечеру уже тянет шею, болит поясница или «гудит» между лопатками. Это не просто усталость — это сигнал перегрузки позвоночника._
+
+  
+Боль в спине от сидячей работы — одна из самых частых жалоб у офисных сотрудников, фрилансеров и всех, кто много времени проводит перед экраном.  
+К счастью, с этим можно справиться. Главное — организовать рабочее место правильно, соблюдать режим и добавить немного движения.  
+  
+**Как неправильно организованное рабочее место влияет на позвоночник**  
+— Слишком низкий монитор = голова постоянно наклонена вниз → перегрузка шеи  
+— Стул без опоры = поясница не получает поддержки → спазм мышц и «усталость» в спине  
+— Отсутствие подставки для ног = напряжение в поясничной зоне  
+— Клавиатура и мышь слишком далеко = вы тянетесь вперёд → сутулость и напряжение в плечах  
+  
+Всё это приводит к хроническому перенапряжению мышц, застою крови и ухудшению подвижности.  
+  
+**Правильное положение тела за столом: 5 простых правил**  
+_Монитор_ — на уровне глаз, чтобы не тянуть шею вниз_Поясница_ — прижата к спинке стула или поддержана валиком_Стопы_ — полностью на полу или подставке, колени под углом 90°_Руки_ — лежат на столе или подлокотниках, локти под углом 90°_Голова_ — в нейтральном положении, не вытянута вперёд  
+  
+  
+В идеале — эргономичное кресло и стол соответствующей высоты. Но даже с простой мебелью можно организовать безопасное пространство.  
+  
+**3 упражнения на рабочем месте (можно делать прямо в кресле)**  
+_1\. «Кошка–собака» сидя_  
+Сидя на стуле, округлите спину, подтяните подбородок — вдох.  
+На выдохе — расправьте грудную клетку, сведите лопатки.  
+Повторить 8–10 раз.
+
+  
+_2\. Повороты корпуса с руками на плечах_  
+Поставьте руки на плечи и делайте мягкие повороты вправо и влево.  
+10 повторов. Отлично снимает напряжение между лопатками.
+
+  
+_3\. «Макушка вверх» + потягивания_  
+Потянитесь за макушкой, представив, что хотите вырасти. Добавьте руки вверх и потянитесь.  
+2-3 раза в час. Это активирует мышцы-стабилизаторы.  
+  
+Перерывы и «микродвижения»: секрет здоровой спины  
+Одна из главных причин боли — статичное напряжение. Даже идеальная осанка не спасёт, если вы не двигаетесь.  
+  
+**Золотое правило:**  
+Каждые 45–50 минут — встаньте, пройдитесь или выполните мини-комплекс.  
+Микродвижения:  
+— встаньте на носки и опуститесь 10 раз  
+— подвигайте плечами вперёд и назад  
+— сделайте круги тазом  
+— потрясите руками, чтобы «разбудить» мышцы  
+Это помогает поддерживать циркуляцию крови и работу суставов даже в офисной рутине.  
+  
+**Вывод**  
+Боль в спине за компьютером — это не норма, а последствие образа жизни.  
+Правильное рабочее место, регулярные разминки и внимание к телу — это инвестиции в ваш позвоночник и продуктивность.  
+  
+В Арти Клиник мы обучаем пациентов не только лечить, но и профилактировать боли, особенно те, что «начинаются с работы».  
+Если чувствуете усталость в спине после офиса — приходите на диагностику. Поможем выявить причину и сохранить вашу спину в порядке.  
+
+**Контакты Арти клиник:**
+
+\- Телефон: +79998310636
+
+\- Адрес: г. Москва, ул. 1812 г д.3 (м.Парк Победы)
+
+\- WhatsApp: [https://wa.me/message/FHPEY53FP6B5I1](https://dzen.ru/away?to=https%3A%2F%2Fwa.me%2Fmessage%2FFHPEY53FP6B5I1)
+
+\- Telegram: [https://t.me/articlinic](https://dzen.ru/away?to=https%3A%2F%2Ft.me%2Farticlinic)
+
+\- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
+
+Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+  
+#больвспинеотработы #офиснаяспина #осанказакомпьютером #упражнениявофисе #артиклиник #профилактикаболивспине
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+1
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-1.jpg)
+
+Лекарственные препараты
+
+](https://dzen.ru/topic/lekarstvennye-preparaty)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-2.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-3.jpg)
+
+Профилактика инфекционных заболеваний
+
+](https://dzen.ru/topic/infekcionnye-zabolevaniya)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-4.jpg)
+
+Иван Павлов
+
+](https://dzen.ru/topic/ivan-pavlov)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-5.jpg)
+
+Борьба с курением
+
+](https://dzen.ru/topic/borba-s-kureniem)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-6.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-7.jpg)
+
+Лео Бокерия
+
+](https://dzen.ru/topic/leo-bokeriya)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-8.jpg)
+
+Инсульт
+
+](https://dzen.ru/topic/insult)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-9.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-10.jpg)
+
+Болезни органов пищеварения
+
+](https://dzen.ru/topic/bolezni-organov-pishchevareniya)
+
+[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-11.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-12.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-13.jpg)
+
+Антибиотики
+
+](https://dzen.ru/topic/antibiotiki)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-14.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-15.jpg)
+
+Тимур Хайдаров
+
+](https://dzen.ru/topic/timur-khajdarov)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-16.jpg)
+
+Иммуномодуляторы
+
+](https://dzen.ru/topic/immunomodulyatory)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-17.jpg)
+
+Болезни мозга
+
+](https://dzen.ru/topic/bolezni-mozga)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-18.jpg)
+
+Женские болезни
+
+](https://dzen.ru/topic/zhenskie-bolezni)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-19.jpg)
+
+Наталья Зубарева
+
+](https://dzen.ru/topic/natalya-zubareva)[
+
+![](/blog/ofisnaya-spina-kak-sohranit-zdorove-pozvonochnika-pri-sidyachej-rabote/img-20.jpg)
+
+Наталья Бехтерева
+
+](https://dzen.ru/topic/natalya-bekhtereva)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама
+
+1

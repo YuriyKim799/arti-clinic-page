@@ -1,0 +1,237 @@
+---
+title: Почему после огорода болит спина — и как этого избежать
+slug: pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat
+date: '2025-06-16'
+cover: /blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/cover.jpg
+description: >-
+  /articlinic Арти Клиник /articlinic 16 подписчиков Подписаться Почему после
+  огорода болит спина — и как этого избежать 16 июня16 июн 2 мин Простые правила
+  и упражнения, чтобы сохранить здоровье и не п…
+source: 'https://dzen.ru/a/aE1ZHfDLok3w_FXk'
+draft: false
+tags:
+  - arti-clinic
+  - dzen
+---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
+
+# Почему после огорода болит спина — и как этого избежать
+
+16 июня16 июн
+
+2 мин
+
+Простые правила и упражнения, чтобы сохранить здоровье и не превратить дачу в мучение
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-0.jpg)
+
+  
+**Утром — бодры, вечером — скрючены. Знакомо?**  
+Многие считают, что работа на огороде — это польза для тела. Воздух, движение, физическая активность. Но почему тогда после «полезного дня» спина ноет так, будто разгружали мешки с цементом?  
+На самом деле, причина кроется **не в самой работе**, а в том, _как_ мы её делаем. Давайте разберёмся, что именно перегружает спину, и как этого можно избежать без спорта и тренажёров.**Основные причины боли в спине после огорода**  
+**1\. Долгая работа в наклоне** Самая частая причина боли. Когда вы часами полете грядки, наклоняетесь к рассаде, не разгибаясь — вся нагрузка ложится на поясницу и мышцы спины. Они устают и зажимаются.**2\. Рывки и перенос тяжестей** Подняли ведро, передвинули мешок, потянули шланг — и не заметили, как тело дало сбой. Резкие движения без подготовки легко перегружают межпозвоночные диски и суставы.**3\. Неправильная осанка при работе** Многие сидят на корточках, скручиваются в «позу улитки», опираются на одну ногу. Это создаёт неравномерную нагрузку на позвоночник и вызывает спазмы.**4\. Отсутствие разминки** Организм просыпается долго. Без подготовки начинать работу в огороде — всё равно что выйти на пробежку без разогрева. И результат — тот же: микротравмы, боль, усталость.**Как правильно стоять, копать и полоть**  
+**Копка:** Не наклоняйтесь всем корпусом. Сгибайте ноги в коленях, лопату держите ближе к телу. Лучше делать короткие подходы, чередуя с отдыхом.**Прополка:** Идеальный вариант — использовать небольшую скамейку или подставку, чтобы не зависать в наклоне. Если стоите, держите спину ровно, сгибайтесь из бедра, не «висите» на пояснице.**Перенос тяжестей:** Поднимать — только с прямой спиной, опираясь на ноги. Лучше нести два лёгких ведра, чем одно тяжёлое. Избегайте резких поворотов с нагрузкой в руках.**Простые упражнения «до» и «после» огорода**  
+**Утренняя разминка перед работой:**  
+**Потягивание вверх** — руки вверх, встать на носочки, сделать 5–7 глубоких вдохов**Круги плечами** — 10 вперёд, 10 назад**Мягкие наклоны и повороты корпуса** — в стороны, вперёд, назад**Приседания без усилия** — 10 раз, чтобы включить мышцы ног и таза  
+Это займёт всего 3 минуты, но позволит телу "проснуться".**После огорода:**  
+**Позвоночная разгрузка** — лечь на спину, ноги положить на стул, полежать 5 минут**Поза «кошки» у стула** — опереться руками, мягко округлять и прогибать спину**Наклон вперёд сидя на стуле** — расслабьте спину, опустите голову, подышите  
+Эти упражнения помогут снять зажимы и предотвратить вечернюю боль.**Главное — беречь себя, а не «выжать» из тела максимум**  
+Дача и огород не должны превращаться в испытание. Тело, как земля: если его не ухаживать — оно истощается. Делайте паузы, не терпите дискомфорт, не героизируйте нагрузку.  
+Иногда лучше отдохнуть 10 минут — и спокойно закончить день, чем геройствовать и лечить спину полгода.  
+  
+**Сохраните статью, чтобы возвращаться к этим упражнениям.** В следующем материале — разберём 5 ошибок, которые делают на грядках 90 % людей (и даже не замечают этого).
+
+**Контакты Арти клиник:**
+
+\- Телефон: +79998310636
+
+\- Адрес: г. Москва, ул. 1812 г д.3 (м.Парк Победы)
+
+\- WhatsApp: [https://wa.me/message/FHPEY53FP6B5I1](https://dzen.ru/away?to=https%3A%2F%2Fwa.me%2Fmessage%2FFHPEY53FP6B5I1)
+
+\- Telegram: [https://t.me/articlinic](https://dzen.ru/away?to=https%3A%2F%2Ft.me%2Farticlinic)
+
+\- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
+
+Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-1.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-2.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-3.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-4.jpg)
+
+Болезни сердца и сосудов (Кардиология)
+
+](https://dzen.ru/topic/kardiologija)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-5.jpg)
+
+Гиппократ
+
+](https://dzen.ru/topic/gippokrat)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-6.jpg)
+
+Профилактика заболеваний
+
+](https://dzen.ru/topic/profilaktika-zabolevanij)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-7.jpg)
+
+Противовирусные препараты
+
+](https://dzen.ru/topic/protivovirusnye-preparaty)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-8.jpg)
+
+Диабет
+
+](https://dzen.ru/topic/diabet)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-9.jpg)
+
+Справочник болезней
+
+](https://dzen.ru/topic/spravochnik-boleznej)
+
+[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-10.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-11.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-12.jpg)
+
+Сон и сновидения
+
+](https://dzen.ru/topic/son-i-snovidenija)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-13.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-14.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-15.jpg)
+
+Здоровый сон
+
+](https://dzen.ru/topic/zdorovyi-son)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-16.jpg)
+
+Наталья Бехтерева
+
+](https://dzen.ru/topic/natalya-bekhtereva)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-17.jpg)
+
+Лекарственные препараты
+
+](https://dzen.ru/topic/lekarstvennye-preparaty)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-18.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-19.jpg)
+
+Тимур Хайдаров
+
+](https://dzen.ru/topic/timur-khajdarov)[
+
+![](/blog/pochemu-posle-ogoroda-bolit-spina-i-kak-etogo-izbezhat/img-20.jpg)
+
+Здоровье печени
+
+](https://dzen.ru/topic/zdorove-pecheni)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама
+
+Реклама

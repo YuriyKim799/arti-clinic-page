@@ -1,0 +1,269 @@
+---
+title: 'Как понять, что осанка нарушена: домашние тесты и первые признаки'
+slug: kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki
+date: '2025-07-06'
+cover: >-
+  /blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/cover.jpg
+description: >-
+  /articlinic Арти Клиник /articlinic 16 подписчиков Подписаться Как понять, что
+  осанка нарушена: домашние тесты и первые признаки 6 июля6 июл 2 мин /blog/kak
+  ponyat chto osanka narushena domashnie test…
+source: 'https://dzen.ru/a/aF_Klw56pSlwkN2M'
+draft: false
+tags:
+  - arti-clinic
+  - dzen
+---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
+
+# Как понять, что осанка нарушена: домашние тесты и первые признаки
+
+6 июля6 июл
+
+2 мин
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-0.jpg)
+
+Нарушение осанки часто начинается **незаметно**. Нет резкой боли, резкого искривления или видимой деформации.  
+Но спустя месяцы или годы человек начинает жаловаться на быструю утомляемость, тянущие боли в спине, головные боли, нестабильное давление.  
+И лишь тогда выясняется, что в основе — **неправильное положение позвоночника**.  
+Ранняя диагностика особенно важна в подростковом возрасте, когда идёт активный рост скелета.  
+В этой статье расскажем, **как распознать нарушения осанки дома** и куда обращаться, если замечены отклонения.**Простые домашние тесты: как проверить осанку без оборудования**  
+Проверку можно провести прямо у стены или в зеркале. Главное — быть в естественном положении, без попыток «спрямиться».  
+**1\. Тест у стены**  
+Встаньте спиной к стене: затылок, лопатки, ягодицы и пятки должны касаться поверхности.  
+Если:  
+— трудно прижать затылок,  
+— поясница отходит более чем на 5 см,  
+— тело заваливается на одну сторону —  
+значит, осанка нарушена.  
+**2\. Линия плеч и таза (зеркальный тест)**  
+Встаньте перед зеркалом без обуви. Посмотрите:  
+— Плечи на одной ли высоте?  
+— Одно бедро не «выпирает» больше другого?  
+— Не повернута ли голова немного вбок?  
+**3\. Тест на прогиб шеи**Сбоку: если голова выдвинута вперёд (вперёд от линии плеч) — это признак «компьютерной шеи», что часто сочетается с сутулостью.  
+Эти тесты не ставят диагноз, но **дают сигнал о необходимости дальнейшей диагностики**.  
+  
+**Что ощущает человек при нарушении осанки**  
+Нарушения в теле часто проявляются как **размытые, но стабильные симптомы**:  
+— чувство "тяжёлой" спины в конце дня  
+— боль между лопатками без причины  
+— тянущее ощущение в шее или пояснице  
+— трудности при долгом стоянии или сидении  
+— постоянное желание "переместить вес" с одной ноги на другую  
+— быстрая утомляемость после даже лёгких нагрузок  
+Если подобное повторяется регулярно — это может быть **начальная стадия сколиоза или мышечного дисбаланса**.  
+  
+**На что обратить внимание родителям подростков**  
+Период с 10 до 17 лет — самый уязвимый для формирования осанки. Важно не пропустить изменения:  
+— Одна лямка рюкзака постоянно спадает  
+— Плечи на разной высоте  
+— Часто сутулится, «заваливается» на одну сторону  
+— Жалуется на боль в спине после школы  
+— Резко вырос — изменилась походка  
+Даже если ребёнок не жалуется на боль, не стоит ждать осложнений. Сколиоз на ранней стадии **можно скорректировать полностью** без операции, если вовремя начать.**Куда обращаться при первых признаках**  
+Если тесты дома насторожили — не откладывайте визит к специалисту. Лучше всего обратиться:  
+— к врачу-вертебрологу  
+— к специалисту по ЛФК  
+— в центр профилактики сколиоза  
+— на приём к врачу мануальной терапии или остеопату  
+Там проведут **постуральную диагностику**, измерят угол Кобба (при необходимости) и составят индивидуальную программу коррекции: от шрот-терапии и ЛФК до рефлексотерапии и массажа.  
+  
+**Вывод**  
+Осанка — это не только «как вы выглядите», но и **как работает ваше тело внутри**.  
+Если вы чувствуете, что спина быстро устаёт, а плечи опускаются — это уже сигнал.  
+Домашняя проверка осанки — первый шаг. А своевременное обращение к врачу — возможность избежать серьёзных осложнений в будущем.
+
+**Контакты Арти клиник:**
+
+\- Телефон: +79998310636
+
+\- Адрес: г. Москва, ул. 1812 г д.3 (м.Парк Победы)
+
+\- WhatsApp: [https://wa.me/message/FHPEY53FP6B5I1](https://dzen.ru/away?to=https%3A%2F%2Fwa.me%2Fmessage%2FFHPEY53FP6B5I1)
+
+\- Telegram: [https://t.me/articlinic](https://dzen.ru/away?to=https%3A%2F%2Ft.me%2Farticlinic)
+
+\- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
+
+Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-1.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-2.jpg)
+
+Величайшие ученые-медики
+
+](https://dzen.ru/topic/velichajshie-uchenye-mediki)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-3.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-4.jpg)
+
+Профилактика заболеваний
+
+](https://dzen.ru/topic/profilaktika-zabolevanij)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-5.jpg)
+
+Наталья Зубарева
+
+](https://dzen.ru/topic/natalya-zubareva)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-6.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-7.jpg)
+
+Профилактика кожных заболеваний
+
+](https://dzen.ru/topic/kozhnye-zabolevaniya)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-8.jpg)
+
+Лео Бокерия
+
+](https://dzen.ru/topic/leo-bokeriya)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-9.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-10.jpg)
+
+Здоровье нервной системы
+
+](https://dzen.ru/topic/nevrologicheskie-zabolevaniya)
+
+[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-11.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-12.jpg)
+
+Секреты долголетия
+
+](https://dzen.ru/topic/sekrety-dolgoletnja)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-13.jpg)
+
+Женские болезни
+
+](https://dzen.ru/topic/zhenskie-bolezni)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-14.jpg)
+
+Противовирусные препараты
+
+](https://dzen.ru/topic/protivovirusnye-preparaty)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-15.jpg)
+
+Болезни мозга
+
+](https://dzen.ru/topic/bolezni-mozga)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-16.jpg)
+
+Противоаллергические препараты
+
+](https://dzen.ru/topic/protivoallergicheskie-preparaty)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-17.jpg)
+
+Болезни зубов и десен
+
+](https://dzen.ru/topic/bolezni-zubov-i-desen)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-18.jpg)
+
+Здоровье мозга
+
+](https://dzen.ru/topic/zdorovje-mozga)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-19.jpg)
+
+Леонид Рошаль
+
+](https://dzen.ru/topic/leonid-roshal)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-20.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама

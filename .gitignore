@@ -64,3 +64,14 @@ jest-test-results.json
 # Misc
 # --------------------------
 *.tgz
+
+# сборочные артефакты
+/dist
+
+# автогенерация контента
+/public/posts.json
+/public/rss-dzen.xml
+/public/sitemap.xml
+/public/blog/*/post.md
+/public/blog/**/*-{480,768,1024,1440,1920}.jpg
+/public/blog/**/*-{480,768,1024,1440,1920}.webp

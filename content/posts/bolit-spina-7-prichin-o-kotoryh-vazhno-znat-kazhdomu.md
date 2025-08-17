@@ -1,0 +1,121 @@
+---
+title: 'Болит спина? 7 причин, о которых важно знать каждому'
+slug: bolit-spina-7-prichin-o-kotoryh-vazhno-znat-kazhdomu
+date: '2025-07-16'
+cover: /blog/bolit-spina-7-prichin-o-kotoryh-vazhno-znat-kazhdomu/cover.jpg
+description: >-
+  /articlinic Арти Клиник /articlinic 16 подписчиков Подписаться Болит спина? 7
+  причин, о которых важно знать каждому 16 июля16 июл 2 мин /blog/bolit spina 7
+  prichin o kotoryh vazhno znat kazhdomu/img 0…
+source: 'https://dzen.ru/a/aHIyi62gZlv-AMN2'
+draft: false
+tags:
+  - arti-clinic
+  - dzen
+---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
+
+# Болит спина? 7 причин, о которых важно знать каждому
+
+16 июля16 июл
+
+2 мин
+
+![](/blog/bolit-spina-7-prichin-o-kotoryh-vazhno-znat-kazhdomu/img-0.jpg)
+
+**Боль в спине** — это не всегда диагноз. Это сигнал. О том, что тело устало, перегружено, нарушен баланс между движением и покоем. Иногда — это симптом серьёзного заболевания. Но чаще — это следствие образа жизни, на который мы не обращаем внимания.  
+Разбираем **7 частых и неочевидных причин боли в спине**, с которыми сталкиваются и офисные работники, и дачники, и молодые мамы, и спортсмены.  
+  
+**1\. Сидячий образ жизни**  
+Когда вы долго сидите — за компьютером, в машине, на диване — _мышцы спины выключаются,_ а нагрузка ложится на позвоночник и межпозвонковые диски. Возникает застой, спазмы, ощущение тяжести или прострела.  
+_Что делать:_ – каждые 40–50 минут вставать и двигаться – делать микропаузы с наклонами и поворотами – сидеть с поддержкой поясницы  
+  
+**2\. Неверная поза во время сна**  
+Сон на слишком высокой подушке или мягком матрасе _«скручивает»_ позвоночник. Особенно страдает поясничный и шейный отдел.  
+_Что помогает:_ – подушка средней высоты, поддерживающая шею – матрас средней жёсткости – поза «на боку с валиком между коленей»  
+  
+**3\. Обувь без амортизации**  
+Плоская подошва или высокий каблук — и позвоночник вынужден компенсировать нагрузку, особенно если вы много ходите или стоите. Это даёт перегрузку на поясницу и стопу.  
+_Советы:_ – выбирайте обувь с амортизирующей стелькой – при плоскостопии — используйте ортопедические вкладыши – не носите тяжести в одной руке**4\. Хронический стресс**  
+Напряжение «уходит в спину». Особенно — в шейно-воротниковую зону и поясницу. Мышцы остаются в тонусе, нарушается кровоток, появляются триггерные точки и ноющая боль.  
+_Как помочь себе:_ – дыхательные техники – самомассаж или мягкое прогревание – расслабляющие упражнения (позы из йоги)  
+  
+**5.** **Слабые мышцы спины и кора**  
+Мышечный корсет — это опора позвоночника. Когда он ослаблен, позвонки перегружаются, появляется остеохондроз, протрузии, а со временем — грыжи.  
+_Что укрепляет:_ – ЛФК – плавание – планки, упражнения на стабилизацию**6\. Плохая осанка**  
+Сутулость, скручивание корпуса, ношение сумки на одном плече — всё это со временем «перекраивает» ваш позвоночник. Нарушается биомеханика, возникают искривления и мышечные дисбалансы.  
+_Что делать:_ – следите за положением тела в зеркале – укрепляйте мышцы плеч и спины – при необходимости — обратитесь к специалисту по осанке  
+  
+**7\. Воспалительные и неврологические заболевания**  
+Иногда боль — не от усталости, а от **в**оспаления, защемления нерва или проблем с органами. Особенно если боль стреляющая, отдаёт в ногу или сопровождается онемением.  
+_Важно:_ – при острой боли или нарушении чувствительности — срочно к врачу – МРТ, УЗИ, неврологическая диагностика – самолечение может навредить**Важно знать:**  
+Боль — это сигнал. А не повод терпеть.  
+Если она повторяется — её **нужно исследовать, а не заглушать**. Если вы поняли, что причина — в образе жизни, начните с простых шагов: поменяйте позу сна, добавьте упражнения, пересмотрите осанку. Если боль беспокоит серьёзно — доверьтесь специалисту.  
+  
+Позвоночник — основа тела. Забота о нём начинается с внимания к мелочам. А восстановление — с грамотного подхода и отказа от мифов.
+
+**Контакты Арти клиник:**
+
+\- Телефон: +79998310636
+
+\- Адрес: г. Москва, ул. 1812 г д.3 (м.Парк Победы)
+
+\- WhatsApp: [https://wa.me/message/FHPEY53FP6B5I1](https://dzen.ru/away?to=https%3A%2F%2Fwa.me%2Fmessage%2FFHPEY53FP6B5I1)
+
+\- Telegram: [https://t.me/articlinic](https://dzen.ru/away?to=https%3A%2F%2Ft.me%2Farticlinic)
+
+\- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
+
+Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+  
+#больвспине #остеохондроз #здоровьеспины #поясница #осанка #артиклиник #суставы #профилактика
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+[](https://t.mail.ru/redir/AAC-_AFqpCgY3_BVUd8duAlPzFO2sxi4HeI_yLTKXWDk0vmaS807TciglR9Ifh3r_Zf_1WqHc_9qX1WNQH-Asay98e3rMKkUqUvFv5mPGf6yED2BjFO403uH5RrzOLhie_I8Kr081WYGRB5y4b2sVBKDR52Z9pMCxXvboJpyg5hvRcrO-GfqU1lNBAAAWPGj-jLrxkcQ1bbZiWNScVBVCQf2tqTlLrn8BbzWo16ChBMz7lwFnZYIrI2MWMf9QRRMOt3FPrxnvN5401bpIK3o4Q1kwo5UIQlirrYvpgJfzAHaKbGLsshDYjjCljBrtzV21vg4_vL_MWG8qZEuSD9MYjxRXLHekhbNiM7w-VeODaQyCCH7XD2_9aPDlIoCoQWIJvNCfcxjjwa-_Xze4aWp7cAGud0MG9lT3mz0_7sev-VkygXi6Hxxb7TlMN9FP4q5br0C70tfuthWkWja5ldE4BexPMxuaMIbPOYLTKqnnZ27QAxwK2ust194cB_JRzfLNEWLCTUev4_48NLXIYcsMePyooKbAacen5nLk4gf9jWaXIB6IqFK4ggT5uQ56ofHFxincebUJsCxqhcqTPtyD66NCzesJey_2rrE8zKLHssEKtP9h3J4_tGFK85rGDBIEFROUiaOZzaEnfGinekzzSvX3dw30LcEeaxOz5uC9KKAMva37BO__UGwFxy2j5XUKM97eEMHvTbYZqWHsyd0kTn8rm_wqjJeX--KmPMn9je1xCWenuwEhxiEE5maFu90XINM8VFCzwXrwQJe8KAwvTXGAMAHRN-p0yASfFus56ek0wEnCzFfFe7rp9WO5yQTlCQmtwB94GKQ8gMA9yM22J-7P7iVU89eVGBKL8WjFpaM_P3Ru9Tn0ME1UP9f_vd_elRCzhQiqrC4dsZnI54XuHlzLydaz0M8H_JT1o143dMfexpI434W5Ee1tfDBXLR-Nwe2BRRfmV7tuIDJRrqdaJPNU6qdxS-XBcd8T0rmJmldvANwSuChruyFikKXnYiwE-g_EEX-s6RQAyDyyLxcic9yAPsZ99oiC6tFkRZhY0mY-Q7U9jUnd4HMG9VhOalt7qnzZ9Y6cyYJ-OgffMQ7aYQGRr1wnfxug6V4n3MiuhbHP3C3eUqne_x-cz-UXGkpU02FVhtqY2DBSk33Sb9RvhGxrMNbfWODxMjkrCZ7MJ_Mb8YV-uJ6NAFJuXMsOHV3DdmR1kzvEHasNA-omow-9-INLzNIJ4PRUgnMI7Xmx_4i0hJfGc1JkrdfEwRYpA-1knriJDS11ksss5OAh3vufTixOKDptYk-GlRbzNADxLdckKYTurJwhYfHLoPs6COdVdIbXYOc_cgs7G5Bu5ibrcuJCV8KpRWDRLAsUgAfD1PkgQzHVnWNEXTIPOLub0KdHGa_g_p1el-x4ccJBn0tcptcAEF5PoqnXD6Mjp85eUSApIaI9-cn0qnt129BelvjqeyoR-LjzQvM9G--rPa5ZbhQNjcu-5gzioiqEsJPjSficHP9onc362_CvKKVqEYnWzhjXNW2ka3qr0RbHMpPfSQ9ABzdqEZzImZdVfPQHsRLTwLNGFITeObYQyTU4ZEZbJFMbIQ2Zp88ctS578MyZuVvtP5hv2qbKy2WF_UxqWq90sItFE4ifpi_BHgV:2VtzqxgobJf)
+
+![](/blog/bolit-spina-7-prichin-o-kotoryh-vazhno-znat-kazhdomu/img-1.jpg)
+
+Реклама0+
+
+Спа-отель «Вятичи Eco Resort&Spa»
+
+Эко-курорт «Вятичи» 97 км от Москвы в живописном лесу
+
+vyatichi.ru
+
+Забронировать[](https://t.mail.ru/redir/AAC-_AFqpCgY3_BVUd8duAlPzFO2sxi4HeI_yLTKXWDk0vmaS807TciglR9Ifh3r_Zf_1WqHc_9qX1WNQH-Asay98e3rMKkUqUvFv5mPGf6yED2BjFO403uH5RrzOLhie_I8Kr081WYGRB5y4b2sVBKDR52Z9pMCxXvboJpyg5hvRcrO-GfqU1lNBAAAWPGj-jLrxkcQ1bbZiWNScVBVCQf2tqTlLrn8BbzWo16ChBMz7lwFnZYIrI2MWMf9QRRMOt3FPrxnvN5401bpIK3o4Q1kwo5UIQlirrYvpgJfzAHaKbGLsshDYjjCljBrtzV21vg4_vL_MWG8qZEuSD9MYjxRXLHekhbNiM7w-VeODaQyCCH7XD2_9aPDlIoCoQWIJvNCfcxjjwa-_Xze4aWp7cAGud0MG9lT3mz0_7sev-VkygXi6Hxxb7TlMN9FP4q5br0C70tfuthWkWja5ldE4BexPMxuaMIbPOYLTKqnnZ27QAxwK2ust194cB_JRzfLNEWLCTUev4_48NLXIYcsMePyooKbAacen5nLk4gf9jWaXIB6IqFK4ggT5uQ56ofHFxincebUJsCxqhcqTPtyD66NCzesJey_2rrE8zKLHssEKtP9h3J4_tGFK85rGDBIEFROUiaOZzaEnfGinekzzSvX3dw30LcEeaxOz5uC9KKAMva37BO__UGwFxy2j5XUKM97eEMHvTbYZqWHsyd0kTn8rm_wqjJeX--KmPMn9je1xCWenuwEhxiEE5maFu90XINM8VFCzwXrwQJe8KAwvTXGAMAHRN-p0yASfFus56ek0wEnCzFfFe7rp9WO5yQTlCQmtwB94GKQ8gMA9yM22J-7P7iVU89eVGBKL8WjFpaM_P3Ru9Tn0ME1UP9f_vd_elRCzhQiqrC4dsZnI54XuHlzLydaz0M8H_JT1o143dMfexpI434W5Ee1tfDBXLR-Nwe2BRRfmV7tuIDJRrqdaJPNU6qdxS-XBcd8T0rmJmldvANwSuChruyFikKXnYiwE-g_EEX-s6RQAyDyyLxcic9yAPsZ99oiC6tFkRZhY0mY-Q7U9jUnd4HMG9VhOalt7qnzZ9Y6cyYJ-OgffMQ7aYQGRr1wnfxug6V4n3MiuhbHP3C3eUqne_x-cz-UXGkpU02FVhtqY2DBSk33Sb9RvhGxrMNbfWODxMjkrCZ7MJ_Mb8YV-uJ6NAFJuXMsOHV3DdmR1kzvEHasNA-omow-9-INLzNIJ4PRUgnMI7Xmx_4i0hJfGc1JkrdfEwRYpA-1knriJDS11ksss5OAh3vufTixOKDptYk-GlRbzNADxLdckKYTurJwhYfHLoPs6COdVdIbXYOc_cgs7G5Bu5ibrcuJCV8KpRWDRLAsUgAfD1PkgQzHVnWNEXTIPOLub0KdHGa_g_p1el-x4ccJBn0tcptcAEF5PoqnXD6Mjp85eUSApIaI9-cn0qnt129BelvjqeyoR-LjzQvM9G--rPa5ZbhQNjcu-5gzioiqEsJPjSficHP9onc362_CvKKVqEYnWzhjXNW2ka3qr0RbHMpPfSQ9ABzdqEZzImZdVfPQHsRLTwLNGFITeObYQyTU4ZEZbJFMbIQ2Zp88ctS578MyZuVvtP5hv2qbKy2WF_UxqWq90sItFE4ifpi_BHgV:2VtzqxgobJf)
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Реклама
