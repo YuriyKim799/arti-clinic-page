@@ -5,9 +5,11 @@ import fg from 'fast-glob';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
+marked.use({ gfm: true }); // Markdown с таблицами/чекбоксами и т.д.
+
 const ROOT = process.cwd();
-const SITE = 'https://arti-clinic.ru'; // поменяй на свой домен, если нужен другой
-const CONTENT_DIR = path.join(ROOT, 'content', 'posts'); // твои локальные посты
+const SITE = 'https://arti-clinic.ru'; // твой домен
+const CONTENT_DIR = path.join(ROOT, 'content', 'posts');
 const PUBLIC_DIR = path.join(ROOT, 'public');
 const FEED_PATH = path.join(PUBLIC_DIR, 'rss-dzen.xml');
 const SITEMAP_PATH = path.join(PUBLIC_DIR, 'sitemap.xml');
@@ -23,6 +25,7 @@ export type FrontMatter = {
   updated?: string; // ISO
   origin?: 'site' | 'dzen';
   source?: string;
+  draft?: boolean;
 };
 
 export type PostCard = {
@@ -55,18 +58,24 @@ function stripHtml(html: string) {
     .replace(/\s+/g, ' ')
     .trim();
 }
+// делаем абсолютные пути для RSS (картинки/ссылки в Дзене)
+function absolutizeHtml(html: string, site: string): string {
+  return html.replace(
+    /(src|href)="\/(?!\/)/g,
+    (_, attr) => `${attr}="${site}/`
+  );
+}
+// чистим мусор из Дзена и пустые ссылки [](/path)
 function cleanMd(md: string): string {
-  // 1) убираем пустые ссылки вида [](/path)
-  let s = md.replace(/\[\]\(\s*\/[^)\s]+\s*\)/g, '');
+  let s = md.replace(/\[\]\(\s*\/[^)\s]+\s*\)/g, ''); // [](/path) → убрать
 
-  // 2) убираем сервисные строки из Дзена: "…подписчиков Подписаться", "Дзен", короткие призывы
   const lines = s.split(/\r?\n/);
   const out: string[] = [];
   for (const lineRaw of lines) {
     const line = lineRaw.trim();
     const hasSubs = /подписчик/iu.test(line);
-    const hasSubscribe = /подписать/iu.test(line); // ловит "подписаться"
-    const hasDzen = /\bд[зе]н\b/iu.test(line); // "дзен"
+    const hasSubscribe = /подписат/iu.test(line); // «подписаться»
+    const hasDzen = /\bд[зе]н\b/iu.test(line); // «дзен»
     const isShort = line.length <= 80;
 
     if (
@@ -74,37 +83,23 @@ function cleanMd(md: string): string {
       (hasSubscribe && isShort) ||
       (hasDzen && isShort)
     ) {
-      continue; // пропускаем мусорную строку
+      continue; // выбрасываем сервисные хвосты
     }
     out.push(lineRaw);
   }
-  s = out.join('\n');
-
-  // 3) схлопываем лишние пустые строки
-  s = s.replace(/\n{3,}/g, '\n\n');
-
+  s = out.join('\n').replace(/\n{3,}/g, '\n\n'); // схлопываем лишние пустые строки
   return s;
 }
-
 function pickExcerptFromMd(md: string): string {
-  // Берём первый нормальный абзац ≥ 40 символов и без "подписаться/дзен"
   const paras = md
-    .split(/\r?\n\s*\r?\n/) // делим по пустым строкам
+    .split(/\r?\n\s*\r?\n/)
     .map((p) => p.trim())
     .filter(Boolean);
-
-  const stop = /подписчик|подписать|дзен|канал|подпишитесь/iu;
+  const stop = /подписчик|подписат|дзен|канал|подпишитесь/iu;
   const p =
     paras.find((x) => x.length >= 40 && !stop.test(x)) ?? paras[0] ?? '';
   const trimmed = p.replace(/\s+/g, ' ').trim();
   return trimmed.length > 220 ? trimmed.slice(0, 220) + '…' : trimmed;
-}
-function absolutizeHtml(html: string, site: string): string {
-  // src="/path" или href="/path" → src="https://site/path"
-  return html.replace(
-    /(src|href)="\/(?!\/)/g,
-    (_, attr) => `${attr}="${site}/`
-  );
 }
 function rssItem(p: {
   title: string;
@@ -145,6 +140,7 @@ async function main() {
     const { data, content } = matter(raw);
     const fm = data as FrontMatter;
 
+    if (fm.draft) continue; // черновики пропускаем
     if (!fm.slug || !fm.title) {
       console.warn(
         '[build-content] пропущен (нет slug/title):',
@@ -156,17 +152,33 @@ async function main() {
     const slug = String(fm.slug);
     const url = `${SITE}/blog/${slug}`;
     const pubIso = fm.date || fm.updated || new Date().toISOString();
+
+    // 1) Готовим HTML из Markdown (очищаем мусор)
     const cleanedMd = cleanMd(content);
     const htmlRaw = marked.parse(cleanedMd) as string;
-    const html = absolutizeHtml(htmlRaw, SITE);
-    const fullText = stripHtml(html);
 
-    // безопасный excerpt (всегда строка)
+    // 1a) HTML для сайта (можно оставлять относительные пути)
+    const htmlForSite = htmlRaw;
+
+    // 1b) HTML для RSS (делаем абсолютные src/href)
+    const htmlForRss = absolutizeHtml(htmlRaw, SITE);
+    const fullText = stripHtml(htmlForRss);
+
+    // 2) Аккуратный excerpt, если не задан во фронт-маттере
     const excerptSafe =
-      (fm.excerpt ?? '').trim() || // если в фронт-маттере уже задан
-      pickExcerptFromMd(cleanedMd) || // иначе берём первый внятный абзац
-      (fullText ? fullText.slice(0, 220) + '…' : ''); // крайний резерв
+      (fm.excerpt ?? '').trim() ||
+      pickExcerptFromMd(cleanedMd) ||
+      (fullText ? fullText.slice(0, 220) + '…' : '');
 
+    // 3) Сохраняем HTML статьи в public/blog/<slug>/post.html
+    const pubDir = path.join(PUBLIC_DIR, 'blog', slug);
+    fs.mkdirSync(pubDir, { recursive: true });
+    fs.writeFileSync(path.join(pubDir, 'post.html'), htmlForSite, 'utf8');
+
+    // (опционально — можно больше не писать post.md; оставлю на всякий случай)
+    fs.writeFileSync(path.join(pubDir, 'post.md'), raw, 'utf8');
+
+    // 4) Собираем карточку для posts.json
     posts.push({
       id: slug,
       slug,
@@ -180,29 +192,28 @@ async function main() {
       source: fm.source || null,
     });
 
+    // 5) Добавляем в RSS
     rssItems.push(
       rssItem({
         title: fm.title,
         link: url,
         guid: `arti:${slug}`,
         pubDate: pubIso,
-        html,
+        html: htmlForRss,
         fullText,
         categories: fm.tags || [],
       })
     );
 
+    // 6) Для sitemap
     urls.push({ loc: url, lastmod: new Date(pubIso).toISOString() });
-
-    // кладём исходник в public — фронт будет забирать post.md по slug
-    const pubMdDir = path.join(PUBLIC_DIR, 'blog', slug);
-    fs.mkdirSync(pubMdDir, { recursive: true });
-    fs.writeFileSync(path.join(pubMdDir, 'post.md'), raw);
   }
 
+  // posts.json — отсортирован по дате
   posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   fs.writeFileSync(POSTS_JSON, JSON.stringify(posts, null, 2));
 
+  // RSS
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
   <rss version="2.0"
        xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -216,7 +227,8 @@ async function main() {
   </rss>`;
   fs.writeFileSync(FEED_PATH, rss.trim());
 
-  const staticPages = ['/', '/blog']; // добавь остальные страницы, если есть
+  // Sitemap
+  const staticPages = ['/', '/blog'];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     ${[...new Set(staticPages.map((p) => `${SITE}${p}`))]

@@ -39,3 +39,50 @@
   border-left: 4px solid #8ebbd6;
   border-radius: 8px;
 }
+
+.breadcrumbs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #6b6b6b;
+}
+.breadcrumbs a {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block; // чтобы псевдоэлемент вел себя предсказуемо
+  padding-bottom: 2px; // чуть места под линию
+}
+
+.breadcrumbs a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0; // линия прямо под текстом
+  width: 100%;
+  height: 2px;
+  background: currentColor; // цвет = цвет текста
+  transform: scaleX(0); // скрыта
+  transform-origin: left center; // «выезжает» слева направо
+  transition: transform 0.25s ease;
+}
+
+.breadcrumbs a:hover::after,
+.breadcrumbs a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.breadcrumbs .sep {
+  opacity: 0.6;
+  margin: 0 6px;
+}
+
+/* если пользователь отключил анимации */
+@media (prefers-reduced-motion: reduce) {
+  .breadcrumbs a::after {
+    transition: none;
+  }
+}
