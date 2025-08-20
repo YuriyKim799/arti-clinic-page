@@ -3,6 +3,8 @@ import styles from './ContactForm.module.scss';
 
 const PHONE_PREFIX = '+7';
 const LOCAL_MAX = 10; // 10 локальных цифр
+const SEPARATORS = new Set([' ', '(', ')', '-']);
+const MIN_POS = PHONE_PREFIX.length; // нельзя удалять "+7"
 
 const extractLocalDigits = (value: string) => {
   let d = value.replace(/\D/g, '');
@@ -48,14 +50,40 @@ export default function ContactForm() {
     e
   ) => {
     const el = e.currentTarget;
-    const pos = el.selectionStart ?? 0;
-    const minPos = PHONE_PREFIX.length;
+    const selStart = el.selectionStart ?? 0;
+    const selEnd = el.selectionEnd ?? selStart;
+
+    // Разрешаем удалять, если есть выделение (React сам отдаст onChange, мы отформатируем)
+    if (selStart !== selEnd) return;
+
+    // Блокируем удаление самого префикса
     if (
-      (e.key === 'Backspace' && pos <= minPos) ||
-      (e.key === 'Delete' && pos < minPos)
+      (e.key === 'Backspace' && selStart <= MIN_POS) ||
+      (e.key === 'Delete' && selStart < MIN_POS)
     ) {
       e.preventDefault();
-      el.setSelectionRange(minPos, minPos);
+      el.setSelectionRange(MIN_POS, MIN_POS);
+      return;
+    }
+
+    // Умный backspace: если слева разделитель — перепрыгнем за него к цифре
+    if (e.key === 'Backspace' && selStart > MIN_POS) {
+      const leftChar = el.value[selStart - 1];
+      if (SEPARATORS.has(leftChar)) {
+        e.preventDefault();
+        const newPos = selStart - 1;
+        el.setSelectionRange(newPos, newPos);
+      }
+    }
+
+    // Умный delete: если справа разделитель — перепрыгнем его
+    if (e.key === 'Delete') {
+      const rightChar = el.value[selStart];
+      if (SEPARATORS.has(rightChar)) {
+        e.preventDefault();
+        const newPos = selStart + 1;
+        el.setSelectionRange(newPos, newPos);
+      }
     }
   };
 
