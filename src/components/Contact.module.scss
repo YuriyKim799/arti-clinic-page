@@ -1,52 +1,137 @@
-
 @use '../styles/variables' as *;
 
 .grid {
   display: grid;
-  grid-template-columns: 1.1fr .9fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: 16px;
 }
-@media (max-width: 1000px) { .grid { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 .card {
   @include card;
   padding: 20px;
 }
 
+/* КАРТА */
 .mapWrap {
-  margin-top: 12px;
+  position: relative;
   border-radius: $radius-lg;
   overflow: hidden;
-  border: 1px solid $line;
-  iframe {
-    width: 100%;
-    height: 300px;
-    border: 0;
-    display: block;
-    background: #ddd;
+  background: $beige-200;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 14px;
+}
+.mapIframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .mapWrap:hover .mapIframe {
+    pointer-events: auto;
+  }
+}
+.mapSkeleton {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  background: linear-gradient(90deg, #eee 25%, #f5f5f5 37%, #eee 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
   }
 }
 
-.contacts { display: flex; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
-
-.form {
+/* НОВЫЙ симметричный блок контактов */
+.contactsPanel {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
-  label { display: grid; gap: 6px; font-weight: 600; }
-  input, select, textarea {
-    border: 1px solid $line;
-    background: $bg-contrast;
-    padding: 12px 14px;
-    border-radius: $radius-md;
-    font: inherit;
-    outline: none;
-    transition: border-color .2s ease, box-shadow .2s ease;
-    &:focus { border-color: $blue-soft; box-shadow: 0 0 0 3px rgba(142,187,214,.25); }
+  margin-top: 12px;
+}
+@media (max-width: 600px) {
+  .contactsPanel {
+    grid-template-columns: 1fr;
   }
 }
 
-.messengers { display: flex; gap: 8px; flex-wrap: wrap; }
+.contactCard {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  background: $bg-contrast;
+  color: $text;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.3s ease, border-color 0.3s ease,
+    background 0.3s ease;
+}
+.contactCard:hover {
+  transform: translateY(-2px);
+  box-shadow: $shadow;
+  border-color: lighten($line, 4%);
+}
 
-.error { color: #9d2b2b; margin: 4px 0 0; font-size: 14px; }
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 
-.thanks { padding: 8px 0; }
+.contactText {
+  display: grid;
+  gap: 2px;
+}
+.contactLabel {
+  color: $muted;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+.contactNumber {
+  font-size: clamp(16px, 2vw, 18px);
+  font-weight: 600;
+  letter-spacing: 0.015em;
+}
+
+/* Мессенджеры в две колонки */
+.messengersRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+.messengerBtn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid $line;
+  border-radius: 999px;
+  text-decoration: none;
+  background: $bg-contrast;
+  color: $text;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease,
+    background 0.3s ease;
+}
+.messengerBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  border-color: lighten($line, 0%);
+}
+
+

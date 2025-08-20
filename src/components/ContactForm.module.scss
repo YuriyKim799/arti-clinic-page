@@ -1,0 +1,120 @@
+@use '../styles/variables' as *;
+
+/* Форма */
+.form {
+  display: grid;
+  gap: 12px;
+
+  label {
+    display: grid;
+    gap: 6px;
+    font-weight: 600;
+  }
+
+  input,
+  select,
+  textarea {
+    border: 1px solid $line;
+    background: $bg-contrast;
+    padding: 12px 14px;
+    border-radius: $radius-md;
+    font: inherit;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+      border-color: $blue-soft;
+      box-shadow: 0 0 0 3px rgba(142, 187, 214, 0.25);
+    }
+  }
+}
+
+.error {
+  color: #9d2b2b;
+  margin: 4px 0 0;
+  font-size: 14px;
+}
+
+.thanks {
+  padding: 8px 0;
+}
+
+/* Блок согласия */
+.agreement {
+  margin-top: 4px;
+  color: $muted;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.agreementCheckbox {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  align-items: start;
+  gap: 20px;
+  padding: 8px 0;
+}
+
+/* Кастомный чекбокс + галочка */
+.agreementCheckbox input[type='checkbox'] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0 0;
+  border: 1px solid $line;
+  border-radius: 4px;
+  background: $bg-contrast;
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: lighten($line, 8%);
+  }
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(142, 187, 214, 0.25);
+    border-color: $blue-soft;
+  }
+  &:checked {
+    background: $blue-soft;
+    border-color: $blue-soft;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 9.5px;
+    top: 1.5px;
+    width: 6px;
+    height: 12px;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg) scale(0.8);
+    opacity: 0;
+    transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+  }
+  &:checked::after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+.agreementCheckbox label {
+  cursor: pointer;
+  color: $text;
+}
+
+.agreementCheckbox a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+  transition: color 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    color: darken($text, 8%);
+    border-bottom-color: transparent;
+  }
+}
