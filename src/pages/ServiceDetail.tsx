@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { servicesData } from '../data/services';
 import styles from './ServiceDetail.module.scss';
+import { NavBar } from '@/components/NavBar';
 
 export const ServiceDetail: React.FC = () => {
   const { slug } = useParams();
@@ -38,6 +39,7 @@ export const ServiceDetail: React.FC = () => {
 
   return (
     <main className={`section ${styles.page}`}>
+      <NavBar />
       <div className="container">
         <nav className={styles.breadcrumbs}>
           <Link to="/">Главная</Link> · <Link to="/services">Услуги</Link> ·{' '}

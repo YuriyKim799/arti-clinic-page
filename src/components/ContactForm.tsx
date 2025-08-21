@@ -34,6 +34,9 @@ export default function ContactForm() {
   const [error, setError] = useState<string | null>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
 
+  const hpRef = useRef<HTMLInputElement>(null);
+  const t0Ref = useRef<number>(Date.now());
+
   const handlePhoneFocus: React.FocusEventHandler<HTMLInputElement> = () => {
     setForm((prev) =>
       prev.phone.startsWith(PHONE_PREFIX)
@@ -148,15 +151,20 @@ export default function ContactForm() {
     setLoading(true);
     try {
       // отправляем на наш бэкенд, который уже стучится в Telegram Bot API
-      const res = await fetch('/api/lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          phone: form.phone,
-          // можно добавить page: window.location.href
-        }),
-      });
+      const res = await fetch(
+        'https://functions.yandexcloud.net/d4ehvps5uj8pkr10vkjs',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: form.name.trim(),
+            phone: form.phone,
+            page: typeof window !== 'undefined' ? window.location.href : '',
+            website: hpRef.current?.value || '',
+            t0: t0Ref.current,
+          }),
+        }
+      );
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -235,6 +243,19 @@ export default function ContactForm() {
             </span>
           </label>
         </div>
+      </div>
+
+      <div className={styles.hp} aria-hidden>
+        <label>
+          Ваш сайт
+          <input
+            ref={hpRef}
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </label>
       </div>
 
       <button type="submit" className="btn btn--primary" disabled={loading}>

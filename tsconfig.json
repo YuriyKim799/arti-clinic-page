@@ -17,6 +17,6 @@
     "types": ["node"],
     "paths": { "@/*": ["src/*"] }
   },
-  "include": ["src", "scripts"],
+  "include": ["src", "scripts", "src/types/**/*.d.ts"],
   "references": []
 }

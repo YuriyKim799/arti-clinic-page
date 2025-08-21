@@ -4,6 +4,7 @@
 .form {
   display: grid;
   gap: 12px;
+  position: relative;
 
   label {
     display: grid;
@@ -117,4 +118,13 @@
     color: darken($text, 8%);
     border-bottom-color: transparent;
   }
+}
+
+.hp {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }

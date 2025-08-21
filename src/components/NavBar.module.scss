@@ -3,7 +3,8 @@
 .wrapper {
   position: fixed;
   inset: 0 0 auto 0;
-  height: var(--header-h);
+
+  height: 90px;
   z-index: 50;
   backdrop-filter: blur(8px);
   background: color-mix(in srgb, $bg-contrast 45%, transparent);
@@ -17,26 +18,28 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  position: relative;
 }
 
 .brand {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 10px;
   font-weight: 700;
   letter-spacing: 0.2px;
 }
 
-.logoDot {
-  width: 26px;
-  height: 26px;
-  border-radius: 8px;
-  background: $blue-soft;
-  box-shadow: inset 0 -2px 8px rgba(0, 0, 0, 0.08);
+.logoIcon {
+  width: 145px;
+  height: 145px;
+  margin-top: 15px;
+  margin-left: -30px;
+  vertical-align: middle;
 }
 
 .brandText {
-  font-size: 18px;
+  font-size: 25px;
+  vertical-align: middle;
+  margin-left: -25px;
 }
 
 .nav {

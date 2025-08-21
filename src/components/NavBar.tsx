@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './NavBar.module.scss';
+import logoUrl from '@/assets/arti-logo-exact.svg';
 
 export const NavBar: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -19,7 +20,12 @@ export const NavBar: React.FC = () => {
           onClick={close}
           aria-label="На главную"
         >
-          <span className={styles.logoDot} aria-hidden="true" />
+          <img
+            src={logoUrl}
+            alt=""
+            aria-hidden="true"
+            className={styles.logoIcon}
+          />
           <span className={styles.brandText}>Арти Клиник</span>
         </a>
 
