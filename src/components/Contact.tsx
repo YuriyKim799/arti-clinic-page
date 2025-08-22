@@ -4,6 +4,8 @@ import { useInView } from '../useInView';
 import IconPhone from '@/icons/IconPhone';
 import IconStatPhone from '@/icons/IconStatPhone';
 import ContactForm from './ContactForm';
+import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
+import TelegramButton from '@/components/TelegramButton/TelegramButton';
 
 const PHONE_PREFIX = '+7'; // фиксированный префикс
 const LOCAL_MAX = 10; // количество локальных цифр (без кода страны)
@@ -90,41 +92,28 @@ export const Contact: React.FC = () => {
                 </span>
                 <span className={styles.contactText}>
                   <span className={styles.contactNumber}>
-                    8 (499) 148-17-24
+                    +7 (499) 148-17-24
                   </span>
                 </span>
               </a>
 
+              <WhatsAppButton phone="+79998310636" variant="outline" />
+            </div>
+
+            {/* Мессенджеры – в две колонки, симметрично */}
+            <div className={styles.messengersRow}>
               <a href="tel:+79998310636" className={styles.contactCard}>
                 <span className={styles.icon}>
                   <IconPhone width={22} height={22} aria-hidden />
                 </span>
                 <span className={styles.contactText}>
                   <span className={styles.contactNumber}>
-                    8 (999) 831-06-36
+                    +7 (999) 831-06-36
                   </span>
                 </span>
               </a>
-            </div>
 
-            {/* Мессенджеры – в две колонки, симметрично */}
-            <div className={styles.messengersRow}>
-              <a
-                href="https://wa.me/79998310636"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.messengerBtn}
-              >
-                WhatsApp
-              </a>
-              <a
-                href="https://t.me/your_clinic"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.messengerBtn}
-              >
-                Telegram
-              </a>
+              <TelegramButton to="@Artiklinic" variant="outline" />
             </div>
           </div>
 

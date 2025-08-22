@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './NavBar.module.scss';
-import logoUrl from '@/assets/arti-logo-exact.svg';
+import LogoIcon from '@/components/LogoIcon/LogoIcon';
+import { HashLink } from 'react-router-hash-link';
+import RecordModal from './RecordModal';
 
 export const NavBar: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const [recordOpen, setRecordOpen] = useState(false);
 
   const close = () => setOpen(false);
 
@@ -14,20 +18,15 @@ export const NavBar: React.FC = () => {
       aria-label="Главная навигация"
     >
       <div className={`container ${styles.bar}`}>
-        <a
-          href="#"
+        <Link
+          to="/"
           className={styles.brand}
           onClick={close}
           aria-label="На главную"
         >
-          <img
-            src={logoUrl}
-            alt=""
-            aria-hidden="true"
-            className={styles.logoIcon}
-          />
+          <LogoIcon alt="Логотип Арти Клиник" />
           <span className={styles.brandText}>Арти Клиник</span>
-        </a>
+        </Link>
 
         <button
           className={styles.burger}
@@ -41,22 +40,39 @@ export const NavBar: React.FC = () => {
         </button>
 
         <nav className={`${styles.nav} ${open ? styles.open : ''}`}>
-          <a href="#services" onClick={close}>
-            Услуги
-          </a>
-          <a href="#reviews" onClick={close}>
-            Отзывы
-          </a>
-          <a href="#blog" onClick={close}>
-            Блог
-          </a>
-          <a href="#contact" onClick={close}>
-            Контакты
-          </a>
-          <a href="#record" className={styles.cta} onClick={close}>
-            Записаться
-          </a>
+          <nav className={`${styles.nav} ${open ? styles.open : ''}`}>
+            <HashLink smooth to="/#services" onClick={close}>
+              Услуги
+            </HashLink>
+            <HashLink smooth to="/#reviews" onClick={close}>
+              Отзывы
+            </HashLink>
+            <HashLink smooth to="/#blog" onClick={close}>
+              Блог
+            </HashLink>
+            <HashLink smooth to="/#contact" onClick={close}>
+              Контакты
+            </HashLink>
+            <HashLink
+              smooth
+              to="/#record"
+              className={styles.cta}
+              onClick={(e) => {
+                e.preventDefault();
+                setRecordOpen(true);
+                close();
+              }}
+            >
+              Записаться
+            </HashLink>
+          </nav>
         </nav>
+        {recordOpen && (
+          <RecordModal
+            isOpen={recordOpen}
+            onClose={() => setRecordOpen(false)}
+          />
+        )}
       </div>
     </div>
   );

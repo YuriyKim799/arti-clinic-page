@@ -1,0 +1,79 @@
+@use '../../styles/variables' as *;
+
+.trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 2px;
+  font: inherit;
+  color: $blue-soft;
+  cursor: pointer;
+  text-decoration: underline;
+  &:hover {
+    color: $blue-soft-600;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  width: min(800px, 92vw);
+  max-height: 86vh;
+  background: $bg-contrast;
+  border-radius: $radius-lg;
+  box-shadow: $shadow;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid $line;
+
+  h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+.close {
+  background: none;
+  border: 1px solid $line;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  &:hover {
+    border-color: $blue-soft;
+  }
+}
+
+.content {
+  padding: 16px 16px 20px;
+  overflow: auto;
+}
+
+.text {
+  p {
+    margin: 0 0 12px;
+    line-height: 1.6;
+  }
+  ol {
+    padding-left: 20px;
+    margin: 12px 0 0;
+    li {
+      margin: 6px 0;
+    }
+  }
+}

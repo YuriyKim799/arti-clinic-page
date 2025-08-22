@@ -1,0 +1,19 @@
+@use '../../styles/variables' as *;
+
+.page {
+  padding: 48px 0;
+}
+
+.wrap {
+  max-width: 860px;
+  margin: 70px auto;
+  background: $bg-contrast;
+  border-radius: $radius-lg;
+  box-shadow: $shadow;
+  padding: 24px;
+}
+
+.title {
+  margin: 0 0 16px;
+  font-size: 28px;
+}

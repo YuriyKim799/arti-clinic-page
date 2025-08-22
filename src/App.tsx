@@ -15,6 +15,8 @@ import { YandexReviewsFloating } from './components/YandexReviewsFloating';
 import SectionGallery from './components/SectionGallery';
 import ScrollToTop from '@/components/ScrollToTop';
 import BlogSection from '@/components/BlogSection';
+import AgreementPage from '@/pages/AgreementPage/AgreementPage';
+import PoliticPage from '@/pages/PoliticPage/PoliticPage';
 
 const BlogIndex = React.lazy(() => import('@/pages/BlogIndex'));
 const BlogPost = React.lazy(() => import('@/pages/BlogPost'));
@@ -53,6 +55,8 @@ const App: React.FC = () => {
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="*" element={<Home />} />
+          <Route path="/agreement" element={<AgreementPage />} />
+          <Route path="/politic" element={<PoliticPage />} />
         </Routes>
       </Suspense>
     </div>

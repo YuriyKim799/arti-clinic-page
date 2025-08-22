@@ -40,12 +40,7 @@ export const ServiceDetail: React.FC = () => {
   return (
     <main className={`section ${styles.page}`}>
       <NavBar />
-      <div className="container">
-        <nav className={styles.breadcrumbs}>
-          <Link to="/">Главная</Link> · <Link to="/services">Услуги</Link> ·{' '}
-          <span>{service.title}</span>
-        </nav>
-
+      <div className={`container ${styles.wrapper}`}>
         <header className={styles.header}>
           <h1 className={styles.title}>{service.title}</h1>
           {service.short && <p className="muted">{service.short}</p>}

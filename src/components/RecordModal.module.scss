@@ -1,0 +1,18 @@
+@use '../styles/variables' as *;
+
+.wrapper {
+  position: relative;
+  padding: 24px;
+  width: min(100vw - 32px, 480px);
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}

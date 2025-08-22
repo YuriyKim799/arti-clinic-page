@@ -1,0 +1,43 @@
+@use '../../styles/variables' as *;
+
+.text {
+  line-height: 1.65;
+  color: $text;
+
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 8px;
+  }
+
+  p,
+  ul,
+  ol {
+    margin: 10px 0;
+  }
+
+  ul,
+  ol {
+    padding-left: 18px;
+  }
+
+  a {
+    color: $blue-soft;
+    text-decoration: underline;
+    &:hover {
+      color: $blue-soft-600;
+    }
+  }
+}
+
+.meta {
+  color: $muted;
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.operator {
+  background: $beige-100;
+  border: 1px solid $line;
+  border-radius: $radius-md;
+  padding: 12px;
+}

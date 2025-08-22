@@ -3,14 +3,11 @@
 .page {
   background: $bg;
 }
-.breadcrumbs {
-  color: $muted;
-  font-size: 14px;
-  margin-bottom: 12px;
-  a {
-    color: inherit;
-  }
+
+.wrapper {
+  margin-top: 54px;
 }
+
 .header {
   margin-bottom: 16px;
 }

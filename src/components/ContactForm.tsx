@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import styles from './ContactForm.module.scss';
+import { Link } from 'react-router-dom';
 
 const PHONE_PREFIX = '+7';
 const LOCAL_MAX = 10; // 10 локальных цифр
@@ -233,13 +234,13 @@ export default function ContactForm() {
           <label htmlFor="agreement_main">
             <span>
               Я даю{' '}
-              <a href="/agreement/" target="_blank" rel="noopener noreferrer">
+              <Link to="/agreement">
                 Согласие на обработку персональных данных
-              </a>{' '}
+              </Link>{' '}
               на условиях{' '}
-              <a href="/politic/" target="_blank" rel="noopener noreferrer">
+              <Link to="/politic">
                 Политики в отношении обработки персональных данных
-              </a>
+              </Link>
             </span>
           </label>
         </div>

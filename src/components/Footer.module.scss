@@ -1,4 +1,3 @@
-
 @use '../styles/variables' as *;
 
 .footer {
@@ -6,7 +5,34 @@
   border-top: 1px solid $line;
   padding: 32px 0;
 }
-.row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-.brand { display: flex; flex-direction: column; gap: 4px; }
-.nav { display: flex; gap: 16px; flex-wrap: wrap; }
-.copy { margin-top: 12px; color: $muted; font-size: 14px; }
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footerBrand {
+ display: flex;
+ align-items: center;
+}
+
+.copy {
+  margin-top: 12px;
+  color: $muted;
+  font-size: 14px;
+}
+
+.logoIcon {
+  width: 145px;
+  height: 145px;
+  margin-top: 15px;
+  margin-left: -30px;
+  vertical-align: middle;
+}
