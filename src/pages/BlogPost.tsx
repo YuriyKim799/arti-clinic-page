@@ -5,6 +5,8 @@ import { Helmet } from 'react-helmet-async';
 import { fetchPosts, fetchPostHtml } from '@/lib/fetchPosts';
 import type { PostCard } from '@/lib/postTypes';
 import '@/styles/blog-post.scss';
+import { NavBar } from '@/components/NavBar';
+import { Footer } from '@/components/Footer';
 
 type State =
   | { status: 'loading' }
@@ -124,65 +126,69 @@ export default function BlogPost() {
   };
 
   return (
-    <main className="post-wrap">
-      <Helmet>
-        <title>{title} — Arti Clinic</title>
-        <link rel="canonical" href={canonical} />
-        <meta name="description" content={desc} />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={`${title} — Arti Clinic`} />
-        <meta property="og:description" content={desc} />
-        {meta.cover && (
-          <meta
-            property="og:image"
-            content={new URL(meta.cover, origin).toString()}
-          />
-        )}
-        <meta property="og:url" content={canonical} />
-        <script type="application/ld+json">{JSON.stringify(ld)}</script>
-        {/* хлебные крошки */}
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbLd)}
-        </script>
-      </Helmet>
-
-      <article className="post">
-        <header className="post-header">
-          {/* Хлебные крошки */}
-          <nav className="breadcrumbs" aria-label="Хлебные крошки">
-            <Link to="/">Главная</Link>
-            <span className="sep">·</span>
-            <Link to="/blog">Блог</Link>
-            <span className="sep">·</span>
-            <span aria-current="page">{title}</span>
-          </nav>
-
-          <h1>{title}</h1>
-          <div className="post-meta">
-            {meta.date && (
-              <time dateTime={meta.date}>
-                {new Date(meta.date).toLocaleDateString('ru-RU')}
-              </time>
-            )}
-            {meta.tags?.length ? <span> • {meta.tags[0]}</span> : null}
-          </div>
-
+    <>
+      <NavBar />
+      <main className="post-wrap">
+        <Helmet>
+          <title>{title} — Arti Clinic</title>
+          <link rel="canonical" href={canonical} />
+          <meta name="description" content={desc} />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={`${title} — Arti Clinic`} />
+          <meta property="og:description" content={desc} />
           {meta.cover && (
-            <picture>
-              <source
-                srcSet={`${baseCover}-1024.webp 1024w, ${baseCover}-1440.webp 1440w, ${baseCover}-1920.webp 1920w`}
-                type="image/webp"
-              />
-              <img src={`${baseCover}-1024.jpg`} alt={title} />
-            </picture>
+            <meta
+              property="og:image"
+              content={new URL(meta.cover, origin).toString()}
+            />
           )}
-        </header>
+          <meta property="og:url" content={canonical} />
+          <script type="application/ld+json">{JSON.stringify(ld)}</script>
+          {/* хлебные крошки */}
+          <script type="application/ld+json">
+            {JSON.stringify(breadcrumbLd)}
+          </script>
+        </Helmet>
 
-        <div
-          className="post-content"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-      </article>
-    </main>
+        <article className="post">
+          <header className="post-header">
+            {/* Хлебные крошки */}
+            <nav className="breadcrumbs" aria-label="Хлебные крошки">
+              <Link to="/">Главная</Link>
+              <span className="sep">·</span>
+              <Link to="/blog">Блог</Link>
+              <span className="sep">·</span>
+              <span aria-current="page">{title}</span>
+            </nav>
+
+            <h1>{title}</h1>
+            <div className="post-meta">
+              {meta.date && (
+                <time dateTime={meta.date}>
+                  {new Date(meta.date).toLocaleDateString('ru-RU')}
+                </time>
+              )}
+              {meta.tags?.length ? <span> • {meta.tags[0]}</span> : null}
+            </div>
+
+            {meta.cover && (
+              <picture>
+                <source
+                  srcSet={`${baseCover}-1024.webp 1024w, ${baseCover}-1440.webp 1440w, ${baseCover}-1920.webp 1920w`}
+                  type="image/webp"
+                />
+                <img src={`${baseCover}-1024.jpg`} alt={title} />
+              </picture>
+            )}
+          </header>
+
+          <div
+            className="post-content"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        </article>
+      </main>
+      <Footer />
+    </>
   );
 }

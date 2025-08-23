@@ -1,10 +1,9 @@
 @use '../styles/variables' as *;
 
 .wrapper {
-  position: fixed;
+  position: sticky;
   inset: 0 0 auto 0;
-
-  height: 90px;
+  height: var(--nav-h);
   z-index: 50;
   backdrop-filter: blur(8px);
   background: color-mix(in srgb, $bg-contrast 45%, transparent);
@@ -59,6 +58,14 @@
   }
 
   .cta {
+    padding: 8px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background 0.2s ease, border-color 0.2s ease,
+      transform 0.15s ease;
+    padding: 8px 10px;
     background: $blue-soft;
     color: #0d2230;
     &:hover {
@@ -77,7 +84,6 @@
   background: $bg-contrast;
   align-items: center;
   justify-content: center;
-  gap: 4px;
   cursor: pointer;
 
   span {
@@ -93,7 +99,8 @@
 
 @media (max-width: 860px) {
   .burger {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
   }
   .nav {
     position: absolute;

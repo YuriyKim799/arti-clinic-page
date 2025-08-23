@@ -96,12 +96,6 @@ export const Contact: React.FC = () => {
                   </span>
                 </span>
               </a>
-
-              <WhatsAppButton phone="+79998310636" variant="outline" />
-            </div>
-
-            {/* Мессенджеры – в две колонки, симметрично */}
-            <div className={styles.messengersRow}>
               <a href="tel:+79998310636" className={styles.contactCard}>
                 <span className={styles.icon}>
                   <IconPhone width={22} height={22} aria-hidden />
@@ -112,7 +106,11 @@ export const Contact: React.FC = () => {
                   </span>
                 </span>
               </a>
+            </div>
 
+            {/* Мессенджеры – в две колонки, симметрично */}
+            <div className={styles.messengersRow}>
+              <WhatsAppButton phone="+79998310636" variant="outline" />
               <TelegramButton to="@Artiklinic" variant="outline" />
             </div>
           </div>

@@ -38,34 +38,29 @@ export const NavBar: React.FC = () => {
           <span />
           <span />
         </button>
-
         <nav className={`${styles.nav} ${open ? styles.open : ''}`}>
-          <nav className={`${styles.nav} ${open ? styles.open : ''}`}>
-            <HashLink smooth to="/#services" onClick={close}>
-              Услуги
-            </HashLink>
-            <HashLink smooth to="/#reviews" onClick={close}>
-              Отзывы
-            </HashLink>
-            <HashLink smooth to="/#blog" onClick={close}>
-              Блог
-            </HashLink>
-            <HashLink smooth to="/#contact" onClick={close}>
-              Контакты
-            </HashLink>
-            <HashLink
-              smooth
-              to="/#record"
-              className={styles.cta}
-              onClick={(e) => {
-                e.preventDefault();
-                setRecordOpen(true);
-                close();
-              }}
-            >
-              Записаться
-            </HashLink>
-          </nav>
+          <HashLink smooth to="/#services" onClick={close}>
+            Услуги
+          </HashLink>
+          <HashLink smooth to="/#reviews" onClick={close}>
+            Отзывы
+          </HashLink>
+          <HashLink smooth to="/#blog" onClick={close}>
+            Блог
+          </HashLink>
+          <HashLink smooth to="/#contact" onClick={close}>
+            Контакты
+          </HashLink>
+          <span
+            className={styles.cta}
+            onClick={(e) => {
+              e.preventDefault();
+              setRecordOpen(true);
+              close();
+            }}
+          >
+            Записаться
+          </span>
         </nav>
         {recordOpen && (
           <RecordModal

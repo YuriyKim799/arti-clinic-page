@@ -1,4 +1,4 @@
-@use "sass:color";
+@use 'sass:color';
 
 @use '../styles/variables' as *;
 
@@ -83,6 +83,7 @@
   transition: transform 0.25s ease, box-shadow 0.3s ease, border-color 0.3s ease,
     background 0.3s ease;
 }
+
 .contactCard:hover {
   transform: translateY(-2px);
   box-shadow: $shadow;
@@ -90,7 +91,7 @@
 }
 
 .icon {
-  display: inline-flex;
+  display: grid;
   align-items: center;
   justify-content: center;
 }

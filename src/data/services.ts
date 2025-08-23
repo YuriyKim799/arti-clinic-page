@@ -12,10 +12,10 @@ export type ServiceItem = {
   img: string;
   short: string; // краткий текст для карточки
   full: string; // полный текст (бывший description)
-  benefits?: string[];
-  indications?: string[];
-  contraindications?: string[];
-  faq?: { q: string; a: string }[];
+  benefits?: string[]; // Преимущества
+  indications?: string[]; //Показания
+  contraindications?: string[]; //Противопоказания
+  faq?: { q: string; a: string }[]; // faq:[{q: 'asdsa', a: 'asdasda'}],
 };
 
 export const servicesData: ServiceItem[] = [

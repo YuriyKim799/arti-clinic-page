@@ -2,12 +2,12 @@
 
 :root {
   color-scheme: light;
-  --header-h: 64px; // высота навбара (десктоп)
+  --nav-h: 90px; // высота навбара (десктоп)
 }
 
 @media (max-width: 860px) {
   :root {
-    --header-h: 56px;
+    --nav-h: 90px;
   } // высота на мобильных
 }
 
@@ -96,4 +96,8 @@ img {
 
 .muted {
   color: $muted;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--nav-h) + 16px);
 }
