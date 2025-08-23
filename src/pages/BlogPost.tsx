@@ -1,21 +1,37 @@
 // src/pages/BlogPost.tsx
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { fetchPosts, fetchPostHtml } from '@/lib/fetchPosts';
 import type { PostCard } from '@/lib/postTypes';
 import '@/styles/blog-post.scss';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
+import SeoAuto from '@/components/SeoAuto';
 
 type State =
   | { status: 'loading' }
   | { status: 'error'; message: string }
   | { status: 'ok'; meta: PostCard; html: string };
 
+function makeAbs(urlOrPath: string, site: string) {
+  // если пришёл абсолютный url — вернём как есть; иначе приклеим к домену
+  try {
+    const u = new URL(urlOrPath);
+    return u.toString();
+  } catch {
+    return new URL(
+      urlOrPath.startsWith('/') ? urlOrPath : `/${urlOrPath}`,
+      site
+    ).toString();
+  }
+}
+
 export default function BlogPost() {
   const { slug = '' } = useParams();
   const [state, setState] = useState<State>({ status: 'loading' });
+
+  // домен берём из .env.production
+  const site = import.meta.env.VITE_SITE_URL || 'https://articlinic.ru';
 
   useEffect(() => {
     let alive = true;
@@ -26,7 +42,6 @@ export default function BlogPost() {
         fetchPosts(),
         fetchPostHtml(slug),
       ]);
-
       if (!alive) return;
 
       const meta = posts.find((p) => p.slug === slug);
@@ -44,7 +59,6 @@ export default function BlogPost() {
         });
         return;
       }
-
       setState({ status: 'ok', meta, html });
     })().catch((err) => {
       if (!alive) return;
@@ -61,24 +75,34 @@ export default function BlogPost() {
 
   if (state.status === 'loading') {
     return (
-      <main className="post-wrap">
-        <p>Загружаем статью…</p>
-      </main>
+      <>
+        <NavBar />
+        <main className="post-wrap">
+          <p>Загружаем статью…</p>
+        </main>
+        <Footer />
+      </>
     );
   }
 
   if (state.status === 'error') {
     return (
-      <main className="post-wrap">
-        <Helmet>
-          <title>Статья не найдена — Arti Clinic</title>
-        </Helmet>
-        <h1>Статья не найдена</h1>
-        <p>{state.message}</p>
-        <p>
-          <Link to="/blog">← Вернуться к списку статей</Link>
-        </p>
-      </main>
+      <>
+        <SeoAuto
+          title="Статья не найдена — Arti Clinic"
+          description="К сожалению, такой страницы нет. Вернитесь к списку статей."
+          robots="noindex, nofollow"
+        />
+        <NavBar />
+        <main className="post-wrap">
+          <h1>Статья не найдена</h1>
+          <p>{state.message}</p>
+          <p>
+            <Link to="/blog">← Вернуться к списку статей</Link>
+          </p>
+        </main>
+        <Footer />
+      </>
     );
   }
 
@@ -86,73 +110,57 @@ export default function BlogPost() {
   const { meta, html } = state;
   const title = meta.title;
   const desc = meta.excerpt || 'Статья блога Arti Clinic';
-  const url = meta.url;
-  const baseCover = meta.cover?.replace(/\.(jpg|png)$/i, '') || '';
 
-  const ld = {
+  // каноникал: берём из meta.url, иначе /blog/:slug
+  const canonical = meta.url ? makeAbs(meta.url, site) : `${site}/blog/${slug}`;
+
+  // абсолютная OG-картинка
+  const ogImage = meta.cover ? makeAbs(meta.cover, site) : undefined;
+
+  // для <picture> ниже оставим твою логику с baseCover
+  const baseCover = meta.cover?.replace(/\.(jpg|png|webp)$/i, '') || '';
+
+  // JSON-LD: Article
+  const articleLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
+    description: desc,
     datePublished: meta.date,
-    dateModified: meta.date,
-    image: meta.cover
-      ? [new URL(meta.cover, 'https://arti-clinic.ru').toString()]
-      : undefined,
+    dateModified: meta.updated ?? meta.date,
+    image: ogImage ? [ogImage] : undefined,
     author: { '@type': 'Organization', name: 'Arti Clinic' },
     publisher: { '@type': 'Organization', name: 'Arti Clinic' },
-    mainEntityOfPage: url,
+    mainEntityOfPage: canonical,
   };
 
-  const origin =
-    typeof window !== 'undefined'
-      ? window.location.origin
-      : 'https://arti-clinic.ru';
-  const canonical = meta.url || `${origin}/blog/${slug}`;
-
-  // JSON-LD для хлебных крошек (необязательно, но полезно для SEO)
+  // JSON-LD: хлебные крошки
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Главная', item: `${origin}/` },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Блог',
-        item: `${origin}/blog`,
-      },
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: `${site}/` },
+      { '@type': 'ListItem', position: 2, name: 'Блог', item: `${site}/blog` },
       { '@type': 'ListItem', position: 3, name: title, item: canonical },
     ],
   };
 
   return (
     <>
+      <SeoAuto
+        title={`${title} — Arti Clinic`}
+        description={desc}
+        canonical={canonical}
+        image={ogImage}
+        jsonLd={[articleLd, breadcrumbLd]}
+        ogType="article"
+      />
+
       <NavBar />
       <main className="post-wrap">
-        <Helmet>
-          <title>{title} — Arti Clinic</title>
-          <link rel="canonical" href={canonical} />
-          <meta name="description" content={desc} />
-          <meta property="og:type" content="article" />
-          <meta property="og:title" content={`${title} — Arti Clinic`} />
-          <meta property="og:description" content={desc} />
-          {meta.cover && (
-            <meta
-              property="og:image"
-              content={new URL(meta.cover, origin).toString()}
-            />
-          )}
-          <meta property="og:url" content={canonical} />
-          <script type="application/ld+json">{JSON.stringify(ld)}</script>
-          {/* хлебные крошки */}
-          <script type="application/ld+json">
-            {JSON.stringify(breadcrumbLd)}
-          </script>
-        </Helmet>
-
         <article className="post">
           <header className="post-header">
-            {/* Хлебные крошки */}
+            {/* Хлебные крошки в UI */}
             <nav className="breadcrumbs" aria-label="Хлебные крошки">
               <Link to="/">Главная</Link>
               <span className="sep">·</span>

@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import styles from './BlogIndex.module.scss';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
+import SeoAuto from '@/components/SeoAuto';
 
 export default function BlogIndex() {
   const [posts, setPosts] = useState<PostCard[]>([]);
@@ -23,6 +24,11 @@ export default function BlogIndex() {
 
   return (
     <>
+      <SeoAuto
+        title="Блог Arti Clinic — статьи о болях в спине, грыжах, рефлексотерапии"
+        description="Полезные статьи: когда операция не нужна, как помогает ЛФК и рефлексотерапия, советы по профилактике боли в спине."
+        image="https://articlinic.ru/og-blog.jpg"
+      />
       <NavBar />
       <main className={styles.main}>
         <Helmet>

@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
+Sitemap: https://articlinic.ru/sitemap.xml
 
-Sitemap: https://arti-clinic.ru/sitemap.xml
+# системные (пример)
+Disallow: /admin/
+Disallow: /api/
+
+# Яндекс-специфика
+Host: articlinic.ru
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&yclid&gclid&fbclid&from /
+

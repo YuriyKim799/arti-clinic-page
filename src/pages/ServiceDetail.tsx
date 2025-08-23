@@ -1,15 +1,23 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { servicesData } from '../data/services';
+import { useParams, Link, useLocation } from 'react-router-dom';
+import { servicesData } from '@/data/services';
 import styles from './ServiceDetail.module.scss';
 import { NavBar } from '@/components/NavBar';
 import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
 import TelegramButton from '@/components/TelegramButton/TelegramButton';
 import { Footer } from '@/components/Footer';
+import SeoAuto from '@/components/SeoAuto';
+
+type Params = { slug?: string };
 
 export const ServiceDetail: React.FC = () => {
   const { slug } = useParams();
   const service = servicesData.find((s) => s.slug === slug);
+
+  // пригодится для JSON-LD url
+  const { pathname } = useLocation();
+  const site = import.meta.env.VITE_SITE_URL || 'https://articlinic.ru';
+  const url = new URL(pathname || '/', site).toString();
 
   useEffect(() => {
     if (!service) return;
@@ -30,18 +38,67 @@ export const ServiceDetail: React.FC = () => {
 
   if (!service) {
     return (
-      <main className="section container">
-        <h1 className="section-title">Услуга не найдена</h1>
-        <p className="muted">Проверьте адрес или вернитесь к списку.</p>
-        <p>
-          <Link to="/services">← Все услуги</Link>
-        </p>
-      </main>
+      <>
+        <SeoAuto
+          title="Услуга не найдена — Arti Clinic"
+          description="К сожалению, такой страницы нет. Проверьте адрес или вернитесь к списку услуг."
+          robots="noindex, nofollow"
+        />
+        <main className="section container">
+          <h1 className="section-title">Услуга не найдена</h1>
+          <p className="muted">Проверьте адрес или вернитесь к списку.</p>
+          <p>
+            <Link to="/services">← Все услуги</Link>
+          </p>
+        </main>
+      </>
     );
   }
 
+  const title = `${service.title} — Arti Clinic, Москва`;
+  const description =
+    service.short ??
+    (service.full || '').replace(/\s+/g, ' ').trim().slice(0, 160);
+
+  // если нет своей OG-картинки — используем дефолт/по слагу
+  const image =
+    (service as any).ogImage || `${site}/og-services/${service.slug}.jpg`; // если файла нет — просто отдадим 404 для картинки, это нормально
+
+  // JSON-LD: что это за услуга
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.title,
+    description,
+    provider: { '@type': 'MedicalClinic', name: 'Arti Clinic' },
+    areaServed: 'Москва',
+    url,
+  };
+
+  // JSON-LD: хлебные крошки
+  const breadcrumbsJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Услуги',
+        item: `${site}/services`,
+      },
+      { '@type': 'ListItem', position: 2, name: service.title, item: url },
+    ],
+  };
+
   return (
     <>
+      <SeoAuto
+        title={title}
+        description={description}
+        image={image}
+        jsonLd={[serviceJsonLd, breadcrumbsJsonLd]}
+        ogType="website"
+      />
       <NavBar />
       <main className={`section ${styles.page}`}>
         <div className={`container ${styles.wrapper}`}>

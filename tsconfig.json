@@ -14,7 +14,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "types": ["node"],
+    "types": ["vite/client", "node"],
     "paths": { "@/*": ["src/*"] }
   },
   "include": ["src", "scripts", "src/types/**/*.d.ts"],

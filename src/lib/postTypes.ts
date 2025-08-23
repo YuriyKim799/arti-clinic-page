@@ -9,6 +9,7 @@ export type PostCard = {
   date: string; // ISO
   origin?: 'site' | 'dzen';
   source?: string | null;
+  updated?: string;
 };
 
 export type FrontMatter = {
