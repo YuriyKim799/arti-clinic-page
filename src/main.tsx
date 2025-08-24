@@ -9,7 +9,7 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <HelmetProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <ErrorBoundary>
           <App />
         </ErrorBoundary>
