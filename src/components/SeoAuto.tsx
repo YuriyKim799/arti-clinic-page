@@ -1,3 +1,4 @@
+// src/components/SeoAuto.tsx
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
@@ -7,10 +8,10 @@ type Props = {
   title: string;
   description: string;
   image?: string; // абсолютный URL OG-картинки
-  jsonLd?: JsonLd | JsonLd[]; // один объект или массив JSON-LD
-  canonical?: string; // опционально: переопределить canonical вручную
-  robots?: string; // например: "noindex, nofollow" для 404
-  ogType?: 'website' | 'article'; // тип Open Graph (по умолчанию — website)
+  jsonLd?: JsonLd | JsonLd[]; // один или массив JSON-LD
+  canonical?: string; // вручную переопределить canonical (редко)
+  robots?: string; // "noindex, nofollow" и т.п.
+  ogType?: 'website' | 'article'; // тип Open Graph
 };
 
 function buildCanonical(site: string, path: string) {
@@ -39,7 +40,6 @@ export default function SeoAuto({
       <title>{title}</title>
       <meta name="description" content={description} />
       {robots && <meta name="robots" content={robots} />}
-
       <link rel="canonical" href={url} />
 
       {/* Open Graph */}
@@ -48,7 +48,14 @@ export default function SeoAuto({
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      {image && <meta property="og:image" content={image} />}
+      {image && (
+        <>
+          <meta property="og:image" content={image} />
+          {/* Если знаешь точные размеры OG — добавь (ускоряет предпросмотр в соцсетях) */}
+          {/* <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" /> */}
+        </>
+      )}
 
       {/* JSON-LD */}
       {json.map((obj, i) => (
