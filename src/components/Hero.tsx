@@ -5,6 +5,7 @@ import heroDoctor from '../assets/hero-doctor.png';
 import heroVideo from '../assets/hero-bg.mp4';
 import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
 import TelegramButton from '@/components/TelegramButton/TelegramButton';
+import RecordButton from './RecordButton/RecordButton';
 
 export const Hero: React.FC = () => {
   const { ref, isIntersecting } = useInView<HTMLDivElement>();
@@ -42,9 +43,7 @@ export const Hero: React.FC = () => {
               Центр вертеброневрологии, рефлексотерапии и мануальной терапии
             </p>
             <div className={styles.ctaRow}>
-              <a href="#record" className="btn btn--primary">
-                Записаться онлайн
-              </a>
+              <RecordButton variant="primary">Записаться онлайн</RecordButton>
               <WhatsAppButton phone="+79998310636" variant="primary" />
               <TelegramButton to="@Artiklinic" variant="primary" />
             </div>

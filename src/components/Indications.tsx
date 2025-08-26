@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Indications.module.scss';
 import { useInView } from '../useInView';
+import RecordButton from './RecordButton/RecordButton';
 
 export type IndicationsProps = {
   titleVariant?: 'emotional' | 'clinical';
@@ -91,7 +92,7 @@ export const Indications: React.FC<IndicationsProps> = ({
             styles.ctaRow
           }`}
         >
-          <button
+          {/* <button
             type="button"
             onClick={
               onCtaClick ??
@@ -105,7 +106,8 @@ export const Indications: React.FC<IndicationsProps> = ({
             <span className={styles.arrow} aria-hidden="true">
               {arrowIcon}
             </span>
-          </button>
+          </button> */}
+          <RecordButton variant="primary">Записаться на приём</RecordButton>
         </div>
       </div>
     </section>

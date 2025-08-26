@@ -11,7 +11,6 @@ import { Footer } from '@/components/Footer';
 import { NavBar } from '@/components/NavBar';
 import SeoAuto from '@/components/SeoAuto';
 
-
 export const Home = () => (
   <>
     {/* SEO для главной */}
@@ -63,7 +62,7 @@ export const Home = () => (
         },
       ]}
     />
-   
+
     <NavBar />
     <Hero />
     <Benefits />

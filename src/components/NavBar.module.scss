@@ -57,21 +57,21 @@
     }
   }
 
-  .cta {
-    padding: 8px 10px;
-    border-radius: 999px;
-    font-weight: 600;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: background 0.2s ease, border-color 0.2s ease,
-      transform 0.15s ease;
-    padding: 8px 10px;
-    background: $blue-soft;
-    color: #0d2230;
-    &:hover {
-      background: $blue-soft-600;
-    }
-  }
+  // .cta {
+  //   padding: 8px 10px;
+  //   border-radius: 999px;
+  //   font-weight: 600;
+  //   cursor: pointer;
+  //   border: 1px solid transparent;
+  //   transition: background 0.2s ease, border-color 0.2s ease,
+  //     transform 0.15s ease;
+  //   padding: 8px 10px;
+  //   background: $blue-soft;
+  //   color: #0d2230;
+  //   &:hover {
+  //     background: $blue-soft-600;
+  //   }
+  // }
 }
 
 /* Бургер для мобильных */

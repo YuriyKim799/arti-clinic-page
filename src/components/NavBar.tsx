@@ -4,6 +4,7 @@ import styles from './NavBar.module.scss';
 import LogoIcon from '@/components/LogoIcon/LogoIcon';
 import { HashLink } from 'react-router-hash-link';
 import RecordModal from './RecordModal';
+import RecordButton from './RecordButton/RecordButton';
 
 export const NavBar: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -45,22 +46,16 @@ export const NavBar: React.FC = () => {
           <HashLink smooth to="/#reviews" onClick={close}>
             Отзывы
           </HashLink>
+          <HashLink smooth to="/price-list" onClick={close}>
+            Цены
+          </HashLink>
           <HashLink smooth to="/#blog" onClick={close}>
             Блог
           </HashLink>
           <HashLink smooth to="/#contact" onClick={close}>
             Контакты
           </HashLink>
-          <span
-            className={styles.cta}
-            onClick={(e) => {
-              e.preventDefault();
-              setRecordOpen(true);
-              close();
-            }}
-          >
-            Записаться
-          </span>
+          <RecordButton onBeforeOpen={close} variant='primary'>Записаться</RecordButton>
         </nav>
         {recordOpen && (
           <RecordModal

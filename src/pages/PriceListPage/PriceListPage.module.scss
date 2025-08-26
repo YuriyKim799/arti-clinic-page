@@ -1,0 +1,366 @@
+/* src/pages/PriceListPage/PriceListPage.module.scss */
+@use 'sass:color';
+
+$page-bg: var(--bg, #f5f2ed);
+$text: var(--text, #2b2b2b);
+$muted: var(--muted, #6b6b6b);
+$line: var(--line, #e6e3de);
+$shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+$radius-xl: 24px;
+$container: 1180px;
+
+.page {
+  background: $page-bg;
+  color: $text;
+  /* подстраховка от горизонтального переполнения любого внутреннего блока */
+  position: relative;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  /* clip поддерживается не везде; hidden надежнее и также режет фильтры/блюры */
+  overflow: hidden;
+  padding: clamp(28px, 10vw, 34px) 0 clamp(13px, 6vw, 30px);
+  // isolation: isolate;
+  // contain: paint; /* ограничиваем область рисования */
+  // overscroll-behavior: auto; /* колесо в hero не запускает «внутренний» скролл */
+}
+.heroInner {
+  max-width: $container;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $muted;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.crumb {
+  text-decoration: none;
+  color: inherit;
+}
+.crumb:hover {
+  text-decoration: underline;
+}
+.sep {
+  opacity: 0.6;
+}
+
+.h1 {
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.1;
+  margin: 0 0 10px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.lead {
+  font-size: clamp(15px, 2.1vw, 18px);
+  color: $muted;
+  max-width: 720px;
+  overflow-wrap: anywhere; /* страхуем длинные слова */
+}
+
+/* «дорогой» фон героя */
+.aurora {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* размеры градиентов в процентах, чтобы не создавать лишнюю ширину на мобильных */
+  background: radial-gradient(
+      120% 45% at 20% -10%,
+      rgba(142, 187, 214, 0.25),
+      transparent 60%
+    ),
+    radial-gradient(
+      85% 45% at 100% 20%,
+      rgba(255, 255, 255, 0.6),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #fff, transparent 50%);
+  animation: fadeIn 1s ease both;
+}
+.glowA,
+.glowB {
+  position: absolute;
+  /* никаких отрицательных inset – держим в пределах hero */
+  left: 0;
+  right: 0;
+  height: 260px;
+  z-index: -1;
+  filter: blur(40px);
+  opacity: 0.45;
+  pointer-events: none;
+  will-change: transform;
+}
+.glowA {
+  background: conic-gradient(
+    from 30deg,
+    rgba(142, 187, 214, 0.35),
+    rgba(255, 255, 255, 0),
+    rgba(142, 187, 214, 0.2)
+  );
+  animation: rotateSlow 24s linear infinite;
+  top: 0;
+}
+.glowB {
+  background: radial-gradient(
+    70% 45% at 70% 40%,
+    rgba(255, 255, 255, 0.5),
+    rgba(142, 187, 214, 0.15)
+  );
+  top: 20px;
+}
+
+/* CONTENT */
+.section {
+  padding: 24px 0 6px;
+}
+
+.layout {
+  max-width: $container;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: grid;
+  /* второй столбец «резиновый» в безопасных пределах */
+  grid-template-columns: 1fr minmax(240px, 280px);
+  gap: 20px;
+  align-items: start;
+}
+
+.cardHead {
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: $radius-xl;
+  padding: 18px;
+  box-shadow: $shadow;
+  margin-bottom: 12px;
+}
+.cardTitle {
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+}
+.cardNote {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: $muted;
+}
+
+.cardFoot {
+  margin-top: 12px;
+}
+.notice {
+  background: #fff;
+  border: 1px dashed $line;
+  border-radius: 14px;
+  padding: 12px 14px;
+  color: $muted;
+  font-size: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+}
+
+/* Sticky aside */
+.aside {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  top: 90px;
+  height: fit-content;
+}
+.asideCard {
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: 20px;
+  box-shadow: $shadow;
+  padding: 16px;
+}
+.asideTitle {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.asideList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+.asideList a {
+  display: block;
+  padding: 8px 10px;
+  border: 1px solid $line;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  overflow-wrap: anywhere; /* на случай длинных слов */
+}
+.asideList a:hover {
+  background: var(--beige-100, #f0ece6);
+}
+
+/* CTA */
+.cta {
+  padding: 18px 0 60px;
+}
+.ctaCard {
+  max-width: $container;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 18px;
+}
+.ctaText {
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: $radius-xl;
+  padding: 18px;
+  box-shadow: $shadow;
+}
+.ctaTitle {
+  margin: 0 0 6px;
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 700;
+}
+.ctaLead {
+  margin: 0;
+  color: $muted;
+}
+
+.ctaBtn {
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  min-width: 260px; /* будет переопределено на узких экранах */
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  background: linear-gradient(
+    180deg,
+    #fff,
+    color.adjust(#fff, $lightness: -4%)
+  );
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  font-weight: 700;
+  color: $text;
+}
+.ctaBtn::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    rgba(142, 187, 214, 0.7),
+    rgba(255, 255, 255, 0.8),
+    rgba(142, 187, 214, 0.7)
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: shimmer 3.5s linear infinite;
+}
+.ctaBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+.ctaBtn:active {
+  transform: translateY(0);
+}
+
+/* reveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* anims */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes shimmer {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+/* ====== АДАПТИВ ====== */
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .aside {
+    position: static;
+  }
+}
+
+@media (max-width: 860px) {
+  .ctaCard {
+    grid-template-columns: 1fr;
+  }
+  .ctaBtn {
+    height: 52px;
+  }
+}
+
+@media (max-width: 560px) {
+  /* больше воздуха и безопасные паддинги на очень узких экранах */
+  .heroInner,
+  .layout,
+  .ctaCard {
+    padding: 0 12px;
+  }
+
+  /* кнопка не создаёт горизонтального переполнения */
+  .ctaBtn {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora,
+  .glowA,
+  .glowB,
+  .ctaBtn::before {
+    animation: none !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -9,7 +9,7 @@ import PoliticPage from '@/pages/PoliticPage/PoliticPage';
 import { Home } from '@/components/Home/Home';
 import NotFound from '@/pages/NotFound';
 import ArtiWordLoader from '@/components/ArtiWordLoader/ArtiWordLoader';
-
+import PriceListPage from '@/pages/PriceListPage/PriceListPage';
 const BlogIndex = React.lazy(() => import('@/pages/BlogIndex'));
 const BlogPost = React.lazy(() => import('@/pages/BlogPost'));
 
@@ -24,20 +24,17 @@ const App: React.FC = () => {
 
       <div className={styles.app}>
         <ScrollToTop />
-        <Suspense
-          fallback={<div className={styles.pageLoader}>Загружаем…</div>}
-        >
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<ServicesIndex />} />
-            <Route path="/services/:slug" element={<ServiceDetail />} />
-            <Route path="/blog" element={<BlogIndex />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/agreement" element={<AgreementPage />} />
-            <Route path="/politic" element={<PoliticPage />} />
-          </Routes>
-        </Suspense>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<ServicesIndex />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
+          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/agreement" element={<AgreementPage />} />
+          <Route path="/politic" element={<PoliticPage />} />
+          <Route path="/price-list" element={<PriceListPage />} />
+        </Routes>
       </div>
     </>
   );

@@ -197,6 +197,7 @@ export default function ContactForm() {
           type="text"
           name="name"
           placeholder="Ваше имя"
+          autoComplete="name"
           value={form.name}
           onChange={handleChange}
           required
