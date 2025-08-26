@@ -1,13 +1,30 @@
-import BlogSection from '@/components/BlogSection';
-import SectionGallery from '@/components/SectionGallery';
-import { Indications } from '@/components/Indications';
-import { Marquee } from '@/components/Marquee';
-import { YandexReviewsFloating } from '@/components/YandexReviewsFloating';
-import { Hero } from '@/components/Hero';
-import { Benefits } from '@/components/Benefits';
-import { Services } from '@/components/Services';
-import { Contact } from '@/components/Contact';
-import { Footer } from '@/components/Footer';
+import { lazy, Suspense } from 'react';
+const BlogSection = lazy(() => import('@/components/BlogSection'));
+const SectionGallery = lazy(() => import('@/components/SectionGallery'));
+const Indications = lazy(() =>
+  import('@/components/Indications').then((m) => ({ default: m.Indications }))
+);
+const Marquee = lazy(() => import('@/components/Marquee'));
+const YandexReviewsFloating = lazy(() =>
+  import('@/components/YandexReviewsFloating').then((m) => ({
+    default: m.YandexReviewsFloating,
+  }))
+);
+const Hero = lazy(() =>
+  import('@/components/Hero').then((m) => ({ default: m.Hero }))
+);
+const Benefits = lazy(() =>
+  import('@/components/Benefits').then((m) => ({ default: m.Benefits }))
+);
+const Services = lazy(() =>
+  import('@/components/Services').then((m) => ({ default: m.Services }))
+);
+const Contact = lazy(() =>
+  import('@/components/Contact').then((m) => ({ default: m.Contact }))
+);
+const Footer = lazy(() =>
+  import('@/components/Footer').then((m) => ({ default: m.Footer }))
+);
 import { NavBar } from '@/components/NavBar';
 import SeoAuto from '@/components/SeoAuto';
 
@@ -64,21 +81,23 @@ export const Home = () => (
     />
 
     <NavBar />
-    <Hero />
-    <Benefits />
-    <Services />
-    <Indications />
-    <Marquee />
-    <SectionGallery />
-    <YandexReviewsFloating
-      orgId="19149709238"
-      compact
-      showSideInfo
-      rating={5.0}
-      reviewsCount={33}
-    />
-    <BlogSection />
-    <Contact />
-    <Footer />
+    <Suspense fallback={null}>
+      <Hero />
+      <Benefits />
+      <Services />
+      <Indications />
+      <Marquee />
+      <SectionGallery />
+      <YandexReviewsFloating
+        orgId="19149709238"
+        compact
+        showSideInfo
+        rating={5.0}
+        reviewsCount={33}
+      />
+      <BlogSection />
+      <Contact />
+      <Footer />
+    </Suspense>
   </>
 );

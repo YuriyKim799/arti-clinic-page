@@ -92,21 +92,6 @@ export const Indications: React.FC<IndicationsProps> = ({
             styles.ctaRow
           }`}
         >
-          {/* <button
-            type="button"
-            onClick={
-              onCtaClick ??
-              (() => {
-                window.location.hash = 'record';
-              })
-            }
-            className={styles.cta}
-          >
-            {ctaLabel}
-            <span className={styles.arrow} aria-hidden="true">
-              {arrowIcon}
-            </span>
-          </button> */}
           <RecordButton variant="primary">Записаться на приём</RecordButton>
         </div>
       </div>
