@@ -11,19 +11,11 @@ npm run dev
 # откройте http://localhost:5173
 ```
 
-## Где настраивать
-
-- **Кнопки мессенджеров:** замените ссылки в `Hero.tsx` и в форме `Contact.tsx`.
-- **Карта:** замените `src` у iframe (Yandex) на вашу конструктор‑ссылку с координатами.
-- **Тексты и услуги:** правьте массивы данных в `Benefits.tsx`, `Services.tsx`, `Reviews.tsx`, `Blog.tsx`.
-- **Цвета/скругления:** `src/styles/_variables.scss`.
-- **Форма:** сейчас заглушка `setTimeout`. Подключите ваш API/Telegram Bot в `Contact.tsx`.
-
 ## Структура
 
 - Hero → Benefits → Services → Reviews → Blog → Contact (карта + форма) → Footer
 
-Как публиковать новую статью (очень просто)
+Как публиковать новую статью
 
 Клади Markdown сюда:
 content/posts/<slug>.md (как в примере).
@@ -45,5 +37,5 @@ npm run build # обычная сборка Vite
 
 npm run indexnow
 
-Готово! На главной появится карточка, в /blog — список, в /blog/slug — статья.
+На главной появится карточка, в /blog — список, в /blog/slug — статья.
 Дзен сам подтянет статью из /rss-dzen.xml после модерации.
