@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './Hero.module.scss';
 import { useInView } from '../useInView';
 import heroVideo from '../assets/hero-bg.mp4';
@@ -36,17 +36,45 @@ const heroWebpSrcSet = toSrcSet(heroWebpEntries);
 
 export const Hero: React.FC = () => {
   const { ref, isIntersecting } = useInView<HTMLDivElement>();
+  const [ready, setReady] = useState(false);
+  // ленивое подключение <source> только при входе во вьюпорт
+  const [loadVideo, setLoadVideo] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (isIntersecting && !loadVideo) {
+      setLoadVideo(true); // подставим src у <source> (см. ниже)
+    }
+
+    const v = videoRef.current;
+    if (!v) return;
+
+    const prefersReduced =
+      typeof window !== 'undefined' &&
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+    if (isIntersecting && !prefersReduced) {
+      // попытка автоплея только когда виден
+      v.play().catch(() => {});
+    } else {
+      // уехали из вьюпорта или reduce motion — ставим на паузу
+      if (!v.paused) v.pause();
+    }
+  }, [isIntersecting, loadVideo]);
 
   return (
     <header className={`${styles.hero} section`}>
       <video
-        className={styles.bgVideo}
-        src={heroVideo}
-        autoPlay
+        ref={videoRef}
+        className={`${styles.bgVideo} ${ready ? styles.ready : ''}`}
+        preload="none"
         muted
         loop
         playsInline
-      />
+        onCanPlay={() => setReady(true)}
+      >
+        {loadVideo && <source src={heroVideo} type="video/mp4" />}
+      </video>
       <div
         ref={ref}
         className={`container reveal ${isIntersecting ? 'is-visible' : ''}`}

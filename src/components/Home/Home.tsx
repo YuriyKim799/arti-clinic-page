@@ -34,7 +34,16 @@ export const Home = () => (
     <SeoAuto
       title="Лечение болей в спине и грыж без операции — Arti Clinic, Москва"
       description="Диагностика и лечение межпозвонковых грыж, рефлексотерапия, ЛФК, мануальная терапия. Адрес: Москва, ул. 1812 года, д.3."
-      image="https://articlinic.ru/og-default.jpg"
+      images={{
+        // можешь оставить абсолютный URL или перейти на относительный /og/home-1200x630.jpg
+        url: 'https://articlinic.ru/og-default.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Интерьеры и атмосфера Arti Clinic',
+        type: 'image/jpeg',
+      }}
+      locale="ru_RU"
+      twitterCard="summary_large_image"
       jsonLd={[
         {
           '@context': 'https://schema.org',

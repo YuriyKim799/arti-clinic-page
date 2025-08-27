@@ -2,14 +2,36 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
+    <meta name="yandex-verification" content="9043104084f7624e" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
       Арти Клиник — Центр лечения межпозвоночной грыжи и иглотерапии
     </title>
+
+    <!-- 1) preconnect для шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- 2) неблокирующая загрузка CSS шрифтов -->
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
-      rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+      />
+    </noscript>
+
+    <!-- favicon’ы -->
     <link
       rel="icon"
       href="./src/assets/arti-logo-tight.svg"
@@ -19,14 +41,17 @@
     <link rel="icon" href="./src/assets/arti-logo48.png" sizes="48x48" />
     <link rel="icon" href="./src/assets/arti-logo96.png" sizes="96x96" />
 
+    <!-- мета -->
     <meta
       name="description"
       content="Современный медицинский центр Арти Клиник: лечение межпозвоночной грыжи без операции, иглотерапия. Онлайн-запись, консультации и диагностика."
     />
+    <meta property="og:locale" content="ru_RU" />
+
+    <!-- твои префетчи -->
     <link rel="preconnect" href="https://mc.yandex.ru" />
     <link rel="preconnect" href="https://yastatic.net" />
     <link rel="preconnect" href="https://api-maps.yandex.ru" />
-    <meta property="og:locale" content="ru_RU" />
   </head>
   <body>
     <div id="root"></div>

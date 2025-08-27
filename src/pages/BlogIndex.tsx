@@ -22,30 +22,55 @@ export default function BlogIndex() {
     };
   };
 
+  const site = import.meta.env.VITE_SITE_URL || 'https://articlinic.ru';
+
   return (
     <>
       <SeoAuto
         title="Блог Arti Clinic — статьи о болях в спине, грыжах, рефлексотерапии"
         description="Полезные статьи: когда операция не нужна, как помогает ЛФК и рефлексотерапия, советы по профилактике боли в спине."
-        image="https://articlinic.ru/og-blog.jpg"
+        images={{
+          url: `${site}/og/blog-1200x630.jpg`,
+          width: 1200,
+          height: 630,
+          alt: 'Блог Arti Clinic',
+          type: 'image/jpeg',
+        }}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            name: 'Блог Arti Clinic',
+            url: `${site}/blog`,
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Главная',
+                item: `${site}/`,
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Блог',
+                item: `${site}/blog`,
+              },
+            ],
+          },
+        ]}
       />
+
+      {/* Дополнительно: RSS-лента */}
+      <Helmet>
+        <link rel="alternate" type="application/rss+xml" href="/rss-dzen.xml" />
+      </Helmet>
+
       <NavBar />
       <main className={styles.main}>
-        <Helmet>
-          <title>Блог — Arti Clinic</title>
-          <link rel="canonical" href="https://arti-clinic.ru/blog" />
-          <meta
-            name="description"
-            content="Статьи о неврологии, грыжах дисков, реабилитации."
-          />
-          <link
-            rel="alternate"
-            type="application/rss+xml"
-            href="/rss-dzen.xml"
-          />
-        </Helmet>
-
-        {/* Ссылка на Главную c якорем на блок #blog */}
         <div className={styles.top}>
           <Link to="/#blog" className={styles.backLink}>
             ← Главная

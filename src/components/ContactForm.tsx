@@ -14,6 +14,28 @@ const extractLocalDigits = (value: string) => {
   return d.slice(0, LOCAL_MAX);
 };
 
+function prettyPage(href: string) {
+  try {
+    const u = new URL(href);
+    const decodedHash = u.hash ? decodeURIComponent(u.hash.slice(1)) : '';
+    const section = decodedHash
+      .replace(/[-_]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .replace(/^./, (c) => c.toLocaleUpperCase('ru-RU'));
+
+    const base = `${u.origin}${u.pathname}`;
+    return {
+      raw: href, // сырой URL (как сейчас)
+      text: section ? `${base} — ${section}` : base, // читаемо для сообщения
+      section, // опционально: чистое название секции
+    };
+  } catch {
+    // на всякий
+    return { raw: href, text: decodeURI(href), section: '' };
+  }
+}
+
 const formatPhone = (local: string) => {
   const p1 = local.slice(0, 3);
   const p2 = local.slice(3, 6);
@@ -149,6 +171,9 @@ export default function ContactForm() {
       return;
     }
 
+    const href = typeof window !== 'undefined' ? window.location.href : '';
+    const pagePretty = prettyPage(href);
+
     setLoading(true);
     try {
       // отправляем на наш бэкенд, который уже стучится в Telegram Bot API
@@ -160,6 +185,8 @@ export default function ContactForm() {
           body: JSON.stringify({
             name: form.name.trim(),
             phone: form.phone,
+            page_text: pagePretty.text, // НОВОЕ: "https://.../price-list — Рефлексотерапевтические массажи"
+            page_section: pagePretty.section, // НОВОЕ: "Рефлексотерапевтические массажи" (если нужно)
             page: typeof window !== 'undefined' ? window.location.href : '',
             website: hpRef.current?.value || '',
             t0: t0Ref.current,

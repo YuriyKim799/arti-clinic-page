@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import styles from './styles/App.module.scss';
 import { Routes, Route } from 'react-router-dom';
 import { ServicesIndex } from './pages/ServicesIndex';
@@ -12,15 +12,15 @@ import ArtiWordLoader from '@/components/ArtiWordLoader/ArtiWordLoader';
 import PriceListPage from '@/pages/PriceListPage/PriceListPage';
 const BlogIndex = React.lazy(() => import('@/pages/BlogIndex'));
 const BlogPost = React.lazy(() => import('@/pages/BlogPost'));
+import { startBoot } from '@/lib/boot';
 
 const App: React.FC = () => {
-  const [ready, setReady] = useState(false);
-
+  useEffect(() => {
+    startBoot(); // idempotent
+  }, []);
   return (
     <>
-      {!ready && (
-        <ArtiWordLoader stepMs={140} autoHide onDone={() => setReady(true)} />
-      )}
+    <ArtiWordLoader />
 
       <div className={styles.app}>
         <ScrollToTop />

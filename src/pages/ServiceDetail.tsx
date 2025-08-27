@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { servicesData } from '@/data/services';
 import styles from './ServiceDetail.module.scss';
@@ -11,30 +11,12 @@ import SeoAuto from '@/components/SeoAuto';
 type Params = { slug?: string };
 
 export const ServiceDetail: React.FC = () => {
-  const { slug } = useParams();
+  const { slug } = useParams<Params>();
   const service = servicesData.find((s) => s.slug === slug);
 
-  // пригодится для JSON-LD url
   const { pathname } = useLocation();
   const site = import.meta.env.VITE_SITE_URL || 'https://articlinic.ru';
   const url = new URL(pathname || '/', site).toString();
-
-  useEffect(() => {
-    if (!service) return;
-    document.title = `${service.title} — Arti Clinic`;
-    const metaDesc =
-      document.querySelector('meta[name="description"]') ??
-      (() => {
-        const m = document.createElement('meta');
-        m.setAttribute('name', 'description');
-        document.head.appendChild(m);
-        return m;
-      })();
-    metaDesc.setAttribute(
-      'content',
-      service.short || service.full.slice(0, 160)
-    );
-  }, [service]);
 
   if (!service) {
     return (
@@ -43,6 +25,13 @@ export const ServiceDetail: React.FC = () => {
           title="Услуга не найдена — Arti Clinic"
           description="К сожалению, такой страницы нет. Проверьте адрес или вернитесь к списку услуг."
           robots="noindex, nofollow"
+          images={{
+            url: `${site}/og/404-1200x630.jpg`,
+            width: 1200,
+            height: 630,
+            alt: 'Страница не найдена',
+            type: 'image/jpeg',
+          }}
         />
         <main className="section container">
           <h1 className="section-title">Услуга не найдена</h1>
@@ -61,10 +50,9 @@ export const ServiceDetail: React.FC = () => {
     (service.full || '').replace(/\s+/g, ' ').trim().slice(0, 160);
 
   // если нет своей OG-картинки — используем дефолт/по слагу
-  const image =
-    (service as any).ogImage || `${site}/og-services/${service.slug}.jpg`; // если файла нет — просто отдадим 404 для картинки, это нормально
+  const ogUrl =
+    (service as any).ogImage || `${site}/og-services/${service.slug}.jpg`;
 
-  // JSON-LD: что это за услуга
   const serviceJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -75,7 +63,6 @@ export const ServiceDetail: React.FC = () => {
     url,
   };
 
-  // JSON-LD: хлебные крошки
   const breadcrumbsJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -95,10 +82,17 @@ export const ServiceDetail: React.FC = () => {
       <SeoAuto
         title={title}
         description={description}
-        image={image}
+        images={{
+          url: ogUrl,
+          width: 1200,
+          height: 630,
+          alt: service.title,
+          type: 'image/jpeg',
+        }}
         jsonLd={[serviceJsonLd, breadcrumbsJsonLd]}
         ogType="website"
       />
+
       <NavBar />
       <main className={`section ${styles.page}`}>
         <div className={`container ${styles.wrapper}`}>

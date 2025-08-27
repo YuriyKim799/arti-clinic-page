@@ -1,4 +1,3 @@
-// src/pages/BlogPost.tsx
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { fetchPosts, fetchPostHtml } from '@/lib/fetchPosts';
@@ -14,10 +13,8 @@ type State =
   | { status: 'ok'; meta: PostCard; html: string };
 
 function makeAbs(urlOrPath: string, site: string) {
-  // если пришёл абсолютный url — вернём как есть; иначе приклеим к домену
   try {
-    const u = new URL(urlOrPath);
-    return u.toString();
+    return new URL(urlOrPath).toString();
   } catch {
     return new URL(
       urlOrPath.startsWith('/') ? urlOrPath : `/${urlOrPath}`,
@@ -29,14 +26,11 @@ function makeAbs(urlOrPath: string, site: string) {
 export default function BlogPost() {
   const { slug = '' } = useParams();
   const [state, setState] = useState<State>({ status: 'loading' });
-
-  // домен берём из .env.production
   const site = import.meta.env.VITE_SITE_URL || 'https://articlinic.ru';
 
   useEffect(() => {
     let alive = true;
     setState({ status: 'loading' });
-
     (async () => {
       const [posts, html] = await Promise.all([
         fetchPosts(),
@@ -45,20 +39,16 @@ export default function BlogPost() {
       if (!alive) return;
 
       const meta = posts.find((p) => p.slug === slug);
-      if (!meta) {
-        setState({
+      if (!meta)
+        return setState({
           status: 'error',
           message: 'Статья не найдена (нет в списке постов).',
         });
-        return;
-      }
-      if (!html) {
-        setState({
+      if (!html)
+        return setState({
           status: 'error',
           message: 'Статья не найдена (нет post.html).',
         });
-        return;
-      }
       setState({ status: 'ok', meta, html });
     })().catch((err) => {
       if (!alive) return;
@@ -67,7 +57,6 @@ export default function BlogPost() {
         message: err?.message || 'Ошибка загрузки статьи',
       });
     });
-
     return () => {
       alive = false;
     };
@@ -86,12 +75,20 @@ export default function BlogPost() {
   }
 
   if (state.status === 'error') {
+    const og404 = `${site}/og/404-1200x630.jpg`;
     return (
       <>
         <SeoAuto
           title="Статья не найдена — Arti Clinic"
           description="К сожалению, такой страницы нет. Вернитесь к списку статей."
           robots="noindex, nofollow"
+          images={{
+            url: og404,
+            width: 1200,
+            height: 630,
+            alt: 'Статья не найдена',
+            type: 'image/jpeg',
+          }}
         />
         <NavBar />
         <main className="post-wrap">
@@ -110,31 +107,32 @@ export default function BlogPost() {
   const { meta, html } = state;
   const title = meta.title;
   const desc = meta.excerpt || 'Статья блога Arti Clinic';
-
-  // каноникал: берём из meta.url, иначе /blog/:slug
   const canonical = meta.url ? makeAbs(meta.url, site) : `${site}/blog/${slug}`;
-
-  // абсолютная OG-картинка
-  const ogImage = meta.cover ? makeAbs(meta.cover, site) : undefined;
-
-  // для <picture> ниже оставим твою логику с baseCover
+  const ogImage = meta.cover
+    ? makeAbs(meta.cover, site)
+    : `${site}/og/post-default-1200x630.jpg`;
   const baseCover = meta.cover?.replace(/\.(jpg|png|webp)$/i, '') || '';
 
-  // JSON-LD: Article
+  const publishedISO = meta.date
+    ? new Date(meta.date).toISOString()
+    : undefined;
+  const modifiedISO = meta.updated
+    ? new Date(meta.updated).toISOString()
+    : publishedISO;
+
   const articleLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
     description: desc,
-    datePublished: meta.date,
-    dateModified: meta.updated ?? meta.date,
+    datePublished: publishedISO,
+    dateModified: modifiedISO,
     image: ogImage ? [ogImage] : undefined,
     author: { '@type': 'Organization', name: 'Arti Clinic' },
     publisher: { '@type': 'Organization', name: 'Arti Clinic' },
     mainEntityOfPage: canonical,
   };
 
-  // JSON-LD: хлебные крошки
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -151,16 +149,27 @@ export default function BlogPost() {
         title={`${title} — Arti Clinic`}
         description={desc}
         canonical={canonical}
-        image={ogImage}
-        jsonLd={[articleLd, breadcrumbLd]}
+        images={{
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: title,
+          type: 'image/jpeg',
+        }}
         ogType="article"
+        articleMeta={{
+          publishedTime: publishedISO,
+          modifiedTime: modifiedISO,
+          tags: meta.tags,
+        }}
+        jsonLd={[articleLd, breadcrumbLd]}
+        twitterCard="summary_large_image"
       />
 
       <NavBar />
       <main className="post-wrap">
         <article className="post">
           <header className="post-header">
-            {/* Хлебные крошки в UI */}
             <nav className="breadcrumbs" aria-label="Хлебные крошки">
               <Link to="/">Главная</Link>
               <span className="sep">·</span>

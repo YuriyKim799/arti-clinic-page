@@ -6,7 +6,6 @@
   position: relative;
   overflow: hidden;
   min-height: calc(100vh + var(--nav-h)); /* было: height: 100vh */
-  // min-height: 100vh;
   margin-top: calc(-1 * var(--nav-h));
   padding-top: var(--nav-h);
 }
@@ -18,6 +17,12 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.bgVideo.ready {
+  opacity: 1;
 }
 
 .wrap {
