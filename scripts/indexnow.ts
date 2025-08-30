@@ -45,3 +45,5 @@ const res = await fetch('https://api.indexnow.org/indexnow', {
 
 console.log('[indexnow] status:', res.status);
 if (!res.ok) process.exit(1);
+
+console.log('reade');
