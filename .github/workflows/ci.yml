@@ -130,6 +130,7 @@ jobs:
         uses: yc-actions/yc-iam-token@v1
         with:
           yc-sa-json-credentials: ${{ env.YC_SA_JSON_CREDENTIALS }}
+        continue-on-error: true
 
       - name: Purge CDN cache for app pages
         if: success() && env.YC_CDN_ID != ''
@@ -142,7 +143,8 @@ jobs:
             -H "Authorization: Bearer $IAM_TOKEN" \
             -H "Content-Type: application/json" \
             -d '{"paths":["/","/index.html","/sitemap.xml","/robots.txt"]}' \
-            "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge"
+            "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
+        continue-on-error: true
 
       - name: Notify Telegram (success)
         if: success() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
@@ -215,20 +217,39 @@ jobs:
 
       # 2) Картинки блога
       - name: Sync blog assets
-        run: |
-          aws s3 sync public/blog s3://$YC_BUCKET/blog \
+        # run: |
+        #   aws s3 sync public/blog s3://$YC_BUCKET/blog \
+        #     --endpoint-url https://storage.yandexcloud.net \
+        #     --delete \
+        #     --cache-control "public,max-age=31536000,immutable"
+          run: |
+            if [ -d public/blog ]; then
+            aws s3 sync public/blog s3://$YC_BUCKET/blog \
             --endpoint-url https://storage.yandexcloud.net \
             --delete \
             --cache-control "public,max-age=31536000,immutable"
+            else
+            echo "skip: no public/blog"
+            fi
 
       # 3) per-post JSON (кроме posts.json)
       - name: Sync per-post JSONs
-        run: |
-          aws s3 sync public/posts s3://$YC_BUCKET/posts \
+        # run: |
+        #   aws s3 sync public/posts s3://$YC_BUCKET/posts \
+        #     --endpoint-url https://storage.yandexcloud.net \
+        #     --delete \
+        #     --exclude "posts.json" \
+        #     --cache-control "public,max-age=300"
+          run: |
+            if [ -d public/posts ]; then
+            aws s3 sync public/posts s3://$YC_BUCKET/posts \
             --endpoint-url https://storage.yandexcloud.net \
             --delete \
             --exclude "posts.json" \
             --cache-control "public,max-age=300"
+            else
+            echo "skip: no public/posts"
+            fi
 
       # Узнаём, менялся ли posts.json
       - name: Check if posts.json changed
@@ -269,6 +290,7 @@ jobs:
         uses: yc-actions/yc-iam-token@v1
         with:
           yc-sa-json-credentials: ${{ env.YC_SA_JSON_CREDENTIALS }}
+        continue-on-error: true
 
       - name: Purge CDN cache for posts.json
         if: steps.changed.outputs.changed == 'true' && env.YC_CDN_ID != ''
@@ -281,7 +303,8 @@ jobs:
             -H "Authorization: Bearer $IAM_TOKEN" \
             -H "Content-Type: application/json" \
             -d '{"paths":["/posts.json"]}' \
-            "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge"
+            "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
+        continue-on-error: true
 
       - name: Notify Telegram (success)
         if: success() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
