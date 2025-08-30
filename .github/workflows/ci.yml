@@ -1,0 +1,300 @@
+name: CI (app + content)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  detect:
+    name: Detect changed areas
+    runs-on: ubuntu-latest
+    outputs:
+      app: ${{ steps.filter.outputs.app }}
+      content: ${{ steps.filter.outputs.content }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            app:
+              - 'src/**'
+              - 'index.html'
+              - 'vite.config.*'
+              - 'tsconfig*.json'
+              - 'package.json'
+              - 'public/manifest.webmanifest'
+              - 'public/favicon*'
+              - 'robots.txt'
+            content:
+              - 'content/posts/**'
+              - 'public/blog/**'
+              - 'scripts/build-content.ts'
+              - 'scripts/make-webp.ts'
+              - 'scripts/indexnow.ts'
+
+  app:
+    name: Build & Deploy App
+    needs: detect
+    if: needs.detect.outputs.app == 'true'
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ru-central1
+      YC_BUCKET: ${{ secrets.YC_BUCKET }}
+      YC_CDN_ID: ${{ secrets.YC_CDN_ID }}
+      YC_SA_JSON_CREDENTIALS: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }} # чтобы исключить key.txt при sync
+      AWS_MAX_ATTEMPTS: '10'
+      AWS_RETRY_MODE: standard
+      AWS_EC2_METADATA_DISABLED: 'true'
+      CI: 'true'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Clean dist directory
+        run: rm -rf dist
+
+      - name: Build
+        run: npm run build
+
+      - name: Copy robots.txt (optional)
+        run: cp robots.txt dist/robots.txt || true
+
+      - name: Move sitemap to dist (if exists)
+        run: |
+          if [ -f public/sitemap.xml ]; then
+            mv public/sitemap.xml dist/sitemap.xml
+          fi
+
+      - name: Run tests (if present)
+        run: npm test --if-present
+
+      - name: Install AWS CLI
+        run: |
+          python3 -m pip install --user --upgrade pip awscli
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      # 1) Хэш-ассеты: длинный кэш
+      - name: Upload hashed assets with long cache
+        run: |
+          if [ -d dist/assets ]; then
+            aws s3 sync dist/assets s3://$YC_BUCKET/assets \
+              --endpoint-url https://storage.yandexcloud.net \
+              --delete \
+              --cache-control "public,max-age=31536000,immutable"
+          else
+            echo "No dist/assets directory; skipping."
+          fi
+
+      # 2) HTML: no-store
+      - name: Upload HTML with no-store
+        run: |
+          aws s3 sync dist s3://$YC_BUCKET \
+            --endpoint-url https://storage.yandexcloud.net \
+            --delete \
+            --exclude "assets/*" --exclude "blog/*" --exclude "posts/*" \
+            --include "*.html" \
+            --cache-control "no-store"
+
+      # 3) Остальное: короткий кэш (исключаем posts.json и key.txt)
+      - name: Upload other files with short cache (exclude posts.json & key)
+        run: |
+          aws s3 sync dist s3://$YC_BUCKET \
+            --endpoint-url https://storage.yandexcloud.net \
+            --delete \
+            --exclude "assets/*" --exclude "blog/*" --exclude "posts/*" --exclude "*.html" \
+            --exclude "posts.json" --exclude "${INDEXNOW_KEY}.txt" \
+            --cache-control "public,max-age=3600"
+
+      # === Purge CDN для критичных путей через REST API ===
+      - name: Get IAM token (for CDN purge)
+        if: success() && env.YC_CDN_ID != ''
+        id: iam_token_app
+        uses: yc-actions/yc-iam-token@v1
+        with:
+          yc-sa-json-credentials: ${{ env.YC_SA_JSON_CREDENTIALS }}
+
+      - name: Purge CDN cache for app pages
+        if: success() && env.YC_CDN_ID != ''
+        env:
+          IAM_TOKEN: ${{ steps.iam_token_app.outputs.token }}
+        run: |
+          set -e
+          echo 'Purging CDN: /, /index.html, /sitemap.xml, /robots.txt'
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $IAM_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{"paths":["/","/index.html","/sitemap.xml","/robots.txt"]}' \
+            "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge"
+
+      - name: Notify Telegram (success)
+        if: success() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
+        run: |
+          MSG="✅ Успешное развертывание приложения%0ARepo: ${{ github.repository }}%0ABranch: ${{ github.ref_name }}%0ACommit: ${{ github.sha }}%0AActor: ${{ github.actor }}%0ARun: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}";
+          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=$MSG"
+
+      - name: Notify Telegram (failure)
+        if: failure() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
+        run: |
+          MSG="❌ Ошибка при развертывании приложения%0ARepo: ${{ github.repository }}%0ABranch: ${{ github.ref_name }}%0ACommit: ${{ github.sha }}%0AActor: ${{ github.actor }}%0ARun: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}";
+          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=$MSG"
+
+  content:
+    name: Build & Sync Content
+    needs: detect
+    if: needs.detect.outputs.content == 'true'
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ru-central1
+      YC_BUCKET: ${{ secrets.YC_BUCKET }}
+      YC_CDN_ID: ${{ secrets.YC_CDN_ID }}
+      YC_SA_JSON_CREDENTIALS: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+      # SITE_ORIGIN: https://articlinic.ru
+      SITE_ORIGIN: http://articlinic.ru.website.yandexcloud.net
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      AWS_MAX_ATTEMPTS: '10'
+      AWS_RETRY_MODE: standard
+      AWS_EC2_METADATA_DISABLED: 'true'
+      CI: 'true'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Restore .cache (incremental markers)
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: content-${{ hashFiles('content/posts/**', 'public/blog/**', 'scripts/build-content.ts') }}
+          restore-keys: |
+            content-
+
+      - name: Install deps
+        run: npm ci
+
+      # 0) (опц.) Генерация webp/ресайзов
+      - name: Build WebP (optional)
+        run: npm run build:webp
+
+      # 1) Инкрементальная сборка постов
+      - name: Build content (incremental)
+        run: npm run build:content
+
+      - name: Install AWS CLI
+        run: |
+          python3 -m pip install --user --upgrade pip awscli
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      # 2) Картинки блога
+      - name: Sync blog assets
+        run: |
+          aws s3 sync public/blog s3://$YC_BUCKET/blog \
+            --endpoint-url https://storage.yandexcloud.net \
+            --delete \
+            --cache-control "public,max-age=31536000,immutable"
+
+      # 3) per-post JSON (кроме posts.json)
+      - name: Sync per-post JSONs
+        run: |
+          aws s3 sync public/posts s3://$YC_BUCKET/posts \
+            --endpoint-url https://storage.yandexcloud.net \
+            --delete \
+            --exclude "posts.json" \
+            --cache-control "public,max-age=300"
+
+      # Узнаём, менялся ли posts.json
+      - name: Check if posts.json changed
+        id: changed
+        run: |
+          if [ -f .cache/posts.changed ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      # 4) posts.json -> no-store (корень бакета)
+      - name: Upload posts.json (changed)
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          aws s3 cp public/posts.json s3://$YC_BUCKET/posts.json \
+            --endpoint-url https://storage.yandexcloud.net \
+            --cache-control "no-store"
+
+      # 5) IndexNow: создаём ключ (если нет), пингуем API
+      - name: IndexNow submit
+        if: steps.changed.outputs.changed == 'true' && env.INDEXNOW_KEY != ''
+        run: npx tsx scripts/indexnow.ts
+        continue-on-error: true
+
+      # 6) Заливаем KEY.txt в корень бакета (для верификации IndexNow)
+      - name: Upload IndexNow key file
+        if: env.INDEXNOW_KEY != ''
+        run: |
+          aws s3 cp public/${{ env.INDEXNOW_KEY }}.txt s3://$YC_BUCKET/${{ env.INDEXNOW_KEY }}.txt \
+            --endpoint-url https://storage.yandexcloud.net \
+            --cache-control "public,max-age=31536000,immutable" || true
+
+      # 7) Purge CDN только для /posts.json через REST API
+      - name: Get IAM token (for posts.json purge)
+        if: steps.changed.outputs.changed == 'true' && env.YC_CDN_ID != ''
+        id: iam_token_content
+        uses: yc-actions/yc-iam-token@v1
+        with:
+          yc-sa-json-credentials: ${{ env.YC_SA_JSON_CREDENTIALS }}
+
+      - name: Purge CDN cache for posts.json
+        if: steps.changed.outputs.changed == 'true' && env.YC_CDN_ID != ''
+        env:
+          IAM_TOKEN: ${{ steps.iam_token_content.outputs.token }}
+        run: |
+          set -e
+          echo 'Purging CDN: /posts.json'
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $IAM_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{"paths":["/posts.json"]}' \
+            "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge"
+
+      - name: Notify Telegram (success)
+        if: success() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
+        run: |
+          MSG="✅ Успешная синхронизация контента%0ARepo: ${{ github.repository }}%0ABranch: ${{ github.ref_name }}%0ACommit: ${{ github.sha }}%0AActor: ${{ github.actor }}%0ARun: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}";
+          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=$MSG"
+
+      - name: Notify Telegram (failure)
+        if: failure() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
+        run: |
+          MSG="❌ Ошибка при синхронизации контента%0ARepo: ${{ github.repository }}%0ABranch: ${{ github.ref_name }}%0ACommit: ${{ github.sha }}%0AActor: ${{ github.actor }}%0ARun: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}";
+          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=$MSG"
