@@ -13,8 +13,21 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Мифы про боль в спине: дачникам не стоит в это верить
+
+22 июня22 июн
+
+2 мин
 
 Боль в спине — не приговор. Но и не повод верить во всё, что говорят соседи. Разбираемся, что из популярного — правда, а что может только навредить.
 
@@ -48,3 +61,180 @@ tags:
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
 
 Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+1
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-1.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-2.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-3.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-4.jpg)
+
+Противовирусные препараты
+
+](https://dzen.ru/topic/protivovirusnye-preparaty)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-5.jpg)
+
+Наталья Зубарева
+
+](https://dzen.ru/topic/natalya-zubareva)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-6.jpg)
+
+Женские болезни
+
+](https://dzen.ru/topic/zhenskie-bolezni)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-7.jpg)
+
+Болезни органов пищеварения
+
+](https://dzen.ru/topic/bolezni-organov-pishchevareniya)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-8.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-9.jpg)
+
+Лео Бокерия
+
+](https://dzen.ru/topic/leo-bokeriya)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-10.jpg)
+
+Секреты долголетия
+
+](https://dzen.ru/topic/sekrety-dolgoletnja)
+
+[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-11.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-12.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-13.jpg)
+
+Сон и сновидения
+
+](https://dzen.ru/topic/son-i-snovidenija)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-14.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-15.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-16.jpg)
+
+Иммуномодуляторы
+
+](https://dzen.ru/topic/immunomodulyatory)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-17.jpg)
+
+Тимур Хайдаров
+
+](https://dzen.ru/topic/timur-khajdarov)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-18.jpg)
+
+Инсульт
+
+](https://dzen.ru/topic/insult)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-19.jpg)
+
+Противоаллергические препараты
+
+](https://dzen.ru/topic/protivoallergicheskie-preparaty)[
+
+![](/blog/mify-pro-bol-v-spine-dachnikam-ne-stoit-v-eto-verit/img-20.jpg)
+
+Профилактика кожных заболеваний
+
+](https://dzen.ru/topic/kozhnye-zabolevaniya)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама
+
+Реклама
+
+1

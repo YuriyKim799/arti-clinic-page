@@ -13,8 +13,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Как спина реагирует на копку, полив и посадку — мнение врача
+
+16 мая16 мая
+
+234
+
+2 мин
 
 ![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-0.jpg)
 
@@ -80,3 +95,243 @@ _— не откладывайте визит к специалисту._
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
 
 Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+3
+
+Взгляните на эти темы
+
+[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-1.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-2.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-3.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-4.jpg)
+
+Прививки
+
+](https://dzen.ru/topic/privivki)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-5.jpg)
+
+Антибиотики
+
+](https://dzen.ru/topic/antibiotiki)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-6.jpg)
+
+Женские болезни
+
+](https://dzen.ru/topic/zhenskie-bolezni)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-7.jpg)
+
+Секреты долголетия
+
+](https://dzen.ru/topic/sekrety-dolgoletnja)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-8.jpg)
+
+Здоровье нервной системы
+
+](https://dzen.ru/topic/nevrologicheskie-zabolevaniya)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-9.jpg)
+
+Инсульт
+
+](https://dzen.ru/topic/insult)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-10.jpg)
+
+Профилактика инфекционных заболеваний
+
+](https://dzen.ru/topic/infekcionnye-zabolevaniya)
+
+[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-11.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-12.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-13.jpg)
+
+Сон и сновидения
+
+](https://dzen.ru/topic/son-i-snovidenija)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-14.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-15.jpg)
+
+Иммуномодуляторы
+
+](https://dzen.ru/topic/immunomodulyatory)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-16.jpg)
+
+Профилактика вирусных заболеваний
+
+](https://dzen.ru/topic/virusnye-zabolevaniya)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-17.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-18.jpg)
+
+Профилактика кожных заболеваний
+
+](https://dzen.ru/topic/kozhnye-zabolevaniya)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-19.jpg)
+
+Болезни зубов и десен
+
+](https://dzen.ru/topic/bolezni-zubov-i-desen)[
+
+![](/blog/kak-spina-reagiruet-na-kopku-poliv-i-posadku-mnenie-vracha/img-20.jpg)
+
+Леонид Рошаль
+
+](https://dzen.ru/topic/leonid-roshal)
+
+Рекомендуем почитать
+
+[](https://dzen.ru/a/aJ7KRmuJ-3NJlUJm?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=COHTr%2BKKMyBrUI4JagQBa2wsiAHd0b%2BFo6au4FWQAQA%3D&clid=560&rid=4028614088.1873.1755420082877.85741&referrer_clid=228&)
+
+6 минут
+
+[
+
+](/id/610845bbea8775400a295144)
+
+[
+
+Анастасия Крекова | фитнес тренер
+
+](/id/610845bbea8775400a295144)
+
+3964 читали · 2 дня назад
+
+Подписаться
+
+[
+
+Часто просыпаешься с ноющей спиной?Боли после ходьбы? Выявляем причины
+
+](https://dzen.ru/a/aJ7KRmuJ-3NJlUJm?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=COHTr%2BKKMyBrUI4JagQBa2wsiAHd0b%2BFo6au4FWQAQA%3D&clid=560&rid=4028614088.1873.1755420082877.85741&referrer_clid=228& "Часто просыпаешься с ноющей спиной?Боли после ходьбы? Выявляем причины")
+
+Какие причины и какие действия предпринять ? Боль в спине — частый спутник современного человека. Мы привыкли винить в этом сидячий образ жизни, поднятие тяжестей или проблемы с позвоночником. Но что, если корень зла кроется в совершенно другом месте — в наших ягодичных мышцах? Да, именно слабость или перенапряжение "пятой точки" могут быть скрытой причиной мучительного дискомфорта в пояснице. Давайте разберемся, как это работает и что с этим делать. Подзаголовок: Связь, о которой мало кто задумывается:...
+
+[](https://dzen.ru/a/aHRI1Dt1MA6wxtmR?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CPmohM6BMyBrUI4JagQBa2wsiAHd0b%2BFo6au4FWQAQA%3D&clid=560&rid=4028614088.1873.1755420082877.85741&referrer_clid=228&)
+
+2 минуты
+
+[
+
+](/id/66f0f76ba73cff7e5cf566a1)
+
+[
+
+Purshat - экологичные товары для жизни. ✅ Подпишись!
+
+](/id/66f0f76ba73cff7e5cf566a1)
+
+1 месяц назад
+
+Подписаться
+
+[
+
+Огород — лечит суставы или убивает спину? Вся правда и мой проверенный способ в конце статьи!
+
+](https://dzen.ru/a/aHRI1Dt1MA6wxtmR?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CPmohM6BMyBrUI4JagQBa2wsiAHd0b%2BFo6au4FWQAQA%3D&clid=560&rid=4028614088.1873.1755420082877.85741&referrer_clid=228& "Огород — лечит суставы или убивает спину? Вся правда и мой проверенный способ в конце статьи!")
+
+Я, честно, думала, что со мной что-то не так. Ну не может же после пары часов на клубничной грядке болеть всё — от ушей до копчика. Или может? Вот и сосед Палыч однажды выпрямиться не смог. Говорит, мол, “весна — враг позвоночника”. А ведь только лопату в землю воткнул! Так вредит ли работа на грядках здоровью или это я просто неудачница? А что, если наоборот — она спасает нас? А потому что это не «просто»! Вы видели, как я выгляжу в июле после прополки? Потная, перекошенная, в грязи, но гордая как олимпийский чемпион...
+
+[](https://dzen.ru/a/ZtHINRnnKh1PdKEw?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CN3fn6SaMiBrUI4JagQBa2wsiAHd0b%2BFo6au4FWQAQA%3D&clid=560&rid=4028614088.1873.1755420082877.85741&referrer_clid=228&)
+
+5 минут
+
+[
+
+](/id/658d586509fab06b1ee88099)
+
+[
+
+Центр тазобедренного сустава Ерёмина Ивана Константиновича
+
+](/id/658d586509fab06b1ee88099)
+
+32,2 тыс читали · 11 месяцев назад
+
+Подписаться
+
+[
+
+Как заснуть, если болит тазобедренный сустав? Узнайте, в какой позе лучше спать при коксартрозе.
+
+](https://dzen.ru/a/ZtHINRnnKh1PdKEw?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CN3fn6SaMiBrUI4JagQBa2wsiAHd0b%2BFo6au4FWQAQA%3D&clid=560&rid=4028614088.1873.1755420082877.85741&referrer_clid=228& "Как заснуть, если болит тазобедренный сустав? Узнайте, в какой позе лучше спать при коксартрозе.")
+
+Коксартроз — это заболевание тазобедренного сустава, для которого характерны дискомфорт, скованность движений, болевые ощущения, усиливающимися в ночное время. Лечение тазобедренного сустава — это не только правильное питание и ЛФК, но и образ жизни. Если вы хотите улучшить качество жизни и уменьшить боль в суставе, то нужно обратить внимание на то, как вы спите. Как известно, человек находится во сне примерно треть своей жизни, и, если мы начинаем спать правильно, то мы пассивно помогаем своему суставу идти на поправку...
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама
+
+Реклама
+
+3

@@ -14,8 +14,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Как подготовить спину к дачным нагрузкам: профилактика боли на участке
+
+11 июля11 июл
+
+2
+
+2 мин
 
 ![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-0.jpg)
 
@@ -66,3 +81,174 @@ tags:
   
 **Вывод**  
 Боль в спине после дачи — это не «плата за урожай», а результат перегрузки. Но её можно избежать, если уделить **всего 5–10 минут на разминку, выбрать правильную позу и бережно относиться к телу**. Грядки можно обработать и без боли — главное, делать это с умом.
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-1.jpg)
+
+Болезни зубов и десен
+
+](https://dzen.ru/topic/bolezni-zubov-i-desen)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-2.jpg)
+
+Диабет
+
+](https://dzen.ru/topic/diabet)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-3.jpg)
+
+Величайшие ученые-медики
+
+](https://dzen.ru/topic/velichajshie-uchenye-mediki)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-4.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-5.jpg)
+
+Болезни сердца и сосудов (Кардиология)
+
+](https://dzen.ru/topic/kardiologija)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-6.jpg)
+
+Противовирусные препараты
+
+](https://dzen.ru/topic/protivovirusnye-preparaty)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-7.jpg)
+
+Здоровье печени
+
+](https://dzen.ru/topic/zdorove-pecheni)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-8.jpg)
+
+Лекарственные препараты
+
+](https://dzen.ru/topic/lekarstvennye-preparaty)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-9.jpg)
+
+Справочник болезней
+
+](https://dzen.ru/topic/spravochnik-boleznej)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-10.jpg)
+
+Инсульт
+
+](https://dzen.ru/topic/insult)
+
+[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-11.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-12.jpg)
+
+Здоровье нервной системы
+
+](https://dzen.ru/topic/nevrologicheskie-zabolevaniya)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-13.jpg)
+
+Профилактика вирусных заболеваний
+
+](https://dzen.ru/topic/virusnye-zabolevaniya)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-14.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-15.jpg)
+
+Тимур Хайдаров
+
+](https://dzen.ru/topic/timur-khajdarov)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-16.jpg)
+
+Противоаллергические препараты
+
+](https://dzen.ru/topic/protivoallergicheskie-preparaty)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-17.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-18.jpg)
+
+Профилактика заболеваний
+
+](https://dzen.ru/topic/profilaktika-zabolevanij)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-19.jpg)
+
+Здоровый сон
+
+](https://dzen.ru/topic/zdorovyi-son)[
+
+![](/blog/kak-podgotovit-spinu-k-dachnym-nagruzkam-profilaktika-boli-na-uchastke/img-20.jpg)
+
+Секреты долголетия
+
+](https://dzen.ru/topic/sekrety-dolgoletnja)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама

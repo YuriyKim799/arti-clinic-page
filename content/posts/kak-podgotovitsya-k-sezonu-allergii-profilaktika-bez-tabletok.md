@@ -13,8 +13,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Как подготовиться к сезону аллергии: профилактика без таблеток
+
+21 марта21 мар
+
+4
+
+2 мин
 
 ![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-0.jpg)
 
@@ -81,3 +96,178 @@ tags:
 В нашей клинике мы разрабатываем индивидуальные схемы подготовки к сезону аллергии, основанные на рефлексотерапии.
 
 **Запишитесь на консультацию,** и мы подберем для вас программу, которая поможет встретить весну без аллергии. #профилактикааллергии #иммунитет #рефлексотерапия #лечениеаллергии #безтаблеток
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-1.jpg)
+
+Противоаллергические препараты
+
+](https://dzen.ru/topic/protivoallergicheskie-preparaty)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-2.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-3.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-4.jpg)
+
+Леонид Рошаль
+
+](https://dzen.ru/topic/leonid-roshal)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-5.jpg)
+
+Лео Бокерия
+
+](https://dzen.ru/topic/leo-bokeriya)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-6.jpg)
+
+Болезни сердца и сосудов (Кардиология)
+
+](https://dzen.ru/topic/kardiologija)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-7.jpg)
+
+Секреты долголетия
+
+](https://dzen.ru/topic/sekrety-dolgoletnja)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-8.jpg)
+
+Женские болезни
+
+](https://dzen.ru/topic/zhenskie-bolezni)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-9.jpg)
+
+Гормональные препараты
+
+](https://dzen.ru/topic/gormonalnye-preparaty)
+
+[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-10.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-11.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-12.jpg)
+
+Сон и сновидения
+
+](https://dzen.ru/topic/son-i-snovidenija)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-13.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-14.jpg)
+
+Гиппократ
+
+](https://dzen.ru/topic/gippokrat)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-15.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-16.jpg)
+
+Профилактика вирусных заболеваний
+
+](https://dzen.ru/topic/virusnye-zabolevaniya)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-17.jpg)
+
+Диабет
+
+](https://dzen.ru/topic/diabet)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-18.jpg)
+
+Профилактика заболеваний
+
+](https://dzen.ru/topic/profilaktika-zabolevanij)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-19.jpg)
+
+Наталья Бехтерева
+
+](https://dzen.ru/topic/natalya-bekhtereva)[
+
+![](/blog/kak-podgotovitsya-k-sezonu-allergii-profilaktika-bez-tabletok/img-20.jpg)
+
+Справочник болезней
+
+](https://dzen.ru/topic/spravochnik-boleznej)
+
+[
+
+Противоаллергические препараты
+
+3889 интересуются
+
+
+
+
+
+](https://dzen.ru/topic/protivoallergicheskie-preparaty)
+
+Следить за темой
+
+Реклама
+
+Реклама
+
+Реклама

@@ -13,8 +13,21 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # 5 мифов о грыже позвоночника, в которые до сих пор верят
+
+25 июля25 июл
+
+2 мин
 
 ![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-0.jpg)
 
@@ -71,3 +84,177 @@ tags:
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
 
 Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+  
+#грыжа #мифыгрыжи #позвоночник #лечениебезоперации #здоровьеспины #артиклиник
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-1.jpg)
+
+Тимур Хайдаров
+
+](https://dzen.ru/topic/timur-khajdarov)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-2.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-3.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-4.jpg)
+
+Секреты долголетия
+
+](https://dzen.ru/topic/sekrety-dolgoletnja)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-5.jpg)
+
+Иван Павлов
+
+](https://dzen.ru/topic/ivan-pavlov)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-6.jpg)
+
+Справочник болезней
+
+](https://dzen.ru/topic/spravochnik-boleznej)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-7.jpg)
+
+Здоровье мозга
+
+](https://dzen.ru/topic/zdorovje-mozga)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-8.jpg)
+
+Противовирусные препараты
+
+](https://dzen.ru/topic/protivovirusnye-preparaty)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-9.jpg)
+
+Лео Бокерия
+
+](https://dzen.ru/topic/leo-bokeriya)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-10.jpg)
+
+Профилактика заболеваний
+
+](https://dzen.ru/topic/profilaktika-zabolevanij)
+
+[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-11.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-12.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-13.jpg)
+
+Гиппократ
+
+](https://dzen.ru/topic/gippokrat)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-14.jpg)
+
+Леонид Рошаль
+
+](https://dzen.ru/topic/leonid-roshal)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-15.jpg)
+
+Здоровье нервной системы
+
+](https://dzen.ru/topic/nevrologicheskie-zabolevaniya)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-16.jpg)
+
+Инсульт
+
+](https://dzen.ru/topic/insult)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-17.jpg)
+
+Наталья Бехтерева
+
+](https://dzen.ru/topic/natalya-bekhtereva)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-18.jpg)
+
+Здоровый сон
+
+](https://dzen.ru/topic/zdorovyi-son)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-19.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)[
+
+![](/blog/5-mifov-o-gryzhe-pozvonochnika-v-kotorye-do-sih-por-veryat/img-20.jpg)
+
+Борьба с курением
+
+](https://dzen.ru/topic/borba-s-kureniem)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама

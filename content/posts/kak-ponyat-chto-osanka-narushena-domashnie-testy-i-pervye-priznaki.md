@@ -14,8 +14,21 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Как понять, что осанка нарушена: домашние тесты и первые признаки
+
+6 июля6 июл
+
+2 мин
 
 ![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-0.jpg)
 
@@ -83,3 +96,174 @@ tags:
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
 
 Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-1.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-2.jpg)
+
+Величайшие ученые-медики
+
+](https://dzen.ru/topic/velichajshie-uchenye-mediki)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-3.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-4.jpg)
+
+Профилактика заболеваний
+
+](https://dzen.ru/topic/profilaktika-zabolevanij)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-5.jpg)
+
+Наталья Зубарева
+
+](https://dzen.ru/topic/natalya-zubareva)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-6.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-7.jpg)
+
+Профилактика кожных заболеваний
+
+](https://dzen.ru/topic/kozhnye-zabolevaniya)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-8.jpg)
+
+Лео Бокерия
+
+](https://dzen.ru/topic/leo-bokeriya)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-9.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-10.jpg)
+
+Здоровье нервной системы
+
+](https://dzen.ru/topic/nevrologicheskie-zabolevaniya)
+
+[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-11.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-12.jpg)
+
+Секреты долголетия
+
+](https://dzen.ru/topic/sekrety-dolgoletnja)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-13.jpg)
+
+Женские болезни
+
+](https://dzen.ru/topic/zhenskie-bolezni)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-14.jpg)
+
+Противовирусные препараты
+
+](https://dzen.ru/topic/protivovirusnye-preparaty)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-15.jpg)
+
+Болезни мозга
+
+](https://dzen.ru/topic/bolezni-mozga)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-16.jpg)
+
+Противоаллергические препараты
+
+](https://dzen.ru/topic/protivoallergicheskie-preparaty)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-17.jpg)
+
+Болезни зубов и десен
+
+](https://dzen.ru/topic/bolezni-zubov-i-desen)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-18.jpg)
+
+Здоровье мозга
+
+](https://dzen.ru/topic/zdorovje-mozga)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-19.jpg)
+
+Леонид Рошаль
+
+](https://dzen.ru/topic/leonid-roshal)[
+
+![](/blog/kak-ponyat-chto-osanka-narushena-domashnie-testy-i-pervye-priznaki/img-20.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама

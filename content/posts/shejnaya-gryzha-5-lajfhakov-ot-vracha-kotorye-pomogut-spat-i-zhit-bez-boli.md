@@ -14,11 +14,27 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Шейная грыжа: 5 лайфхаков от врача, которые помогут спать и жить без боли
 
+7 августа7 авг
+
+1
+
+3 мин
+
 ![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-0.jpg)
 
+  
 Шейная грыжа — это заболевание, которое может вызывать сильные болевые ощущения, головные боли, а также онемение и слабость в руках. Однако, если правильно подойти к лечению и изменить некоторые привычки, можно значительно облегчить себе жизнь и снизить болевые ощущения. В этой статье мы собрали для вас 5 лайфхаков, которые помогут вам спать и жить без боли в шее.  
   
 **1\. Правильная подушка и температура сна**  
@@ -58,3 +74,248 @@ tags:
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
 
 Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+  
+#шейнаягрыжа #грыжа #здоровьешеи #артилклиник #реабилитация #профилактика
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+1
+
+Взгляните на эти темы
+
+[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-1.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-2.jpg)
+
+Справочник болезней
+
+](https://dzen.ru/topic/spravochnik-boleznej)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-3.jpg)
+
+Здоровье печени
+
+](https://dzen.ru/topic/zdorove-pecheni)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-4.jpg)
+
+Противоаллергические препараты
+
+](https://dzen.ru/topic/protivoallergicheskie-preparaty)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-5.jpg)
+
+Наталья Бехтерева
+
+](https://dzen.ru/topic/natalya-bekhtereva)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-6.jpg)
+
+Наталья Зубарева
+
+](https://dzen.ru/topic/natalya-zubareva)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-7.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-8.jpg)
+
+Женские болезни
+
+](https://dzen.ru/topic/zhenskie-bolezni)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-9.jpg)
+
+Иван Павлов
+
+](https://dzen.ru/topic/ivan-pavlov)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-10.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)
+
+[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-11.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-12.jpg)
+
+Борьба с курением
+
+](https://dzen.ru/topic/borba-s-kureniem)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-13.jpg)
+
+Тимур Хайдаров
+
+](https://dzen.ru/topic/timur-khajdarov)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-14.jpg)
+
+Величайшие ученые-медики
+
+](https://dzen.ru/topic/velichajshie-uchenye-mediki)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-15.jpg)
+
+Профилактика вирусных заболеваний
+
+](https://dzen.ru/topic/virusnye-zabolevaniya)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-16.jpg)
+
+Леонид Рошаль
+
+](https://dzen.ru/topic/leonid-roshal)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-17.jpg)
+
+Болезни зубов и десен
+
+](https://dzen.ru/topic/bolezni-zubov-i-desen)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-18.jpg)
+
+Болезни сердца и сосудов (Кардиология)
+
+](https://dzen.ru/topic/kardiologija)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-19.jpg)
+
+Инсульт
+
+](https://dzen.ru/topic/insult)[
+
+![](/blog/shejnaya-gryzha-5-lajfhakov-ot-vracha-kotorye-pomogut-spat-i-zhit-bez-boli/img-20.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)
+
+Рекомендуем почитать
+
+[](https://dzen.ru/a/Zp49wS48W1xbKtiM?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CNjO5KmOMiBrUI4JagQBayxsiAGn25q%2F46L%2BnjiQAQA%3D&clid=560&rid=1725883881.1931.1755419763314.77191&referrer_clid=228&)
+
+4 минуты
+
+[
+
+](/id/622cddbd80b96323d646bea2)
+
+[
+
+Cat\_Cat
+
+](/id/622cddbd80b96323d646bea2)
+
+1072 читали · 1 год назад
+
+Подписаться
+
+[
+
+Грыжа диска: резать нельзя вылечить.
+
+](https://dzen.ru/a/Zp49wS48W1xbKtiM?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CNjO5KmOMiBrUI4JagQBayxsiAGn25q%2F46L%2BnjiQAQA%3D&clid=560&rid=1725883881.1931.1755419763314.77191&referrer_clid=228& "Грыжа диска: резать нельзя вылечить.")
+
+Прямохождение, хоть и освободило человеку руки, все же добавило ему проблем. Помимо необходимости вставать и идти на работу в семь утра 5/2, оно добавило еще и значительную нагрузку на позвоночник. Именно поэтому, если вам немного за тридцать, остеохондроз и грыжа межпозвонкового диска (не межпозвоночного, если у вас не несколько позвоночников, конечно) - это суровая реальность. И если раньше симптомные грыжи чаще всего оперировались, то сейчас ситуация уже не так однозначна. Для начала разберемся, что же это вообще такое...
+
+[](https://dzen.ru/a/ZkNYg2iqvjmcJNn6?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CMO%2Flbz3MSBrUI4JagQBayxsiAGn25q%2F46L%2BnjiQAQA%3D&clid=560&rid=1725883881.1931.1755419763314.77191&referrer_clid=228&)
+
+9 минут
+
+[
+
+](/id/5e5e195e23f6716bacbc570a)
+
+[
+
+Клиника доктора Шурова
+
+](/id/5e5e195e23f6716bacbc570a)
+
+10,1 тыс читали · 1 год назад
+
+Подписаться
+
+[
+
+Грыжа позвоночника: симптомы, причины и последствия. Как лечить межпозвоночную грыжу? Объясняет врач
+
+](https://dzen.ru/a/ZkNYg2iqvjmcJNn6?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CMO%2Flbz3MSBrUI4JagQBayxsiAGn25q%2F46L%2BnjiQAQA%3D&clid=560&rid=1725883881.1931.1755419763314.77191&referrer_clid=228& "Грыжа позвоночника: симптомы, причины и последствия. Как лечить межпозвоночную грыжу? Объясняет врач")
+
+«У меня просто начала побаливать спина, а в итоге назначили операцию!»… Грыжа позвоночника, или межпозвонковая грыжа — коварное нарушение. Она возникает незаметно, развивается зачастую без ярко выраженных симптомов, и человек обращается к врачу лишь когда боль в спине становится нестерпимой. Главный врач нашей клиники Василий Шуров объясняет, что такое грыжа и как она появляется, как ее вовремя распознать, к чему может привести промедление с помощью, — и как лечить грыжу? Что такое грыжа позвоночника? «Грыжей позвоночника» в простонародье называют грыжу межпозвонковых дисков...
+
+[](https://dzen.ru/a/Z_S8dq27eXMYg3E8?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CPKT3cfhMiBrUI4JagUBeGssbIgBp9uav%2BOi%2Fp44kAEA&clid=560&rid=1725883881.1931.1755419763314.77191&referrer_clid=228&)
+
+3 минуты
+
+[
+
+](/id/659e839474fd8554297b56c0)
+
+[
+
+Республиканская клиника
+
+](/id/659e839474fd8554297b56c0)
+
+408 читали · 4 месяца назад
+
+Подписаться
+
+[
+
+5 лучших упражнений для шеи за 5 минут.
+
+](https://dzen.ru/a/Z_S8dq27eXMYg3E8?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CPKT3cfhMiBrUI4JagUBeGssbIgBp9uav%2BOi%2Fp44kAEA&clid=560&rid=1725883881.1931.1755419763314.77191&referrer_clid=228& "5 лучших упражнений для шеи за 5 минут.")
+
+Представьте, что вы приходите домой после тяжёлого дня, а вместо отдыха — боль в шее, напряжённые плечи и тупая головная боль. Знакомо? Если поворот головы сопровождается хрустом, если к вечеру вы чувствуете, как шея "каменеет", а мозг будто в тумане — пора что-то менять. И хорошая новость: всего 5 минут в день могут спасти ситуацию! Шейный отдел — один из самых подвижных, но при этом и самых уязвимых участков позвоночника. Он держит голову весом 4-5 кг и обеспечивает её движение во всех направлениях...
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама
+
+Реклама
+
+Реклама
+
+1

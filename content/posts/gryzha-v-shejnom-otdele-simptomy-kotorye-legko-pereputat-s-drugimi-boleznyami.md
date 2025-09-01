@@ -14,8 +14,21 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Грыжа в шейном отделе: симптомы, которые легко перепутать с другими болезнями
+
+30 июля30 июл
+
+2 мин
 
 ![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-0.jpg)
 
@@ -59,3 +72,176 @@ tags:
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
 
 Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+  
+#грыжа #шейнаягрыжа #головнаяболь #онемениеруки #артиклиник #здоровьеспины #мртшеи  
+  
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-1.jpg)
+
+Гормональные препараты
+
+](https://dzen.ru/topic/gormonalnye-preparaty)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-2.jpg)
+
+Тимур Хайдаров
+
+](https://dzen.ru/topic/timur-khajdarov)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-3.jpg)
+
+Антибиотики
+
+](https://dzen.ru/topic/antibiotiki)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-4.jpg)
+
+Иммуномодуляторы
+
+](https://dzen.ru/topic/immunomodulyatory)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-5.jpg)
+
+Профилактика инфекционных заболеваний
+
+](https://dzen.ru/topic/infekcionnye-zabolevaniya)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-6.jpg)
+
+Иван Павлов
+
+](https://dzen.ru/topic/ivan-pavlov)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-7.jpg)
+
+Диабет
+
+](https://dzen.ru/topic/diabet)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-8.jpg)
+
+Леонид Рошаль
+
+](https://dzen.ru/topic/leonid-roshal)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-9.jpg)
+
+Секреты долголетия
+
+](https://dzen.ru/topic/sekrety-dolgoletnja)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-10.jpg)
+
+Здоровье печени
+
+](https://dzen.ru/topic/zdorove-pecheni)
+
+[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-11.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-12.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-13.jpg)
+
+Лео Бокерия
+
+](https://dzen.ru/topic/leo-bokeriya)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-14.jpg)
+
+Борьба с курением
+
+](https://dzen.ru/topic/borba-s-kureniem)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-15.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-16.jpg)
+
+Гиппократ
+
+](https://dzen.ru/topic/gippokrat)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-17.jpg)
+
+Величайшие ученые-медики
+
+](https://dzen.ru/topic/velichajshie-uchenye-mediki)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-18.jpg)
+
+Наталья Бехтерева
+
+](https://dzen.ru/topic/natalya-bekhtereva)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-19.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+![](/blog/gryzha-v-shejnom-otdele-simptomy-kotorye-legko-pereputat-s-drugimi-boleznyami/img-20.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой

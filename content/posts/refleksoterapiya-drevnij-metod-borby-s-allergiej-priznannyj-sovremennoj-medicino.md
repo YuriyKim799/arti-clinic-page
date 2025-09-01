@@ -17,8 +17,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Рефлексотерапия: Древний метод борьбы с аллергией, признанный современной медициной
+
+19 марта19 мар
+
+6
+
+2 мин
 
 ![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-0.jpg)
 
@@ -69,3 +84,180 @@ _Коррекция_ питания и образа жизни для макси
 Общее улучшение самочувствия.
 
 Для закрепления эффекта рекомендуется пройти **курс из 8-10 процедур,** после которого иммунитет восстанавливается, а проявления аллергии уменьшаются на длительный срок.
+
+**Хотите попробовать альтернативный метод лечения аллергии?** Запишитесь на консультацию в нашу клинику и узнайте, **как рефлексотерапия поможет именно вам!** #рефлексотерапия#лечениеаллергии#безлекарств#иммунитет#аллергия
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-1.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-2.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-3.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-4.jpg)
+
+Наталья Бехтерева
+
+](https://dzen.ru/topic/natalya-bekhtereva)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-5.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-6.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-7.jpg)
+
+Здоровый сон
+
+](https://dzen.ru/topic/zdorovyi-son)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-8.jpg)
+
+Болезни мозга
+
+](https://dzen.ru/topic/bolezni-mozga)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-9.jpg)
+
+Профилактика заболеваний
+
+](https://dzen.ru/topic/profilaktika-zabolevanij)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-10.jpg)
+
+Болезни зубов и десен
+
+](https://dzen.ru/topic/bolezni-zubov-i-desen)
+
+[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-11.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-12.jpg)
+
+Сон и сновидения
+
+](https://dzen.ru/topic/son-i-snovidenija)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-13.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-14.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-15.jpg)
+
+Противовирусные препараты
+
+](https://dzen.ru/topic/protivovirusnye-preparaty)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-16.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-17.jpg)
+
+Борьба с курением
+
+](https://dzen.ru/topic/borba-s-kureniem)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-18.jpg)
+
+Инсульт
+
+](https://dzen.ru/topic/insult)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-19.jpg)
+
+Антибиотики
+
+](https://dzen.ru/topic/antibiotiki)[
+
+![](/blog/refleksoterapiya-drevnij-metod-borby-s-allergiej-priznannyj-sovremennoj-medicino/img-20.jpg)
+
+Справочник болезней
+
+](https://dzen.ru/topic/spravochnik-boleznej)
+
+[
+
+Здоровье и медицина
+
+3,97 млн интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorove)
+
+Следить за темой
+
+Реклама
+
+Реклама
+
+Реклама

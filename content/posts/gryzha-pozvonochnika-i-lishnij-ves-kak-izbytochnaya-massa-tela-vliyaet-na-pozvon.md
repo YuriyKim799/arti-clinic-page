@@ -17,8 +17,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Грыжа позвоночника и лишний вес: как избыточная масса тела влияет на позвоночник
+
+28 июля28 июл
+
+1
+
+2 мин
 
 ![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-0.jpg)
 
@@ -68,3 +83,174 @@ tags:
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
 
 Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-1.jpg)
+
+Наталья Бехтерева
+
+](https://dzen.ru/topic/natalya-bekhtereva)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-2.jpg)
+
+Болезни мозга
+
+](https://dzen.ru/topic/bolezni-mozga)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-3.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-4.jpg)
+
+Справочник болезней
+
+](https://dzen.ru/topic/spravochnik-boleznej)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-5.jpg)
+
+Профилактика кожных заболеваний
+
+](https://dzen.ru/topic/kozhnye-zabolevaniya)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-6.jpg)
+
+Прививки
+
+](https://dzen.ru/topic/privivki)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-7.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-8.jpg)
+
+Тимур Хайдаров
+
+](https://dzen.ru/topic/timur-khajdarov)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-9.jpg)
+
+Здоровье печени
+
+](https://dzen.ru/topic/zdorove-pecheni)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-10.jpg)
+
+Диабет
+
+](https://dzen.ru/topic/diabet)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-11.jpg)
+
+Гиппократ
+
+](https://dzen.ru/topic/gippokrat)
+
+[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-12.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-13.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-14.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-15.jpg)
+
+Профилактика вирусных заболеваний
+
+](https://dzen.ru/topic/virusnye-zabolevaniya)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-16.jpg)
+
+Гормональные препараты
+
+](https://dzen.ru/topic/gormonalnye-preparaty)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-17.jpg)
+
+Секреты долголетия
+
+](https://dzen.ru/topic/sekrety-dolgoletnja)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-18.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-19.jpg)
+
+Лео Бокерия
+
+](https://dzen.ru/topic/leo-bokeriya)[
+
+![](/blog/gryzha-pozvonochnika-i-lishnij-ves-kak-izbytochnaya-massa-tela-vliyaet-na-pozvon/img-20.jpg)
+
+Болезни сердца и сосудов (Кардиология)
+
+](https://dzen.ru/topic/kardiologija)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама

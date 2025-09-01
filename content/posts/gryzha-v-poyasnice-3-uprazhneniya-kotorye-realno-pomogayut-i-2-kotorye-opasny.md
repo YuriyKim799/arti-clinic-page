@@ -14,8 +14,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Грыжа в пояснице: 3 упражнения, которые реально помогают (и 2, которые опасны)
+
+2 дня назад2 дня назад
+
+3
+
+2 мин
 
 ![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-0.jpg)
 
@@ -66,3 +81,237 @@ tags:
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
 
 Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+#шейнаягрыжа #грыжапозвоночника #здоровьешеи #артиклиник #реабилитация #профилактика #мануальнаятерапия #рефлексотерапия #Ударноволноваятерапия #больвспине #грыжа
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+Взгляните на эти темы
+
+[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-1.jpg)
+
+Здоровье печени
+
+](https://dzen.ru/topic/zdorove-pecheni)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-2.jpg)
+
+Наталья Зубарева
+
+](https://dzen.ru/topic/natalya-zubareva)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-3.jpg)
+
+Здоровье мозга
+
+](https://dzen.ru/topic/zdorovje-mozga)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-4.jpg)
+
+Наталья Бехтерева
+
+](https://dzen.ru/topic/natalya-bekhtereva)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-5.jpg)
+
+Лекарственные препараты
+
+](https://dzen.ru/topic/lekarstvennye-preparaty)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-6.jpg)
+
+Прививки
+
+](https://dzen.ru/topic/privivki)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-7.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-8.jpg)
+
+Здоровье нервной системы
+
+](https://dzen.ru/topic/nevrologicheskie-zabolevaniya)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-9.jpg)
+
+Профилактика инфекционных заболеваний
+
+](https://dzen.ru/topic/infekcionnye-zabolevaniya)
+
+[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-10.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-11.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-12.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-13.jpg)
+
+Борьба с курением
+
+](https://dzen.ru/topic/borba-s-kureniem)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-14.jpg)
+
+Величайшие ученые-медики
+
+](https://dzen.ru/topic/velichajshie-uchenye-mediki)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-15.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-16.jpg)
+
+Женские болезни
+
+](https://dzen.ru/topic/zhenskie-bolezni)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-17.jpg)
+
+Здоровый сон
+
+](https://dzen.ru/topic/zdorovyi-son)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-18.jpg)
+
+Иван Павлов
+
+](https://dzen.ru/topic/ivan-pavlov)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-19.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)[
+
+![](/blog/gryzha-v-poyasnice-3-uprazhneniya-kotorye-realno-pomogayut-i-2-kotorye-opasny/img-20.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)
+
+Рекомендуем почитать
+
+[](https://dzen.ru/a/aJRS99fV3WY7Tz3h?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CLzb0IyKMyBsUI4JagQBa2wsiAGN5p6L%2BPneibIBkAEA&clid=560&rid=996666873.1690.1755419719649.27992&referrer_clid=228&)
+
+4 минуты
+
+[
+
+](/id/658d586509fab06b1ee88099)
+
+[
+
+Центр тазобедренного сустава Ерёмина Ивана Константиновича
+
+](/id/658d586509fab06b1ee88099)
+
+1753 читали · 4 дня назад
+
+Подписаться
+
+[
+
+Незаметная привычка, которая запускает воспаление и разрушает тазобедренный сустав
+
+](https://dzen.ru/a/aJRS99fV3WY7Tz3h?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CLzb0IyKMyBsUI4JagQBa2wsiAGN5p6L%2BPneibIBkAEA&clid=560&rid=996666873.1690.1755419719649.27992&referrer_clid=228& "Незаметная привычка, которая запускает воспаление и разрушает тазобедренный сустав")
+
+В последнее время всё чаще ко мне приходят пациенты, которые уверены: с их суставами всё в порядке. Нормальный вес, сбалансированное питание, умеренные нагрузки, никаких травм… Но снимки и осмотр говорят об обратном. Сустав разрушен. Боль уже мешает двигаться. Почему так происходит? Что запускает воспаление и разрушение, даже если вы всё делаете правильно? Ответ кроется не в мазях, БАДах и даже не в упражнениях. А в одной привычке, которую многие считают безобидной. Я расскажу, как этот продукт влияет...
+
+[](https://dzen.ru/a/ZkNYg2iqvjmcJNn6?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CMO%2Flbz3MSBrUI4JagQBa2wsiAGN5p6L%2BPneibIBkAEA&clid=560&rid=996666873.1690.1755419719649.27992&referrer_clid=228&)
+
+9 минут
+
+[
+
+](/id/5e5e195e23f6716bacbc570a)
+
+[
+
+Клиника доктора Шурова
+
+](/id/5e5e195e23f6716bacbc570a)
+
+10,1 тыс читали · 1 год назад
+
+Подписаться
+
+[
+
+Грыжа позвоночника: симптомы, причины и последствия. Как лечить межпозвоночную грыжу? Объясняет врач
+
+](https://dzen.ru/a/ZkNYg2iqvjmcJNn6?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CMO%2Flbz3MSBrUI4JagQBa2wsiAGN5p6L%2BPneibIBkAEA&clid=560&rid=996666873.1690.1755419719649.27992&referrer_clid=228& "Грыжа позвоночника: симптомы, причины и последствия. Как лечить межпозвоночную грыжу? Объясняет врач")
+
+«У меня просто начала побаливать спина, а в итоге назначили операцию!»… Грыжа позвоночника, или межпозвонковая грыжа — коварное нарушение. Она возникает незаметно, развивается зачастую без ярко выраженных симптомов, и человек обращается к врачу лишь когда боль в спине становится нестерпимой. Главный врач нашей клиники Василий Шуров объясняет, что такое грыжа и как она появляется, как ее вовремя распознать, к чему может привести промедление с помощью, — и как лечить грыжу? Что такое грыжа позвоночника? «Грыжей позвоночника» в простонародье называют грыжу межпозвонковых дисков...
+
+[](https://dzen.ru/a/aIb2pUTD13y-4Jfv?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CJu30PqFMyBrUI4JagQBa2wsiAGN5p6L%2BPneibIBkAEA&clid=560&rid=996666873.1690.1755419719649.27992&referrer_clid=228&)
+
+3 минуты
+
+[
+
+](/id/658d586509fab06b1ee88099)
+
+[
+
+Центр тазобедренного сустава Ерёмина Ивана Константиновича
+
+](/id/658d586509fab06b1ee88099)
+
+804 читали · 2 недели назад
+
+Подписаться
+
+[
+
+Ошибочный диагноз: почему тазобедренный сустав часто путают с грыжей
+
+](https://dzen.ru/a/aIb2pUTD13y-4Jfv?from=feed&utm_referrer=https%3A%2F%2Fzen.yandex.com&integration=publishers_platform_yandex&place=article_related&secdata=CJu30PqFMyBrUI4JagQBa2wsiAGN5p6L%2BPneibIBkAEA&clid=560&rid=996666873.1690.1755419719649.27992&referrer_clid=228& "Ошибочный диагноз: почему тазобедренный сустав часто путают с грыжей")
+
+У вас стреляющая боль в ягодице? Отдаёт в бедро, колено или спускается по ноге? Скорее всего, вам скажут: это радикулит, остеохондроз или грыжа. Назначат МРТ поясницы, уколы и таблетки. Но что, если лечат не то? В этой статье разберём, почему боль в тазобедренном суставе часто маскируется под грыжу, и как не упустить настоящий источник проблемы. Меня зовут Ерёмин Иван Константинович, я хирург-ортопед и руковожу Центром хирургии тазобедренного сустава. Специализируюсь на замене сустава через прямой передний доступ...
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой

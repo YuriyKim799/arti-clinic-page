@@ -13,8 +13,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Пяточная шпора: почему больно наступать и что с этим делать?
+
+14 апреля14 апр
+
+4
+
+3 мин
 
 ![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-0.jpg)
 
@@ -78,4 +93,193 @@ tags:
 
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
 
-Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!  
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+[](https://t.mail.ru/redir/AAC-_AFXDuq5ASNGTqtc7T8-Hv4JTdw-fSwINkINBgbRbDv8Y6DBsEXSmWFgXQUkQericTCK5bajBmmsXeQ3cTDFG4xJ7zjskGnsbZsvx9IeFyEbB4CcuyqS4p2NoaAN2bhPPN6fL7RUuG6R254C97gLeJJK9bbyvwIqZwO-GKG42mEZSqdX0lxJBAAA8eN5_VWajZEuWBMVa0L8BxH3zphpaG2jiwhhNgK6VdhsNICGc_8NdS5gbWXkQLlnW6iAqW93_Fp4OhEEbG0EuN7FrO62m-7SgA1hUKLonrQO92FuhzAvMMVY_xKDTnZqVb50jVNmsh4npDsihyCmTfCtAj6SbH6TD1XU9MhvxS84EiaNWVLcD7p63mSv8BQCRbMJnX1N-bQ9994hPTZQ_sL4MRaiAlaLOaV7ecb379p6As3tCRY8lnmFl1FRybmOHk9aXJmc4DelsJ5QTEQiC0O_15aFXbmcCZXE2vh5hoSlcSlxTjNXU9MIvu8ZH6FCC1uQn3eBcURdjXWT6mJLfI_SYHdxcuRFcS7AehYY07FbZMO1jlwzuM6J6tpMbjyLO5qXKONXyRh8k0_D7AHzURiHbNURxgvta738pHsAsHlCgpzPxRDAgo6xJ3z42egkN57QBFxoliajMQkCKqxfyziws35YUaSg6z9xP5Sl9lI7ZBXZDJWc8vngkoTOfI2H0dc7daLVUKT7LbictEy9VT_zGvJjSnbF8mFLXHoYYeYEx8jwjNyBKnuU58BRd3iRdWezMveI8wnHZtTq-BtoZC09UtDY0UqqPgpEac7bApJvVDux6h8ORp-M-h0pRozOXHF2AIdRP2e7BDwP0EtpQz9Hc72bZLoxbcBMyOhijRbawoQ4I2wlBWvXSQuqV2mFfAMxMwDvdaZeAvcRRh3KlMTmZrs8NXMkZTQ1KZ8aeN4SRGNvlNdqEavH7AgJUekyECOkRTXiJwpWSc4HbRH6qHJbkFHkWb12pND9jG6KWWMuZnF5AwangRqWayOUgFOltK88qwvW6Jj6u_yO53MrQIAXIRHh9wMbGW9svu0zw0lxr1hEYrGvsY57lOiwSP8XlgGEDZiDXIEYrGUxH0DlZhcVQc0oxL0JXCkB3J9EkGLm0UBDxNr8b6V8HZplpIleA4v-Rycm9tyQwp_yKaJbj31AETtY3kfQBktm3RRsddJDCmJZSC0bGXKt2DFfIfyL2iXf-RxGF3j9Ffs8iohiqq9tkl6DiygEui-eEA6-r9LrZ-qruY3jhxVonfOOFvADrq3EtZxOLbi3A4F4tHmEGuS-yiCJQc7B130ziCB0Az7stzl5EMUTGlXIr9goSaA2Q4uE2Ch3mCu38ue2jMwhm8WLmTdRREcjt3f3R4X8RpKvFmEz8P1nGTpWbpUcrgUCLWxZo4M_b8Uw6MNeD4Sxfgk33B6apO0KBdOOuW6zyVPMGsyR8dmeA-C3qqS8E8rfKpJvjeCjUxrHx_XP0ivmcEBLg2MXFtOcMMe_7dfg2Jx0JZ0QuxGXBFb4JLRc9KipIjKdV1uun8Gw5spnBlc09iAxjlAbArnnDMsZwYJcr8HHN8c41McVXfH0hk-GlgYk-pNSm0xOzo9SOC5XcRy6mBWJtuAxEaI904B3-mwY13vl8RS8dEFTqAhu4vtlmCwL:2VtzqwRzhzX)
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-1.png)
+
+Реклама0+
+
+Дизайнерская кровать «Барри»
+
+Премиальная кровать «Барри»: качество, дизайн и удобство. Закажите сейчас!
+
+lavsit.ru
+
+Заказать[](https://t.mail.ru/redir/AAC-_AFXDuq5ASNGTqtc7T8-Hv4JTdw-fSwINkINBgbRbDv8Y6DBsEXSmWFgXQUkQericTCK5bajBmmsXeQ3cTDFG4xJ7zjskGnsbZsvx9IeFyEbB4CcuyqS4p2NoaAN2bhPPN6fL7RUuG6R254C97gLeJJK9bbyvwIqZwO-GKG42mEZSqdX0lxJBAAA8eN5_VWajZEuWBMVa0L8BxH3zphpaG2jiwhhNgK6VdhsNICGc_8NdS5gbWXkQLlnW6iAqW93_Fp4OhEEbG0EuN7FrO62m-7SgA1hUKLonrQO92FuhzAvMMVY_xKDTnZqVb50jVNmsh4npDsihyCmTfCtAj6SbH6TD1XU9MhvxS84EiaNWVLcD7p63mSv8BQCRbMJnX1N-bQ9994hPTZQ_sL4MRaiAlaLOaV7ecb379p6As3tCRY8lnmFl1FRybmOHk9aXJmc4DelsJ5QTEQiC0O_15aFXbmcCZXE2vh5hoSlcSlxTjNXU9MIvu8ZH6FCC1uQn3eBcURdjXWT6mJLfI_SYHdxcuRFcS7AehYY07FbZMO1jlwzuM6J6tpMbjyLO5qXKONXyRh8k0_D7AHzURiHbNURxgvta738pHsAsHlCgpzPxRDAgo6xJ3z42egkN57QBFxoliajMQkCKqxfyziws35YUaSg6z9xP5Sl9lI7ZBXZDJWc8vngkoTOfI2H0dc7daLVUKT7LbictEy9VT_zGvJjSnbF8mFLXHoYYeYEx8jwjNyBKnuU58BRd3iRdWezMveI8wnHZtTq-BtoZC09UtDY0UqqPgpEac7bApJvVDux6h8ORp-M-h0pRozOXHF2AIdRP2e7BDwP0EtpQz9Hc72bZLoxbcBMyOhijRbawoQ4I2wlBWvXSQuqV2mFfAMxMwDvdaZeAvcRRh3KlMTmZrs8NXMkZTQ1KZ8aeN4SRGNvlNdqEavH7AgJUekyECOkRTXiJwpWSc4HbRH6qHJbkFHkWb12pND9jG6KWWMuZnF5AwangRqWayOUgFOltK88qwvW6Jj6u_yO53MrQIAXIRHh9wMbGW9svu0zw0lxr1hEYrGvsY57lOiwSP8XlgGEDZiDXIEYrGUxH0DlZhcVQc0oxL0JXCkB3J9EkGLm0UBDxNr8b6V8HZplpIleA4v-Rycm9tyQwp_yKaJbj31AETtY3kfQBktm3RRsddJDCmJZSC0bGXKt2DFfIfyL2iXf-RxGF3j9Ffs8iohiqq9tkl6DiygEui-eEA6-r9LrZ-qruY3jhxVonfOOFvADrq3EtZxOLbi3A4F4tHmEGuS-yiCJQc7B130ziCB0Az7stzl5EMUTGlXIr9goSaA2Q4uE2Ch3mCu38ue2jMwhm8WLmTdRREcjt3f3R4X8RpKvFmEz8P1nGTpWbpUcrgUCLWxZo4M_b8Uw6MNeD4Sxfgk33B6apO0KBdOOuW6zyVPMGsyR8dmeA-C3qqS8E8rfKpJvjeCjUxrHx_XP0ivmcEBLg2MXFtOcMMe_7dfg2Jx0JZ0QuxGXBFb4JLRc9KipIjKdV1uun8Gw5spnBlc09iAxjlAbArnnDMsZwYJcr8HHN8c41McVXfH0hk-GlgYk-pNSm0xOzo9SOC5XcRy6mBWJtuAxEaI904B3-mwY13vl8RS8dEFTqAhu4vtlmCwL:2VtzqwRzhzX)
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-2.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-3.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-4.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-5.jpg)
+
+Лео Бокерия
+
+](https://dzen.ru/topic/leo-bokeriya)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-6.jpg)
+
+Гормональные препараты
+
+](https://dzen.ru/topic/gormonalnye-preparaty)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-7.jpg)
+
+Болезни сердца и сосудов (Кардиология)
+
+](https://dzen.ru/topic/kardiologija)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-8.jpg)
+
+Противовирусные препараты
+
+](https://dzen.ru/topic/protivovirusnye-preparaty)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-9.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-10.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)
+
+[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-11.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-12.jpg)
+
+Сон и сновидения
+
+](https://dzen.ru/topic/son-i-snovidenija)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-13.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-14.jpg)
+
+Здоровье нервной системы
+
+](https://dzen.ru/topic/nevrologicheskie-zabolevaniya)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-15.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-16.jpg)
+
+Гиппократ
+
+](https://dzen.ru/topic/gippokrat)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-17.jpg)
+
+Болезни зубов и десен
+
+](https://dzen.ru/topic/bolezni-zubov-i-desen)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-18.jpg)
+
+Женские болезни
+
+](https://dzen.ru/topic/zhenskie-bolezni)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-19.jpg)
+
+Диабет
+
+](https://dzen.ru/topic/diabet)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-20.jpg)
+
+Лекарственные препараты
+
+](https://dzen.ru/topic/lekarstvennye-preparaty)[
+
+![](/blog/pyatochnaya-shpora-pochemu-bolno-nastupat-i-chto-s-etim-delat/img-21.jpg)
+
+Иммуномодуляторы
+
+](https://dzen.ru/topic/immunomodulyatory)
+
+[
+
+Здоровье и медицина
+
+3,97 млн интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorove)
+
+Следить за темой
+
+Реклама
+
+Реклама
+
+Реклама

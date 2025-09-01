@@ -8,7 +8,6 @@
     "build": "vite build",
     "preview": "vite preview --host",
     "build:content": "tsx scripts/build-content.ts",
-    "build:webp": "tsx scripts/make-webp.ts",
     "indexnow": "tsx scripts/indexnow.ts",
     "clean": "rimraf dist .cache || rm -rf dist .cache",
     "deploy:dist": "aws s3 sync dist s3://$YC_BUCKET --endpoint-url https://storage.yandexcloud.net --delete",
@@ -26,6 +25,7 @@
     "react-router-hash-link": "^2.4.3"
   },
   "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^24.3.0",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchPosts } from '@/lib/fetchPosts';
 import type { PostCard } from '@/lib/postTypes';
@@ -10,17 +10,34 @@ import SeoAuto from '@/components/SeoAuto';
 
 export default function BlogIndex() {
   const [posts, setPosts] = useState<PostCard[]>([]);
+
   useEffect(() => {
-    fetchPosts().then(setPosts);
+    fetchPosts().then((p) => setPosts(Array.isArray(p) ? p : []));
   }, []);
 
-  const imgSrc = (cover: string) => {
-    const base = cover.replace(/\.(jpe?g|png)$/i, '');
+  // Генератор srcset под текущий билдер: -960/-1280/-1600, AVIF+WebP
+  const imgSet = useCallback((cover: string) => {
+    const isExternal = /^https?:\/\//i.test(cover);
+    if (isExternal) {
+      return {
+        avif: '',
+        webp: '',
+        fallback: cover,
+      };
+    }
+    const base = cover.replace(/\.(jpe?g|png|webp|avif)$/i, '');
     return {
-      webp: `${base}-768.webp 768w, ${base}-1024.webp 1024w`,
-      jpg: `${base}-768.jpg`,
+      avif: `${base}-960.avif 960w, ${base}-1280.avif 1280w, ${base}-1600.avif 1600w`,
+      webp: `${base}-960.webp 960w, ${base}-1280.webp 1280w, ${base}-1600.webp 1600w`,
+      fallback: `${base}-1280.webp`,
     };
-  };
+  }, []);
+
+  // ожидаемая ширина карточки (под вашу сетку)
+  const SIZES =
+    '(min-width: 1200px) 360px, ' + // ~3 колонки
+    '(min-width: 880px) 45vw, ' + // 2 колонки
+    '100vw'; // мобильные
 
   const site = import.meta.env.VITE_SITE_URL || 'https://articlinic.ru';
 
@@ -80,28 +97,66 @@ export default function BlogIndex() {
         <h1 className={styles.title}>Блог</h1>
 
         <div className={styles.grid}>
-          {posts.map((p) => (
-            <Link key={p.id} to={`/blog/${p.slug}`} className={styles.card}>
-              {p.cover && (
-                <picture className={styles.picture}>
-                  <source srcSet={imgSrc(p.cover).webp} type="image/webp" />
-                  <img
-                    src={imgSrc(p.cover).jpg}
-                    alt={p.title}
-                    loading="lazy"
-                    className={styles.image}
-                  />
-                </picture>
-              )}
-              <div className={styles.body}>
-                <h3 className={styles.cardTitle}>{p.title}</h3>
-                <p className={styles.excerpt}>{p.excerpt}</p>
-                <div className={styles.meta}>
-                  {new Date(p.date).toLocaleDateString('ru-RU')}
+          {posts.map((p) => {
+            const sets = p.cover ? imgSet(p.cover) : null;
+            const isExternal = p.cover ? /^https?:\/\//i.test(p.cover) : false;
+
+            return (
+              <Link
+                key={p.slug || p.url}
+                to={`/blog/${p.slug}/`}
+                className={styles.card}
+                aria-label={`Открыть статью: ${p.title}`}
+              >
+                {p.cover ? (
+                  <div className={styles.pictureWrap}>
+                    {isExternal ? (
+                      <img
+                        src={p.cover}
+                        alt={p.title}
+                        loading="lazy"
+                        decoding="async"
+                        className={styles.image}
+                        sizes={SIZES}
+                      />
+                    ) : (
+                      <picture className={styles.picture}>
+                        <source
+                          type="image/avif"
+                          srcSet={sets!.avif}
+                          sizes={SIZES}
+                        />
+                        <source
+                          type="image/webp"
+                          srcSet={sets!.webp}
+                          sizes={SIZES}
+                        />
+                        <img
+                          src={sets!.fallback}
+                          alt={p.title}
+                          loading="lazy"
+                          decoding="async"
+                          className={styles.image}
+                          sizes={SIZES}
+                        />
+                      </picture>
+                    )}
+                  </div>
+                ) : (
+                  <div className={styles.placeholder} />
+                )}
+
+                <div className={styles.body}>
+                  <h3 className={styles.cardTitle}>{p.title}</h3>
+                  <p className={styles.excerpt}>{p.excerpt}</p>
+                  <div className={styles.meta}>
+                    {p.date ? new Date(p.date).toLocaleDateString('ru-RU') : ''}
+                    {p.tags?.length ? <span> • {p.tags[0]}</span> : null}
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </main>
       <Footer />

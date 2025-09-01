@@ -13,8 +13,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Скованная спина — уставшее лицо: как снять зажимы
+
+21 мая21 мая
+
+1
+
+2 мин
 
 ![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-0.jpg)
 
@@ -67,4 +82,177 @@ _Просыпаетесь с отёчным лицом и напряжённой
 **Вывод**  
 Красота лица — это не только про кремы и уход. Это про свободу движения, расслабление и здоровье мышц тела. Если вы чувствуете, что лицо "застыло", начните с расправленных плеч и свободной шеи — и увидите, как изменится всё отражение в зеркале.  
   
-В Арти Клиник мы восстанавливаем баланс тела и лица — через глубокую работу с позвоночником, мышцами и нервной системой. Запишитесь на приём — и почувствуйте разницу уже после первого сеанса.
+В Арти Клиник мы восстанавливаем баланс тела и лица — через глубокую работу с позвоночником, мышцами и нервной системой. Запишитесь на приём — и почувствуйте разницу уже после первого сеанса.  
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-1.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-2.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-3.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-4.jpg)
+
+Женские болезни
+
+](https://dzen.ru/topic/zhenskie-bolezni)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-5.jpg)
+
+Лео Бокерия
+
+](https://dzen.ru/topic/leo-bokeriya)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-6.jpg)
+
+Здоровый сон
+
+](https://dzen.ru/topic/zdorovyi-son)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-7.jpg)
+
+Иммуномодуляторы
+
+](https://dzen.ru/topic/immunomodulyatory)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-8.jpg)
+
+Леонид Рошаль
+
+](https://dzen.ru/topic/leonid-roshal)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-9.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-10.jpg)
+
+Борьба с курением
+
+](https://dzen.ru/topic/borba-s-kureniem)
+
+[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-11.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-12.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-13.jpg)
+
+Сон и сновидения
+
+](https://dzen.ru/topic/son-i-snovidenija)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-14.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-15.jpg)
+
+Иван Павлов
+
+](https://dzen.ru/topic/ivan-pavlov)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-16.jpg)
+
+Гормональные препараты
+
+](https://dzen.ru/topic/gormonalnye-preparaty)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-17.jpg)
+
+Справочник болезней
+
+](https://dzen.ru/topic/spravochnik-boleznej)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-18.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-19.jpg)
+
+Болезни органов пищеварения
+
+](https://dzen.ru/topic/bolezni-organov-pishchevareniya)[
+
+![](/blog/skovannaya-spina-ustavshee-lico-kak-snyat-zazhimy/img-20.jpg)
+
+Величайшие ученые-медики
+
+](https://dzen.ru/topic/velichajshie-uchenye-mediki)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама
+
+Реклама

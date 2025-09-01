@@ -13,12 +13,28 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Грыжа позвоночника: что это и почему болит спина?
 
+31 марта31 мар
+
+1
+
+3 мин
+
 ![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-0.jpg)
 
-
+  
+  
 Боль в спине — одна из самых распространенных жалоб, с которыми люди обращаются к врачам. Одна из возможных причин — межпозвоночная грыжа. Это заболевание может значительно ухудшить качество жизни, ограничить подвижность и даже привести к серьезным осложнениям. Разберемся, что такое грыжа позвоночника, какие симптомы указывают на проблему и какие методы лечения существуют.  
   
 **Как образуется грыжа позвоночника?**  
@@ -82,3 +98,178 @@ tags:
 Грыжа позвоночника — это серьезное заболевание, которое требует своевременного лечения. Игнорирование симптомов может привести к осложнениям и даже инвалидности.
 
 Если вы чувствуете боль в спине, не откладывайте визит к врачу. Специалисты помогут подобрать индивидуальную программу лечения и вернуть вам подвижность без операции.
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+1
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-1.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-2.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-3.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-4.jpg)
+
+Профилактика кожных заболеваний
+
+](https://dzen.ru/topic/kozhnye-zabolevaniya)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-5.jpg)
+
+Гиппократ
+
+](https://dzen.ru/topic/gippokrat)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-6.jpg)
+
+Леонид Рошаль
+
+](https://dzen.ru/topic/leonid-roshal)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-7.jpg)
+
+Иван Павлов
+
+](https://dzen.ru/topic/ivan-pavlov)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-8.jpg)
+
+Болезни органов пищеварения
+
+](https://dzen.ru/topic/bolezni-organov-pishchevareniya)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-9.jpg)
+
+Профилактика заболеваний
+
+](https://dzen.ru/topic/profilaktika-zabolevanij)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-10.jpg)
+
+Диабет
+
+](https://dzen.ru/topic/diabet)
+
+[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-11.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-12.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-13.jpg)
+
+Сон и сновидения
+
+](https://dzen.ru/topic/son-i-snovidenija)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-14.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-15.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-16.jpg)
+
+Лекарственные препараты
+
+](https://dzen.ru/topic/lekarstvennye-preparaty)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-17.jpg)
+
+Профилактика инфекционных заболеваний
+
+](https://dzen.ru/topic/infekcionnye-zabolevaniya)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-18.jpg)
+
+Здоровье печени
+
+](https://dzen.ru/topic/zdorove-pecheni)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-19.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-i-pochemu-bolit-spina/img-20.jpg)
+
+Антибиотики
+
+](https://dzen.ru/topic/antibiotiki)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама
+
+1

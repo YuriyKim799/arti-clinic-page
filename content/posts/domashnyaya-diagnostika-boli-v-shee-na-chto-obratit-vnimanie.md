@@ -13,8 +13,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Домашняя диагностика боли в шее: на что обратить внимание?
+
+30 апреля30 апр
+
+1
+
+3 мин
 
 ![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-0.jpg)
 
@@ -101,3 +116,180 @@ _Защемление нерва:_
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
 
 Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+1
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-1.jpg)
+
+Лекарственные препараты
+
+](https://dzen.ru/topic/lekarstvennye-preparaty)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-2.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-3.jpg)
+
+Болезни мозга
+
+](https://dzen.ru/topic/bolezni-mozga)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-4.jpg)
+
+Гормональные препараты
+
+](https://dzen.ru/topic/gormonalnye-preparaty)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-5.jpg)
+
+Профилактика заболеваний
+
+](https://dzen.ru/topic/profilaktika-zabolevanij)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-6.jpg)
+
+Гиппократ
+
+](https://dzen.ru/topic/gippokrat)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-7.jpg)
+
+Болезни органов пищеварения
+
+](https://dzen.ru/topic/bolezni-organov-pishchevareniya)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-8.jpg)
+
+Здоровье печени
+
+](https://dzen.ru/topic/zdorove-pecheni)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-9.jpg)
+
+Иван Павлов
+
+](https://dzen.ru/topic/ivan-pavlov)
+
+[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-10.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-11.jpg)
+
+Величайшие ученые-медики
+
+](https://dzen.ru/topic/velichajshie-uchenye-mediki)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-12.jpg)
+
+Здоровье нервной системы
+
+](https://dzen.ru/topic/nevrologicheskie-zabolevaniya)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-13.jpg)
+
+Леонид Рошаль
+
+](https://dzen.ru/topic/leonid-roshal)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-14.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-15.jpg)
+
+Диабет
+
+](https://dzen.ru/topic/diabet)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-16.jpg)
+
+Секреты долголетия
+
+](https://dzen.ru/topic/sekrety-dolgoletnja)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-17.jpg)
+
+Иммуномодуляторы
+
+](https://dzen.ru/topic/immunomodulyatory)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-18.jpg)
+
+Здоровье мозга
+
+](https://dzen.ru/topic/zdorovje-mozga)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-19.jpg)
+
+Прививки
+
+](https://dzen.ru/topic/privivki)[
+
+![](/blog/domashnyaya-diagnostika-boli-v-shee-na-chto-obratit-vnimanie/img-20.jpg)
+
+Борьба с курением
+
+](https://dzen.ru/topic/borba-s-kureniem)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама
+
+Реклама
+
+1

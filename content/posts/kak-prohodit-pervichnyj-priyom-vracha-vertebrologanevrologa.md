@@ -13,8 +13,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Как проходит первичный приём врача-вертебролога/невролога
+
+27 апреля27 апр
+
+5
+
+1 мин
 
 ![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-0.jpg)
 
@@ -77,3 +92,180 @@ tags:
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
 
 Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+1
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-1.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-2.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-3.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-4.jpg)
+
+Профилактика заболеваний
+
+](https://dzen.ru/topic/profilaktika-zabolevanij)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-5.jpg)
+
+Болезни органов пищеварения
+
+](https://dzen.ru/topic/bolezni-organov-pishchevareniya)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-6.jpg)
+
+Леонид Рошаль
+
+](https://dzen.ru/topic/leonid-roshal)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-7.jpg)
+
+Здоровье печени
+
+](https://dzen.ru/topic/zdorove-pecheni)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-8.jpg)
+
+Величайшие ученые-медики
+
+](https://dzen.ru/topic/velichajshie-uchenye-mediki)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-9.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)
+
+[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-10.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-11.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-12.jpg)
+
+Сон и сновидения
+
+](https://dzen.ru/topic/son-i-snovidenija)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-13.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-14.jpg)
+
+Наталья Бехтерева
+
+](https://dzen.ru/topic/natalya-bekhtereva)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-15.jpg)
+
+Иммуномодуляторы
+
+](https://dzen.ru/topic/immunomodulyatory)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-16.jpg)
+
+Болезни мозга
+
+](https://dzen.ru/topic/bolezni-mozga)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-17.jpg)
+
+Инсульт
+
+](https://dzen.ru/topic/insult)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-18.jpg)
+
+Прививки
+
+](https://dzen.ru/topic/privivki)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-19.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/kak-prohodit-pervichnyj-priyom-vracha-vertebrologanevrologa/img-20.jpg)
+
+Здоровый сон
+
+](https://dzen.ru/topic/zdorovyi-son)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама
+
+Реклама
+
+1

@@ -22,25 +22,33 @@ export default function BlogSection() {
     };
   }, []);
 
+  // Новый генератор srcset под наш билдер: -960/-1280/-1600, AVIF + WebP
   const imgSet = useCallback((cover: string) => {
-    // убираем расширение .jpg/.jpeg/.png/.webp
-    const m = cover.match(/(.*)\.(jpe?g|png|webp)$/i);
-    const base = m ? m[1] : cover;
+    // если обложка внешняя (http/https) — не трогаем
+    const isExternal = /^https?:\/\//i.test(cover);
+    if (isExternal) {
+      return {
+        avif: '',
+        webp: '',
+        fallback: cover,
+      };
+    }
+
+    // убираем расширение .jpg/.jpeg/.png/.webp/.avif
+    const base = cover.replace(/\.(jpe?g|png|webp|avif)$/i, '');
 
     return {
-      webp:
-        `${base}-1024.webp 1024w, ` +
-        `${base}-1440.webp 1440w, ` +
-        `${base}-1920.webp 1920w`,
-      // оставляем jpg как «базу» (если у тебя есть -1440/-1920.jpg, можешь добавить и их)
-      jpg: `${base}-1024.jpg`,
+      avif: `${base}-960.avif 960w, ${base}-1280.avif 1280w, ${base}-1600.avif 1600w`,
+      webp: `${base}-960.webp 960w, ${base}-1280.webp 1280w, ${base}-1600.webp 1600w`,
+      // разумный дефолт — средний webp, он точно сгенерен
+      fallback: `${base}-1280.webp`,
     };
   }, []);
 
   // оценка ширины карточки для sizes
   const SIZES =
-    '(min-width: 1200px) 360px, ' + // на контейнере 1180px обычно 3 колонки
-    '(min-width: 880px) 45vw, ' + // 2–3 колонки в промежутке
+    '(min-width: 1200px) 360px, ' + // при 3 колонках ~360px
+    '(min-width: 880px) 45vw, ' + // 2 колонки
     '100vw'; // мобильные
 
   return (
@@ -59,36 +67,57 @@ export default function BlogSection() {
         {(posts ?? Array.from({ length: 3 })).map((p: any, i: number) =>
           posts ? (
             <Link
-              key={p.id}
+              key={p.slug || p.url}
               className={styles.card}
-              to={`/blog/${p.slug}`}
+              // хвостовой слэш гарантирует раздачу /blog/<slug>/index.html на статиках
+              to={`/blog/${p.slug}/`}
               aria-label={`Открыть статью: ${p.title}`}
             >
               <div className={styles.thumb}>
                 {p.cover ? (
-                  <picture>
-                    <source
-                      srcSet={imgSet(p.cover).webp}
-                      sizes={SIZES}
-                      type="image/webp"
-                    />
+                  /^https?:\/\//i.test(p.cover) ? (
+                    // внешний cover — без picture
                     <img
-                      src={imgSet(p.cover).jpg}
+                      src={p.cover}
                       alt={p.title}
                       loading="lazy"
                       decoding="async"
                       sizes={SIZES}
                     />
-                  </picture>
+                  ) : (
+                    // локальный cover — AVIF+WebP и новые брейки
+                    <picture>
+                      <source
+                        srcSet={imgSet(p.cover).avif}
+                        sizes={SIZES}
+                        type="image/avif"
+                      />
+                      <source
+                        srcSet={imgSet(p.cover).webp}
+                        sizes={SIZES}
+                        type="image/webp"
+                      />
+                      <img
+                        src={imgSet(p.cover).fallback}
+                        alt={p.title}
+                        loading="lazy"
+                        decoding="async"
+                        sizes={SIZES}
+                      />
+                    </picture>
+                  )
                 ) : (
                   <div className={styles.placeholder} />
                 )}
               </div>
+
               <div className={styles.body}>
                 <h3>{p.title}</h3>
                 <p className={styles.excerpt}>{p.excerpt}</p>
                 <div className={styles.meta}>
-                  <span>{new Date(p.date).toLocaleDateString('ru-RU')}</span>
+                  {p.date ? (
+                    <span>{new Date(p.date).toLocaleDateString('ru-RU')}</span>
+                  ) : null}
                   {p.tags?.length ? <span> • {p.tags[0]}</span> : null}
                 </div>
               </div>

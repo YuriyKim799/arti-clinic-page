@@ -14,8 +14,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Почему после дачи болит спина: основные причины и как их избежать
+
+7 июля7 июл
+
+2
+
+2 мин
 
 ![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-0.jpg)
 
@@ -60,3 +75,176 @@ tags:
 Если же боль не уходит или усиливается — стоит обратиться к врачу. Особенно если у вас уже есть диагнозы, связанные с позвоночником.  
   
 _И помните: садовый сезон можно проводить не только с урожаем, но и с удовольствием — без боли и уколов._
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-1.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-2.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-3.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-4.jpg)
+
+Профилактика кожных заболеваний
+
+](https://dzen.ru/topic/kozhnye-zabolevaniya)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-5.jpg)
+
+Антибиотики
+
+](https://dzen.ru/topic/antibiotiki)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-6.jpg)
+
+Иммуномодуляторы
+
+](https://dzen.ru/topic/immunomodulyatory)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-7.jpg)
+
+Болезни сердца и сосудов (Кардиология)
+
+](https://dzen.ru/topic/kardiologija)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-8.jpg)
+
+Гиппократ
+
+](https://dzen.ru/topic/gippokrat)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-9.jpg)
+
+Лео Бокерия
+
+](https://dzen.ru/topic/leo-bokeriya)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-10.jpg)
+
+Болезни мозга
+
+](https://dzen.ru/topic/bolezni-mozga)
+
+[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-11.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-12.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-13.jpg)
+
+Сон и сновидения
+
+](https://dzen.ru/topic/son-i-snovidenija)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-14.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-15.jpg)
+
+Величайшие ученые-медики
+
+](https://dzen.ru/topic/velichajshie-uchenye-mediki)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-16.jpg)
+
+Диабет
+
+](https://dzen.ru/topic/diabet)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-17.jpg)
+
+Справочник болезней
+
+](https://dzen.ru/topic/spravochnik-boleznej)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-18.jpg)
+
+Профилактика инфекционных заболеваний
+
+](https://dzen.ru/topic/infekcionnye-zabolevaniya)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-19.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/pochemu-posle-dachi-bolit-spina-osnovnye-prichiny-i-kak-ih-izbezhat/img-20.jpg)
+
+Борьба с курением
+
+](https://dzen.ru/topic/borba-s-kureniem)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама
+
+Реклама

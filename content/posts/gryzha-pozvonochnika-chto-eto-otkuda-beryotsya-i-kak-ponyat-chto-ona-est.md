@@ -14,8 +14,21 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Грыжа позвоночника: что это, откуда берётся и как понять, что она есть
+
+21 июля21 июл
+
+2 мин
 
 ![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-0.jpg)
 
@@ -65,3 +78,175 @@ tags:
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
 
 Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!
+
+  
+#грыжа #грыжапозвоночника #симптомыгрыжи #больвспине #поясница #здоровьеспины #артиклиник
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-1.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-2.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-3.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-4.jpg)
+
+Болезни сердца и сосудов (Кардиология)
+
+](https://dzen.ru/topic/kardiologija)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-5.jpg)
+
+Болезни зубов и десен
+
+](https://dzen.ru/topic/bolezni-zubov-i-desen)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-6.jpg)
+
+Борьба с курением
+
+](https://dzen.ru/topic/borba-s-kureniem)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-7.jpg)
+
+Женские болезни
+
+](https://dzen.ru/topic/zhenskie-bolezni)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-8.jpg)
+
+Здоровье мозга
+
+](https://dzen.ru/topic/zdorovje-mozga)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-9.jpg)
+
+Лекарственные препараты
+
+](https://dzen.ru/topic/lekarstvennye-preparaty)
+
+[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-10.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-11.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-12.jpg)
+
+Сон и сновидения
+
+](https://dzen.ru/topic/son-i-snovidenija)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-13.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-14.jpg)
+
+Диабет
+
+](https://dzen.ru/topic/diabet)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-15.jpg)
+
+Болезни органов пищеварения
+
+](https://dzen.ru/topic/bolezni-organov-pishchevareniya)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-16.jpg)
+
+Антибиотики
+
+](https://dzen.ru/topic/antibiotiki)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-17.jpg)
+
+Лео Бокерия
+
+](https://dzen.ru/topic/leo-bokeriya)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-18.jpg)
+
+Профилактика заболеваний
+
+](https://dzen.ru/topic/profilaktika-zabolevanij)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-19.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+![](/blog/gryzha-pozvonochnika-chto-eto-otkuda-beryotsya-i-kak-ponyat-chto-ona-est/img-20.jpg)
+
+Профилактика вирусных заболеваний
+
+](https://dzen.ru/topic/virusnye-zabolevaniya)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой

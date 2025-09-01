@@ -14,8 +14,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Боль в спине – это остеохондроз? Или вам поставили ошибочный диагноз?
+
+10 февраля10 фев
+
+1
+
+3 мин
 
 ![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-0.jpg)
 
@@ -87,4 +102,178 @@ _Например:_ Если болит поясница – это не вс�
 \- Остеохондроз есть почти у всех после 30 лет – это не приговор.  
 \- Настоящая причина боли может быть связана с мышцами, нервами, осанкой или даже внутренними органами.  
 \- Обезболивающие не решают проблему, а только заглушают симптомы.  
-\- Без диагностики можно лечить не то, что нужно, и потратить годы на бесполезное лечение.
+\- Без диагностики можно лечить не то, что нужно, и потратить годы на бесполезное лечение.  
+ **Не игнорируйте сигналы своего тела – разберитесь с причиной боли и устраните её!**  
+  
+ **А вам когда-нибудь ставили "остеохондроз" без разъяснений? Делитесь в комментариях!**
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-1.jpg)
+
+Здоровье и медицина
+
+](https://dzen.ru/topic/zdorove)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-2.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-3.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-4.jpg)
+
+Гормональные препараты
+
+](https://dzen.ru/topic/gormonalnye-preparaty)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-5.jpg)
+
+Тимур Хайдаров
+
+](https://dzen.ru/topic/timur-khajdarov)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-6.jpg)
+
+Профилактика заболеваний
+
+](https://dzen.ru/topic/profilaktika-zabolevanij)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-7.jpg)
+
+Противоаллергические препараты
+
+](https://dzen.ru/topic/protivoallergicheskie-preparaty)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-8.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-9.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)
+
+[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-10.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-11.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-12.jpg)
+
+Сон и сновидения
+
+](https://dzen.ru/topic/son-i-snovidenija)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-13.jpg)
+
+Первая медицинская помощь
+
+](https://dzen.ru/topic/pervaya-medicinskaya-pomoshch)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-14.jpg)
+
+Прививки
+
+](https://dzen.ru/topic/privivki)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-15.jpg)
+
+Справочник болезней
+
+](https://dzen.ru/topic/spravochnik-boleznej)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-16.jpg)
+
+Болезни зубов и десен
+
+](https://dzen.ru/topic/bolezni-zubov-i-desen)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-17.jpg)
+
+Инсульт
+
+](https://dzen.ru/topic/insult)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-18.jpg)
+
+Леонид Рошаль
+
+](https://dzen.ru/topic/leonid-roshal)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-19.jpg)
+
+Гиппократ
+
+](https://dzen.ru/topic/gippokrat)[
+
+![](/blog/bol-v-spine-eto-osteohondroz-ili-vam-postavili-oshibochnyj-diagnoz/img-20.jpg)
+
+Величайшие ученые-медики
+
+](https://dzen.ru/topic/velichajshie-uchenye-mediki)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама

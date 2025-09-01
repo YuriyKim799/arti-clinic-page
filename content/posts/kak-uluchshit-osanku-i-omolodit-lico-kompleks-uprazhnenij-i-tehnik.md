@@ -14,8 +14,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # Как улучшить осанку и омолодить лицо: комплекс упражнений и техник
+
+25 мая25 мая
+
+1
+
+2 мин
 
 ![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-0.jpg)
 
@@ -65,4 +80,179 @@ _Ударно-волновая терапия (УВТ)_ — стимулируе
 Здоровая осанка = красивая осанка = молодое лицо. Омоложение начинается с позвоночника — и именно поэтому работа с телом даёт результат, который не заменит ни один крем.  
   
 В Арти Клиник мы не только снимаем боль, но и восстанавливаем осанку — через грамотную терапию, упражнения и индивидуальный подход.  
-Запишитесь на приём — и почувствуйте, как меняется не только самочувствие, но и отражение в зеркале.
+Запишитесь на приём — и почувствуйте, как меняется не только самочувствие, но и отражение в зеркале.  
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-1.jpg)
+
+Александр Мясников
+
+](https://dzen.ru/topic/aleksandr-myasnikov)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-2.jpg)
+
+Гиппократ
+
+](https://dzen.ru/topic/gippokrat)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-3.jpg)
+
+Здоровый сон
+
+](https://dzen.ru/topic/zdorovyi-son)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-4.jpg)
+
+Величайшие ученые-медики
+
+](https://dzen.ru/topic/velichajshie-uchenye-mediki)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-5.jpg)
+
+Тимур Хайдаров
+
+](https://dzen.ru/topic/timur-khajdarov)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-6.jpg)
+
+Здоровье нервной системы
+
+](https://dzen.ru/topic/nevrologicheskie-zabolevaniya)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-7.jpg)
+
+Женские болезни
+
+](https://dzen.ru/topic/zhenskie-bolezni)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-8.jpg)
+
+Противовирусные препараты
+
+](https://dzen.ru/topic/protivovirusnye-preparaty)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-9.jpg)
+
+Иммуномодуляторы
+
+](https://dzen.ru/topic/immunomodulyatory)
+
+[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-10.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-11.jpg)
+
+Здоровье печени
+
+](https://dzen.ru/topic/zdorove-pecheni)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-12.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-13.jpg)
+
+Прививки
+
+](https://dzen.ru/topic/privivki)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-14.jpg)
+
+Борьба с курением
+
+](https://dzen.ru/topic/borba-s-kureniem)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-15.jpg)
+
+Болезни мозга
+
+](https://dzen.ru/topic/bolezni-mozga)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-16.jpg)
+
+Инсульт
+
+](https://dzen.ru/topic/insult)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-17.jpg)
+
+Здоровье мозга
+
+](https://dzen.ru/topic/zdorovje-mozga)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-18.jpg)
+
+Антибиотики
+
+](https://dzen.ru/topic/antibiotiki)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-19.jpg)
+
+Противоаллергические препараты
+
+](https://dzen.ru/topic/protivoallergicheskie-preparaty)[
+
+![](/blog/kak-uluchshit-osanku-i-omolodit-lico-kompleks-uprazhnenij-i-tehnik/img-20.jpg)
+
+Иван Павлов
+
+](https://dzen.ru/topic/ivan-pavlov)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама
+
+Реклама
+
+Реклама

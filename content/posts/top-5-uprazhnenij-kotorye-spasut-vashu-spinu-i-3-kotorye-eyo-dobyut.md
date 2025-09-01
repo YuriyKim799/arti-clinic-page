@@ -14,8 +14,23 @@ tags:
   - arti-clinic
   - dzen
 ---
+[
+
+](/articlinic)
+
+[Арти Клиник](/articlinic)
+
+16 подписчиков
+
+Подписаться
 
 # ТОП-5 упражнений, которые спасут вашу спину (и 3, которые её добьют)
+
+1 марта1 мар
+
+1
+
+3 мин
 
 ![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-0.jpg)
 
@@ -102,3 +117,182 @@ _Спина — это основа нашего здоровья._ Неправ
 В нашем ТГ канале сможете скачать СБОРНИК УПРАЖНЕНИЯ ПРИ БОЛЯХ В СПИНЕ [https://t.me/articlinic](/away?to=https%3A%2F%2Ft.me%2Farticlinic)
 
 Берегите свою спину — и она ответит вам благодарностью!
+
+Подпишитесь на канал,
+
+чтобы не пропустить новые публикации
+
+Не пропустите новые публикации
+
+Подписаться
+
+1
+
+### 
+
+Комментарии
+
+⁠
+
+0 / 2500
+
+Войти, чтобы комментировать
+
+Напишите что-нибудь —  
+ваш комментарий станет первым
+
+Что-то пошло не так, и нам не удалось загрузить комментарии. Попробуйте ещё раз
+
+Обновить
+
+Взгляните на эти темы
+
+[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-1.jpg)
+
+Наталья Зубарева
+
+](https://dzen.ru/topic/natalya-zubareva)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-2.jpg)
+
+Профилактика заболеваний
+
+](https://dzen.ru/topic/profilaktika-zabolevanij)[
+
+Найти тему
+
+](/explore)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-3.jpg)
+
+Иван Павлов
+
+](https://dzen.ru/topic/ivan-pavlov)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-4.jpg)
+
+Народная медицина
+
+](https://dzen.ru/topic/narodnaya-medicina)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-5.jpg)
+
+Антибиотики
+
+](https://dzen.ru/topic/antibiotiki)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-6.jpg)
+
+Гиппократ
+
+](https://dzen.ru/topic/gippokrat)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-7.jpg)
+
+Диабет
+
+](https://dzen.ru/topic/diabet)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-8.jpg)
+
+Секреты долголетия
+
+](https://dzen.ru/topic/sekrety-dolgoletnja)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-9.jpg)
+
+Медицина
+
+](https://dzen.ru/topic/zdrave-i-meditsina)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-10.jpg)
+
+Справочник болезней
+
+](https://dzen.ru/topic/spravochnik-boleznej)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-11.jpg)
+
+Прививки
+
+](https://dzen.ru/topic/privivki)
+
+[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-12.jpg)
+
+Здоровье спины и шеи
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-13.jpg)
+
+Эндокринные заболевания
+
+](https://dzen.ru/topic/ehndokrinnye-zabolevaniya)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-14.jpg)
+
+Здоровье нервной системы
+
+](https://dzen.ru/topic/nevrologicheskie-zabolevaniya)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-15.jpg)
+
+Мужские болезни
+
+](https://dzen.ru/topic/muzhskie-bolezni)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-16.jpg)
+
+Здоровье мозга
+
+](https://dzen.ru/topic/zdorovje-mozga)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-17.jpg)
+
+Лекарственные препараты
+
+](https://dzen.ru/topic/lekarstvennye-preparaty)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-18.jpg)
+
+Профилактика вирусных заболеваний
+
+](https://dzen.ru/topic/virusnye-zabolevaniya)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-19.jpg)
+
+Наталья Бехтерева
+
+](https://dzen.ru/topic/natalya-bekhtereva)[
+
+![](/blog/top-5-uprazhnenij-kotorye-spasut-vashu-spinu-i-3-kotorye-eyo-dobyut/img-20.jpg)
+
+Домашняя аптечка
+
+](https://dzen.ru/topic/domashnyaya-aptechka)
+
+[
+
+Здоровье спины и шеи
+
+195,3 тыс интересуются
+
+
+
+
+
+](https://dzen.ru/topic/zdorovje-spiny-i-shei)
+
+Следить за темой
+
+Реклама
+
+Реклама
+
+Реклама
+
+1
