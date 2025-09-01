@@ -20,7 +20,7 @@ const App: React.FC = () => {
   }, []);
   return (
     <>
-    <ArtiWordLoader />
+      <ArtiWordLoader />
 
       <div className={styles.app}>
         <ScrollToTop />

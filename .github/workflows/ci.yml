@@ -202,10 +202,6 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      # 0) (опц.) Генерация webp/ресайзов
-      - name: Build WebP (optional)
-        run: npm run build:webp
-
       # 1) Инкрементальная сборка постов
       - name: Build content (incremental)
         run: npm run build:content
@@ -215,32 +211,62 @@ jobs:
           python3 -m pip install --user --upgrade pip awscli
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-      # 2) Картинки блога
-      - name:
-          Sync blog assets
-          # run: |
-          #   aws s3 sync public/blog s3://$YC_BUCKET/blog \
-          #     --endpoint-url https://storage.yandexcloud.net \
-          #     --delete \
-          #     --cache-control "public,max-age=31536000,immutable"
+      # 2) HTML в блоге: только *.html → no-store
+      - name: Sync blog HTML with no-store
         run: |
           if [ -d public/blog ]; then
-          aws s3 sync public/blog s3://$YC_BUCKET/blog \
-          --endpoint-url https://storage.yandexcloud.net \
-          --delete \
-          --cache-control "public,max-age=31536000,immutable"
+            aws s3 sync public/blog s3://$YC_BUCKET/blog \
+              --endpoint-url https://storage.yandexcloud.net \
+              --delete \
+              --exclude "*" \
+              --include "*/index.html" \
+              --include "*.html" \
+              --cache-control "no-store"
           else
-          echo "skip: no public/blog"
+            echo "skip: no public/blog"
           fi
+
+      # 2b) CSS блога: короткий кэш (1 час)
+      - name: Upload blog CSS with short cache
+        run: |
+          if [ -f public/blog/post-ssr.css ]; then
+            aws s3 cp public/blog/post-ssr.css s3://$YC_BUCKET/blog/post-ssr.css \
+              --endpoint-url https://storage.yandexcloud.net \
+              --cache-control "public,max-age=3600"
+          else
+            echo "skip: no blog CSS"
+          fi
+
+      # 2c) Картинки блога: длинный кэш
+      - name: Sync blog images with long cache
+        run: |
+          if [ -d public/blog ]; then
+            aws s3 sync public/blog s3://$YC_BUCKET/blog \
+              --endpoint-url https://storage.yandexcloud.net \
+              --exclude "*" \
+              --include "*.avif" --include "*.webp" --include "*.jpg" --include "*.jpeg" --include "*.png" \
+              --cache-control "public,max-age=31536000,immutable"
+          else
+            echo "skip: no public/blog"
+          fi
+
+      # 2d) Проставим корректный Content-Type для .avif/.webp (подстраховка)
+      - name: Fix Content-Type for AVIF/WEBP
+        run: |
+          set -e
+          # AVIF
+          aws s3 cp s3://$YC_BUCKET/blog s3://$YC_BUCKET/blog \
+            --endpoint-url https://storage.yandexcloud.net \
+            --recursive --exclude "*" --include "*.avif" \
+            --content-type "image/avif" --metadata-directive "REPLACE"
+          # WEBP
+          aws s3 cp s3://$YC_BUCKET/blog s3://$YC_BUCKET/blog \
+            --endpoint-url https://storage.yandexcloud.net \
+            --recursive --exclude "*" --include "*.webp" \
+            --content-type "image/webp" --metadata-directive "REPLACE"
 
       # 3) per-post JSON (кроме posts.json)
       - name: Sync per-post JSONs
-        # run: |
-        #   aws s3 sync public/posts s3://$YC_BUCKET/posts \
-        #     --endpoint-url https://storage.yandexcloud.net \
-        #     --delete \
-        #     --exclude "posts.json" \
-        #     --cache-control "public,max-age=300"
         run: |
           if [ -d public/posts ]; then
           aws s3 sync public/posts s3://$YC_BUCKET/posts \
