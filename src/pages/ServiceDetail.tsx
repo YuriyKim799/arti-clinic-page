@@ -7,6 +7,7 @@ import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
 import TelegramButton from '@/components/TelegramButton/TelegramButton';
 import { Footer } from '@/components/Footer';
 import SeoAuto from '@/components/SeoAuto';
+import RecordButton from '@/components/RecordButton/RecordButton';
 
 type Params = { slug?: string };
 
@@ -158,9 +159,7 @@ export const ServiceDetail: React.FC = () => {
           )}
 
           <div className={styles.ctaRow}>
-            <a href="/#contact" className="btn btn--primary">
-              Записаться на приём
-            </a>
+            <RecordButton variant="primary">Записаться онлайн</RecordButton>
             <WhatsAppButton phone="+79998310636" variant="primary" />
             <TelegramButton to="@Artiklinic" variant="primary" />
           </div>

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { fetchPosts, fetchPostHtml } from '@/lib/fetchPosts';
 import type { PostCard } from '@/lib/postTypes';
-import '@/styles/blog-post.scss';
+import './BlogPost.scss';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import SeoAuto from '@/components/SeoAuto';
@@ -34,6 +34,7 @@ export default function BlogPost() {
   const [state, setState] = useState<State>({ status: 'loading' });
   const site =
     (import.meta.env.VITE_SITE_URL as string) || 'https://articlinic.ru';
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let alive = true;
@@ -76,6 +77,63 @@ export default function BlogPost() {
       alive = false;
     };
   }, [slug]);
+
+  // Прогрессивные улучшения для вёрстки контента (адаптивность таблиц/iframes/картинок/внешние ссылки)
+  useEffect(() => {
+    if (state.status !== 'ok') return;
+    const root = contentRef.current;
+    if (!root) return;
+
+    // Оборачиваем таблицы в скролл-контейнер
+    root.querySelectorAll('table').forEach((tb) => {
+      const parent = tb.parentElement;
+      if (!parent) return;
+      if (parent.classList.contains('table-scroll')) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'table-scroll';
+      parent.insertBefore(wrap, tb);
+      wrap.appendChild(tb);
+    });
+
+    // Iframe → ленивые и с аспектом 16:9
+    root.querySelectorAll<HTMLIFrameElement>('iframe').forEach((ifr) => {
+      if (!ifr.getAttribute('loading')) ifr.setAttribute('loading', 'lazy');
+      if (!ifr.getAttribute('referrerpolicy'))
+        ifr.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+      const p = ifr.parentElement;
+      if (!p || p.classList.contains('ratio-16x9')) return;
+      const box = document.createElement('div');
+      box.className = 'ratio-16x9';
+      p.insertBefore(box, ifr);
+      box.appendChild(ifr);
+    });
+
+    // Картинки → ленивые/async
+    root.querySelectorAll<HTMLImageElement>('img').forEach((img) => {
+      if (!img.loading) img.loading = 'lazy';
+      img.decoding = 'async';
+      img.style.maxWidth = '100%';
+      img.style.height = 'auto';
+    });
+
+    // Внешние ссылки → новая вкладка + защита
+    const siteHost = (() => {
+      try {
+        return new URL(site).host;
+      } catch {
+        return '';
+      }
+    })();
+    root.querySelectorAll<HTMLAnchorElement>('a[href^="http"]').forEach((a) => {
+      try {
+        const host = new URL(a.href).host;
+        if (host && host !== siteHost) {
+          a.target = '_blank';
+          a.rel = 'nofollow noopener noreferrer';
+        }
+      } catch {}
+    });
+  }, [state.status, site]); // <-- фикс: зависим от status, а не от state.html
 
   if (state.status === 'loading') {
     return (
@@ -170,11 +228,6 @@ export default function BlogPost() {
     ],
   };
 
-  // База для <picture> под новые брейки (если cover локальный)
-  const coverBase = isLocalCover
-    ? meta.cover!.replace(/\.(jpe?g|png|webp|avif)$/i, '')
-    : '';
-
   return (
     <>
       <SeoAuto
@@ -210,46 +263,23 @@ export default function BlogPost() {
               <span aria-current="page">{title}</span>
             </nav>
 
-            <h1>{title}</h1>
+            <h1 className="post-title">{title}</h1>
             <div className="post-meta">
               {meta.date && (
                 <time dateTime={meta.date}>
                   {new Date(meta.date).toLocaleDateString('ru-RU')}
                 </time>
               )}
-              {meta.tags?.length ? <span> • {meta.tags[0]}</span> : null}
+              {meta.tags?.[0] && (
+                <span className="tag-dot"> • {meta.tags[0]}</span>
+              )}
             </div>
 
-            {meta.cover && isLocalCover ? (
-              <picture>
-                <source
-                  type="image/avif"
-                  srcSet={`${coverBase}-960.avif 960w, ${coverBase}-1280.avif 1280w, ${coverBase}-1600.avif 1600w`}
-                  sizes="(max-width: 1360px) 100vw, 1280px"
-                />
-                <source
-                  type="image/webp"
-                  srcSet={`${coverBase}-960.webp 960w, ${coverBase}-1280.webp 1280w, ${coverBase}-1600.webp 1600w`}
-                  sizes="(max-width: 1360px) 100vw, 1280px"
-                />
-                <img
-                  src={`${coverBase}-1280.webp`}
-                  alt={title}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </picture>
-            ) : meta.cover ? (
-              <img
-                src={meta.cover}
-                alt={title}
-                loading="lazy"
-                decoding="async"
-              />
-            ) : null}
+            {/* Хиро-обложку можно вернуть позже; сейчас оставим только контент */}
           </header>
 
           <div
+            ref={contentRef}
             className="post-content"
             // сюда кладём только содержимое <article> из index.html
             dangerouslySetInnerHTML={{ __html: html }}
