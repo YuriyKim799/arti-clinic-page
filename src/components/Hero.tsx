@@ -123,12 +123,12 @@ import RecordButton from './RecordButton/RecordButton';
 
 import heroFallback from '@/assets/hero-doctor.png';
 
+// responsive hero images
 const heroAvifEntries = import.meta.glob('/src/assets/hero-doctor-*.avif', {
   eager: true,
   query: '?url',
   import: 'default',
 }) as Record<string, string>;
-
 const heroWebpEntries = import.meta.glob('/src/assets/hero-doctor-*.webp', {
   eager: true,
   query: '?url',
@@ -142,6 +142,9 @@ const heroVideoEntries = import.meta.glob('/src/assets/hero-bg-*.mp4', {
   import: 'default',
 }) as Record<string, string>;
 
+// запасной вариант (один mp4), если нет набора
+import heroVideoDefault from '../assets/hero-bg.mp4';
+
 function toSrcSet(entries: Record<string, string>) {
   return Object.entries(entries)
     .map(([file, url]) => {
@@ -153,25 +156,11 @@ function toSrcSet(entries: Record<string, string>) {
     .map((x) => `${x!.url} ${x!.w}w`)
     .join(', ');
 }
+
 const heroAvifSrcSet = toSrcSet(heroAvifEntries);
 const heroWebpSrcSet = toSrcSet(heroWebpEntries);
 
-// выбрать подходящее видео под экран/сеть
-function pickVideoUrl() {
-  // если нет Window (SSR) — ничего
-  if (typeof window === 'undefined') return null;
-
-  const width = Math.min(window.innerWidth || 0, screen?.width || 0) || 0;
-  // сеть
-  const conn = (navigator as any).connection;
-  const saveData: boolean = !!conn?.saveData;
-  const eff: string | undefined = conn?.effectiveType;
-  const slow = eff && ['slow-2g', '2g', '3g'].includes(eff);
-
-  // если режим экономии/медленная сеть и узкий экран — лучше без видео
-  if ((saveData || slow) && width <= 480) return 'DISABLE';
-
-  // распарсим варианты
+function getVideoUrlForWidth(width: number): string | null {
   const variants = Object.entries(heroVideoEntries)
     .map(([file, url]) => {
       const m = file.match(/hero-bg-(\d+)\.mp4$/);
@@ -182,15 +171,18 @@ function pickVideoUrl() {
 
   if (!variants.length) return null;
 
-  // очень узкие: 480, средние: 720, иначе 1080
+  // мобилка: жёстко 480
   if (width <= 480) {
-    return (variants.find((v) => v.w >= 480) || variants[0]).url;
-  } else if (width <= 900) {
-    return (variants.find((v) => v.w >= 720) || variants[0]).url;
-  } else {
-    return (variants.find((v) => v.w >= 1080) || variants[variants.length - 1])
-      .url;
+    return variants.find((v) => v.w === 720)?.url || variants[0].url;
   }
+  // средние — 720
+  if (width <= 900) {
+    return variants.find((v) => v.w === 720)?.url || variants[0].url;
+  }
+  // десктоп — 1080
+  return (
+    variants.find((v) => v.w === 1080)?.url || variants[variants.length - 1].url
+  );
 }
 
 export const Hero: React.FC = () => {
@@ -200,24 +192,21 @@ export const Hero: React.FC = () => {
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Решение, грузим ли видео и какой файл
+  // Решаем, какой файл подставить, и начинаем загрузку ТОЛЬКО когда блок попал во вьюпорт
   useEffect(() => {
     if (!isIntersecting || loadVideo) return;
 
-    const picked = pickVideoUrl();
-    if (picked === 'DISABLE') {
-      // не грузим видео — останется постер/картинка
-      setVideoUrl(null);
-      setLoadVideo(false);
-      return;
-    }
-    if (picked) {
-      setVideoUrl(picked);
-      setLoadVideo(true); // подставим <source>
-    }
+    const width =
+      typeof window !== 'undefined'
+        ? Math.min(window.innerWidth || 0, screen?.width || 0) || 0
+        : 0;
+
+    const chosen = getVideoUrlForWidth(width) || heroVideoDefault;
+    setVideoUrl(chosen);
+    setLoadVideo(true);
   }, [isIntersecting, loadVideo]);
 
-  // Автовоспроизведение только когда видно, пауза когда уехали
+  // Автопауза/автоплей по видимости
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
@@ -232,14 +221,12 @@ export const Hero: React.FC = () => {
     }
 
     if (isIntersecting) {
-      // пробуем автоплей
       v.play().catch(() => {});
     } else {
       if (!v.paused) v.pause();
     }
   }, [isIntersecting, loadVideo]);
 
-  // мемоизируем picture srcset
   const Picture = useMemo(
     () => (
       <picture>
@@ -262,14 +249,13 @@ export const Hero: React.FC = () => {
       <video
         ref={videoRef}
         className={`${styles.bgVideo} ${ready ? styles.ready : ''}`}
-        // важные атрибуты для старта
         autoPlay
         muted
         loop
         playsInline
-        preload="metadata" // подтянет moov atom заранее
-        poster={heroFallback} // покажем картинку до первого кадра
-        onLoadedData={() => setReady(true)} // как только первый кадр, показываем
+        preload="metadata" // постера нет, но схватим метаданные/первый кадр как можно раньше
+        // poster УДАЛЁН по твоему запросу
+        onLoadedData={() => setReady(true)} // показываем видео, как только доступен первый кадр
       >
         {loadVideo && videoUrl ? (
           <source src={videoUrl} type="video/mp4" />
@@ -284,7 +270,6 @@ export const Hero: React.FC = () => {
           <div className={styles.photoCard} aria-hidden="true">
             {Picture}
           </div>
-
           <div className={styles.content}>
             <h1 className={styles.title}>
               ЛЕЧИМ БОЛИ
