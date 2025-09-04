@@ -2,139 +2,171 @@ import type { PostCard } from './postTypes';
 import { joinPublicPath } from './basePath';
 
 const CACHE_NAME = 'arti-posts-v1';
-
 type Opts = { revalidateSeconds?: number };
-
-/** Ключ для метки времени конкретного URL в localStorage */
-const tsKey = (url: string) => `arti_ts_${url}`;
 
 const isSSR = typeof window === 'undefined';
 const isDev = (import.meta as any)?.env?.DEV ?? false;
 
-/** Универсальная подгрузка JSON с Cache API + мягкая ревалидация */
-async function fetchJsonWithCache<T>(
-  url: string,
-  revalidateSeconds: number
-): Promise<T | null> {
-  // SSR/DEV: без кэша
-  if (isSSR || isDev || !('caches' in self)) {
-    const r = await fetch(url, { cache: 'no-cache' });
-    if (!r.ok) return null as any;
-    return (await r.json()) as T;
-  }
+const hasFetch = typeof (globalThis as any).fetch === 'function';
+const hasCachesFlag = (() => {
+  try { return typeof self !== 'undefined' && 'caches' in self; } catch { return false; }
+})();
 
-  const cache = await caches.open(CACHE_NAME);
-  const stamp = Number(localStorage.getItem(tsKey(url)) || 0);
-  const fresh = Date.now() - stamp < revalidateSeconds * 1000;
-  const cached = await cache.match(url);
+let cacheUsable: boolean | null = null; // лениво определяем пригодность Cache API
 
-  if (cached && fresh) {
-    // фоновой ревалид
-    void (async () => {
-      try {
-        const rr = await fetch(url, { cache: 'no-cache' });
-        if (rr.ok) {
-          await cache.put(url, rr.clone());
-          localStorage.setItem(tsKey(url), String(Date.now()));
-        }
-      } catch {}
-    })();
-    try {
-      return (await cached.clone().json()) as T;
-    } catch {
-      // битый кэш — пойдём в сеть ниже
-    }
-  }
+/* ───────── helpers ───────── */
 
-  try {
-    const r = await fetch(url, { cache: cached ? 'no-cache' : 'default' });
-    if (r.ok) {
-      const data = (await r.clone().json()) as T;
-      await cache.put(url, r);
-      localStorage.setItem(tsKey(url), String(Date.now()));
-      return data;
-    }
-  } catch {}
+const tsKey = (url: string) => `arti_ts_${url}`;
+function lsGet(k: string) { try { return localStorage.getItem(k); } catch { return null; } }
+function lsSet(k: string, v: string) { try { localStorage.setItem(k, v); } catch {} }
 
-  if (cached) {
-    try {
-      return (await cached.clone().json()) as T;
-    } catch {}
-  }
-  return null as any;
+function safeParseJSON(text: string): any {
+  const t1 = text.replace(/^\uFEFF/, '').trim();
+  try { return JSON.parse(t1); } catch {}
+  const t2 = t1.replace(/,\s*}/g, '}').replace(/,\s*]/g, ']');
+  try { return JSON.parse(t2); } catch { return null; }
 }
 
-/** Универсальная подгрузка ТЕКСТА (HTML) с Cache API + мягкая ревалидация */
-async function fetchTextWithCache(
-  url: string,
-  revalidateSeconds: number
-): Promise<string | null> {
-  if (isSSR || isDev || !('caches' in self)) {
-    const r = await fetch(url, { cache: 'no-cache' });
-    if (!r.ok) return null;
-    return r.text();
+async function httpGetText(url: string, cacheMode: RequestCache): Promise<string | null> {
+  if (hasFetch) {
+    try {
+      const res = await fetch(url, { cache: cacheMode, credentials: 'omit' });
+      return await res.text();
+    } catch { /* next */ }
+  }
+  // XHR фолбэк (старые Android/Samsung WebView)
+  return await new Promise<string | null>((resolve) => {
+    try {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      if ((xhr as any).overrideMimeType) xhr.overrideMimeType('application/json');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) resolve(xhr.responseText || null);
+      };
+      xhr.onerror = function () { resolve(null); };
+      xhr.send();
+    } catch { resolve(null); }
+  });
+}
+
+function makeTextResponse(text: string, contentType: string): Response | null {
+  try { return new Response(text, { headers: { 'Content-Type': contentType } }); } catch { return null; }
+}
+
+async function canUseCache(): Promise<boolean> {
+  if (!hasCachesFlag || isSSR || isDev) return false;
+  if (cacheUsable != null) return cacheUsable;
+  try { await caches.open(CACHE_NAME); cacheUsable = true; }
+  catch { cacheUsable = false; }
+  return cacheUsable!;
+}
+
+/* ───────── core loaders ───────── */
+
+async function fetchJsonWithCache<T>(url: string, revalidateSeconds: number): Promise<T | null> {
+  // Без кэша — просто сеть с фолбэком
+  if (!(await canUseCache())) {
+    const txt = await httpGetText(url, 'no-cache');
+    return (txt == null) ? null : (safeParseJSON(txt) as T);
   }
 
   const cache = await caches.open(CACHE_NAME);
-  const stamp = Number(localStorage.getItem(tsKey(url)) || 0);
+  const stamp = Number(lsGet(tsKey(url)) || 0);
   const fresh = Date.now() - stamp < revalidateSeconds * 1000;
   const cached = await cache.match(url);
 
   if (cached && fresh) {
+    // фонова́я ревалидация
     void (async () => {
       try {
-        const rr = await fetch(url, { cache: 'no-cache' });
-        if (rr.ok) {
-          await cache.put(url, rr.clone());
-          localStorage.setItem(tsKey(url), String(Date.now()));
+        const t = await httpGetText(url, 'no-cache');
+        if (t != null) {
+          const resp = makeTextResponse(t, 'application/json');
+          if (resp) { await cache.put(url, resp.clone()); lsSet(tsKey(url), String(Date.now())); }
         }
       } catch {}
     })();
     try {
-      return await cached.clone().text();
-    } catch {}
+      const txt = await cached.clone().text();
+      return safeParseJSON(txt) as T;
+    } catch { /* fallthrough */ }
   }
 
   try {
-    const r = await fetch(url, { cache: cached ? 'no-cache' : 'default' });
-    if (r.ok) {
-      const text = await r.clone().text();
-      await cache.put(url, r);
-      localStorage.setItem(tsKey(url), String(Date.now()));
-      return text;
+    const txt = await httpGetText(url, cached ? 'no-cache' : 'default');
+    if (txt != null) {
+      const resp = makeTextResponse(txt, 'application/json');
+      if (resp) { await cache.put(url, resp.clone()); lsSet(tsKey(url), String(Date.now())); }
+      return safeParseJSON(txt) as T;
     }
   } catch {}
 
   if (cached) {
     try {
-      return await cached.clone().text();
+      const txt = await cached.clone().text();
+      return safeParseJSON(txt) as T;
     } catch {}
   }
   return null;
 }
 
-/** СПИСОК постов (posts.json) */
+async function fetchTextWithCache(url: string, revalidateSeconds: number): Promise<string | null> {
+  if (!(await canUseCache())) {
+    return await httpGetText(url, 'no-cache');
+  }
+
+  const cache = await caches.open(CACHE_NAME);
+  const stamp = Number(lsGet(tsKey(url)) || 0);
+  const fresh = Date.now() - stamp < revalidateSeconds * 1000;
+  const cached = await cache.match(url);
+
+  if (cached && fresh) {
+    void (async () => {
+      try {
+        const t = await httpGetText(url, 'no-cache');
+        if (t != null) {
+          const resp = makeTextResponse(t, 'text/html; charset=utf-8');
+          if (resp) { await cache.put(url, resp.clone()); lsSet(tsKey(url), String(Date.now())); }
+        }
+      } catch {}
+    })();
+    try { return await cached.clone().text(); } catch {}
+  }
+
+  try {
+    const txt = await httpGetText(url, cached ? 'no-cache' : 'default');
+    if (txt != null) {
+      const resp = makeTextResponse(txt, 'text/html; charset=utf-8');
+      if (resp) { await cache.put(url, resp.clone()); lsSet(tsKey(url), String(Date.now())); }
+      return txt;
+    }
+  } catch {}
+
+  if (cached) {
+    try { return await cached.clone().text(); } catch {}
+  }
+  return null;
+}
+
+/* ───────── public API ───────── */
+
 export async function fetchPosts(opts: Opts = {}): Promise<PostCard[]> {
   const { revalidateSeconds = 3600 } = opts;
   const url = joinPublicPath('posts.json');
-  const data = await fetchJsonWithCache<PostCard[]>(url, revalidateSeconds);
-  return Array.isArray(data) ? data : [];
+  const data = await fetchJsonWithCache<any>(url, revalidateSeconds);
+  return Array.isArray(data) ? (data as PostCard[]) : [];
 }
 
-/** ОДИН пост целиком как JSON (posts/<slug>.json) — удобно для клиентского Markdown-рендера */
 export async function fetchPost(
   slug: string,
   opts: Opts = {}
 ): Promise<(PostCard & { content: string }) | null> {
   const { revalidateSeconds = 3600 } = opts;
   const url = joinPublicPath(`posts/${slug}.json`);
-  return await fetchJsonWithCache<PostCard & { content: string }>(
-    url,
-    revalidateSeconds
-  );
+  const data = await fetchJsonWithCache<any>(url, revalidateSeconds);
+  return data && typeof data === 'object' ? (data as PostCard & { content: string }) : null;
 }
 
-/** Статический HTML версии поста: сперва /blog/<slug>/index.html, затем /blog/<slug>/post.html (совместимость) */
 export async function fetchPostHtml(
   slug: string,
   opts: Opts = {}
@@ -145,16 +177,14 @@ export async function fetchPostHtml(
     joinPublicPath(`blog/${slug}/post.html`),
   ];
 
-  // SSR/DEV — идём по порядку без кэша
-  if (isSSR || isDev || !('caches' in self)) {
+  if (!(await canUseCache())) {
     for (const url of tryUrls) {
-      const r = await fetch(url, { cache: 'no-cache' });
-      if (r.ok) return r.text();
+      const t = await httpGetText(url, 'no-cache');
+      if (t) return t;
     }
     return null;
   }
 
-  // c кэшем — попробуем по очереди
   for (const url of tryUrls) {
     const text = await fetchTextWithCache(url, revalidateSeconds);
     if (text) return text;
