@@ -48,6 +48,7 @@
     animation: none;
   }
 }
+
 @keyframes glowSlide {
   0% {
     transform: rotate(8deg) translateX(-20%);
@@ -147,6 +148,10 @@
   &:hover {
     transform: translateY(-1px);
     border-color: $blue-soft;
+  }
+
+  @media (max-width: 640px) {
+    display: none;
   }
 }
 

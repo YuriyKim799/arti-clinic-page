@@ -112,7 +112,8 @@ export default function BlogIndex() {
       <main className={styles.main}>
         <div className={styles.top}>
           <Link to="/#blog" className={styles.backLink}>
-            ← Главная
+            <span>←</span>
+            <span>Главная</span>
           </Link>
         </div>
 
