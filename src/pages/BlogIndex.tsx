@@ -3,41 +3,65 @@ import { Link } from 'react-router-dom';
 import { fetchPosts } from '@/lib/fetchPosts';
 import type { PostCard } from '@/lib/postTypes';
 import { Helmet } from 'react-helmet-async';
-import styles from './BlogIndex.module.scss';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import SeoAuto from '@/components/SeoAuto';
+import styles from './BlogIndex.module.scss';
+
+function formatRuDate(iso?: string): string | null {
+  if (!iso) return null;
+  const normalized = /^\d{4}-\d{2}-\d{2}$/.test(iso) ? `${iso}T00:00:00` : iso;
+  const d = new Date(normalized);
+  return Number.isNaN(d.getTime()) ? null : d.toLocaleDateString('ru-RU');
+}
+
+const toPlain = (cover: string) =>
+  /^https?:\/\//i.test(cover)
+    ? cover
+    : cover.replace(/\.(avif|webp)$/i, '.jpg');
+
+function PlainCover({
+  cover,
+  alt,
+  className,
+}: {
+  cover: string;
+  alt: string;
+  className?: string;
+}) {
+  const [src, setSrc] = useState(toPlain(cover));
+  useEffect(() => setSrc(toPlain(cover)), [cover]);
+
+  const onError = useCallback(() => {
+    if (/\.jpg$/i.test(src)) {
+      setSrc(src.replace(/\.jpg$/i, '.jpeg'));
+      return;
+    }
+    if (/\.jpeg$/i.test(src)) {
+      setSrc(src.replace(/\.jpeg$/i, '.png'));
+      return;
+    }
+  }, [src]);
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      onError={onError}
+      loading="lazy"
+      decoding="async"
+      className={className}
+    />
+  );
+}
 
 export default function BlogIndex() {
   const [posts, setPosts] = useState<PostCard[]>([]);
-
   useEffect(() => {
-    fetchPosts().then((p) => setPosts(Array.isArray(p) ? p : []));
+    fetchPosts().then((p) =>
+      setPosts(Array.isArray(p) ? p.filter((x) => !!x?.slug) : [])
+    );
   }, []);
-
-  // Генератор srcset под текущий билдер: -960/-1280/-1600, AVIF+WebP
-  const imgSet = useCallback((cover: string) => {
-    const isExternal = /^https?:\/\//i.test(cover);
-    if (isExternal) {
-      return {
-        avif: '',
-        webp: '',
-        fallback: cover,
-      };
-    }
-    const base = cover.replace(/\.(jpe?g|png|webp|avif)$/i, '');
-    return {
-      avif: `${base}-960.avif 960w, ${base}-1280.avif 1280w, ${base}-1600.avif 1600w`,
-      webp: `${base}-960.webp 960w, ${base}-1280.webp 1280w, ${base}-1600.webp 1600w`,
-      fallback: `${base}-1280.webp`,
-    };
-  }, []);
-
-  // ожидаемая ширина карточки (под вашу сетку)
-  const SIZES =
-    '(min-width: 1200px) 360px, ' + // ~3 колонки
-    '(min-width: 880px) 45vw, ' + // 2 колонки
-    '100vw'; // мобильные
 
   const site = import.meta.env.VITE_SITE_URL || 'https://articlinic.ru';
 
@@ -80,8 +104,6 @@ export default function BlogIndex() {
           },
         ]}
       />
-
-      {/* Дополнительно: RSS-лента */}
       <Helmet>
         <link rel="alternate" type="application/rss+xml" href="/rss-dzen.xml" />
       </Helmet>
@@ -97,66 +119,35 @@ export default function BlogIndex() {
         <h1 className={styles.title}>Блог</h1>
 
         <div className={styles.grid}>
-          {posts.map((p) => {
-            const sets = p.cover ? imgSet(p.cover) : null;
-            const isExternal = p.cover ? /^https?:\/\//i.test(p.cover) : false;
-
-            return (
-              <Link
-                key={p.slug || p.url}
-                to={`/blog/${p.slug}/`}
-                className={styles.card}
-                aria-label={`Открыть статью: ${p.title}`}
-              >
-                {p.cover ? (
-                  <div className={styles.pictureWrap}>
-                    {isExternal ? (
-                      <img
-                        src={p.cover}
-                        alt={p.title}
-                        loading="lazy"
-                        decoding="async"
-                        className={styles.image}
-                        sizes={SIZES}
-                      />
-                    ) : (
-                      <picture className={styles.picture}>
-                        <source
-                          type="image/avif"
-                          srcSet={sets!.avif}
-                          sizes={SIZES}
-                        />
-                        <source
-                          type="image/webp"
-                          srcSet={sets!.webp}
-                          sizes={SIZES}
-                        />
-                        <img
-                          src={sets!.fallback}
-                          alt={p.title}
-                          loading="lazy"
-                          decoding="async"
-                          className={styles.image}
-                          sizes={SIZES}
-                        />
-                      </picture>
-                    )}
-                  </div>
-                ) : (
-                  <div className={styles.placeholder} />
-                )}
-
-                <div className={styles.body}>
-                  <h3 className={styles.cardTitle}>{p.title}</h3>
-                  <p className={styles.excerpt}>{p.excerpt}</p>
-                  <div className={styles.meta}>
-                    {p.date ? new Date(p.date).toLocaleDateString('ru-RU') : ''}
-                    {p.tags?.length ? <span> • {p.tags[0]}</span> : null}
-                  </div>
+          {posts.map((p) => (
+            <Link
+              key={p.slug}
+              to={`/blog/${p.slug}/`}
+              className={styles.card}
+              aria-label={`Открыть статью: ${p.title}`}
+            >
+              {p.cover ? (
+                <div className={styles.pictureWrap}>
+                  <PlainCover
+                    cover={p.cover}
+                    alt={p.title}
+                    className={styles.image}
+                  />
                 </div>
-              </Link>
-            );
-          })}
+              ) : (
+                <div className={styles.placeholder} />
+              )}
+
+              <div className={styles.body}>
+                <h3 className={styles.cardTitle}>{p.title}</h3>
+                <p className={styles.excerpt}>{p.excerpt}</p>
+                <div className={styles.meta}>
+                  {formatRuDate(p.date) || ''}
+                  {p.tags?.length ? <span> • {p.tags[0]}</span> : null}
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </main>
       <Footer />

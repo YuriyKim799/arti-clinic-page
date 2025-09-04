@@ -13,6 +13,7 @@ import PriceListPage from '@/pages/PriceListPage/PriceListPage';
 const BlogIndex = React.lazy(() => import('@/pages/BlogIndex'));
 const BlogPost = React.lazy(() => import('@/pages/BlogPost'));
 import { startBoot } from '@/lib/boot';
+import BlogSection from './components/BlogSection';
 
 const App: React.FC = () => {
   useEffect(() => {
