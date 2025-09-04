@@ -43,12 +43,32 @@ function slugify(s: string) {
     .replace(/[^\p{Letter}\p{Number}]+/gu, '-')
     .replace(/^-+|-+$/g, '');
 }
+
 function excerptFrom(text: string, max = 180) {
-  const clean = text
-    .replace(/\s+/g, ' ')
-    .replace(/[#>*_`]/g, '')
-    .trim();
-  return clean.length > max ? clean.slice(0, max).trimEnd() + '…' : clean;
+  let t = text;
+
+  // 1) Удаляем HTML-картинки полностью
+  t = t.replace(/<img\b[^>]*>/gi, '');
+
+  // 2) Удаляем markdown-картинки полностью: ![alt](url)
+  t = t.replace(/!\[[^\]]*]\([^)]*\)/g, '');
+
+  // 3) Markdown-ссылки превращаем в текст: [title](url) -> title
+  t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
+
+  // 4) Защитный кейс: голые скобки с путями вида (/blog/slug/file.jpg)
+  t = t.replace(/\(\s*\/blog\/[^)]+\)/gi, '');
+
+  // 5) Сносим прочую HTML-разметку
+  t = t.replace(/<\/?[^>]+>/g, '');
+
+  // 6) Чистим базовые markdown-артефакты
+  t = t.replace(/[#>*_`]/g, '');
+
+  // 7) Пробелы и обрезка
+  t = t.replace(/\s+/g, ' ').trim();
+
+  return t.length > max ? t.slice(0, max).trimEnd() + '…' : t;
 }
 
 const SITE =
