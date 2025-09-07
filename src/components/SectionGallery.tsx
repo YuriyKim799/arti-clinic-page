@@ -11,7 +11,7 @@ export default function SectionGallery() {
           autoPlay
           autoPlayDelayMs={4500}
           transitionMs={700}
-          aspectRatio="16 / 9"
+          aspectRatio="14 / 9"
         />
       </div>
     </section>

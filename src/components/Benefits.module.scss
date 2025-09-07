@@ -1,3 +1,4 @@
+
 @use '../styles/variables' as *;
 
 .section {
@@ -6,17 +7,19 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr); // пять плиток: 4 + видео
   gap: 16px;
-  // align-items: stretch;
 }
-
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 @media (max-width: 1000px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media (max-width: 560px) {
   .grid {
     grid-template-columns: 1fr;
@@ -30,28 +33,28 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease, border-color 0.2s ease;
   text-align: center;
-  /* задаём стабильную высоту «лица» карточки (без зависимости от количества строк) */
-  --face-h: 150px; /* можно подправить под ваш контент */
+  justify-content: center;
+  background: rgba($bg-contrast, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  --face-h: 150px;
 }
-
 .card:hover {
   transform: translateY(-7px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
 }
-
 .card:focus-visible {
   outline: 2px solid $blue-soft;
   outline-offset: 2px;
 }
 
-/* Слой-контейнер для перекрывающихся экранов */
 .face {
   position: relative;
-  min-height: var(--face-h); /* фиксируем высоту области — никаких прыжков */
+  min-height: var(--face-h);
 }
-
-/* Два перекрывающихся слоя */
 .titleLayer,
 .textLayer {
   position: absolute;
@@ -59,24 +62,19 @@
   margin: 0;
   line-height: 1.3;
   transition: opacity 0.25s ease;
-  will-change: opacity;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .titleLayer {
   @include h3;
   opacity: 1;
 }
-
 .textLayer {
   color: $muted;
   opacity: 0;
-  pointer-events: none; /* не перехватывает клики, пока скрыт */
+  pointer-events: none;
 }
-
-/* Переключение по hover и по клавиатурному фокусу */
 .card:hover .titleLayer,
 .card:focus-visible .titleLayer {
   opacity: 0;
@@ -86,10 +84,221 @@
   opacity: 1;
 }
 
-/* Меньше анимаций — уважение системным настройкам */
 @media (prefers-reduced-motion: reduce) {
   .titleLayer,
   .textLayer {
     transition: none;
+  }
+}
+
+/* ===== ВИДЕО-КАРТОЧКА ===== */
+.videoCard {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.videoFrame {
+  position: relative;
+  aspect-ratio: 7 / 11;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.05) saturate(1.02) brightness(0.92);
+  transform: scale(1.01);
+}
+
+/* Верхний бейдж — тонкая капсула */
+.upperBadge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 6px 10px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+
+/* Люксовые слои: мягкая виньетка + глянец */
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.luxOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0) 18%
+    ),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
+  mix-blend-mode: screen;
+}
+
+/* Кнопка-переключатель звука/просмотра */
+.premiumBtn {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(6px);
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.premiumBtn:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 0, 0, 0.55);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.premiumBtn:active {
+  transform: translateY(0);
+}
+.premiumBtn:focus-visible {
+  outline: 2px solid $blue-soft;
+  outline-offset: 3px;
+}
+
+.btnRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+    inset 0 6px 18px rgba(255, 255, 255, 0.06);
+}
+
+/* Иконка формируется через псевдоэлементы */
+.btnIcon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+.btnIcon::before,
+.btnIcon::after {
+  content: '';
+  position: absolute;
+  background: #fff;
+  opacity: 0.95;
+}
+
+/* Состояние по умолчанию — «play» (треугольник) */
+.premiumBtn .btnIcon::before {
+  left: 5px;
+  top: 3px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid #fff;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+/* Когда уже играет — показываем «звук вкл.» (динамик) */
+.isPlaying.isUnmuted .btnIcon::before,
+.isPlaying.isUnmuted .btnIcon::after {
+  border: 0;
+  left: 2px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  mask: none;
+}
+.isPlaying.isUnmuted .btnIcon::before {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  clip-path: polygon(0 30%, 50% 30%, 75% 0, 75% 100%, 50% 70%, 0 70%);
+}
+.isPlaying.isUnmuted .btnIcon::after {
+  left: 14px;
+  top: 2px;
+  width: 2px;
+  height: 14px;
+  border-radius: 2px;
+  background: transparent;
+  box-shadow: 0 0 0 2px #fff inset, 0 0 0 0 transparent;
+  transform: skewX(-10deg);
+}
+
+/* Когда играет, но звук выключен — перечёркнутый динамик */
+.isPlaying:not(.isUnmuted) .btnIcon::before,
+.isPlaying:not(.isUnmuted) .btnIcon::after {
+  border: 0;
+}
+.isPlaying:not(.isUnmuted) .btnIcon::before {
+  left: 2px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  clip-path: polygon(0 30%, 50% 30%, 75% 0, 75% 100%, 50% 70%, 0 70%);
+}
+.isPlaying:not(.isUnmuted) .btnIcon::after {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    #fff 45%,
+    #fff 55%,
+    transparent 55%
+  );
+  opacity: 0.9;
+}
+
+/* Текстовая часть под видео */
+.videoCard .face {
+  padding: 18px 18px 22px;
+  min-height: auto; // у видео-карточки свой ритм
+  text-align: center;
+}
+.videoCard .titleLayer,
+.videoCard .textLayer {
+  position: static;
+  opacity: 1;
+  pointer-events: auto;
+  display: block;
+}
+.videoCard .titleLayer {
+  @include h3;
+  color: #111; // читаемо на светлом фоне карточки
+  margin-bottom: 6px;
+}
+.videoCard .textLayer {
+  color: $muted;
+}
+
+/* Адаптив для узких экранов: без автопревью, только по нажатию */
+@media (prefers-reduced-motion: reduce) {
+  .videoCard {
+    cursor: default;
   }
 }

@@ -6,6 +6,7 @@ import room1 from '../assets/5.png';
 import roomDesc1 from '../assets/6.png';
 import roomDesc2 from '../assets/7.png';
 import room2 from '../assets/8.png';
+import licen from '../assets/licen.webp';
 import type { Slide } from '../components/PremiumCarouselFade/PremiumCarouselFade';
 
 export const clinicSlides: Slide[] = [
@@ -48,5 +49,10 @@ export const clinicSlides: Slide[] = [
     src: room2,
     alt: 'Кабинет врача Арти Клиник',
     caption: 'Кабинет и оборудование',
+  },
+  {
+    src: licen,
+    alt: 'Лицензия на оказание медицинских услгу',
+    caption: 'Лицензия',
   },
 ];
