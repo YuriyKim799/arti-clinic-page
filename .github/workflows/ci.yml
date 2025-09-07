@@ -202,7 +202,7 @@ jobs:
       YC_SA_JSON_CREDENTIALS: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
       INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
       # SITE_ORIGIN: https://articlinic.ru
-      SITE_ORIGIN: http://articlinic.ru.website.yandexcloud.net
+      SITE_ORIGIN: http://articlinic.ru.
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       AWS_MAX_ATTEMPTS: '10'
