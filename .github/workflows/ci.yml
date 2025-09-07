@@ -52,7 +52,7 @@ jobs:
       YC_SA_JSON_CREDENTIALS: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }} # чтобы исключить key.txt при sync
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
       AWS_MAX_ATTEMPTS: '10'
       AWS_RETRY_MODE: standard
       AWS_EC2_METADATA_DISABLED: 'true'
@@ -69,7 +69,7 @@ jobs:
         run: npm ci
 
       - name: Clean dist directory
-        run: rm -rf dist
+        run: rm -rf dist && mkdir -p dist
 
       - name: Build
         run: npm run build
@@ -77,10 +77,16 @@ jobs:
       - name: Copy robots.txt (optional)
         run: cp robots.txt dist/robots.txt || true
 
-      - name: Move sitemap to dist (if exists)
+      - name: Copy sitemap/rss/posts to dist (if exist)
         run: |
           if [ -f public/sitemap.xml ]; then
-            mv public/sitemap.xml dist/sitemap.xml
+            cp public/sitemap.xml dist/sitemap.xml
+          fi
+          if [ -f public/rss-dze.xml ]; then
+            cp public/rss-dze.xml dist/rss-dze.xml
+          fi
+          if [ -f public/posts.json ]; then
+            cp public/posts.json dist/posts.json
           fi
 
       - name: Run tests (if present)
@@ -95,33 +101,61 @@ jobs:
       - name: Upload hashed assets with long cache
         run: |
           if [ -d dist/assets ]; then
-            aws s3 sync dist/assets s3://$YC_BUCKET/assets \
-              --endpoint-url https://storage.yandexcloud.net \
-              --delete \
-              --cache-control "public,max-age=31536000,immutable"
+            aws s3 sync dist/assets s3://$YC_BUCKET/assets               --endpoint-url https://storage.yandexcloud.net               --delete               --cache-control "public,max-age=31536000,immutable"               --only-show-errors --exact-timestamps
           else
             echo "No dist/assets directory; skipping."
           fi
 
-      # 2) HTML: no-store
+      # 2) HTML: no-store (без delete, чтобы не удалить XML/JSON вне include)
       - name: Upload HTML with no-store
         run: |
-          aws s3 sync dist s3://$YC_BUCKET \
-            --endpoint-url https://storage.yandexcloud.net \
-            --delete \
-            --exclude "assets/*" --exclude "blog/*" --exclude "posts/*" \
-            --include "*.html" \
-            --cache-control "no-store"
+          aws s3 sync dist s3://$YC_BUCKET             --endpoint-url https://storage.yandexcloud.net             --exclude "assets/*" --exclude "blog/*" --exclude "posts/*"             --include "*.html"             --cache-control "no-store"             --only-show-errors --exact-timestamps
 
-      # 3) Остальное: короткий кэш (исключаем posts.json и key.txt)
-      - name: Upload other files with short cache (exclude posts.json & key)
+      # 2a) Картинки блога из dist → длинный кэш
+      - name: Upload blog images from dist (long cache)
         run: |
-          aws s3 sync dist s3://$YC_BUCKET \
-            --endpoint-url https://storage.yandexcloud.net \
-            --delete \
-            --exclude "assets/*" --exclude "blog/*" --exclude "posts/*" --exclude "*.html" \
-            --exclude "posts.json" --exclude "${INDEXNOW_KEY}.txt" \
-            --cache-control "public,max-age=3600"
+          if [ -d dist/blog ]; then
+            aws s3 sync dist/blog s3://$YC_BUCKET/blog               --endpoint-url https://storage.yandexcloud.net               --exclude "*"               --include "*.avif" --include "*.webp" --include "*.jpg" --include "*.jpeg" --include "*.png"               --cache-control "public,max-age=31536000,immutable"               --only-show-errors --exact-timestamps
+          else
+            echo "skip: no dist/blog"
+          fi
+
+      # 2a.1) (опционально) Правильный Content-Type для AVIF/WEBP
+      - name: Fix Content-Type for AVIF/WEBP in blog (dist upload)
+        run: |
+          # AVIF
+          aws s3 cp s3://$YC_BUCKET/blog s3://$YC_BUCKET/blog             --endpoint-url https://storage.yandexcloud.net             --recursive --exclude "*" --include "*.avif"             --content-type "image/avif" --metadata-directive "REPLACE" --only-show-errors
+          # WEBP
+          aws s3 cp s3://$YC_BUCKET/blog s3://$YC_BUCKET/blog             --endpoint-url https://storage.yandexcloud.net             --recursive --exclude "*" --include "*.webp"             --content-type "image/webp" --metadata-directive "REPLACE" --only-show-errors
+
+      # 2b) XML/JSON в корне: явный аплоад, чтобы их не съел частичный sync
+      - name: Upload root XML & posts.json
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for f in dist/sitemap.xml dist/rss-dze.xml dist/posts.json; do
+            [ -f "$f" ] || continue
+            bn="$(basename "$f")"
+            cc="public,max-age=600"
+            if [ "$bn" = "sitemap.xml" ] || [ "$bn" = "posts.json" ]; then
+              cc="no-store"
+            fi
+            aws s3 cp "$f" "s3://$YC_BUCKET/$bn"               --endpoint-url https://storage.yandexcloud.net               --cache-control "$cc"               --only-show-errors
+          done
+
+      # 2c) CSS блога из dist: короткий кэш
+      - name: Upload blog CSS from dist (short cache)
+        run: |
+          if [ -f dist/blog/post-ssr.css ]; then
+            aws s3 cp dist/blog/post-ssr.css s3://$YC_BUCKET/blog/post-ssr.css               --endpoint-url https://storage.yandexcloud.net               --cache-control "public,max-age=3600"               --only-show-errors
+          else
+            echo "skip: no dist/blog CSS"
+          fi
+
+      # 3) Остальное: короткий кэш (исключаем key & sourcemaps)
+      - name: Upload other files with short cache (exclude key & maps)
+        run: |
+          aws s3 sync dist s3://$YC_BUCKET             --endpoint-url https://storage.yandexcloud.net             --delete             --exclude "assets/*" --exclude "blog/*" --exclude "posts/*" --exclude "*.html" --exclude "*.map"             --exclude "${INDEXNOW_KEY}.txt"             --cache-control "public,max-age=3600"             --only-show-errors --exact-timestamps
 
       # === Purge CDN для критичных путей через REST API ===
       - name: Get IAM token (for CDN purge)
@@ -138,29 +172,21 @@ jobs:
           IAM_TOKEN: ${{ steps.iam_token_app.outputs.token }}
         run: |
           set -e
-          echo 'Purging CDN: /, /index.html, /sitemap.xml, /robots.txt'
-          curl -fsS -X POST \
-            -H "Authorization: Bearer $IAM_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d '{"paths":["/","/index.html","/sitemap.xml","/robots.txt"]}' \
-            "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
+          echo 'Purging CDN: /, /index.html, /sitemap.xml, /rss-dze.xml, /posts.json, /robots.txt'
+          curl -fsS -X POST             -H "Authorization: Bearer $IAM_TOKEN"             -H "Content-Type: application/json"             -d '{"paths":["/","/index.html","/sitemap.xml","/rss-dze.xml","/posts.json","/robots.txt"]}'             "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
         continue-on-error: true
 
       - name: Notify Telegram (success)
         if: success() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
         run: |
           MSG="✅ Успешное развертывание приложения%0ARepo: ${{ github.repository }}%0ABranch: ${{ github.ref_name }}%0ACommit: ${{ github.sha }}%0AActor: ${{ github.actor }}%0ARun: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}";
-          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
-            --data-urlencode "text=$MSG"
+          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}"             --data-urlencode "text=$MSG"
 
       - name: Notify Telegram (failure)
         if: failure() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
         run: |
           MSG="❌ Ошибка при развертывании приложения%0ARepo: ${{ github.repository }}%0ABranch: ${{ github.ref_name }}%0ACommit: ${{ github.sha }}%0AActor: ${{ github.actor }}%0ARun: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}";
-          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
-            --data-urlencode "text=$MSG"
+          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}"             --data-urlencode "text=$MSG"
 
   content:
     name: Build & Sync Content
@@ -215,13 +241,7 @@ jobs:
       - name: Sync blog HTML with no-store
         run: |
           if [ -d public/blog ]; then
-            aws s3 sync public/blog s3://$YC_BUCKET/blog \
-              --endpoint-url https://storage.yandexcloud.net \
-              --delete \
-              --exclude "*" \
-              --include "*/index.html" \
-              --include "*.html" \
-              --cache-control "no-store"
+            aws s3 sync public/blog s3://$YC_BUCKET/blog               --endpoint-url https://storage.yandexcloud.net               --delete               --exclude "*"               --include "*/index.html"               --include "*.html"               --cache-control "no-store"               --only-show-errors --exact-timestamps
           else
             echo "skip: no public/blog"
           fi
@@ -230,9 +250,7 @@ jobs:
       - name: Upload blog CSS with short cache
         run: |
           if [ -f public/blog/post-ssr.css ]; then
-            aws s3 cp public/blog/post-ssr.css s3://$YC_BUCKET/blog/post-ssr.css \
-              --endpoint-url https://storage.yandexcloud.net \
-              --cache-control "public,max-age=3600"
+            aws s3 cp public/blog/post-ssr.css s3://$YC_BUCKET/blog/post-ssr.css               --endpoint-url https://storage.yandexcloud.net               --cache-control "public,max-age=3600"               --only-show-errors
           else
             echo "skip: no blog CSS"
           fi
@@ -241,11 +259,7 @@ jobs:
       - name: Sync blog images with long cache
         run: |
           if [ -d public/blog ]; then
-            aws s3 sync public/blog s3://$YC_BUCKET/blog \
-              --endpoint-url https://storage.yandexcloud.net \
-              --exclude "*" \
-              --include "*.avif" --include "*.webp" --include "*.jpg" --include "*.jpeg" --include "*.png" \
-              --cache-control "public,max-age=31536000,immutable"
+            aws s3 sync public/blog s3://$YC_BUCKET/blog               --endpoint-url https://storage.yandexcloud.net               --exclude "*"               --include "*.avif" --include "*.webp" --include "*.jpg" --include "*.jpeg" --include "*.png"               --cache-control "public,max-age=31536000,immutable"               --only-show-errors --exact-timestamps
           else
             echo "skip: no public/blog"
           fi
@@ -255,27 +269,17 @@ jobs:
         run: |
           set -e
           # AVIF
-          aws s3 cp s3://$YC_BUCKET/blog s3://$YC_BUCKET/blog \
-            --endpoint-url https://storage.yandexcloud.net \
-            --recursive --exclude "*" --include "*.avif" \
-            --content-type "image/avif" --metadata-directive "REPLACE"
+          aws s3 cp s3://$YC_BUCKET/blog s3://$YC_BUCKET/blog             --endpoint-url https://storage.yandexcloud.net             --recursive --exclude "*" --include "*.avif"             --content-type "image/avif" --metadata-directive "REPLACE" --only-show-errors
           # WEBP
-          aws s3 cp s3://$YC_BUCKET/blog s3://$YC_BUCKET/blog \
-            --endpoint-url https://storage.yandexcloud.net \
-            --recursive --exclude "*" --include "*.webp" \
-            --content-type "image/webp" --metadata-directive "REPLACE"
+          aws s3 cp s3://$YC_BUCKET/blog s3://$YC_BUCKET/blog             --endpoint-url https://storage.yandexcloud.net             --recursive --exclude "*" --include "*.webp"             --content-type "image/webp" --metadata-directive "REPLACE" --only-show-errors
 
       # 3) per-post JSON (кроме posts.json)
       - name: Sync per-post JSONs
         run: |
           if [ -d public/posts ]; then
-          aws s3 sync public/posts s3://$YC_BUCKET/posts \
-          --endpoint-url https://storage.yandexcloud.net \
-          --delete \
-          --exclude "posts.json" \
-          --cache-control "public,max-age=300"
+            aws s3 sync public/posts s3://$YC_BUCKET/posts               --endpoint-url https://storage.yandexcloud.net               --delete               --exclude "posts.json"               --cache-control "public,max-age=300"               --only-show-errors --exact-timestamps
           else
-          echo "skip: no public/posts"
+            echo "skip: no public/posts"
           fi
 
       # Узнаём, менялся ли posts.json
@@ -292,9 +296,7 @@ jobs:
       - name: Upload posts.json (changed)
         if: steps.changed.outputs.changed == 'true'
         run: |
-          aws s3 cp public/posts.json s3://$YC_BUCKET/posts.json \
-            --endpoint-url https://storage.yandexcloud.net \
-            --cache-control "no-store"
+          aws s3 cp public/posts.json s3://$YC_BUCKET/posts.json             --endpoint-url https://storage.yandexcloud.net             --cache-control "no-store"             --only-show-errors
 
       # 5) IndexNow: создаём ключ (если нет), пингуем API
       - name: IndexNow submit
@@ -306,9 +308,7 @@ jobs:
       - name: Upload IndexNow key file
         if: env.INDEXNOW_KEY != ''
         run: |
-          aws s3 cp public/${{ env.INDEXNOW_KEY }}.txt s3://$YC_BUCKET/${{ env.INDEXNOW_KEY }}.txt \
-            --endpoint-url https://storage.yandexcloud.net \
-            --cache-control "public,max-age=31536000,immutable" || true
+          aws s3 cp public/${{ env.INDEXNOW_KEY }}.txt s3://$YC_BUCKET/${{ env.INDEXNOW_KEY }}.txt             --endpoint-url https://storage.yandexcloud.net             --cache-control "public,max-age=31536000,immutable" --only-show-errors || true
 
       # 7) Purge CDN только для /posts.json через REST API
       - name: Get IAM token (for posts.json purge)
@@ -326,25 +326,17 @@ jobs:
         run: |
           set -e
           echo 'Purging CDN: /posts.json'
-          curl -fsS -X POST \
-            -H "Authorization: Bearer $IAM_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d '{"paths":["/posts.json"]}' \
-            "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
+          curl -fsS -X POST             -H "Authorization: Bearer $IAM_TOKEN"             -H "Content-Type: application/json"             -d '{"paths":["/posts.json"]}'             "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
         continue-on-error: true
 
       - name: Notify Telegram (success)
         if: success() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
         run: |
           MSG="✅ Успешная синхронизация контента%0ARepo: ${{ github.repository }}%0ABranch: ${{ github.ref_name }}%0ACommit: ${{ github.sha }}%0AActor: ${{ github.actor }}%0ARun: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}";
-          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
-            --data-urlencode "text=$MSG"
+          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}"             --data-urlencode "text=$MSG"
 
       - name: Notify Telegram (failure)
         if: failure() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
         run: |
           MSG="❌ Ошибка при синхронизации контента%0ARepo: ${{ github.repository }}%0ABranch: ${{ github.ref_name }}%0ACommit: ${{ github.sha }}%0AActor: ${{ github.actor }}%0ARun: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}";
-          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
-            --data-urlencode "text=$MSG"
+          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}"             --data-urlencode "text=$MSG"
