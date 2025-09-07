@@ -29,6 +29,7 @@ import { NavBar } from '@/components/NavBar';
 import SeoAuto from '@/components/SeoAuto';
 const ChiefDoctorSection = lazy(() => import('@/pages/ChiefDoctorSection'));
 import { docs } from '@/data/docs-slider';
+import chiefDocImage from '@/assets/chief-doc.png';
 
 export const Home = () => (
   <>
@@ -101,12 +102,12 @@ export const Home = () => (
         name={'Тян Виктория Николаевна'}
         about={''}
         photo={{
-          src: '../src/assets/chief-doc.png',
-          alt: undefined,
-          webp2x: undefined,
-          webp1x: undefined,
-          jpg2x: undefined,
-          jpg1x: undefined,
+          src: chiefDocImage,
+          alt: 'Доктор Тян Виктория Николаевна',
+          webp2x: chiefDocImage,
+          webp1x: chiefDocImage,
+          jpg2x: chiefDocImage,
+          jpg1x: chiefDocImage,
         }}
       />
       <Indications />
