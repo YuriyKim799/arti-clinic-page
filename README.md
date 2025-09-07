@@ -25,9 +25,7 @@ public/blog/<slug>/cover.jpg (и любые другие, если нужны).
 
 В терминале:
 
-npm run build:webp # сделает -768/-1024/-1440/-1920 и .webp
 npm run build:content # обновит posts.json, rss-dzen.xml, sitemap.xml и post.md
-npm run build # обычная сборка Vite
 
 Задеплой статику (см. ниже Yandex Object Storage).
 

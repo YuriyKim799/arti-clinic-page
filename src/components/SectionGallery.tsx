@@ -5,7 +5,7 @@ export default function SectionGallery() {
   return (
     <section className="section">
       <div className="container">
-        <h2 className="section-title">Фото нашего центра</h2>
+        <h2 className="section-title">Фото нашего медицинского центра</h2>
         <PremiumCarouselFade
           slides={clinicSlides}
           autoPlay

@@ -47,12 +47,17 @@
 .slide {
   position: absolute;
   inset: 0;
+  pointer-events: none;
   opacity: 0;
   transform: scale(1.02);
   transition: opacity 560ms ease, transform 560ms ease;
   display: grid;
   place-items: center;
   padding: clamp(10px, 2.2vw, 14px);
+}
+
+.slide.active {
+  pointer-events: auto; // кликается только текущая
 }
 
 .active {

@@ -122,7 +122,9 @@ export default function DocSliderFade({
           <figure
             key={i}
             className={clsx(styles.slide, i === idx && styles.active)}
-            onClick={() => !moved.current && setOpened(i)}
+            onClick={() => {
+              if (!moved.current) setOpened(idx);
+            }}
           >
             {it.tab && <span className={styles.tab}>{it.tab}</span>}
             {it.stampText && (
