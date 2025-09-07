@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import clsx from 'clsx';
-import styles from './DocSliderFade.module.scss';
+import styles from '@/components/DocSliderFade/DocSliderFade.module.scss';
 
 export type DocItem = {
   src: string;
