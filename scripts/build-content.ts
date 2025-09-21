@@ -560,4 +560,4 @@ main().catch((e) => {
   process.exit(1);
 });
 
-// console.log('!!');
+console.log('start build-content');
