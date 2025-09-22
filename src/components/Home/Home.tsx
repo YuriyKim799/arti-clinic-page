@@ -71,7 +71,7 @@ export const Home = () => (
             'Кинезиотейпирование',
             'Неврология',
           ],
-          openingHours: 'Mo-Su 09:00-20:00',
+          openingHours: ['Mo-Su 09:00-20:00'],
           sameAs: [
             'https://t.me/Artiklinic',
             'https://yandex.ru/maps/org/19149709238',
