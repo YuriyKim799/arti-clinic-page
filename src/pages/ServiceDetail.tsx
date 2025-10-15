@@ -59,7 +59,7 @@ export const ServiceDetail: React.FC = () => {
     '@type': 'Service',
     name: service.title,
     description,
-    provider: { '@type': 'MedicalClinic', name: 'Arti Clinic' },
+    provider: { '@type': 'MedicalClinic', name: 'Арти Клиник' },
     areaServed: 'Москва',
     url,
   };
@@ -107,7 +107,7 @@ export const ServiceDetail: React.FC = () => {
 
           <section className={styles.sectionBlock}>
             <h2>Описание</h2>
-            <p>{service.full}</p>
+            <p style={{ whiteSpace: 'pre-line' }}>{service.full}</p>
           </section>
 
           {service.benefits && service.benefits.length > 0 && (

@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 
 export const Services: React.FC = () => {
   const { ref, isIntersecting } = useInView<HTMLDivElement>();
+  const list = [...servicesData].sort(
+    (a, b) => (b.priority ?? 0) - (a.priority ?? 0)
+  );
 
   return (
     <section id="services" className={`section ${styles.section}`}>
@@ -15,7 +18,7 @@ export const Services: React.FC = () => {
       >
         <h2 className="section-title">Услуги</h2>
         <div className={styles.grid}>
-          {servicesData.map((s) => (
+          {list.map((s) => (
             <article key={s.slug} className={styles.card}>
               <div className={styles.imageWrap}>
                 <img src={s.img} alt={s.title} loading="lazy" />
