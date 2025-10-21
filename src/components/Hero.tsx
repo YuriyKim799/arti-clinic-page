@@ -112,7 +112,7 @@ export const Hero: React.FC = () => {
           <div className={styles.content}>
             <h1 className={styles.title}>
               ЛЕЧИМ БОЛИ
-              <br /> В СПИНЕ И МЕЖПОЗВОНКОВЫЕ ГРЫЖИ <br />
+              В СПИНЕ И<br /> МЕЖПОЗВОНКОВЫЕ <br /> ГРЫЖИ <br />
               БЕЗ ОПЕРАЦИИ В МОСКВЕ
             </h1>
             <p className={styles.subtitle}>

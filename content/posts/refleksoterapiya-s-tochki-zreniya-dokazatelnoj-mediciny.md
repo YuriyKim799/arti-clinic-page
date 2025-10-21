@@ -10,7 +10,7 @@ description: >-
 source: 'https://dzen.ru/a/Z5TIU-Sk1B-w3Ivz'
 draft: false
 tags:
-  - arti-clinic
+  - articlinic
   - dzen
 ---
 

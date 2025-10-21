@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Sitemap: https://articlinic.ru/sitemap.xml
+Host: articlinic.ru
+
+# Системные директории
+Disallow: /admin/
+Disallow: /api/
+
+# Очистка трекинговых параметров (чтобы избежать дублей)
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content /
+Clean-param: yclid&gclid&fbclid /
+Clean-param: from&ref&referrer /
+Clean-param: ybaip&etext&erid&yabizcmpgn&utm_candidate&utm_referer&utm_ya_campaign /

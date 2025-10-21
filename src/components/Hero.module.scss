@@ -27,11 +27,9 @@
 
 .wrap {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 1fr;
   gap: clamp(30px, 3vw, 50px);
-  align-items: start; /* чтобы начиналось сверху */
-  // padding-top: 25px; /* смещение вниз */
-  padding-top: 0;
+  align-items: center; /* чтобы начиналось сверху */
 }
 
 .content {
@@ -43,12 +41,12 @@
   @include h1;
   /* базово: от 28 до 60, плавно с шириной экрана */
   font-size: clamp(28px, 4.5vw, 60px);
-  line-height: 1.12;
+  line-height: 1.15;
   /* переносы и балансировка строк */
-  text-wrap: balance; /* красиво распределяет строки */
-  overflow-wrap: anywhere; /* если слово длинное — можно переносить где угодно */
-  word-break: normal;
-  hyphens: auto; /* переносы по слогам, если браузер поддерживает */
+  // text-wrap: balance; /* красиво распределяет строки */
+  // overflow-wrap: anywhere; /* если слово длинное — можно переносить где угодно */
+  // word-break: normal;
+  // hyphens: auto; /* переносы по слогам, если браузер поддерживает */
 }
 
 .subtitle {
