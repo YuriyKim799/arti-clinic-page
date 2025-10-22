@@ -8,12 +8,10 @@ import AgreementPage from '@/pages/AgreementPage/AgreementPage';
 import PoliticPage from '@/pages/PoliticPage/PoliticPage';
 import { Home } from '@/components/Home/Home';
 import NotFound from '@/pages/NotFound';
-import ArtiWordLoader from '@/components/ArtiWordLoader/ArtiWordLoader';
 import PriceListPage from '@/pages/PriceListPage/PriceListPage';
 const BlogIndex = React.lazy(() => import('@/pages/BlogIndex'));
 const BlogPost = React.lazy(() => import('@/pages/BlogPost'));
 import { startBoot } from '@/lib/boot';
-import BlogSection from './components/BlogSection';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -21,7 +19,6 @@ const App: React.FC = () => {
   }, []);
   return (
     <>
-      <ArtiWordLoader />
 
       <div className={styles.app}>
         <ScrollToTop />
