@@ -30,6 +30,7 @@ import SeoAuto from '@/components/SeoAuto';
 const ChiefDoctorSection = lazy(() => import('@/pages/ChiefDoctorSection'));
 import { docs } from '@/data/docs-slider';
 import chiefDocImage from '@/assets/chief-doc.png';
+import { chiefDoctorMoreInfo } from '@/data/chiefDoctorMoreInfo';
 
 export const Home = () => (
   <>
@@ -101,6 +102,10 @@ export const Home = () => (
         docs={docs}
         name={'Тян Виктория Николаевна'}
         about={''}
+        moreInfoTitle={'О главном и ведущем враче Арти Клиник'}
+        moreInfo={
+          chiefDoctorMoreInfo
+        }
         photo={{
           src: chiefDocImage,
           alt: 'Доктор Тян Виктория Николаевна',

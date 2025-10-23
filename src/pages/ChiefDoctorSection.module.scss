@@ -298,3 +298,114 @@
     transition: none !important;
   }
 }
+
+.facts {
+  display: grid;
+  gap: 10px;
+}
+
+.factItem {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  column-gap: 12px;
+}
+
+.factValue {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.factLabel {
+  color: var(--text-muted, #6b7280);
+}
+
+.factHint {
+  font-style: normal;
+  color: var(--text-hint, #9ca3af);
+}
+
+/* новый пункт */
+.moreInfoItem {
+  grid-template-columns: 1fr;
+}
+
+.moreInfoLink {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: var(--brand, #0ea5e9);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+  &:focus-visible {
+    outline: 2px solid var(--brand, #0ea5e9);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+/* Модалка */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 18, 22, 0.55);
+  backdrop-filter: blur(4px);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  position: relative;
+  width: min(680px, 92vw);
+  max-height: 86vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  padding: 24px 24px 20px;
+}
+
+.modalTitle {
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 700;
+  margin: 0 0 12px;
+  outline: none; /* фокус ставится сюда */
+}
+
+.modalContent {
+  color: var(--text, #111827);
+  font-size: 16px;
+  line-height: 1.6;
+  p + p {
+    margin-top: 0.8em;
+  }
+}
+
+.modalClose {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: #6b7280;
+
+  &:hover {
+    color: #111827;
+  }
+  &:focus-visible {
+    outline: 2px solid var(--brand, #0ea5e9);
+    border-radius: 8px;
+  }
+}

@@ -10,6 +10,7 @@ import kinezio from '../assets/kinezio.jpg';
 import programGryzha from '@/assets/programGryzha.png';
 import programMfs from '@/assets/programMfs.webp';
 import programPain from '@/assets/programPain.webp';
+import { title } from 'process';
 
 export type ServiceItem = {
   slug: string;
