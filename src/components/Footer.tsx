@@ -22,10 +22,14 @@ export const Footer: React.FC = () => {
             <span className="muted">
               Центр вертеброневрологии, рефлексотерапии и мануальной терапии
             </span>
+            <Link to="/politic" className={styles.copy}>
+              Политика обработки персональных данных
+            </Link>
             <span className="muted">+7 (499) 148-17-24</span>
             <span className="muted">+7 (999) 831-06-36</span>
           </div>
         </div>
+
         <div className={styles.copy}>© {year} Арти Клиник</div>
       </div>
     </footer>

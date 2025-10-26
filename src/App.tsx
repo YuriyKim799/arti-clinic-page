@@ -12,6 +12,7 @@ import PriceListPage from '@/pages/PriceListPage/PriceListPage';
 const BlogIndex = React.lazy(() => import('@/pages/BlogIndex'));
 const BlogPost = React.lazy(() => import('@/pages/BlogPost'));
 import { startBoot } from '@/lib/boot';
+import CookieConsentModal from '@/components/CookieConsent/CookieConsentModal';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -19,7 +20,6 @@ const App: React.FC = () => {
   }, []);
   return (
     <>
-
       <div className={styles.app}>
         <ScrollToTop />
         <Routes>
@@ -33,6 +33,7 @@ const App: React.FC = () => {
           <Route path="/politic" element={<PoliticPage />} />
           <Route path="/price-list" element={<PriceListPage />} />
         </Routes>
+        <CookieConsentModal />
       </div>
     </>
   );
