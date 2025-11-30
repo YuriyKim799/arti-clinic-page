@@ -101,7 +101,7 @@ export default function PriceListPage() {
               <header className={styles.cardHead}>
                 <h2 className={styles.cardTitle}>Стоимость услуг</h2>
                 <p className={styles.cardNote}>
-                  Обновлено: <time>26.10.2025</time>
+                  Обновлено: <time>01.12.2025</time>
                 </p>
               </header>
 
