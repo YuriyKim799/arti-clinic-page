@@ -110,6 +110,13 @@ export const ServiceDetail: React.FC = () => {
             <p style={{ whiteSpace: 'pre-line' }}>{service.full}</p>
           </section>
 
+          {service.results && service.results.length > 0 && (
+            <section className={styles.sectionBlock}>
+              <h2>Какие результаты обычно отмечают пациенты</h2>
+              <p style={{ whiteSpace: 'pre-line' }}>{service.results}</p>
+            </section>
+          )}
+
           {service.benefits && service.benefits.length > 0 && (
             <section className={styles.sectionBlock}>
               <h2>Преимущества</h2>

@@ -37,6 +37,9 @@
 .list {
   margin: 0;
   padding-left: 18px;
+  li {
+    white-space: pre-line;
+  }
 }
 .faq {
   display: grid;
@@ -46,6 +49,10 @@
   @include card;
   padding: 14px;
   background: $bg-contrast;
+  cursor: pointer;
+  p {
+    white-space: pre-line;
+  }
 }
 .ctaRow {
   display: flex;
