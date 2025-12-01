@@ -11,6 +11,29 @@ import RecordButton from '@/components/RecordButton/RecordButton';
 
 type Params = { slug?: string };
 
+function renderBold(line: string) {
+  const parts = line.split('**'); // "до **жирный** после"
+  return parts.map((part, i) =>
+    i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+  );
+}
+
+function formatText(text: string) {
+  // делим по абзацам
+  const paragraphs = text.split('\n\n');
+
+  return paragraphs.map((p, pIndex) => (
+    <p key={pIndex}>
+      {p.split('\n').map((line, lIndex, arr) => (
+        <React.Fragment key={lIndex}>
+          {renderBold(line)}
+          {lIndex < arr.length - 1 && <br />}
+        </React.Fragment>
+      ))}
+    </p>
+  ));
+}
+
 export const ServiceDetail: React.FC = () => {
   const { slug } = useParams<Params>();
   const service = servicesData.find((s) => s.slug === slug);
@@ -113,7 +136,10 @@ export const ServiceDetail: React.FC = () => {
           {service.results && service.results.length > 0 && (
             <section className={styles.sectionBlock}>
               <h2>Какие результаты обычно отмечают пациенты</h2>
-              <p style={{ whiteSpace: 'pre-line' }}>{service.results}</p>
+              <p style={{ whiteSpace: 'pre-line' }}>
+                {' '}
+                {formatText(service.results)}
+              </p>
             </section>
           )}
 
