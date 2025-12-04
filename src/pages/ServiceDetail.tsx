@@ -130,7 +130,10 @@ export const ServiceDetail: React.FC = () => {
 
           <section className={styles.sectionBlock}>
             <h2>Описание</h2>
-            <p style={{ whiteSpace: 'pre-line' }}>{service.full}</p>
+            <p style={{ whiteSpace: 'pre-line' }}>
+              {/* {service.full} */}
+              {formatText(service.full)}
+            </p>
           </section>
 
           {service.results && service.results.length > 0 && (
@@ -145,10 +148,10 @@ export const ServiceDetail: React.FC = () => {
 
           {service.benefits && service.benefits.length > 0 && (
             <section className={styles.sectionBlock}>
-              <h2>Преимущества</h2>
+              <h2>Преимущества услуги в «Арти Клиник»</h2>
               <ul className={styles.list}>
                 {service.benefits.map((b: string, i: number) => (
-                  <li key={i}>{b}</li>
+                  <li key={i}>{formatText(b)}</li>
                 ))}
               </ul>
             </section>
@@ -159,7 +162,7 @@ export const ServiceDetail: React.FC = () => {
               <h2>Показания</h2>
               <ul className={styles.list}>
                 {service.indications.map((b: string, i: number) => (
-                  <li key={i}>{b}</li>
+                  <li key={i}>{formatText(b)}</li>
                 ))}
               </ul>
             </section>
@@ -171,7 +174,7 @@ export const ServiceDetail: React.FC = () => {
                 <h2>Противопоказания</h2>
                 <ul className={styles.list}>
                   {service.contraindications.map((b: string, i: number) => (
-                    <li key={i}>{b}</li>
+                    <li key={i}>{formatText(b)}</li>
                   ))}
                 </ul>
               </section>
@@ -184,7 +187,7 @@ export const ServiceDetail: React.FC = () => {
                 {service.faq.map((f: { q: string; a: string }, i: number) => (
                   <details key={i} className={styles.q}>
                     <summary>{f.q}</summary>
-                    <p>{f.a}</p>
+                    <p>{formatText(f.a)}</p>
                   </details>
                 ))}
               </div>

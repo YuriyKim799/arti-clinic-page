@@ -35,20 +35,19 @@
   background: $bg-contrast;
 }
 .list {
-  display: flex;
-  flex-direction: column;
   margin: 0;
-  gap: 15px;
   padding-left: 18px;
   li {
     list-style-type: none;
     white-space: pre-line;
   }
 }
+
 .faq {
   display: grid;
   gap: 8px;
 }
+
 .q {
   @include card;
   padding: 14px;
