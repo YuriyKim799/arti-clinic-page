@@ -74,6 +74,9 @@ export const NavBar: React.FC = () => {
           <HashLink smooth to="/#services" onClick={close} ref={firstLinkRef}>
             Услуги
           </HashLink>
+          <HashLink smooth to="/#specialists" onClick={close}>
+            Специалисты
+          </HashLink>
           <HashLink smooth to="/#reviews" onClick={close}>
             Отзывы
           </HashLink>
