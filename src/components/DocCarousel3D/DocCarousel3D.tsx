@@ -4,8 +4,8 @@ import styles from './DocCarousel3D.module.scss';
 
 export type DocItem = {
   src: string;
-  srcSet?: string; // для ретины/2x
-  sizes?: string; // <source sizes>
+  srcSet?: string;
+  sizes?: string;
   alt?: string;
   href?: string;
   label?: string;
@@ -15,7 +15,7 @@ export type DocItem = {
 
 type Props = {
   items: DocItem[];
-  radius?: number; // можно оставить как есть: авто-радиус посчитает минимум
+  radius?: number;
   panelWidth?: number;
   panelHeight?: number;
   thickness?: number;
@@ -23,319 +23,282 @@ type Props = {
   className?: string;
 };
 
-const clampIndex = (i: number, n: number) => ((i % n) + n) % n;
-const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-const calcMinRadius = (w: number, n: number, gap = 28) =>
-  n < 3 ? w * 1.2 : w / 2 / Math.tan(Math.PI / n) + gap;
-
-function useBreakpoint() {
-  const getW = () => (typeof window === 'undefined' ? 1200 : window.innerWidth);
-  const [w, setW] = useState<number>(getW());
-  useEffect(() => {
-    const onR = () => setW(getW());
-    window.addEventListener('resize', onR, { passive: true });
-    return () => window.removeEventListener('resize', onR);
-  }, []);
-  if (w < 480) return 'xs';
-  if (w < 768) return 'sm';
-  if (w < 1024) return 'md';
-  return 'lg';
-}
+const clampIndex = (index: number, length: number) =>
+  ((index % length) + length) % length;
 
 export default function DocCarousel3D({
   items,
-  radius = 360,
-  panelWidth = 400,
-  panelHeight = 320,
-  thickness = 111,
-  initialIndex = 1,
+  panelWidth = 520,
+  panelHeight = 440,
+  initialIndex = 0,
   className,
 }: Props) {
-  const bp = useBreakpoint();
-  const scale = bp === 'xs' ? 0.66 : bp === 'sm' ? 0.78 : bp === 'md' ? 0.9 : 1;
-
-  const PW = Math.round(panelWidth * scale);
-  const PH = Math.round(panelHeight * scale);
-  const n = items.length;
-  const step = 360 / n;
-  // авто-радиус, чтобы панели не перекрывались
-  const R = useMemo(
-    () => Math.max(radius, calcMinRadius(panelWidth, n)),
-    [radius, panelWidth, n]
+  const count = items.length;
+  const [active, setActive] = useState(() =>
+    count > 0 ? clampIndex(initialIndex, count) : 0
   );
-
-  const ringRef = useRef<HTMLDivElement>(null);
-
-  const [active, setActive] = useState(clampIndex(initialIndex, n));
   const [opened, setOpened] = useState<number | null>(null);
-  const [isHoverAny, setIsHoverAny] = useState(false);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const lastX = useRef(0);
+  const didSwipe = useRef(false);
+
+  const activeItem = items[active];
+  const openedItem = opened !== null ? items[opened] : null;
+
+  useEffect(() => {
+    if (count === 0) {
+      setActive(0);
+      setOpened(null);
+      return;
+    }
+
+    setActive((current) => clampIndex(current, count));
+    setOpened((current) => (current !== null && current >= count ? null : current));
+  }, [count]);
 
   useEffect(() => {
     if (opened === null) return;
-    const onEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpened(null);
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpened(null);
     };
-    window.addEventListener('keydown', onEsc);
-    return () => window.removeEventListener('keydown', onEsc);
+
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
   }, [opened]);
 
-  // угол кольца (градусы)
-  const angleRef = useRef<number>(-active * step);
-  const targetRef = useRef<number>(-active * step);
-  const rafRef = useRef<number | null>(null);
+  const canSlide = count > 1;
 
-  // drag state
-  const draggingRef = useRef(false);
-  const dragStartX = useRef(0);
-  const dragStartTarget = useRef(0);
-  const dragMoved = useRef(false);
+  const goTo = (index: number) => {
+    if (count === 0) return;
+    setActive(clampIndex(index, count));
+  };
 
-  // медленнее и плавнее
-  const sensitivity = 0.1; // deg/px
-  const snapEase = 0.1; // плавность подлёта
-  const WHEEL_STEP = 0.15; // доля шага при прокрутке
+  const go = (direction: 1 | -1) => {
+    if (!canSlide) return;
+    setActive((current) => clampIndex(current + direction, count));
+  };
 
-  const applyAngle = (deg: number) => {
-    if (ringRef.current) {
-      ringRef.current.style.transform = `translateZ(-${R}px) rotateY(${deg}deg)`;
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!canSlide) return;
+    isDragging.current = true;
+    startX.current = event.clientX;
+    lastX.current = event.clientX;
+    didSwipe.current = false;
+  };
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!canSlide || !isDragging.current) return;
+    lastX.current = event.clientX;
+    if (Math.abs(lastX.current - startX.current) > 8) {
+      didSwipe.current = true;
     }
   };
 
-  useEffect(() => {
-    const loop = () => {
-      const a = angleRef.current;
-      const t = targetRef.current;
-      const next = Math.abs(t - a) < 0.01 ? t : lerp(a, t, snapEase);
-      angleRef.current = next;
-      applyAngle(next);
-      rafRef.current = requestAnimationFrame(loop);
-    };
-    rafRef.current = requestAnimationFrame(loop);
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, [R, snapEase]);
+  const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!canSlide || !isDragging.current) return;
+    isDragging.current = false;
+    const delta = lastX.current - startX.current;
 
-  useEffect(() => {
-    targetRef.current = -active * step;
-  }, [active, step]);
-
-  const snapToNearest = () => {
-    const raw = -targetRef.current / step;
-    const idx = clampIndex(Math.round(raw), n);
-    setActive(idx);
-    targetRef.current = -idx * step;
+    if (Math.abs(delta) < 44) return;
+    go(delta < 0 ? 1 : -1);
   };
 
-  const snapTimer = useRef<number | null>(null);
-  const scheduleSnap = (ms = 160) => {
-    if (snapTimer.current) window.clearTimeout(snapTimer.current);
-    snapTimer.current = window.setTimeout(() => {
-      snapToNearest();
-      snapTimer.current = null;
-    }, ms);
+  const handlePointerCancel = () => {
+    isDragging.current = false;
   };
 
-  // Колесо: медленнее и предсказуемо
-  const onWheel = (e: React.WheelEvent) => {
-    if (opened !== null) return;
-    e.preventDefault();
-    const dir = Math.sign(e.deltaY) || 1;
-    targetRef.current += dir * step * WHEEL_STEP;
-    scheduleSnap(120);
+  const openActive = () => {
+    if (!activeItem || didSwipe.current) return;
+    setOpened(active);
   };
 
-  const onPointerDown = (e: React.PointerEvent) => {
-    if (opened !== null) return;
+  const previewLabel = useMemo(() => {
+    if (!activeItem) return 'Документы';
+    return activeItem.label || activeItem.alt || `Документ ${active + 1}`;
+  }, [activeItem, active]);
 
-    draggingRef.current = true;
-    dragMoved.current = false;
-    dragStartX.current = e.clientX;
-    dragStartTarget.current = targetRef.current;
-
-    // window-level move/up — не ломают "click" по панели
-    const move = (ev: PointerEvent) => {
-      if (!draggingRef.current) return;
-      const dx = ev.clientX - dragStartX.current; // влево — dx < 0
-      if (Math.abs(dx) > 4) dragMoved.current = true;
-      targetRef.current = dragStartTarget.current + dx * sensitivity; // контент следует за пальцем
-    };
-
-    const up = () => {
-      if (!draggingRef.current) return;
-      draggingRef.current = false;
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
-      scheduleSnap();
-    };
-
-    window.addEventListener('pointermove', move);
-    window.addEventListener('pointerup', up);
-  };
-
-  const go = (dir: 1 | -1) => {
-    if (opened !== null) return;
-    setActive((i) => clampIndex(i + dir, n));
-  };
-
-  const onPanelClick = (idx: number) => {
-    if (opened !== null) return;
-    if (dragMoved.current) return;
-    setOpened(idx);
-  };
-  const closeOpened = () => setOpened(null);
-
-  const palette = useMemo(
-    () => ({
-      paper: '#fcfcfb',
-      frame: '#3a3f46',
-      tab: '#e7e7ea',
-      stamp: '#e04848',
-    }),
-    []
-  );
+  if (count === 0) {
+    return (
+      <div className={clsx(styles.wrapper, styles.empty, className)}>
+        <div className={styles.emptyState}>Документы пока не добавлены</div>
+      </div>
+    );
+  }
 
   return (
     <div
       className={clsx(styles.wrapper, className)}
       style={
         {
-          '--w': `${panelWidth}px`,
-          '--h': `${panelHeight}px`,
-          '--t': `${thickness}px`,
-          '--r': `${R}px`,
-          '--paper': palette.paper,
-          '--frame': palette.frame,
-          '--tab': palette.tab,
-          '--stamp': palette.stamp,
+          '--panel-w': `${panelWidth}px`,
+          '--panel-h': `${panelHeight}px`,
         } as React.CSSProperties
       }
-      onWheel={onWheel}
-      onPointerDown={onPointerDown}
-      tabIndex={0}
       role="region"
-      aria-label="Документы врача — 3D карусель"
-      onKeyDown={(e) => {
-        if (e.key === 'ArrowLeft') go(-1);
-        if (e.key === 'ArrowRight') go(1);
-        if (e.key === 'Escape') closeOpened();
-        if (e.key === 'Enter') setOpened(active);
+      aria-label="Документы врача"
+      tabIndex={0}
+      onKeyDown={(event) => {
+        if (event.key === 'ArrowLeft') go(-1);
+        if (event.key === 'ArrowRight') go(1);
+        if (event.key === 'Enter') openActive();
+        if (event.key === 'Escape') setOpened(null);
       }}
     >
-      <div className={styles.baseShadow} />
-      <button
-        className={clsx(styles.nav, styles.left)}
-        aria-label="Назад"
-        onClick={() => go(-1)}
-        type="button"
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M15 6l-6 6 6 6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
-      <button
-        className={clsx(styles.nav, styles.right)}
-        aria-label="Вперёд"
-        onClick={() => go(1)}
-        type="button"
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M9 6l6 6-6 6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
-
-      <div className={styles.scene}>
-        <div
-          className={styles.ring}
-          ref={ringRef}
-          onMouseEnter={() => setIsHoverAny(true)}
-          onMouseLeave={() => setIsHoverAny(false)}
-        >
-          {items.map((it, i) => {
-            const phi = i * step;
-            const isFront = i === active;
-            const isOpen = opened === i;
-            return (
-              <div
-                className={styles.pivot}
-                key={i}
-                style={{
-                  transform: `translate(-50%, -50%) rotateY(${phi}deg) translateZ(var(--r))`,
-                }}
-              >
-                <button
-                  type="button"
-                  className={clsx(
-                    styles.panel,
-                    isFront && styles.front,
-                    isOpen && styles.open,
-                    isHoverAny && styles.hasHover
-                  )}
-                  onClick={() => onPanelClick(i)}
-                  aria-label={it.alt || it.label || `Документ ${i + 1}`}
-                >
-                  <span className={styles.edge} />
-                  {it.tab && <span className={styles.tab}>{it.tab}</span>}
-                  {it.stampText && (
-                    <span className={styles.stamp}>{it.stampText}</span>
-                  )}
-                  <img
-                    src={it.src}
-                    srcSet={it.srcSet}
-                    sizes={
-                      it.sizes || `(min-width: 640px) ${panelWidth}px, 88vw`
-                    }
-                    alt={it.alt || ''}
-                    className={styles.paper}
-                    draggable={false}
-                  />
-                  {it.label && (
-                    <span className={styles.caption}>{it.label}</span>
-                  )}
-                </button>
-              </div>
-            );
-          })}
+      <div className={styles.header}>
+        <div className={styles.heading}>
+          <span>Документы</span>
+          <strong>{previewLabel}</strong>
+        </div>
+        <div className={styles.counter} aria-label={`Документ ${active + 1} из ${count}`}>
+          {String(active + 1).padStart(2, '0')}
+          <span>/</span>
+          {String(count).padStart(2, '0')}
         </div>
       </div>
 
-      {opened !== null && (
+      <div
+        className={styles.viewport}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerCancel}
+      >
+        <div
+          className={styles.track}
+          style={{ transform: `translate3d(${-active * 100}%, 0, 0)` }}
+        >
+          {items.map((item, index) => (
+            <div className={styles.slide} key={`${item.src}-${index}`}>
+              <button
+                type="button"
+                className={styles.card}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  if (didSwipe.current) return;
+                  setOpened(index);
+                }}
+                aria-label={item.alt || item.label || `Открыть документ ${index + 1}`}
+                tabIndex={index === active ? 0 : -1}
+              >
+                <span className={styles.cardGlow} aria-hidden="true" />
+                <span className={styles.frame} aria-hidden="true" />
+
+                <span className={styles.imageShell}>
+                  <img
+                    src={item.src}
+                    srcSet={item.srcSet}
+                    sizes={item.sizes || `(min-width: 760px) ${panelWidth}px, 86vw`}
+                    alt={item.alt || ''}
+                    className={styles.image}
+                    draggable={false}
+                  />
+                </span>
+
+                {(item.tab || item.stampText) && (
+                  <span className={styles.badges}>
+                    {item.tab && <span className={styles.tab}>{item.tab}</span>}
+                    {item.stampText && (
+                      <span className={styles.stamp}>{item.stampText}</span>
+                    )}
+                  </span>
+                )}
+
+                <span className={styles.caption}>
+                  <span>{item.label || `Документ ${index + 1}`}</span>
+                  <small>Нажмите, чтобы открыть</small>
+                </span>
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {canSlide && (
+          <>
+            <button
+              type="button"
+              className={clsx(styles.nav, styles.prev)}
+              onClick={() => go(-1)}
+              onPointerDown={(event) => event.stopPropagation()}
+              onPointerMove={(event) => event.stopPropagation()}
+              onPointerUp={(event) => event.stopPropagation()}
+              aria-label="Предыдущий документ"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M15 6l-6 6 6 6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              className={clsx(styles.nav, styles.next)}
+              onClick={() => go(1)}
+              onPointerDown={(event) => event.stopPropagation()}
+              onPointerMove={(event) => event.stopPropagation()}
+              onPointerUp={(event) => event.stopPropagation()}
+              aria-label="Следующий документ"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M9 6l6 6-6 6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+              </svg>
+            </button>
+          </>
+        )}
+      </div>
+
+      {canSlide && (
+        <div className={styles.dots} role="tablist" aria-label="Выбор документа">
+          {items.map((item, index) => (
+            <button
+              key={`${item.src}-dot-${index}`}
+              type="button"
+              className={clsx(styles.dot, index === active && styles.dotActive)}
+              onClick={() => goTo(index)}
+              aria-label={item.label || `Документ ${index + 1}`}
+              aria-selected={index === active}
+              role="tab"
+            />
+          ))}
+        </div>
+      )}
+
+      {openedItem && (
         <div className={styles.modal} role="dialog" aria-modal="true">
-          <div className={styles.lightbox} onClick={closeOpened}>
+          <div className={styles.lightbox} onClick={() => setOpened(null)}>
             <div
               className={styles.lightboxInner}
-              onClick={(e) => e.stopPropagation()}
+              onClick={(event) => event.stopPropagation()}
             >
               <img
-                src={items[opened].src}
-                srcSet={items[opened].srcSet}
-                sizes={items[opened].sizes}
-                alt={items[opened].alt || ''}
+                src={openedItem.src}
+                srcSet={openedItem.srcSet}
+                sizes={openedItem.sizes}
+                alt={openedItem.alt || ''}
                 className={styles.preview}
               />
               <div className={styles.meta}>
                 <div className={styles.metaTitle}>
-                  {items[opened].label || 'Документ'}
+                  {openedItem.label || 'Документ'}
                 </div>
-                <div className={styles.metaRow}>
-                  {items[opened].tab && <span>{items[opened].tab}</span>}
-                  {items[opened].href && (
+                <div className={styles.metaActions}>
+                  {openedItem.href && (
                     <a
-                      href={items[opened].href}
+                      href={openedItem.href}
                       target="_blank"
                       rel="noreferrer noopener"
                       className={styles.link}
@@ -347,11 +310,11 @@ export default function DocCarousel3D({
               </div>
               <button
                 className={styles.close}
-                onClick={closeOpened}
+                onClick={() => setOpened(null)}
                 aria-label="Закрыть"
                 type="button"
               >
-                x
+                ×
               </button>
             </div>
           </div>
