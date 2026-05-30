@@ -1,7 +1,7 @@
 import type { Doctor } from '@/pages/ChiefDoctorSection';
 import { kimDocs, tyanDocs } from '@/data/docs-slider';
 import chiefDocImage from '@/assets/chief-doc.png';
-import kimAAphoto from '@/assets/KimAAnevr.png';
+import kimAAphoto from '@/assets/kimAAnevr.png';
 import { chiefDoctorMoreInfo } from '@/data/chiefDoctorMoreInfo';
 
 export const doctors: Doctor[] = [
