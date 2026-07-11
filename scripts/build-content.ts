@@ -25,6 +25,7 @@ const PUBLIC_DIR = path.join(ROOT, 'public');
 const BLOG_DIR = path.join(PUBLIC_DIR, 'blog');
 const POSTS_DIR = path.join(PUBLIC_DIR, 'posts');
 const POSTS_JSON = path.join(PUBLIC_DIR, 'posts.json');
+const SITEMAP_XML = path.join(PUBLIC_DIR, 'sitemap.xml');
 
 const CACHE_DIR = path.join(ROOT, '.cache');
 const MANIFEST = path.join(CACHE_DIR, 'content-manifest.json');
@@ -161,17 +162,19 @@ async function ensureVariants(
   const nameNoExt = baseName.replace(/\.[^.]+$/, '');
   const probe = sharp(absSrc);
   const meta = await probe.metadata();
-  for (const w of widths) {
-    const targetW = meta.width ? Math.min(meta.width, w) : w;
+  const targetWidths = [
+    ...new Set(widths.map((w) => (meta.width ? Math.min(meta.width, w) : w))),
+  ];
+  for (const targetW of targetWidths) {
     const avifOut = path.join(outDir, `${nameNoExt}-${targetW}.avif`);
     const webpOut = path.join(outDir, `${nameNoExt}-${targetW}.webp`);
-    if (!fs.existsSync(avifOut)) {
+    if (!fs.existsSync(avifOut) || fs.statSync(avifOut).size === 0) {
       await sharp(absSrc)
         .resize({ width: targetW, withoutEnlargement: true })
         .avif({ quality: AVIF_Q })
         .toFile(avifOut);
     }
-    if (!fs.existsSync(webpOut)) {
+    if (!fs.existsSync(webpOut) || fs.statSync(webpOut).size === 0) {
       await sharp(absSrc)
         .resize({ width: targetW, withoutEnlargement: true })
         .webp({ quality: WEBP_Q })
@@ -269,6 +272,69 @@ function savePostsJson(list: Omit<PostMeta, 'hash'>[]) {
   fs.writeFileSync(POSTS_JSON, JSON.stringify(list, null, 2), 'utf-8');
 }
 
+function xmlEscape(s: string) {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function canonicalSite() {
+  return SITE.replace(/\/+$/, '');
+}
+
+function canonicalPath(pathname: string) {
+  if (!pathname || pathname === '/') return '/';
+  return pathname.replace(/\/+$/, '');
+}
+
+function canonicalBlogPath(slug: string) {
+  return `/blog/${slug}/`;
+}
+
+function getServiceSlugs() {
+  const servicesFile = path.join(ROOT, 'src', 'data', 'services.ts');
+  if (!fs.existsSync(servicesFile)) return [];
+  const source = read(servicesFile);
+  return [...source.matchAll(/\bslug:\s*['"]([^'"]+)['"]/g)].map((m) => m[1]);
+}
+
+function sitemapUrl(pathname: string, lastmod?: string) {
+  const loc = `${canonicalSite()}${pathname}`;
+  const lastmodTag = lastmod ? `<lastmod>${xmlEscape(lastmod)}</lastmod>` : '';
+  return `  <url><loc>${xmlEscape(
+    loc
+  )}</loc>${lastmodTag}<changefreq>weekly</changefreq></url>`;
+}
+
+function saveSitemap(list: Omit<PostMeta, 'hash'>[]) {
+  const staticPaths = ['/', '/blog', '/services', '/price-list'];
+  const servicePaths = getServiceSlugs().map((slug) => `/services/${slug}`);
+
+  const urls = [
+    ...staticPaths.map((pathname) => sitemapUrl(pathname)),
+    ...servicePaths.map((pathname) => sitemapUrl(canonicalPath(pathname))),
+    ...list.map((post) =>
+      sitemapUrl(
+        canonicalBlogPath(post.slug),
+        post.updated || post.date
+          ? new Date(post.updated || post.date).toISOString()
+          : undefined
+      )
+    ),
+  ];
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.join('\n')}
+</urlset>
+`;
+
+  ensureDir(PUBLIC_DIR);
+  fs.writeFileSync(SITEMAP_XML, xml, 'utf-8');
+}
+
 // --- HTML шаблон ---
 function htmlTemplate(opts: {
   title: string;
@@ -352,7 +418,13 @@ async function main() {
   }
 
   const prevManifest = loadManifest();
-  const mdFiles = await fg(['**/*.md'], { cwd: CONTENT_DIR, onlyFiles: true });
+  const mdFiles = (await fg(['**/*.md'], { cwd: CONTENT_DIR, onlyFiles: true }))
+    .sort((a, b) => {
+      const aCopy = /\bcopy\b/i.test(a);
+      const bCopy = /\bcopy\b/i.test(b);
+      if (aCopy !== bCopy) return aCopy ? 1 : -1;
+      return a.localeCompare(b);
+    });
 
   const nextManifest: Record<string, PostMeta> = {};
   const slugsSet = new Set<string>();
@@ -367,6 +439,10 @@ async function main() {
     const slug = (data.slug as string) || slugify(base);
     if (!slug) {
       console.warn(`[content] Пропуск ${rel}: пустой slug`);
+      continue;
+    }
+    if (slugsSet.has(slug)) {
+      console.warn(`[content] Дубликат slug ${slug} в ${rel} — пропускаю.`);
       continue;
     }
     slugsSet.add(slug);
@@ -552,6 +628,7 @@ async function main() {
   }
   saveManifest(nextManifest);
   savePostsJson(list);
+  saveSitemap(list);
   console.log(`[content] обновлено постов: ${changed}. Всего: ${list.length}.`);
 }
 

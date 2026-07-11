@@ -5,7 +5,7 @@ import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
 import TelegramButton from '@/components/TelegramButton/TelegramButton';
 import RecordButton from './RecordButton/RecordButton';
 
-import heroFallback from '@/assets/hero-doctor.png';
+import heroFallback from '@/assets/hero-doctor.jpg';
 import heroVideoDefault from '../assets/hero-bg.mp4';
 
 // responsive hero images
@@ -34,6 +34,7 @@ function toSrcSet(entries: Record<string, string>) {
 
 const heroAvifSrcSet = toSrcSet(heroAvifEntries);
 const heroWebpSrcSet = toSrcSet(heroWebpEntries);
+const heroImageSizes = '(max-width: 1024px) 320px, 50vw';
 
 export const Hero: React.FC = () => {
   const { ref, isIntersecting } = useInView<HTMLDivElement>();
@@ -72,8 +73,16 @@ export const Hero: React.FC = () => {
   const Picture = useMemo(
     () => (
       <picture>
-        <source type="image/avif" srcSet={heroAvifSrcSet} sizes="100vw" />
-        <source type="image/webp" srcSet={heroWebpSrcSet} sizes="100vw" />
+        <source
+          type="image/avif"
+          srcSet={heroAvifSrcSet}
+          sizes={heroImageSizes}
+        />
+        <source
+          type="image/webp"
+          srcSet={heroWebpSrcSet}
+          sizes={heroImageSizes}
+        />
         <img
           src={heroFallback}
           alt="Arti Clinic — лечение спины и суставов"

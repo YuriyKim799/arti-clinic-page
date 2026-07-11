@@ -3,13 +3,13 @@ import manual from '../assets/manual.jpg';
 import uvt from '../assets/uvt.jpg';
 import reflexo from '../assets/reflexo.jpg';
 import farma from '../assets/farma.jpg';
-import massage from '../assets/massage.png';
+import massage from '../assets/massage.jpg';
 import kinezio from '../assets/kinezio.jpg';
 
 // временно надо поставить свои изображения программ
-import programGryzha from '@/assets/programGryzha.png';
-import programMfs from '@/assets/programMfs.webp';
-import programPain from '@/assets/programPain.webp';
+import programGryzha from '@/assets/programGryzha.jpg';
+import programMfs from '@/assets/programMfs.jpg';
+import programPain from '@/assets/programPain.jpg';
 
 export type ServiceItem = {
   slug: string;

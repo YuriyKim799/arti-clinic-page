@@ -1,5 +1,5 @@
 ---
-title: 'Как я избавился от боли в спине за месяц: мой путь'
+title: 'Как я избавился от боли в спине за месяц: второй опыт пациента'
 slug: kak-ya-izbavilsya-ot-boli-v-spine-za-mesyac-moj-put-2
 date: '2025-03-08'
 cover: /blog/kak-ya-izbavilsya-ot-boli-v-spine-za-mesyac-moj-put-2/cover.jpg
