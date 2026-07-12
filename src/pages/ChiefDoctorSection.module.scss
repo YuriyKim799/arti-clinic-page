@@ -575,6 +575,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
 }
 
 .avatarName {
@@ -596,6 +597,38 @@
   .mainGrid {
     grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
     align-items: stretch;
+  }
+}
+
+@media (max-width: 640px) {
+  .avatarsRow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    overflow: visible;
+    padding: 8px 0 12px;
+  }
+
+  .avatarItem {
+    width: 100%;
+    min-width: 0;
+    padding: 8px;
+    border: 1px solid rgba(12, 18, 32, 0.06);
+    background: rgba(255, 255, 255, 0.58);
+    box-shadow: 0 10px 26px rgba(16, 18, 28, 0.05);
+  }
+
+  .avatarItemActive {
+    background: rgba(28, 92, 255, 0.07);
+    box-shadow: inset 0 0 0 2px rgba(28, 92, 255, 0.08),
+      0 12px 28px rgba(16, 18, 28, 0.06);
+  }
+
+  .avatarImageWrap {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border-radius: 20px;
   }
 }
 
@@ -676,6 +709,12 @@
 /* Правая колонка */
 .doctorColumn {
   min-width: 0;
+}
+
+@media (max-width: 979px) {
+  .doctorColumn {
+    order: -1;
+  }
 }
 
 .doctorCard {
@@ -992,6 +1031,18 @@
   object-position: center top;
   border-radius: calc(var(--cd-radius-xl) - 6px);
   aspect-ratio: 3 / 4;
+}
+
+@media (max-width: 979px) {
+  .doctorCard {
+    min-height: 0;
+  }
+
+  .doctorPhotoCard {
+    order: -1;
+    max-height: none;
+    aspect-ratio: 4 / 5;
+  }
 }
 
 .photoCaption {
