@@ -351,6 +351,7 @@ type FeatureCard = {
 type DoctorPhoto = {
   src: string;
   alt?: string;
+  avatarSrc?: string;
   webp1x?: string;
   webp2x?: string;
   jpg1x?: string;
@@ -624,7 +625,7 @@ export default function ChiefDoctorSection({
               >
                 <span className={styles.avatarImageWrap}>
                   <img
-                    src={doctor.photo.src}
+                    src={doctor.photo.avatarSrc || doctor.photo.src}
                     alt={doctor.photo.alt || doctor.name}
                     loading="lazy"
                     decoding="async"

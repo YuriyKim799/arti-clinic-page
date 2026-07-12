@@ -1,7 +1,9 @@
 import type { Doctor } from '@/pages/ChiefDoctorSection';
 import { kimDocs, tyanDocs } from '@/data/docs-slider';
 import chiefDocImage from '@/assets/chief-doc.jpg';
+import chiefDocAvatar from '@/assets/chief-doc-avatar.webp';
 import kimAAphoto from '@/assets/kimAAnevr.jpg';
+import kimAAavatar from '@/assets/kimAAnevr-avatar.webp';
 import { chiefDoctorMoreInfo } from '@/data/chiefDoctorMoreInfo';
 
 export const doctors: Doctor[] = [
@@ -60,6 +62,7 @@ export const doctors: Doctor[] = [
 
     photo: {
       src: chiefDocImage,
+      avatarSrc: chiefDocAvatar,
       alt: 'Доктор Тян Виктория Николаевна',
       webp2x: chiefDocImage,
       webp1x: chiefDocImage,
@@ -132,6 +135,7 @@ export const doctors: Doctor[] = [
 
     photo: {
       src: kimAAphoto, 
+      avatarSrc: kimAAavatar,
       alt: 'Доктор Ким Алина Александровна',
       webp2x: kimAAphoto,
       webp1x: kimAAphoto,
