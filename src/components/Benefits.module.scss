@@ -42,19 +42,69 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
   --face-h: 150px;
 }
+
 .card:hover {
   transform: translateY(-7px);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
 }
+
 .card:focus-visible {
   outline: 2px solid $blue-soft;
   outline-offset: 2px;
+}
+
+.clickHintCard {
+  position: relative;
+  overflow: hidden;
+  --wave-x: 50%;
+  --wave-y: 50%;
+}
+
+.clickHintCard::before,
+.clickHintCard::after {
+  content: '';
+  position: absolute;
+  left: var(--wave-x);
+  top: var(--wave-y);
+  z-index: 0;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  border-radius: 999px;
+  border: 1px solid rgba($blue-soft-600, 0.38);
+  background: radial-gradient(
+    circle,
+    rgba($blue-soft, 0.18) 0%,
+    rgba(255, 255, 255, 0.22) 36%,
+    rgba($blue-soft-600, 0.08) 58%,
+    transparent 72%
+  );
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.2);
+  will-change: opacity, transform;
+}
+
+.clickHintCard:hover::before,
+.clickHintCard:hover::after,
+.clickHintCard:focus-visible::before,
+.clickHintCard:focus-visible::after {
+  animation: cursorWave 1.55s ease-out infinite;
+}
+
+.clickHintCard:hover::after,
+.clickHintCard:focus-visible::after {
+  animation-delay: 0.46s;
+}
+
+.clickHintCard .face {
+  z-index: 1;
 }
 
 .face {
   position: relative;
   min-height: var(--face-h);
 }
+
 .titleLayer,
 .textLayer {
   position: absolute;
@@ -66,10 +116,12 @@
   align-items: center;
   justify-content: center;
 }
+
 .titleLayer {
   @include h3;
   opacity: 1;
 }
+
 .textLayer {
   color: $muted;
   opacity: 0;
@@ -89,9 +141,30 @@
   .textLayer {
     transition: none;
   }
+
+  .clickHintCard::before,
+  .clickHintCard::after {
+    animation: none !important;
+  }
 }
 
 /* ===== ВИДЕО-КАРТОЧКА ===== */
+@keyframes cursorWave {
+  0% {
+    opacity: 0.52;
+    transform: translate(-50%, -50%) scale(0.25);
+  }
+
+  62% {
+    opacity: 0.18;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(6.2);
+  }
+}
+
 .videoCard {
   position: relative;
   padding: 0;
@@ -171,6 +244,7 @@
   transition: transform 0.15s ease, background-color 0.2s ease,
     box-shadow 0.2s ease;
 }
+
 .premiumBtn:hover {
   transform: translateY(-2px);
   background: rgba(0, 0, 0, 0.55);
@@ -198,6 +272,7 @@
   width: 18px;
   height: 18px;
 }
+
 .btnIcon::before,
 .btnIcon::after {
   content: '';
@@ -227,12 +302,14 @@
   height: 10px;
   mask: none;
 }
+
 .isPlaying.isUnmuted .btnIcon::before {
   width: 10px;
   height: 10px;
   background: #fff;
   clip-path: polygon(0 30%, 50% 30%, 75% 0, 75% 100%, 50% 70%, 0 70%);
 }
+
 .isPlaying.isUnmuted .btnIcon::after {
   left: 14px;
   top: 2px;
@@ -249,6 +326,7 @@
 .isPlaying:not(.isUnmuted) .btnIcon::after {
   border: 0;
 }
+
 .isPlaying:not(.isUnmuted) .btnIcon::before {
   left: 2px;
   top: 4px;
@@ -257,6 +335,7 @@
   background: #fff;
   clip-path: polygon(0 30%, 50% 30%, 75% 0, 75% 100%, 50% 70%, 0 70%);
 }
+
 .isPlaying:not(.isUnmuted) .btnIcon::after {
   content: '';
   position: absolute;
@@ -280,6 +359,7 @@
   min-height: auto; // у видео-карточки свой ритм
   text-align: center;
 }
+
 .videoCard .titleLayer,
 .videoCard .textLayer {
   position: static;
@@ -287,11 +367,13 @@
   pointer-events: auto;
   display: block;
 }
+
 .videoCard .titleLayer {
   @include h3;
   color: #111; // читаемо на светлом фоне карточки
   margin-bottom: 6px;
 }
+
 .videoCard .textLayer {
   color: $muted;
 }

@@ -34,6 +34,9 @@ jobs:
             content:
               - 'content/posts/**'
               - 'public/blog/**'
+              - 'public/posts.json'
+              - 'public/sitemap.xml'
+              - 'public/rss-dzen.xml'
               - 'scripts/build-content.ts'
               - 'scripts/make-webp.ts'
               - 'scripts/indexnow.ts'
@@ -82,8 +85,8 @@ jobs:
           if [ -f public/sitemap.xml ]; then
             cp public/sitemap.xml dist/sitemap.xml
           fi
-          if [ -f public/rss-dze.xml ]; then
-            cp public/rss-dze.xml dist/rss-dze.xml
+          if [ -f public/rss-dzen.xml ]; then
+            cp public/rss-dzen.xml dist/rss-dzen.xml
           fi
           if [ -f public/posts.json ]; then
             cp public/posts.json dist/posts.json
@@ -133,13 +136,10 @@ jobs:
         run: |
           set -euo pipefail
           shopt -s nullglob
-          for f in dist/sitemap.xml dist/rss-dze.xml dist/posts.json; do
+          for f in dist/sitemap.xml dist/rss-dzen.xml dist/posts.json; do
             [ -f "$f" ] || continue
             bn="$(basename "$f")"
-            cc="public,max-age=600"
-            if [ "$bn" = "sitemap.xml" ] || [ "$bn" = "posts.json" ]; then
-              cc="no-store"
-            fi
+            cc="no-store"
             aws s3 cp "$f" "s3://$YC_BUCKET/$bn"               --endpoint-url https://storage.yandexcloud.net               --cache-control "$cc"               --only-show-errors
           done
 
@@ -155,7 +155,7 @@ jobs:
       # 3) Остальное: короткий кэш (исключаем key & sourcemaps)
       - name: Upload other files with short cache (exclude key & maps)
         run: |
-          aws s3 sync dist s3://$YC_BUCKET             --endpoint-url https://storage.yandexcloud.net             --delete             --exclude "assets/*" --exclude "blog/*" --exclude "posts/*" --exclude "*.html" --exclude "*.map"             --exclude "${INDEXNOW_KEY}.txt"             --cache-control "public,max-age=3600"             --only-show-errors --exact-timestamps
+          aws s3 sync dist s3://$YC_BUCKET             --endpoint-url https://storage.yandexcloud.net             --delete             --exclude "assets/*" --exclude "blog/*" --exclude "posts/*" --exclude "*.html" --exclude "*.map"             --exclude "sitemap.xml" --exclude "rss-dzen.xml" --exclude "posts.json"             --exclude "${INDEXNOW_KEY}.txt"             --cache-control "public,max-age=3600"             --only-show-errors --exact-timestamps
 
       # === Purge CDN для критичных путей через REST API ===
       - name: Get IAM token (for CDN purge)
@@ -172,8 +172,8 @@ jobs:
           IAM_TOKEN: ${{ steps.iam_token_app.outputs.token }}
         run: |
           set -e
-          echo 'Purging CDN: /, /index.html, /sitemap.xml, /rss-dze.xml, /posts.json, /robots.txt'
-          curl -fsS -X POST             -H "Authorization: Bearer $IAM_TOKEN"             -H "Content-Type: application/json"             -d '{"paths":["/","/index.html","/sitemap.xml","/rss-dze.xml","/posts.json","/robots.txt"]}'             "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
+          echo 'Purging CDN: /, /index.html, /sitemap.xml, /rss-dzen.xml, /posts.json, /robots.txt'
+          curl -fsS -X POST             -H "Authorization: Bearer $IAM_TOKEN"             -H "Content-Type: application/json"             -d '{"paths":["/","/index.html","/sitemap.xml","/rss-dzen.xml","/posts.json","/robots.txt"]}'             "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
         continue-on-error: true
 
       - name: Notify Telegram (success)
@@ -292,10 +292,13 @@ jobs:
           fi
 
       # 4) posts.json -> no-store (корень бакета)
-      - name: Upload posts.json (changed)
-        if: steps.changed.outputs.changed == 'true'
+      - name: Upload posts.json
         run: |
-          aws s3 cp public/posts.json s3://$YC_BUCKET/posts.json             --endpoint-url https://storage.yandexcloud.net             --cache-control "no-store"             --only-show-errors
+          if [ -f public/posts.json ]; then
+            aws s3 cp public/posts.json s3://$YC_BUCKET/posts.json             --endpoint-url https://storage.yandexcloud.net             --cache-control "no-store"             --only-show-errors
+          else
+            echo "skip: no public/posts.json"
+          fi
 
       - name: Upload sitemap.xml
         if: success()
@@ -307,6 +310,15 @@ jobs:
           fi
 
       # 5) IndexNow: создаём ключ (если нет), пингуем API
+      - name: Upload rss-dzen.xml
+        if: success()
+        run: |
+          if [ -f public/rss-dzen.xml ]; then
+            aws s3 cp public/rss-dzen.xml s3://$YC_BUCKET/rss-dzen.xml               --endpoint-url https://storage.yandexcloud.net               --cache-control "no-store"               --only-show-errors
+          else
+            echo "skip: no public/rss-dzen.xml"
+          fi
+
       - name: IndexNow submit
         if: steps.changed.outputs.changed == 'true' && env.INDEXNOW_KEY != ''
         run: npx tsx scripts/indexnow.ts
@@ -320,7 +332,7 @@ jobs:
 
       # 7) Purge CDN только для /posts.json и /sitemap.xml через REST API
       - name: Get IAM token (for posts.json purge)
-        if: steps.changed.outputs.changed == 'true' && env.YC_CDN_ID != ''
+        if: success() && env.YC_CDN_ID != ''
         id: iam_token_content
         uses: yc-actions/yc-iam-token@v1
         with:
@@ -328,13 +340,13 @@ jobs:
         continue-on-error: true
 
       - name: Purge CDN cache for posts.json
-        if: steps.changed.outputs.changed == 'true' && env.YC_CDN_ID != ''
+        if: success() && env.YC_CDN_ID != ''
         env:
           IAM_TOKEN: ${{ steps.iam_token_content.outputs.token }}
         run: |
           set -e
-          echo 'Purging CDN: /posts.json, /sitemap.xml'
-          curl -fsS -X POST             -H "Authorization: Bearer $IAM_TOKEN"             -H "Content-Type: application/json"             -d '{"paths":["/posts.json","/sitemap.xml"]}'             "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
+          echo 'Purging CDN: /posts.json, /sitemap.xml, /rss-dzen.xml'
+          curl -fsS -X POST             -H "Authorization: Bearer $IAM_TOKEN"             -H "Content-Type: application/json"             -d '{"paths":["/posts.json","/sitemap.xml","/rss-dzen.xml"]}'             "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
         continue-on-error: true
 
       - name: Notify Telegram (success)

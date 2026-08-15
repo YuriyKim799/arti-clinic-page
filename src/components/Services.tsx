@@ -4,6 +4,12 @@ import { useInView } from '../useInView';
 import { servicesData } from '../data/services';
 import { Link } from 'react-router-dom';
 
+const updateWaveOrigin: React.PointerEventHandler<HTMLElement> = (event) => {
+  const rect = event.currentTarget.getBoundingClientRect();
+  event.currentTarget.style.setProperty('--wave-x', `${event.clientX - rect.left}px`);
+  event.currentTarget.style.setProperty('--wave-y', `${event.clientY - rect.top}px`);
+};
+
 export const Services: React.FC = () => {
   const { ref, isIntersecting } = useInView<HTMLDivElement>();
   const list = [...servicesData].sort(
@@ -19,17 +25,22 @@ export const Services: React.FC = () => {
         <h2 className="section-title">Услуги</h2>
         <div className={styles.grid}>
           {list.map((s) => (
-            <article key={s.slug} className={styles.card}>
+            <Link
+              key={s.slug}
+              to={`/services/${s.slug}`}
+              className={`${styles.card} ${styles.clickHintCard}`}
+              aria-label={s.title}
+              onPointerMove={updateWaveOrigin}
+              onPointerEnter={updateWaveOrigin}
+            >
               <div className={styles.imageWrap}>
                 <img src={s.img} alt={s.title} loading="lazy" />
               </div>
               <div className={styles.cardBody}>
-                <h3 className={styles.cardTitle}>
-                  <Link to={`/services/${s.slug}`}>{s.title}</Link>
-                </h3>
+                <h3 className={styles.cardTitle}>{s.title}</h3>
                 <p className={styles.cardText}>{s.short}</p>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

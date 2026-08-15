@@ -1,0 +1,232 @@
+@use '../styles/variables' as *;
+
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(46px, 8vw, 96px) 0;
+  background:
+    linear-gradient(180deg, rgba($bg, 0) 0%, rgba(255, 255, 255, 0.34) 42%, rgba($bg, 0) 100%),
+    $bg;
+}
+
+.sectionVisible::before {
+  opacity: 0.85;
+  transform: scaleX(1);
+}
+
+.wrap {
+  @include container;
+  position: relative;
+}
+
+.statement {
+  position: relative;
+  max-width: 1080px;
+  margin-inline: auto;
+  padding: clamp(28px, 5.5vw, 72px) clamp(18px, 5vw, 76px);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.statement::before,
+.statement::after {
+  content: '';
+  position: absolute;
+  left: clamp(18px, 7vw, 92px);
+  right: clamp(18px, 7vw, 92px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(139, 159, 166, 0.42),
+    rgba(191, 171, 132, 0.28),
+    rgba(139, 159, 166, 0.42),
+    transparent
+  );
+  transform: scaleX(0.4);
+  opacity: 0;
+  transition: opacity 1s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.statement::before {
+  top: 0;
+}
+
+.statement::after {
+  bottom: 0;
+}
+
+.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.isVisible::before,
+.isVisible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.text {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  color: rgba(43, 43, 43, 0.92);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  font-size: clamp(25px, 3.65vw, 48px);
+  font-weight: 300;
+  line-height: 1.22;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.isVisible .text::after {
+  animation: breathLight 4.6s 0.45s ease-in-out infinite;
+}
+
+.textInner {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(12px);
+  transform: scaleX(0.68);
+  transform-origin: center;
+  clip-path: inset(0 50% 0 50%);
+}
+
+.text em {
+  position: relative;
+  display: inline-block;
+  color: #17495a;
+  font-style: normal;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.text em::after {
+  content: '';
+  position: absolute;
+  left: 0.02em;
+  right: 0.02em;
+  bottom: -0.12em;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba($blue-soft-600, 0),
+    rgba($blue-soft-600, 0.62),
+    rgba(191, 171, 132, 0.52),
+    rgba($blue-soft-600, 0)
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.isVisible .textInner {
+  animation: textReveal 1.15s 0.18s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.isVisible .text em::after {
+  animation: clinicUnderline 1.15s 0.95s cubic-bezier(0.22, 1, 0.36, 1)
+      forwards,
+    underlinePulse 4.8s 2s ease-in-out infinite;
+}
+
+@keyframes textReveal {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scaleX(1);
+    clip-path: inset(0);
+  }
+}
+
+@keyframes clinicUnderline {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes underlinePulse {
+  0%,
+  100% {
+    opacity: 0.54;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes breathLight {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: translateX(-50%) scaleX(0.72);
+  }
+
+  50% {
+    opacity: 0.95;
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 36px 0 58px;
+  }
+
+  .statement {
+    padding: 26px 8px 36px;
+  }
+
+  .statement::before,
+  .statement::after {
+    left: 0;
+    right: 0;
+  }
+
+  .text {
+    font-size: clamp(23px, 6.8vw, 34px);
+    line-height: 1.24;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statement,
+  .section::before,
+  .statement::before,
+  .statement::after {
+    transition: none;
+  }
+
+  .statement,
+  .section::before,
+  .statement::before,
+  .statement::after {
+    opacity: 1;
+    transform: none;
+  }
+
+  .textInner {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    clip-path: inset(0);
+  }
+
+  .isVisible .text::after {
+    animation: none;
+    opacity: 0.42;
+  }
+
+  .isVisible .textInner,
+  .isVisible .text em::after {
+    animation: none;
+  }
+
+  .text em::after {
+    transform: scaleX(1);
+  }
+}

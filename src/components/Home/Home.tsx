@@ -150,6 +150,9 @@ const YandexReviewsFloating = lazy(() =>
 const Hero = lazy(() =>
   import('@/components/Hero').then((m) => ({ default: m.Hero }))
 );
+const PainStatement = lazy(() =>
+  import('@/components/PainStatement').then((m) => ({ default: m.PainStatement }))
+);
 const Benefits = lazy(() =>
   import('@/components/Benefits').then((m) => ({ default: m.Benefits }))
 );
@@ -231,6 +234,7 @@ export const Home = () => (
 
     <Suspense fallback={null}>
       <Hero />
+      <PainStatement />
       <Benefits />
       <Services />
 

@@ -26,6 +26,7 @@ const BLOG_DIR = path.join(PUBLIC_DIR, 'blog');
 const POSTS_DIR = path.join(PUBLIC_DIR, 'posts');
 const POSTS_JSON = path.join(PUBLIC_DIR, 'posts.json');
 const SITEMAP_XML = path.join(PUBLIC_DIR, 'sitemap.xml');
+const RSS_DZEN_XML = path.join(PUBLIC_DIR, 'rss-dzen.xml');
 
 const CACHE_DIR = path.join(ROOT, '.cache');
 const MANIFEST = path.join(CACHE_DIR, 'content-manifest.json');
@@ -315,14 +316,13 @@ function saveSitemap(list: Omit<PostMeta, 'hash'>[]) {
   const urls = [
     ...staticPaths.map((pathname) => sitemapUrl(pathname)),
     ...servicePaths.map((pathname) => sitemapUrl(canonicalPath(pathname))),
-    ...list.map((post) =>
-      sitemapUrl(
+    ...list.map((post) => {
+      const lastmodSource = post.updated || post.date;
+      return sitemapUrl(
         canonicalBlogPath(post.slug),
-        post.updated || post.date
-          ? new Date(post.updated || post.date).toISOString()
-          : undefined
-      )
-    ),
+        lastmodSource ? new Date(lastmodSource).toISOString() : undefined
+      );
+    }),
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -333,6 +333,89 @@ ${urls.join('\n')}
 
   ensureDir(PUBLIC_DIR);
   fs.writeFileSync(SITEMAP_XML, xml, 'utf-8');
+}
+
+function cdata(s: string) {
+  return s.replace(/]]>/g, ']]]]><![CDATA[>');
+}
+
+function absolutizeHtml(html: string) {
+  return html
+    .replace(
+      /\b(src|href)=["']\/([^"']*)["']/g,
+      (_m, attr, pathPart) => `${attr}="${canonicalSite()}/${pathPart}"`
+    )
+    .replace(/\bsrcset=["']([^"']*)["']/g, (_m, value) => {
+      const nextValue = value
+        .split(',')
+        .map((part: string) => {
+          const chunks = part.trim().split(/\s+/);
+          const url = chunks.shift() || '';
+          const abs = url.startsWith('/') ? `${canonicalSite()}${url}` : url;
+          return [abs, ...chunks].join(' ');
+        })
+        .join(', ');
+
+      return `srcset="${nextValue}"`;
+    });
+}
+
+function readArticleHtml(slug: string) {
+  const htmlPath = path.join(BLOG_DIR, slug, 'index.html');
+  if (!fs.existsSync(htmlPath)) return '';
+
+  const html = read(htmlPath);
+  const match = html.match(/<article>\s*([\s\S]*?)\s*<\/article>/i);
+  return match?.[1]?.trim() || '';
+}
+
+function saveRssDzen(list: Omit<PostMeta, 'hash'>[]) {
+  const items = list
+    .map((post) => {
+      const link = `${canonicalSite()}${canonicalBlogPath(post.slug)}`;
+      const dateSource = post.date || post.updated;
+      const pubDate = dateSource
+        ? new Date(dateSource).toUTCString()
+        : new Date().toUTCString();
+      const articleHtml = readArticleHtml(post.slug);
+      const description = post.excerpt || post.title;
+      const categories = (post.tags?.length ? post.tags : ['arti-clinic', 'dzen'])
+        .map((tag) => `<category>${xmlEscape(tag)}</category>`)
+        .join('');
+      const fallbackHtml = `<h1>${escapeHtml(post.title)}</h1>\n<p>${escapeHtml(
+        description
+      )}</p>`;
+
+      return `    <item>
+      <title>${xmlEscape(post.title)}</title>
+      <link>${xmlEscape(link)}</link>
+      <guid isPermaLink="false">arti:${xmlEscape(post.slug)}</guid>
+      <pubDate>${xmlEscape(pubDate)}</pubDate>
+      ${categories}
+      <author>${xmlEscape(BRAND_NAME)}</author>
+      <description>${xmlEscape(description)}</description>
+      <content:encoded><![CDATA[${cdata(
+        articleHtml ? absolutizeHtml(articleHtml) : absolutizeHtml(fallbackHtml)
+      )}]]></content:encoded>
+    </item>`;
+    })
+    .join('\n');
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:yandex="http://news.yandex.ru">
+  <channel>
+    <title>${xmlEscape(`${BRAND_NAME} - Блог`)}</title>
+    <link>${xmlEscape(`${canonicalSite()}/blog`)}</link>
+    <description>${xmlEscape('Неврология, грыжи дисков, реабилитация')}</description>
+${items}
+  </channel>
+</rss>
+`;
+
+  ensureDir(PUBLIC_DIR);
+  fs.writeFileSync(RSS_DZEN_XML, xml, 'utf-8');
 }
 
 // --- HTML шаблон ---
@@ -629,6 +712,7 @@ async function main() {
   saveManifest(nextManifest);
   savePostsJson(list);
   saveSitemap(list);
+  saveRssDzen(list);
   console.log(`[content] обновлено постов: ${changed}. Всего: ${list.length}.`);
 }
 

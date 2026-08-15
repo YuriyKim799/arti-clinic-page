@@ -4,7 +4,7 @@ import { useInView } from '../useInView';
 
 import vidWebm from '../assets/greeting-1080p.webm';
 import vidMp4 from '@/assets/greeting-1080p.mp4';
-import vidPoster from '@/assets/greeting-poster.jpg.jpg';
+import vidPoster from '@/assets/reverse-greeting-image.jpeg';
 
 const items = [
   {
@@ -16,7 +16,7 @@ const items = [
     text: 'Мы используем передовые методики и новейшее оборудование, а наш опытный медицинский персонал гарантирует высокое качество лечения.',
   },
   {
-    title: 'Комплексный подход каждому пациенту',
+    title: 'Комплексный подход к каждому пациенту',
     text: 'Мы лечим не только симптомы, но и устраняем причины, обеспечивая долгосрочный результат.',
   },
   {
@@ -24,6 +24,12 @@ const items = [
     text: 'Мы избавляем вас от боли и дискомфорта без необходимости хирургического вмешательства.',
   },
 ];
+
+const updateWaveOrigin: React.PointerEventHandler<HTMLElement> = (event) => {
+  const rect = event.currentTarget.getBoundingClientRect();
+  event.currentTarget.style.setProperty('--wave-x', `${event.clientX - rect.left}px`);
+  event.currentTarget.style.setProperty('--wave-y', `${event.clientY - rect.top}px`);
+};
 
 function VideoCard() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -183,22 +189,28 @@ export const Benefits: React.FC = () => {
         ref={ref}
         className={`container reveal ${isIntersecting ? 'is-visible' : ''}`}
       >
-        <h2 className="section-title">Почему выбирают Арти Клиник</h2>
+        <h2 className="section-title">Почему выбирают Арти Клиник ?</h2>
         <div className={styles.grid}>
           <VideoCard />
-          {items.map((it, i) => (
-            <article
-              tabIndex={0}
-              key={i}
-              className={styles.card}
-              aria-label={it.title}
-            >
-              <div className={styles.face}>
-                <h3 className={styles.titleLayer}>{it.title}</h3>
-                <p className={styles.textLayer}>{it.text}</p>
-              </div>
-            </article>
-          ))}
+          {items.map((it, i) => {
+            const hasClickHint = i === items.length - 1;
+
+            return (
+              <article
+                tabIndex={0}
+                key={i}
+                className={`${styles.card} ${hasClickHint ? styles.clickHintCard : ''}`}
+                aria-label={it.title}
+                onPointerMove={hasClickHint ? updateWaveOrigin : undefined}
+                onPointerEnter={hasClickHint ? updateWaveOrigin : undefined}
+              >
+                <div className={styles.face}>
+                  <h3 className={styles.titleLayer}>{it.title}</h3>
+                  <p className={styles.textLayer}>{it.text}</p>
+                </div>
+              </article>
+            );
+          })}
           {/* пятая плитка — видео */}
         </div>
       </div>
