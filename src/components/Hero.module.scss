@@ -42,6 +42,21 @@
   /* базово: от 28 до 60, плавно с шириной экрана */
   font-size: clamp(28px, 4.5vw, 60px);
   line-height: 1.15;
+  color: #f4ead7;
+  background: linear-gradient(
+    110deg,
+    #f8f3e9 0%,
+    #b9b8c0 24%,
+    #fff8e8 48%,
+    #69bada 72%,
+    #f8f3e9 100%
+  );
+  background-size: 240% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 12px rgba(44, 30, 12, 0.22));
+  animation: premiumTitleTone 9s ease-in-out infinite;
   /* переносы и балансировка строк */
   // text-wrap: balance; /* красиво распределяет строки */
   // overflow-wrap: anywhere; /* если слово длинное — можно переносить где угодно */
@@ -49,10 +64,28 @@
   // hyphens: auto; /* переносы по слогам, если браузер поддерживает */
 }
 
+@keyframes premiumTitleTone {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title {
+    animation: none;
+    background-position: 50% 50%;
+  }
+}
+
 .subtitle {
   @include text-lg;
   font-size: 18px;
-  color: $text;
+  color: $line;
   margin: 0 0 24px;
 }
 
@@ -121,4 +154,3 @@
     grid-template-columns: 1fr;
   }
 }
-

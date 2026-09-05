@@ -6,7 +6,9 @@ import TelegramButton from '@/components/TelegramButton/TelegramButton';
 import RecordButton from './RecordButton/RecordButton';
 
 import heroFallback from '@/assets/hero-doctor.jpg';
-import heroVideoDefault from '../assets/hero-bg.mp4';
+import heroVideoWebm from '@/assets/hero-bg2.webm';
+import heroVideoMp4 from '@/assets/hero-bg2.mp4';
+import heroVideoPoster from '@/assets/hero-poster2.webp';
 
 // responsive hero images
 const heroAvifEntries = import.meta.glob('/src/assets/hero-doctor-*.avif', {
@@ -104,10 +106,16 @@ export const Hero: React.FC = () => {
         muted
         loop
         playsInline
-        preload="metadata" // постера нет
+        preload="metadata"
+        poster={heroVideoPoster}
         onLoadedData={() => setReady(true)} // показываем, как только доступен первый кадр
       >
-        {loadVideo ? <source src={heroVideoDefault} type="video/mp4" /> : null}
+        {loadVideo ? (
+          <>
+            <source src={heroVideoWebm} type="video/webm" />
+            <source src={heroVideoMp4} type="video/mp4" />
+          </>
+        ) : null}
       </video>
 
       <div
