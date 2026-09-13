@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Services.module.scss';
-import { useInView } from '../useInView';
 import { servicesData } from '../data/services';
 import { Link } from 'react-router-dom';
 
@@ -11,17 +10,13 @@ const updateWaveOrigin: React.PointerEventHandler<HTMLElement> = (event) => {
 };
 
 export const Services: React.FC = () => {
-  const { ref, isIntersecting } = useInView<HTMLDivElement>();
   const list = [...servicesData].sort(
     (a, b) => (b.priority ?? 0) - (a.priority ?? 0)
   );
 
   return (
     <section id="services" className={`section ${styles.section}`}>
-      <div
-        ref={ref}
-        className={`container reveal ${isIntersecting ? 'is-visible' : ''}`}
-      >
+      <div className="container">
         <h2 className="section-title">Услуги</h2>
         <div className={styles.grid}>
           {list.map((s) => (

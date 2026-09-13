@@ -438,6 +438,39 @@
 }
 
 /* Адаптив для узких экранов: без автопревью, только по нажатию */
+@media (max-width: 1000px) {
+  .treatmentCard {
+    height: auto;
+    min-height: 0;
+    align-self: start;
+  }
+
+  .treatmentTrigger {
+    position: relative;
+    inset: auto;
+    height: auto;
+    aspect-ratio: 480 / 854;
+  }
+
+  .videoFrame {
+    aspect-ratio: 9 / 16;
+    border-bottom: 0;
+  }
+
+  .treatmentVideo,
+  .video {
+    object-fit: contain;
+  }
+
+  .treatmentVideo {
+    background: transparent;
+  }
+
+  .video {
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .videoCard {
     cursor: default;
