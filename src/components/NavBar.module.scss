@@ -5,8 +5,8 @@
   inset: 0 0 auto 0;
   height: var(--nav-h);
   z-index: 50;
-  backdrop-filter: blur(8px);
-  background: color-mix(in srgb, $bg-contrast 45%, transparent);
+  // Полупрозрачность без backdrop-filter поверх фонового видео.
+  background: rgba($bg-contrast, 0.75);
   border-bottom: 1px solid $line;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }

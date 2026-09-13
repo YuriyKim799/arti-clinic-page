@@ -5,23 +5,32 @@ import { useInView } from '../useInView';
 import vidWebm from '../assets/greeting-1080p.webm';
 import vidMp4 from '@/assets/greeting-1080p.mp4';
 import vidPoster from '@/assets/reverse-greeting-image.jpeg';
+import treatmentWebm from '@/assets/personal-treatment-plan.webm';
+import treatmentMp4 from '@/assets/personal-treatment-plan.mp4';
+import treatmentPoster from '@/assets/personal-treatment-plan-poster.webp';
+import methodsWebm from '@/assets/modern-treatment-methods.webm';
+import methodsMp4 from '@/assets/modern-treatment-methods.mp4';
+import methodsPoster from '@/assets/modern-treatment-methods-poster.webp';
+import comprehensiveWebm from '@/assets/comprehensive-patient-care.webm';
+import comprehensiveMp4 from '@/assets/comprehensive-patient-care.mp4';
+import comprehensivePoster from '@/assets/comprehensive-patient-care-poster.webp';
 
 const items = [
   {
     title: 'Персональный план лечения',
-    text: 'Каждому пациенту разрабатывается индивидуальный план, адаптированный под его уникальные потребности.',
+    video: { webm: treatmentWebm, mp4: treatmentMp4, poster: treatmentPoster },
   },
   {
     title: 'Современные методы и технологии',
-    text: 'Мы используем передовые методики и новейшее оборудование, а наш опытный медицинский персонал гарантирует высокое качество лечения.',
+    video: { webm: methodsWebm, mp4: methodsMp4, poster: methodsPoster },
   },
   {
     title: 'Комплексный подход к каждому пациенту',
-    text: 'Мы лечим не только симптомы, но и устраняем причины, обеспечивая долгосрочный результат.',
+    video: { webm: comprehensiveWebm, mp4: comprehensiveMp4, poster: comprehensivePoster },
   },
   {
     title: 'Безоперационное лечение',
-    text: 'Мы избавляем вас от боли и дискомфорта без необходимости хирургического вмешательства.',
+    text: 'Мы избавляем Вас от боли и дискомфорта без необходимости хирургического вмешательства.',
   },
 ];
 
@@ -30,6 +39,72 @@ const updateWaveOrigin: React.PointerEventHandler<HTMLElement> = (event) => {
   event.currentTarget.style.setProperty('--wave-x', `${event.clientX - rect.left}px`);
   event.currentTarget.style.setProperty('--wave-y', `${event.clientY - rect.top}px`);
 };
+
+function BenefitVideoCard({ title, video: media }: {
+  title: string;
+  video: { webm: string; mp4: string; poster: string };
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    let cancelled = false;
+    if (active) {
+      video.play().then(() => {
+        if (cancelled) video.pause();
+      }).catch(() => {});
+    } else {
+      video.pause();
+      video.currentTime = 0;
+    }
+    return () => {
+      cancelled = true;
+      video.pause();
+    };
+  }, [active]);
+
+  return (
+    <article className={`${styles.card} ${styles.treatmentCard}`}>
+      <button
+        type="button"
+        className={`${styles.treatmentTrigger} ${active ? styles.treatmentActive : ''}`}
+        aria-label={`${title}: видеопревью`}
+        aria-pressed={active}
+        onPointerEnter={(event) => {
+          if (event.pointerType === 'mouse') setActive(true);
+        }}
+        onPointerLeave={(event) => {
+          if (event.pointerType === 'mouse') setActive(false);
+        }}
+        onFocus={(event) => {
+          if (event.currentTarget.matches(':focus-visible')) setActive(true);
+        }}
+        onBlur={() => setActive(false)}
+        onClick={() => setActive((value) => !value)}
+        onKeyDown={(event) => {
+          if (event.key === 'Escape') setActive(false);
+        }}
+      >
+        <span className={styles.treatmentTitle}>{title}</span>
+        <video
+          ref={videoRef}
+          className={styles.treatmentVideo}
+          poster={media.poster}
+          preload="none"
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        >
+          <source src={media.webm} type="video/webm" />
+          <source src={media.mp4} type="video/mp4" />
+        </video>
+      </button>
+    </article>
+  );
+}
 
 function VideoCard() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -193,6 +268,7 @@ export const Benefits: React.FC = () => {
         <div className={styles.grid}>
           <VideoCard />
           {items.map((it, i) => {
+            if (it.video) return <BenefitVideoCard key={it.title} title={it.title} video={it.video} />;
             const hasClickHint = i === items.length - 1;
 
             return (

@@ -5,18 +5,18 @@ import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
 import TelegramButton from '@/components/TelegramButton/TelegramButton';
 import RecordButton from './RecordButton/RecordButton';
 
-import heroFallback from '@/assets/hero-doctor.jpg';
-import heroVideoWebm from '@/assets/hero-bg2.webm';
-import heroVideoMp4 from '@/assets/hero-bg2.mp4';
-import heroVideoPoster from '@/assets/hero-poster2.webp';
+import heroFallback from '@/assets/hero-doctor2.jpg';
+import heroVideoWebm from '@/assets/hero-bg3.webm';
+import heroVideoMp4 from '@/assets/hero-bg3.mp4';
+import heroVideoPoster from '@/assets/hero-poster3.webp';
 
 // responsive hero images
-const heroAvifEntries = import.meta.glob('/src/assets/hero-doctor-*.avif', {
+const heroAvifEntries = import.meta.glob('/src/assets/hero-doctor2-*.avif', {
   eager: true,
   query: '?url',
   import: 'default',
 }) as Record<string, string>;
-const heroWebpEntries = import.meta.glob('/src/assets/hero-doctor-*.webp', {
+const heroWebpEntries = import.meta.glob('/src/assets/hero-doctor2-*.webp', {
   eager: true,
   query: '?url',
   import: 'default',
@@ -40,8 +40,9 @@ const heroImageSizes = '(max-width: 1024px) 320px, 50vw';
 
 export const Hero: React.FC = () => {
   const { ref, isIntersecting } = useInView<HTMLDivElement>();
-  const [ready, setReady] = useState(false);
   const [loadVideo, setLoadVideo] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+  const [photoReady, setPhotoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Начинаем загрузку видео только когда блок попал во вьюпорт
@@ -90,6 +91,9 @@ export const Hero: React.FC = () => {
           alt="Arti Clinic — лечение спины и суставов"
           loading="eager"
           decoding="async"
+          width={1200}
+          height={1600}
+          onLoad={() => setPhotoReady(true)}
           className={styles.heroImg}
         />
       </picture>
@@ -99,16 +103,26 @@ export const Hero: React.FC = () => {
 
   return (
     <header className={`${styles.hero} section`}>
+      <img
+        className={styles.bgPoster}
+        src={heroVideoPoster}
+        alt=""
+        aria-hidden="true"
+        width={854}
+        height={480}
+        loading="eager"
+      />
       <video
         ref={videoRef}
-        className={`${styles.bgVideo} ${ready ? styles.ready : ''}`}
+        className={`${styles.bgVideo} ${videoReady ? styles.videoReady : ''}`}
         autoPlay
         muted
         loop
         playsInline
         preload="metadata"
         poster={heroVideoPoster}
-        onLoadedData={() => setReady(true)} // показываем, как только доступен первый кадр
+        onPlaying={() => setVideoReady(true)}
+        onError={() => setVideoReady(false)}
       >
         {loadVideo ? (
           <>
@@ -123,7 +137,7 @@ export const Hero: React.FC = () => {
         className={`container reveal ${isIntersecting ? 'is-visible' : ''}`}
       >
         <div className={styles.wrap}>
-          <div className={styles.photoCard} aria-hidden="true">
+          <div className={`${styles.photoCard} ${photoReady ? styles.photoReady : ''}`} aria-hidden="true">
             {Picture}
           </div>
           <div className={styles.content}>

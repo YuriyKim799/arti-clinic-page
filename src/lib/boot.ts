@@ -56,12 +56,12 @@ export function startBoot(): Promise<void> {
   started = true;
 
   // 1) критические изображения героя (avif/webp, все ширины)
-  const heroAvif = import.meta.glob('/src/assets/hero-doctor-*.avif', {
+  const heroAvif = import.meta.glob('/src/assets/hero-doctor2-*.avif', {
     eager: true,
     query: '?url',
     import: 'default',
   }) as Record<string, string>;
-  const heroWebp = import.meta.glob('/src/assets/hero-doctor-*.webp', {
+  const heroWebp = import.meta.glob('/src/assets/hero-doctor2-*.webp', {
     eager: true,
     query: '?url',
     import: 'default',

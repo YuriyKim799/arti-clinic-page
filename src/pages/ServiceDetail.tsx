@@ -130,19 +130,56 @@ export const ServiceDetail: React.FC = () => {
 
           <section className={styles.sectionBlock}>
             <h2>Описание</h2>
-            <p style={{ whiteSpace: 'pre-line' }}>
-              {/* {service.full} */}
+            <div style={{ whiteSpace: 'pre-line' }}>
               {formatText(service.full)}
-            </p>
+            </div>
+            {service.fullImage?.src && (
+              <img
+                className={styles.fullImage}
+                src={service.fullImage.src}
+                alt={service.fullImage.alt}
+                loading="lazy"
+                decoding="async"
+              />
+            )}
           </section>
+
+          {(service.symptoms?.trim() || service.symptomsImage?.src) && (
+            <section className={styles.sectionBlock}>
+              <h2>Симптомы</h2>
+              {service.symptoms?.trim() && (
+                <div style={{ whiteSpace: 'pre-line' }}>
+                  {formatText(service.symptoms)}
+                </div>
+              )}
+              {service.symptomsImage?.src && (
+                <img
+                  className={styles.fullImage}
+                  src={service.symptomsImage.src}
+                  alt={service.symptomsImage.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+            </section>
+          )}
 
           {service.results && service.results.length > 0 && (
             <section className={styles.sectionBlock}>
-              <h2>Какие результаты обычно отмечают пациенты</h2>
+              <h2>Какие результаты обычно отмечают пациенты ?</h2>
               <p style={{ whiteSpace: 'pre-line' }}>
                 {' '}
                 {formatText(service.results)}
               </p>
+            </section>
+          )}
+
+          {service.nonSurgicalTreatment?.trim() && (
+            <section className={styles.sectionBlock}>
+              <h2>Когда врач назначает консервативное (безоперационное) лечение? </h2>
+              <div style={{ whiteSpace: 'pre-line' }}>
+                {formatText(service.nonSurgicalTreatment)}
+              </div>
             </section>
           )}
 
@@ -171,7 +208,7 @@ export const ServiceDetail: React.FC = () => {
           {service.contraindications &&
             service.contraindications.length > 0 && (
               <section className={styles.sectionBlock}>
-                <h2>Противопоказания</h2>
+                <h2>Имеются противопоказания. Необходима консультация специалиста.  </h2>
                 <ul className={styles.list}>
                   {service.contraindications.map((b: string, i: number) => (
                     <li key={i}>{formatText(b)}</li>

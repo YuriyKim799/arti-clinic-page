@@ -18,7 +18,7 @@ export const PainStatement: React.FC = () => {
         <div className={`${styles.statement} ${isIntersecting ? styles.isVisible : ''}`}>
           <p className={styles.text}>
             <span className={styles.textInner}>
-              Если вы устали от постоянной боли и хотите разобраться в её
+              Если Вы устали от постоянной боли и хотите разобраться в её
               причинах, а также получить эффективное лечение - Вам в{' '}
               <em>«Арти Клиник»</em>!
             </span>

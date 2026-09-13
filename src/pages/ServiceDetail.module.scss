@@ -34,6 +34,15 @@
   margin: 12px 0;
   background: $bg-contrast;
 }
+.fullImage {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  margin: 20px auto 0;
+  border-radius: 16px;
+}
+
 .list {
   margin: 0;
   padding-left: 18px;
