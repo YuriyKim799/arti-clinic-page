@@ -32,15 +32,14 @@
 }
 
 .wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(30px, 3vw, 50px);
-  align-items: center; /* чтобы начиналось сверху */
+  max-width: 960px;
+  // margin-inline: auto;
+  // text-align: center;
 }
 
 .content {
   padding: clamp(16px, 2vw, 60px) 0;
-  justify-items: center;
+  // justify-items: center;
 }
 
 .title {
@@ -97,57 +96,21 @@
 
 .ctaRow {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
 }
 
-.photoCard {
-  position: relative;
-  aspect-ratio: 3 / 4;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  border-radius: $radius-sm;
-  overflow: hidden;
-  border: 1px solid $line;
-  box-shadow: $shadow;
-  background: $bg-contrast;
-  max-height: 100vh;
-}
-
-.photoReady {
-  opacity: 1;
-}
-
-.heroImg {
-  width: 100%;
-  height: auto;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .bgVideo,
-  .photoCard {
+  .bgVideo {
     transition: none;
   }
 }
 
 /* ====== брейкпоинты ====== */
 
-/* крупные ноутбуки → чуть ровнее сетка */
-@media (max-width: 1200px) {
-  .wrap {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* планшеты → колонка, скрываем фото */
+/* планшеты */
 @media (max-width: 1024px) {
-  .wrap {
-    grid-template-columns: 1fr;
-  }
-  .photoCard {
-    display: none;
-  }
-
   .title {
     font-size: clamp(24px, 6vw, 42px);
     line-height: 1.15;

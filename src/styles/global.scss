@@ -24,13 +24,20 @@ body,
 
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+  font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
     Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
   color: $text;
   background: $bg;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-padding-top: var(--header-h);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 
 a {

@@ -17,13 +17,35 @@
 .wrap {
   @include container;
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 72px);
+}
+
+.photoCard {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 3 / 4;
+  justify-self: center;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  box-shadow: $shadow;
+}
+
+.doctorPhoto {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .statement {
   position: relative;
-  max-width: 1080px;
+  width: 100%;
+  min-width: 0;
   margin-inline: auto;
-  padding: clamp(28px, 5.5vw, 72px) clamp(18px, 5vw, 76px);
+  padding: clamp(28px, 4vw, 48px) 8px;
   text-align: center;
   opacity: 0;
   transform: translateY(18px);
@@ -74,8 +96,7 @@
   max-width: 980px;
   margin: 0 auto;
   color: rgba(43, 43, 43, 0.92);
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    sans-serif;
+  font-family: inherit;
   font-size: clamp(25px, 3.65vw, 48px);
   font-weight: 300;
   line-height: 1.22;
@@ -173,6 +194,16 @@
 }
 
 @media (max-width: 720px) {
+  .wrap {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 28px;
+  }
+
+  .photoCard {
+    max-width: 360px;
+  }
+
   .section {
     padding: 36px 0 58px;
   }

@@ -1,49 +1,39 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './Hero.module.scss';
 import { useInView } from '../useInView';
 import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
 import TelegramButton from '@/components/TelegramButton/TelegramButton';
 import RecordButton from './RecordButton/RecordButton';
 
-import heroFallback from '@/assets/hero-doctor2.jpg';
-import heroVideoWebm from '@/assets/hero-bg3.webm';
-import heroVideoMp4 from '@/assets/hero-bg3.mp4';
-import heroVideoPoster from '@/assets/hero-poster3.webp';
+import heroVideoWebm from '@/assets/hero-bg4.webm';
+import heroVideoMp4 from '@/assets/hero-bg4.mp4';
+import heroVideoPoster from '@/assets/hero-poster4.webp';
+import heroMobileVideoWebm from '@/assets/hero-bg-mobile.webm';
+import heroMobileVideoMp4 from '@/assets/hero-bg-mobile.mp4';
+import heroMobileVideoPoster from '@/assets/hero-poster-mobile.webp';
 
-// responsive hero images
-const heroAvifEntries = import.meta.glob('/src/assets/hero-doctor2-*.avif', {
-  eager: true,
-  query: '?url',
-  import: 'default',
-}) as Record<string, string>;
-const heroWebpEntries = import.meta.glob('/src/assets/hero-doctor2-*.webp', {
-  eager: true,
-  query: '?url',
-  import: 'default',
-}) as Record<string, string>;
-
-function toSrcSet(entries: Record<string, string>) {
-  return Object.entries(entries)
-    .map(([file, url]) => {
-      const m = file.match(/-(\d+)\.(avif|webp)$/i);
-      return m ? { w: Number(m[1]), url } : null;
-    })
-    .filter(Boolean)
-    .sort((a, b) => a!.w - b!.w)
-    .map((x) => `${x!.url} ${x!.w}w`)
-    .join(', ');
-}
-
-const heroAvifSrcSet = toSrcSet(heroAvifEntries);
-const heroWebpSrcSet = toSrcSet(heroWebpEntries);
-const heroImageSizes = '(max-width: 1024px) 320px, 50vw';
+// Совпадает с брейкпоинтом телефонов в Hero.module.scss.
+const mobileHeroQuery = '(max-width: 630px)';
 
 export const Hero: React.FC = () => {
   const { ref, isIntersecting } = useInView<HTMLDivElement>();
   const [loadVideo, setLoadVideo] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
-  const [photoReady, setPhotoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' && window.matchMedia(mobileHeroQuery).matches
+  );
+  const videoPoster = isMobile ? heroMobileVideoPoster : heroVideoPoster;
+
+  useEffect(() => {
+    const media = window.matchMedia(mobileHeroQuery);
+    const updateVideo = () => {
+      setVideoReady(false);
+      setIsMobile(media.matches);
+    };
+    media.addEventListener('change', updateVideo);
+    return () => media.removeEventListener('change', updateVideo);
+  }, []);
 
   // Начинаем загрузку видео только когда блок попал во вьюпорт
   useEffect(() => {
@@ -71,48 +61,21 @@ export const Hero: React.FC = () => {
     } else {
       if (!v.paused) v.pause();
     }
-  }, [isIntersecting, loadVideo]);
-
-  const Picture = useMemo(
-    () => (
-      <picture>
-        <source
-          type="image/avif"
-          srcSet={heroAvifSrcSet}
-          sizes={heroImageSizes}
-        />
-        <source
-          type="image/webp"
-          srcSet={heroWebpSrcSet}
-          sizes={heroImageSizes}
-        />
-        <img
-          src={heroFallback}
-          alt="Arti Clinic — лечение спины и суставов"
-          loading="eager"
-          decoding="async"
-          width={1200}
-          height={1600}
-          onLoad={() => setPhotoReady(true)}
-          className={styles.heroImg}
-        />
-      </picture>
-    ),
-    []
-  );
+  }, [isIntersecting, loadVideo, isMobile]);
 
   return (
     <header className={`${styles.hero} section`}>
       <img
         className={styles.bgPoster}
-        src={heroVideoPoster}
+        src={videoPoster}
         alt=""
         aria-hidden="true"
-        width={854}
-        height={480}
+        width={isMobile ? 720 : 854}
+        height={isMobile ? 960 : 480}
         loading="eager"
       />
       <video
+        key={isMobile ? 'mobile' : 'desktop'}
         ref={videoRef}
         className={`${styles.bgVideo} ${videoReady ? styles.videoReady : ''}`}
         autoPlay
@@ -120,14 +83,14 @@ export const Hero: React.FC = () => {
         loop
         playsInline
         preload="metadata"
-        poster={heroVideoPoster}
+        poster={videoPoster}
         onPlaying={() => setVideoReady(true)}
         onError={() => setVideoReady(false)}
       >
         {loadVideo ? (
           <>
-            <source src={heroVideoWebm} type="video/webm" />
-            <source src={heroVideoMp4} type="video/mp4" />
+            <source src={isMobile ? heroMobileVideoWebm : heroVideoWebm} type="video/webm" />
+            <source src={isMobile ? heroMobileVideoMp4 : heroVideoMp4} type="video/mp4" />
           </>
         ) : null}
       </video>
@@ -137,9 +100,6 @@ export const Hero: React.FC = () => {
         className={`container reveal ${isIntersecting ? 'is-visible' : ''}`}
       >
         <div className={styles.wrap}>
-          <div className={`${styles.photoCard} ${photoReady ? styles.photoReady : ''}`} aria-hidden="true">
-            {Picture}
-          </div>
           <div className={styles.content}>
             <h1 className={styles.title}>
               ЛЕЧИМ БОЛИ В СПИНЕ И<br /> МЕЖПОЗВОНКОВЫЕ <br /> ГРЫЖИ <br />
