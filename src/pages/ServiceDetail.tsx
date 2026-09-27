@@ -167,10 +167,16 @@ export const ServiceDetail: React.FC = () => {
           {service.results && service.results.length > 0 && (
             <section className={styles.sectionBlock}>
               <h2>Какие результаты обычно отмечают пациенты ?</h2>
-              <p style={{ whiteSpace: 'pre-line' }}>
-                {' '}
-                {formatText(service.results)}
-              </p>
+              {service.resultsIntro && formatText(service.resultsIntro)}
+              <div className={styles.faq}>
+                {service.results.map((result, i) => (
+                  <details key={`${service.slug}-${i}`} className={styles.q}>
+                    <summary>{renderBold(result.q)}</summary>
+                    <div>{formatText(result.a)}</div>
+                  </details>
+                ))}
+              </div>
+              {service.resultsNote && formatText(service.resultsNote)}
             </section>
           )}
 
@@ -224,7 +230,7 @@ export const ServiceDetail: React.FC = () => {
                 {service.faq.map((f: { q: string; a: string }, i: number) => (
                   <details key={i} className={styles.q}>
                     <summary>{f.q}</summary>
-                    <p>{formatText(f.a)}</p>
+                    <div>{formatText(f.a)}</div>
                   </details>
                 ))}
               </div>

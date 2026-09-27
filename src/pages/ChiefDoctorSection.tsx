@@ -340,6 +340,7 @@ import RecordButton from '@/components/RecordButton/RecordButton';
 import TelegramButton from '@/components/TelegramButton/TelegramButton';
 
 import styles from '@/pages/ChiefDoctorSection.module.scss';
+import SpecialistsIntro from '@/components/SpecialistsIntro';
 
 type Fact = { label: string; value: string; hint?: string };
 
@@ -598,7 +599,7 @@ export default function ChiefDoctorSection({
         <header className={styles.header}>
           <div className={styles.headerLeft}>
             <p className={styles.kicker}>Команда специалистов Арти Клиник</p>
-            <h2 className={styles.title}>{title}</h2>
+            <SpecialistsIntro title={title} />
             {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
           </div>
 
