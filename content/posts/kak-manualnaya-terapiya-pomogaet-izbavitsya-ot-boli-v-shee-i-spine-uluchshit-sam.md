@@ -14,7 +14,7 @@ description: >-
 source: 'https://dzen.ru/a/ZwkKZQcvkH1TAoUp'
 draft: false
 tags:
-  - articlinic
+  - arti-clinic
   - dzen
 ---
 
@@ -24,6 +24,7 @@ tags:
 
 ![](/blog/kak-manualnaya-terapiya-pomogaet-izbavitsya-ot-boli-v-shee-i-spine-uluchshit-sam/img-0.jpg)
 
+  
 **Что такое мануальная терапия?**  
   
 Мануальная терапия — это метод лечения, при котором врач воздействует на мышцы, суставы и позвоночник с помощью рук. Особое внимание уделяется коррекции позвоночных грыж и нарушений в шейном отделе, которые часто вызывают сильные боли и ограничивают подвижность.  

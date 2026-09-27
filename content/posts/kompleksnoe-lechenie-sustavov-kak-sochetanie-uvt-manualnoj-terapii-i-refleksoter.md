@@ -14,7 +14,7 @@ description: >-
 source: 'https://dzen.ru/a/Z92Hme5XNVLzhbfZ'
 draft: false
 tags:
-  - articlinic
+  - arti-clinic
   - dzen
 ---
 
@@ -104,3 +104,5 @@ tags:
 \- Telegram: [https://t.me/articlinic](https://dzen.ru/away?to=https%3A%2F%2Ft.me%2Farticlinic)
 
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
+
+Следите за нашими обновлениями в социальных сетях и будьте в курсе последних новостей и советов по здоровью!

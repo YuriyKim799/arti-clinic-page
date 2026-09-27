@@ -14,14 +14,14 @@ description: >-
 source: 'https://dzen.ru/a/aKBiFB5hRH8Uk_qd'
 draft: false
 tags:
-  - articlinic
+  - arti-clinic
   - dzen
 ---
 
 # История: «Я терпел полгода и попал на операцию» — реальный случай с анализом ошибок
 
 ![](/blog/istoriya-ya-terpel-polgoda-i-popal-na-operaciyu-realnyj-sluchaj-s-analizom-oshib/img-0.jpg)
-
+  
 Врачам часто приходится сталкиваться с ситуациями, когда пациенты приходят слишком поздно. Один из ярких примеров — мужчина 42 лет, который полгода терпел боль в пояснице, надеясь, что она «сама пройдёт».  
   
 **Как всё начиналось**  

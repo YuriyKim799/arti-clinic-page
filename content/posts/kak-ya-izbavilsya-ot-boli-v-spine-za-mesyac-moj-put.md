@@ -10,10 +10,9 @@ description: >-
 source: 'https://dzen.ru/a/Z7ByRPUAmxb_iWz2'
 draft: false
 tags:
-  - articlinic
+  - arti-clinic
   - dzen
 ---
-
 # Как я избавился от боли в спине за месяц: мой путь
 
 ![](/blog/kak-ya-izbavilsya-ot-boli-v-spine-za-mesyac-moj-put/img-0.jpg)

@@ -11,7 +11,7 @@ description: >-
 source: 'https://dzen.ru/a/aNvACP4SyEdIS4tf'
 draft: false
 tags:
-  - articlinic
+  - arti-clinic
   - dzen
 ---
 
@@ -19,7 +19,6 @@ tags:
 
 ![](/blog/kak-poza-sna-vliyaet-na-zdorove-pozvonochnika-luchshie-i-hudshie-varianty/img-0.jpg)
 
-  
 Мы проводим во сне треть жизни. И то, в каком положении мы спим, напрямую отражается на здоровье спины и всего организма. Иногда привычная поза кажется удобной, но именно она становится причиной утренней боли в шее, пояснице или головных болей.  
 Давайте разберёмся, **какие позы сна полезны для позвоночника, а какие могут ему навредить**.  
   

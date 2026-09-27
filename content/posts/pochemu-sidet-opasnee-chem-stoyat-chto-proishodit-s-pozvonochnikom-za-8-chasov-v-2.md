@@ -1,6 +1,7 @@
 ---
 title: >-
-  Почему сидячая работа опасна для позвоночника: что происходит за 8 часов в кресле
+  Почему сидеть опаснее, чем стоять: что происходит с позвоночником за 8 часов в
+  кресле
 slug: >-
   pochemu-sidet-opasnee-chem-stoyat-chto-proishodit-s-pozvonochnikom-za-8-chasov-v-2
 date: '2025-11-24'
@@ -18,6 +19,7 @@ tags:
 ---
 
 # Почему сидеть опаснее, чем стоять: что происходит с позвоночником за 8 часов в кресле
+
 
 ![](/blog/pochemu-sidet-opasnee-chem-stoyat-chto-proishodit-s-pozvonochnikom-za-8-chasov-v-2/img-0.jpg)
 

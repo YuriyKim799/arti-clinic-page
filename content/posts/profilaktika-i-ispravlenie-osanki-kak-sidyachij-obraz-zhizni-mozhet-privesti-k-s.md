@@ -14,7 +14,7 @@ description: >-
 source: 'https://dzen.ru/a/ZuquBUE9I0nhFQsT'
 draft: false
 tags:
-  - articlinic
+  - arti-clinic
   - dzen
 ---
 

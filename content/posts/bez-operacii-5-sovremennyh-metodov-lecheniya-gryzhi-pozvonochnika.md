@@ -11,7 +11,7 @@ description: >-
 source: 'https://dzen.ru/a/aL3CRjM9d2zG6k76'
 draft: false
 tags:
-  - articlinic
+  - arti-clinic
   - dzen
 ---
 
@@ -43,3 +43,17 @@ tags:
 Чем раньше начато лечение, тем выше шансы избежать хирургии и сохранить активную жизнь.
 
 **Профилактика, движение и регулярное наблюдение — ключ к здоровой жизни.**
+
+**Контакты Арти клиник:**
+
+\- Телефон: +79998310636
+
+\- Адрес: г. Москва, ул. 1812 г д.3 (м.Парк Победы)
+
+\- WhatsApp: [https://wa.me/message/FHPEY53FP6B5I1](https://dzen.ru/away?to=https%3A%2F%2Fwa.me%2Fmessage%2FFHPEY53FP6B5I1)
+
+\- Telegram: [https://t.me/articlinic](https://dzen.ru/away?to=https%3A%2F%2Ft.me%2Farticlinic)
+
+\- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
+
+Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!

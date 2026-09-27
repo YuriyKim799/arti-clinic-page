@@ -10,7 +10,7 @@ description: >-
 source: 'https://dzen.ru/a/aMpOHCvz5VVw_z6Z'
 draft: false
 tags:
-  - articlinic
+  - arti-clinic
   - dzen
 ---
 
@@ -63,4 +63,16 @@ _Правда:_ операция по эндопротезированию де�
 \- чудо-средств не существует,  
 \- лекарства и процедуры должны назначаться врачом,  
 \- движение и образ жизни — ключ к тому, чтобы колени служили дольше.  
-Не верьте в мифы — доверяйте проверенным методам и заботьтесь о своём здоровье.
+Не верьте в мифы — доверяйте проверенным методам и заботьтесь о своём здоровье.**Контакты Арти клиник:**
+
+\- Телефон: +79998310636
+
+\- Адрес: г. Москва, ул. 1812 г д.3 (м.Парк Победы)
+
+\- WhatsApp: [https://wa.me/message/FHPEY53FP6B5I1](https://dzen.ru/away?to=https%3A%2F%2Fwa.me%2Fmessage%2FFHPEY53FP6B5I1)
+
+\- Telegram: [https://t.me/articlinic](https://dzen.ru/away?to=https%3A%2F%2Ft.me%2Farticlinic)
+
+\- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
+
+Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!

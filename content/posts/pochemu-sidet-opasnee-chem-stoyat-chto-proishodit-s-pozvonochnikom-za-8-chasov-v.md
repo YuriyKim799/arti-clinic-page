@@ -14,11 +14,12 @@ description: >-
 source: 'https://dzen.ru/a/aNvBd0qPjhAq_p2J'
 draft: false
 tags:
-  - articlinic
+  - arti-clinic
   - dzen
 ---
 
 # Почему сидеть опаснее, чем стоять: что происходит с позвоночником за 8 часов в кресле
+
 
 ![](/blog/pochemu-sidet-opasnee-chem-stoyat-chto-proishodit-s-pozvonochnikom-za-8-chasov-v/img-0.jpg)
 

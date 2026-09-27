@@ -10,7 +10,7 @@ description: >-
 source: 'https://dzen.ru/a/aOEFbXEatEKbbOHE'
 draft: false
 tags:
-  - articlinic
+  - arti-clinic
   - dzen
 ---
 
@@ -68,3 +68,17 @@ _Что помогает:_
 _А у вас бывает, что спина болит «без причины»?_ Сохраните эту статью и отправьте тому, кто постоянно жалуется на спину — возможно, причина прямо перед вами.
 
 **Профилактика, движение и регулярное наблюдение — ключ к здоровой жизни.**
+
+**Контакты Арти клиник:**
+
+\- Телефон: +79998310636
+
+\- Адрес: г. Москва, ул. 1812 г д.3 (м.Парк Победы)
+
+\- WhatsApp: [https://wa.me/message/FHPEY53FP6B5I1](https://dzen.ru/away?to=https%3A%2F%2Fwa.me%2Fmessage%2FFHPEY53FP6B5I1)
+
+\- Telegram: [https://t.me/articlinic](https://dzen.ru/away?to=https%3A%2F%2Ft.me%2Farticlinic)
+
+\- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
+
+Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!

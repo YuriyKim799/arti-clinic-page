@@ -10,7 +10,7 @@ description: >-
 source: 'https://dzen.ru/a/Z7mrNGYZ7TgUzOQy'
 draft: false
 tags:
-  - articlinic
+  - arti-clinic
   - dzen
 ---
 
@@ -18,6 +18,7 @@ tags:
 
 ![](/blog/hrustit-pozvonochnik-chto-eto-znachit-i-stoit-li-boyatsya/img-0.jpg)
 
+  
 Вы тоже любите «похрустеть» спиной? А зря!  
   
 Многие из нас испытывают странное удовольствие, когда спина или шея издают хрустящие звуки при наклонах или растяжке. Одни специально «выкручиваются», чтобы похрустеть, другие слышат хруст при обычных движениях.

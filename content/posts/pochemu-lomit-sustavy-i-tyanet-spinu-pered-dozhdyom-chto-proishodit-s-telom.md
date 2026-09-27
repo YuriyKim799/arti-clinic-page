@@ -15,6 +15,8 @@ tags:
   - dzen
 ---
 
+![](/blog/pochemu-lomit-sustavy-i-tyanet-spinu-pered-dozhdyom-chto-proishodit-s-telom/img-0.png)
+
 # Почему ломит суставы и тянет спину перед дождём: что происходит с телом
 
 ![](/blog/pochemu-lomit-sustavy-i-tyanet-spinu-pered-dozhdyom-chto-proishodit-s-telom/img-1.jpg)

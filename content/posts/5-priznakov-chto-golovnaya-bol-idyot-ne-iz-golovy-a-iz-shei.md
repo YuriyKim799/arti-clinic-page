@@ -14,6 +14,7 @@ tags:
   - dzen
 ---
 
+
 # 5 признаков, что головная боль идёт не из головы, а из шеи
 
 ![](/blog/5-priznakov-chto-golovnaya-bol-idyot-ne-iz-golovy-a-iz-shei/img-0.jpg)

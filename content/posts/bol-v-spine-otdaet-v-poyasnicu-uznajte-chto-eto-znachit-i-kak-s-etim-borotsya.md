@@ -11,7 +11,7 @@ description: >-
 source: 'https://dzen.ru/a/Zzr6LsflXCeGJ1wk'
 draft: false
 tags:
-  - articlinic
+  - arti-clinic
   - dzen
 ---
 
@@ -93,6 +93,4 @@ _4\. Ударно-волновая терапия (УВТ)_
 \- Веб-сайт: [https://articlinic.ru/](https://dzen.ru/away?to=https%3A%2F%2Farticlinic.ru%2F)
 
   
-Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!  
-  
-Позаботьтесь о своей спине уже сегодня!
+Наши специалисты ждут вас, чтобы помочь избавиться от боли и начать жить без ограничений!

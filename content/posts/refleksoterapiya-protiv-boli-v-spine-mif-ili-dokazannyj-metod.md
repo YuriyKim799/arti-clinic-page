@@ -10,11 +10,12 @@ description: >-
 source: 'https://dzen.ru/a/Z4j94UKySTiClELx'
 draft: false
 tags:
-  - articlinic
+  - arti-clinic
   - dzen
 ---
 
 # Рефлексотерапия против боли в спине: миф или доказанный метод?
+
 
 ![](/blog/refleksoterapiya-protiv-boli-v-spine-mif-ili-dokazannyj-metod/img-0.jpg)
 
