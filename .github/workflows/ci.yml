@@ -28,9 +28,13 @@ jobs:
               - 'vite.config.*'
               - 'tsconfig*.json'
               - 'package.json'
+              - 'package-lock.json'
+              - 'scripts/**'
+              - 'content/posts/**'
+              - '.github/workflows/ci.yml'
               - 'public/manifest.webmanifest'
               - 'public/favicon*'
-              - 'robots.txt'
+              - 'public/robots.txt'
             content:
               - 'content/posts/**'
               - 'public/blog/**'
@@ -43,8 +47,8 @@ jobs:
 
   app:
     name: Build & Deploy App
-    needs: detect
-    if: needs.detect.outputs.app == 'true'
+    needs: [detect, content]
+    if: always() && needs.detect.outputs.app == 'true' && (needs.content.result == 'success' || needs.content.result == 'skipped')
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -75,10 +79,9 @@ jobs:
         run: rm -rf dist && mkdir -p dist
 
       - name: Build
-        run: npm run build
-
-      - name: Copy robots.txt (optional)
-        run: cp robots.txt dist/robots.txt || true
+        run: |
+          npx playwright install --with-deps chromium
+          npm run build
 
       - name: Copy sitemap/rss/posts to dist (if exist)
         run: |
@@ -112,7 +115,7 @@ jobs:
       # 2) HTML: no-store (без delete, чтобы не удалить XML/JSON вне include)
       - name: Upload HTML with no-store
         run: |
-          aws s3 sync dist s3://$YC_BUCKET             --endpoint-url https://storage.yandexcloud.net             --exclude "assets/*" --exclude "blog/*" --exclude "posts/*"             --include "*.html"             --cache-control "no-store"             --only-show-errors --exact-timestamps
+          aws s3 sync dist s3://$YC_BUCKET --endpoint-url https://storage.yandexcloud.net --exclude "*" --include "*.html" --exclude "blog/*" --cache-control "no-store" --only-show-errors --exact-timestamps
 
       # 2a) Картинки блога из dist → длинный кэш
       - name: Upload blog images from dist (long cache)
@@ -155,7 +158,16 @@ jobs:
       # 3) Остальное: короткий кэш (исключаем key & sourcemaps)
       - name: Upload other files with short cache (exclude key & maps)
         run: |
-          aws s3 sync dist s3://$YC_BUCKET             --endpoint-url https://storage.yandexcloud.net             --delete             --exclude "assets/*" --exclude "blog/*" --exclude "posts/*" --exclude "*.html" --exclude "*.map"             --exclude "sitemap.xml" --exclude "rss-dzen.xml" --exclude "posts.json"             --exclude "${INDEXNOW_KEY}.txt"             --cache-control "public,max-age=3600"             --only-show-errors --exact-timestamps
+          aws s3 sync dist s3://$YC_BUCKET --endpoint-url https://storage.yandexcloud.net --exclude "assets/*" --exclude "blog/*" --exclude "posts/*" --exclude "*.html" --exclude "*.map" --exclude "sitemap.xml" --exclude "rss-dzen.xml" --exclude "posts.json" --exclude "${INDEXNOW_KEY}.txt" --cache-control "public,max-age=3600" --only-show-errors --exact-timestamps
+
+      - name: Publish exact application routes
+        run: npx tsx scripts/publish-routes.ts
+
+      - name: Publish IndexNow key before submission
+        if: env.INDEXNOW_KEY != ''
+        run: |
+          npx tsx scripts/indexnow.ts --prepare-key
+          aws s3 cp public/${{ env.INDEXNOW_KEY }}.txt s3://$YC_BUCKET/${{ env.INDEXNOW_KEY }}.txt --endpoint-url https://storage.yandexcloud.net --cache-control "no-store" --only-show-errors
 
       # === Purge CDN для критичных путей через REST API ===
       - name: Get IAM token (for CDN purge)
@@ -173,7 +185,16 @@ jobs:
         run: |
           set -e
           echo 'Purging CDN: /, /index.html, /sitemap.xml, /rss-dzen.xml, /posts.json, /robots.txt'
-          curl -fsS -X POST             -H "Authorization: Bearer $IAM_TOKEN"             -H "Content-Type: application/json"             -d '{"paths":["/","/index.html","/sitemap.xml","/rss-dzen.xml","/posts.json","/robots.txt"]}'             "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
+          curl -fsS -X POST -H "Authorization: Bearer $IAM_TOKEN" -H "Content-Type: application/json" --data-binary @.cache/cdn-purge.json "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
+        continue-on-error: true
+
+      - name: Check published page status codes
+        run: |
+          node --input-type=module -e "import fs from 'node:fs'; const routes=JSON.parse(fs.readFileSync('.cache/routes.json','utf8')); for(const {route} of routes){const r=await fetch('https://articlinic.ru'+route,{signal:AbortSignal.timeout(15000)});if(r.status!==200)throw Error(route+': HTTP '+r.status);} const missing=await fetch('https://articlinic.ru/seo-nonexistent-check-404');if(missing.status!==404)throw Error('Unknown route must return 404');"
+
+      - name: IndexNow submit after application deployment
+        if: env.INDEXNOW_KEY != ''
+        run: npx tsx scripts/indexnow.ts
         continue-on-error: true
 
       - name: Notify Telegram (success)
@@ -240,7 +261,7 @@ jobs:
       - name: Sync blog HTML with no-store
         run: |
           if [ -d public/blog ]; then
-            aws s3 sync public/blog s3://$YC_BUCKET/blog               --endpoint-url https://storage.yandexcloud.net               --delete               --exclude "*"               --include "*/index.html"               --include "*.html"               --cache-control "no-store"               --only-show-errors --exact-timestamps
+            aws s3 sync public/blog s3://$YC_BUCKET/blog --endpoint-url https://storage.yandexcloud.net --delete --exclude "*" --include "*/index.html" --cache-control "no-store" --only-show-errors --exact-timestamps
           else
             echo "skip: no public/blog"
           fi
@@ -319,16 +340,20 @@ jobs:
             echo "skip: no public/rss-dzen.xml"
           fi
 
-      - name: IndexNow submit
-        if: steps.changed.outputs.changed == 'true' && env.INDEXNOW_KEY != ''
-        run: npx tsx scripts/indexnow.ts
-        continue-on-error: true
+      - name: Prepare IndexNow key file
+        if: env.INDEXNOW_KEY != ''
+        run: npx tsx scripts/indexnow.ts --prepare-key
 
       # 6) Заливаем KEY.txt в корень бакета (для верификации IndexNow)
       - name: Upload IndexNow key file
         if: env.INDEXNOW_KEY != ''
         run: |
-          aws s3 cp public/${{ env.INDEXNOW_KEY }}.txt s3://$YC_BUCKET/${{ env.INDEXNOW_KEY }}.txt             --endpoint-url https://storage.yandexcloud.net             --cache-control "public,max-age=31536000,immutable" --only-show-errors || true
+          aws s3 cp public/${{ env.INDEXNOW_KEY }}.txt s3://$YC_BUCKET/${{ env.INDEXNOW_KEY }}.txt --endpoint-url https://storage.yandexcloud.net --cache-control "no-store" --only-show-errors
+
+      - name: IndexNow submit for content-only deployment
+        if: needs.detect.outputs.app != 'true' && env.INDEXNOW_KEY != ''
+        run: npx tsx scripts/indexnow.ts
+        continue-on-error: true
 
       # 7) Purge CDN только для /posts.json и /sitemap.xml через REST API
       - name: Get IAM token (for posts.json purge)

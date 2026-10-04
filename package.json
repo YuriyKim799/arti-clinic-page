@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build:content && vite build && tsx scripts/prerender.ts && tsx scripts/check-seo.ts",
+    "check:seo": "tsx scripts/check-seo.ts",
     "preview": "vite preview --host",
     "build:content": "tsx scripts/build-content.ts",
     "indexnow": "tsx scripts/indexnow.ts",
     "clean": "rimraf dist .cache || rm -rf dist .cache",
-    "deploy:dist": "aws s3 sync dist s3://$YC_BUCKET --endpoint-url https://storage.yandexcloud.net --delete",
+    "deploy:dist": "aws s3 sync dist s3://$YC_BUCKET --endpoint-url https://storage.yandexcloud.net && tsx scripts/publish-routes.ts",
     "deploy:content:blog": "aws s3 sync public/blog s3://$YC_BUCKET/blog --endpoint-url https://storage.yandexcloud.net --size-only",
     "deploy:content:perpost": "aws s3 sync public/posts s3://$YC_BUCKET/posts --endpoint-url https://storage.yandexcloud.net --size-only --exclude \"posts.json\"",
     "deploy:content:posts": "aws s3 cp public/posts.json s3://$YC_BUCKET/posts.json --endpoint-url https://storage.yandexcloud.net --cache-control \"no-store\""
@@ -38,6 +39,7 @@
     "fast-glob": "3.3.2",
     "gray-matter": "^4.0.3",
     "marked": "^12.0.2",
+    "playwright": "1.63.0",
     "sass": "1.90.0",
     "sass-embedded": "1.90.0",
     "sharp": "^0.33.5",

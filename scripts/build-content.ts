@@ -257,7 +257,7 @@ function postHash(mdPath: string, slug: string) {
     const combo = files.map((f) => fileHash(path.join(imgDir, f))).join('|');
     imgsHash = sha1(combo);
   }
-  return sha1(`${mdHash}|${imgsHash}`);
+  return sha1(`html-seo-v2|${mdHash}|${imgsHash}`);
 }
 
 function loadManifest(): Record<string, PostMeta> {
@@ -476,9 +476,11 @@ ${
     : `<meta name="twitter:card" content="summary" />`
 }
 <link rel="stylesheet" href="/blog/post-ssr.css" />
+<script type="application/ld+json">${JSON.stringify([jsonLdBlogPosting, jsonLdOrg]).replace(/</g, '\\u003c')}</script>
 </head>
 <body>
 <main>
+<nav aria-label="Навигация"><a href="/">Арти Клиник</a> · <a href="/services">Услуги</a> · <a href="/blog">Все статьи</a></nav>
 <article>
 ${opts.articleHtml}
 </article>

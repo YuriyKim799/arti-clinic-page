@@ -365,6 +365,7 @@ const SITE_FALLBACK = 'https://articlinic.ru';
 function normalizePathname(pathname: string) {
   if (!pathname || pathname === '/') return '/';
   const once = pathname.replace(/\/{2,}/g, '/');
+  if (/^\/blog\/[^/]+\/?$/.test(once)) return once.replace(/\/+$/, '') + '/';
   return once.replace(/\/+$/, '');
 }
 
