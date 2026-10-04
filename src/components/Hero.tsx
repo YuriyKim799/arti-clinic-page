@@ -23,7 +23,6 @@ export const Hero: React.FC = () => {
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== 'undefined' && window.matchMedia(mobileHeroQuery).matches
   );
-  const videoPoster = isMobile ? heroMobileVideoPoster : heroVideoPoster;
 
   useEffect(() => {
     const media = window.matchMedia(mobileHeroQuery);
@@ -65,15 +64,19 @@ export const Hero: React.FC = () => {
 
   return (
     <header className={`${styles.hero} section`}>
-      <img
-        className={styles.bgPoster}
-        src={videoPoster}
-        alt=""
-        aria-hidden="true"
-        width={isMobile ? 720 : 854}
-        height={isMobile ? 960 : 480}
-        loading="eager"
-      />
+      <picture>
+        <source media={mobileHeroQuery} srcSet={heroMobileVideoPoster} />
+        <img
+          className={styles.bgPoster}
+          src={heroVideoPoster}
+          alt=""
+          aria-hidden="true"
+          width={isMobile ? 720 : 854}
+          height={isMobile ? 960 : 480}
+          loading="eager"
+          fetchPriority="high"
+        />
+      </picture>
       <video
         key={isMobile ? 'mobile' : 'desktop'}
         ref={videoRef}
@@ -83,7 +86,6 @@ export const Hero: React.FC = () => {
         loop
         playsInline
         preload="metadata"
-        poster={videoPoster}
         onPlaying={() => setVideoReady(true)}
         onError={() => setVideoReady(false)}
       >

@@ -62,6 +62,14 @@ try {
         if (nodes.some(el => el.hasAttribute('data-rh'))) nodes.filter(el => !el.hasAttribute('data-rh')).forEach(el => el.remove());
       }
       document.querySelectorAll('script[src^="http"]').forEach(el => el.remove());
+      // Let React select the video for the visitor's screen before any download.
+      // Posters remain in the HTML, so the first frame is available without JS.
+      document.querySelectorAll('video').forEach(video => {
+        video.removeAttribute('src');
+        video.removeAttribute('autoplay');
+        video.setAttribute('preload', 'none');
+        video.querySelectorAll('source').forEach(source => source.removeAttribute('src'));
+      });
       if (isNotFound) document.querySelectorAll('link[rel="canonical"], meta[property="og:url"]').forEach(el => el.remove());
     }, route === '/__prerender_not_found__');
     const file = route === '/' ? 'index.html' : route === '/__prerender_not_found__' ? '404.html' : route.slice(1) + '/index.html';

@@ -220,7 +220,7 @@ function VideoCard() {
           className={styles.video}
           poster={vidPoster}
           loop
-          preload="metadata"
+          preload="none"
           playsInline
           muted={muted}
         >

@@ -1,15 +1,15 @@
 // ЕДИНЫЙ ИСТОЧНИК ДАННЫХ ПО УСЛУГАМ
-import manual from '../assets/manual.jpg';
-import uvt from '../assets/uvt.jpg';
-import reflexo from '../assets/reflexo.jpg';
-import farma from '../assets/farma.jpg';
-import massage from '../assets/massage.jpg';
-import kinezio from '../assets/kinezio.jpg';
+import manual from '../assets/manual-card.webp';
+import uvt from '../assets/uvt-card.webp';
+import reflexo from '../assets/reflexo-card.webp';
+import farma from '../assets/farma-card.webp';
+import massage from '../assets/massage-card.webp';
+import kinezio from '../assets/kinezio-card.webp';
 
 // временно надо поставить свои изображения программ
-import programGryzha from '@/assets/programGryzha.jpg';
-import programMfs from '@/assets/programMfs.jpg';
-import programPain from '@/assets/programPain.jpg';
+import programGryzha from '@/assets/programGryzha-card.webp';
+import programMfs from '@/assets/programMfs-card.webp';
+import programPain from '@/assets/programPain-card.webp';
 import progGryzhi from '@/assets/Prog-gryzhi.jpg';
 import symptomsGryzhi from '@/assets/symptoms-gryzhi.jpg';
 import progMiofasc from '@/assets/progMiofasc.png'
