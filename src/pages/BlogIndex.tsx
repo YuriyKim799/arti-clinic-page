@@ -7,6 +7,7 @@ import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import SeoAuto from '@/components/SeoAuto';
 import styles from './BlogIndex.module.scss';
+import { CLINIC_SHARE_IMAGE, SITE_ORIGIN } from '@/data/clinic';
 
 function formatRuDate(iso?: string): string | null {
   if (!iso) return null;
@@ -63,20 +64,14 @@ export default function BlogIndex() {
     );
   }, []);
 
-  const site = import.meta.env.VITE_SITE_URL || 'https://articlinic.ru';
+  const site = SITE_ORIGIN;
 
   return (
     <>
       <SeoAuto
-        title="Блог Arti Clinic — статьи о болях в спине, грыжах, рефлексотерапии"
+        title="Статьи о боли в спине и здоровье позвоночника — Арти Клиник"
         description="Полезные статьи: когда операция не нужна, как помогает ЛФК и рефлексотерапия, советы по профилактике боли в спине."
-        images={{
-          url: `${site}/og/blog-1200x630.jpg`,
-          width: 1200,
-          height: 630,
-          alt: 'Блог Arti Clinic',
-          type: 'image/jpeg',
-        }}
+        images={CLINIC_SHARE_IMAGE}
         jsonLd={[
           {
             '@context': 'https://schema.org',

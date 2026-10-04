@@ -18,6 +18,20 @@
   margin: 0 auto;
 }
 
+.post-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  border-top: 1px solid #ddd;
+  padding-top: 16px;
+  margin-top: 32px;
+
+  a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
 /* Хедер и хлебные крошки */
 .post-header {
   margin-bottom: 20px;

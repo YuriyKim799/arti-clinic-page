@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import LogoIcon from '@/components/LogoIcon/LogoIcon';
 
 export const Footer: React.FC = () => {
@@ -13,14 +14,13 @@ export const Footer: React.FC = () => {
             <Link
               to="/"
               className={styles.footerBrand}
-              onClick={close}
               aria-label="На главную"
             >
               <LogoIcon alt="Логотип Арти Клиник" />
               <span className={styles.brandText}>Арти Клиник</span>
             </Link>
             <span className="muted">
-              © 2025 Клиника вертеброневрологии, рефлексотерапии и мануальной
+              © {year} Клиника вертеброневрологии, рефлексотерапии и мануальной
               терапии. Все права защищены.
             </span>
             <span className="muted">
@@ -38,6 +38,13 @@ export const Footer: React.FC = () => {
 
             <span className="muted">+7 (499) 148-17-24</span>
             <span className="muted">+7 (999) 831-06-36</span>
+            <nav className={styles.links} aria-label="Разделы сайта">
+              <Link to="/services">Услуги</Link>
+              <Link to="/price-list">Цены</Link>
+              <Link to="/blog">Блог</Link>
+              <HashLink smooth to="/#specialists">Врачи</HashLink>
+              <HashLink smooth to="/#contact">Контакты</HashLink>
+            </nav>
             <Link to="/politic" className={styles.copy}>
               Политика обработки персональных данных.
             </Link>

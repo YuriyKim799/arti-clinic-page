@@ -6,6 +6,8 @@ import './BlogPost.scss';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import SeoAuto from '@/components/SeoAuto';
+import { CLINIC_SHARE_IMAGE, SITE_ORIGIN } from '@/data/clinic';
+import { relatedServicesForText } from '@/data/seoTopics';
 
 type State =
   | { status: 'loading' }
@@ -24,16 +26,29 @@ function makeAbs(urlOrPath: string, site: string) {
 }
 
 /** Если fetchPostHtml вернул полный index.html, вырезаем содержимое <article> */
-function extractArticle(html: string): string {
+function extractArticle(html: string, title: string): string {
   const m = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
-  return m ? m[1] : html; // для старого post.html (без <article>) просто вернём как есть
+  const doc = new DOMParser().parseFromString(m ? m[1] : html, 'text/html');
+  const heading = doc.querySelector('h1');
+  const normalize = (text: string) => text.toLocaleLowerCase('ru-RU')
+    .replace(/[^\p{L}\p{N}]/gu, '');
+  if (heading) {
+    if (normalize(heading.textContent || '') === normalize(title)) {
+      heading.remove();
+    } else {
+      // Keep a distinct article heading as a subsection below the page title.
+      const subheading = doc.createElement('h2');
+      subheading.innerHTML = heading.innerHTML;
+      heading.replaceWith(subheading);
+    }
+  }
+  return doc.body.innerHTML;
 }
 
 export default function BlogPost() {
   const { slug = '' } = useParams();
   const [state, setState] = useState<State>({ status: 'loading' });
-  const site =
-    (import.meta.env.VITE_SITE_URL as string) || 'https://articlinic.ru';
+  const site = SITE_ORIGIN;
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -63,7 +78,7 @@ export default function BlogPost() {
         return;
       }
 
-      const html = /<html/i.test(htmlRaw) ? extractArticle(htmlRaw) : htmlRaw;
+      const html = extractArticle(htmlRaw, meta.title);
       setState({ status: 'ok', meta, html });
     })().catch((err) => {
       if (!alive) return;
@@ -129,7 +144,7 @@ export default function BlogPost() {
         const host = new URL(a.href).host;
         if (host && host !== siteHost) {
           a.target = '_blank';
-          a.rel = 'nofollow noopener noreferrer';
+          a.rel = [...new Set([...a.rel.split(/\s+/).filter(Boolean), 'noopener', 'noreferrer'])].join(' ');
         }
       } catch {}
     });
@@ -148,20 +163,13 @@ export default function BlogPost() {
   }
 
   if (state.status === 'error') {
-    const og404 = `${site}/og/404-1200x630.jpg`;
     return (
       <>
         <SeoAuto
           title="Статья не найдена — Arti Clinic"
           description="К сожалению, такой страницы нет. Вернитесь к списку статей."
           robots="noindex, nofollow"
-          images={{
-            url: og404,
-            width: 1200,
-            height: 630,
-            alt: 'Статья не найдена',
-            type: 'image/jpeg',
-          }}
+          images={CLINIC_SHARE_IMAGE}
         />
         <NavBar />
         <main className="post-wrap">
@@ -185,6 +193,7 @@ export default function BlogPost() {
   // status: 'ok'
   const { meta, html } = state;
   const title = meta.title;
+  const relatedServices = relatedServicesForText([title, ...(meta.tags || [])].join(' '));
   const desc = meta.excerpt || 'Статья блога Arti Clinic';
   const canonical = meta.url
     ? makeAbs(meta.url, site)
@@ -196,7 +205,7 @@ export default function BlogPost() {
     ? makeAbs(`/blog/${slug}/og.jpg`, site)
     : meta.cover
     ? makeAbs(meta.cover, site)
-    : `${site}/og/post-default-1200x630.jpg`;
+    : makeAbs(CLINIC_SHARE_IMAGE.url, site);
 
   const publishedISO = meta.date
     ? new Date(meta.date).toISOString()
@@ -213,8 +222,13 @@ export default function BlogPost() {
     datePublished: publishedISO,
     dateModified: modifiedISO,
     image: ogImage ? [ogImage] : undefined,
-    author: { '@type': 'Organization', name: 'Arti Clinic' },
-    publisher: { '@type': 'Organization', name: 'Arti Clinic' },
+    author: { '@type': 'Organization', name: 'Арти Клиник', url: `${site}/` },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Арти Клиник',
+      url: `${site}/`,
+      logo: { '@type': 'ImageObject', url: `${site}/images/clinic-logo.png` },
+    },
     mainEntityOfPage: canonical,
   };
 
@@ -231,13 +245,11 @@ export default function BlogPost() {
   return (
     <>
       <SeoAuto
-        title={`${title} — Arti Clinic`}
+        title={`${title} — Арти Клиник`}
         description={desc}
         canonical={canonical}
         images={{
           url: ogImage,
-          width: 1200,
-          height: 630,
           alt: title,
           type: 'image/jpeg',
         }}
@@ -284,6 +296,14 @@ export default function BlogPost() {
             // сюда кладём только содержимое <article> из index.html
             dangerouslySetInnerHTML={{ __html: html }}
           />
+          <nav className="post-links" aria-label="Информация о клинике">
+            {relatedServices.map(({ href, label }) => <Link key={href} to={href}>{label}</Link>)}
+            <Link to="/services">Услуги клиники</Link>
+            <Link to="/price-list">Цены на консультации и лечение</Link>
+            {meta.source && /^https:\/\/(?:www\.)?dzen\.ru\//i.test(meta.source) && (
+              <a href={meta.source} target="_blank" rel="noopener noreferrer">Источник: Дзен</a>
+            )}
+          </nav>
         </article>
 
         <noscript>

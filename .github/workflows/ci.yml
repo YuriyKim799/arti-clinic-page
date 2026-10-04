@@ -35,6 +35,7 @@ jobs:
               - 'public/manifest.webmanifest'
               - 'public/favicon*'
               - 'public/robots.txt'
+              - 'public/images/**'
             content:
               - 'content/posts/**'
               - 'public/blog/**'
@@ -42,6 +43,9 @@ jobs:
               - 'public/sitemap.xml'
               - 'public/rss-dzen.xml'
               - 'scripts/build-content.ts'
+              - 'scripts/content-excerpt.ts'
+              - 'src/data/seoTopics.ts'
+              - 'public/images/**'
               - 'scripts/make-webp.ts'
               - 'scripts/indexnow.ts'
 

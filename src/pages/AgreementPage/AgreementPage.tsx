@@ -3,22 +3,17 @@ import styles from './AgreementPage.module.scss';
 import ConsentAgreement from '@/components/ConsentAgreement/ConsentAgreement';
 import { NavBar } from '@/components/NavBar';
 import SeoAuto from '@/components/SeoAuto';
+import { CLINIC_SHARE_IMAGE, SITE_ORIGIN } from '@/data/clinic';
 
 export default function AgreementPage() {
-  const site = import.meta.env.VITE_SITE_URL || 'https://articlinic.ru';
+  const site = SITE_ORIGIN;
 
   return (
     <>
       <SeoAuto
         title="Согласие на обработку персональных данных — Arti Clinic"
         description="Форма согласия на обработку персональных данных для пациентов Arti Clinic."
-        images={{
-          url: `${site}/og/agreement-1200x630.jpg`,
-          width: 1200,
-          height: 630,
-          alt: 'Согласие на обработку персональных данных',
-          type: 'image/jpeg',
-        }}
+        images={CLINIC_SHARE_IMAGE}
         jsonLd={[
           {
             '@context': 'https://schema.org',

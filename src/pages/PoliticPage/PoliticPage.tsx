@@ -3,22 +3,17 @@ import styles from './PoliticPage.module.scss';
 import PersonalDataPolicy from '@/components/PersonalDataPolicy/PersonalDataPolicy';
 import { NavBar } from '@/components/NavBar';
 import SeoAuto from '@/components/SeoAuto';
+import { CLINIC_SHARE_IMAGE, SITE_ORIGIN } from '@/data/clinic';
 
 export default function PoliticPage() {
-  const site = import.meta.env.VITE_SITE_URL || 'https://articlinic.ru';
+  const site = SITE_ORIGIN;
 
   return (
     <>
       <SeoAuto
         title="Политика в отношении обработки персональных данных — Arti Clinic"
         description="Правовая информация о порядке и принципах обработки и защиты персональных данных в Arti Clinic (ООО «Энергия жизни»)."
-        images={{
-          url: `${site}/og/policy-1200x630.jpg`,
-          width: 1200,
-          height: 630,
-          alt: 'Политика обработки персональных данных',
-          type: 'image/jpeg',
-        }}
+        images={CLINIC_SHARE_IMAGE}
         jsonLd={[
           {
             '@context': 'https://schema.org',
@@ -41,7 +36,7 @@ export default function PoliticPage() {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Политика обработки персональных данных',
-                item: `${site}/policy`,
+                item: `${site}/politic`,
               },
             ],
           },

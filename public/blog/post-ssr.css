@@ -5,3 +5,5 @@ article pre{overflow:auto;background:#f6f6f6;padding:12px;border-radius:8px}
 article blockquote{margin:16px 0;padding:8px 16px;border-left:4px solid #e0e0e0;color:#555;background:#fafafa}
 h1{font-size:32px;margin:20px 0}
 time{color:#666;font-size:14px}
+.post-meta{font-size:14px;color:#666}
+.article-links{margin-top:32px;padding-top:16px;border-top:1px solid #ddd}

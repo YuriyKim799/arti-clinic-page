@@ -135,6 +135,7 @@
 import React, { lazy, Suspense } from 'react';
 import { NavBar } from '@/components/NavBar';
 import SeoAuto from '@/components/SeoAuto';
+import { CLINIC_SHARE_IMAGE, SITE_ORIGIN, clinicJsonLd } from '@/data/clinic';
 
 const BlogSection = lazy(() => import('@/components/BlogSection'));
 const SectionGallery = lazy(() => import('@/components/SectionGallery'));
@@ -174,58 +175,18 @@ import { doctors } from '@/data/doctors';
 export const Home = () => (
   <>
     <SeoAuto
-      title="Арти Клиник — Центр лечение межпозвоночной грыжи, иглотерапии, мануальной терапии, рефлексотерапии в Москве."
-      description="Диагностика и лечение межпозвонковых грыж, рефлексотерапия, ЛФК, мануальная терапия. Адрес: Москва, ул. 1812 года, д.3."
-      images={{
-        url: 'https://articlinic.ru/og-default.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Интерьеры и атмосфера Arti Clinic',
-        type: 'image/jpeg',
-      }}
+      title="Лечение грыжи позвоночника и боли в спине в Москве — Арти Клиник"
+      description="Консультации невролога, лечение межпозвонковых грыж и боли в спине, мануальная терапия и рефлексотерапия. Москва, ул. 1812 года, д. 3. Запись на приём."
+      images={CLINIC_SHARE_IMAGE}
       locale="ru_RU"
       twitterCard="summary_large_image"
       jsonLd={[
-        {
-          '@context': 'https://schema.org',
-          '@type': 'MedicalClinic',
-          name: 'Арти Клиник — ООО «Энергия жизни»',
-          url: 'https://articlinic.ru/',
-          telephone: '+7 999 831-06-36',
-          email: 'articlinicmoscow@gmail.com',
-          address: {
-            '@type': 'PostalAddress',
-            postalCode: '121293',
-            addressCountry: 'RU',
-            addressLocality: 'Москва',
-            streetAddress: 'ул. 1812 года, д.3, помещение 5/1',
-          },
-          medicalSpecialty: [
-            'Мануальная терапия',
-            'Ударно-волновая терапия',
-            'Рефлексотерапия',
-            'Фармакопунктура',
-            'Лечебный массаж',
-            'Кинезиотейпирование',
-            'Неврология',
-          ],
-          openingHours: ['Mo-Su 09:00-20:00'],
-          sameAs: [
-            'https://t.me/Artiklinic',
-            'https://yandex.ru/maps/org/19149709238',
-          ],
-          image: 'https://articlinic.ru/og-default.jpg',
-        },
+        clinicJsonLd,
         {
           '@context': 'https://schema.org',
           '@type': 'WebSite',
-          url: 'https://articlinic.ru/',
+          url: `${SITE_ORIGIN}/`,
           name: 'Арти Клиник',
-          potentialAction: {
-            '@type': 'SearchAction',
-            target: 'https://articlinic.ru/search?q={search_term_string}',
-            'query-input': 'required name=search_term_string',
-          },
         },
       ]}
     />

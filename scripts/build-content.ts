@@ -6,6 +6,8 @@ import fg from 'fast-glob';
 import matter from 'gray-matter';
 import MarkdownIt from 'markdown-it';
 import sharp from 'sharp';
+import { excerptFrom } from './content-excerpt';
+import { relatedServicesForText } from '../src/data/seoTopics';
 
 type PostMeta = {
   slug: string;
@@ -46,39 +48,12 @@ function slugify(s: string) {
     .replace(/^-+|-+$/g, '');
 }
 
-function excerptFrom(text: string, max = 180) {
-  let t = text;
-
-  // 1) Удаляем HTML-картинки полностью
-  t = t.replace(/<img\b[^>]*>/gi, '');
-
-  // 2) Удаляем markdown-картинки полностью: ![alt](url)
-  t = t.replace(/!\[[^\]]*]\([^)]*\)/g, '');
-
-  // 3) Markdown-ссылки превращаем в текст: [title](url) -> title
-  t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
-
-  // 4) Защитный кейс: голые скобки с путями вида (/blog/slug/file.jpg)
-  t = t.replace(/\(\s*\/blog\/[^)]+\)/gi, '');
-
-  // 5) Сносим прочую HTML-разметку
-  t = t.replace(/<\/?[^>]+>/g, '');
-
-  // 6) Чистим базовые markdown-артефакты
-  t = t.replace(/[#>*_`]/g, '');
-
-  // 7) Пробелы и обрезка
-  t = t.replace(/\s+/g, ' ').trim();
-
-  return t.length > max ? t.slice(0, max).trimEnd() + '…' : t;
-}
-
 const SITE =
   process.env.SITE_ORIGIN ||
   process.env.VITE_SITE_URL ||
   'https://articlinic.ru';
-const BRAND_NAME = process.env.SITE_NAME || 'Arti Clinic';
-const BRAND_LOGO = process.env.SITE_LOGO || '/logo-512x512.png';
+const BRAND_NAME = process.env.SITE_NAME || 'Арти Клиник';
+const BRAND_LOGO = process.env.SITE_LOGO || '/images/clinic-logo.png';
 
 const INLINE_W = [400, 680, 820];
 const COVER_W = [960, 1280, 1600];
@@ -96,6 +71,8 @@ article pre{overflow:auto;background:#f6f6f6;padding:12px;border-radius:8px}
 article blockquote{margin:16px 0;padding:8px 16px;border-left:4px solid #e0e0e0;color:#555;background:#fafafa}
 h1{font-size:32px;margin:20px 0}
 time{color:#666;font-size:14px}
+.post-meta{font-size:14px;color:#666}
+.article-links{margin-top:32px;padding-top:16px;border-top:1px solid #ddd}
 `;
 
 // ---------- helpers ----------
@@ -113,6 +90,50 @@ const escapeHtml = (s: string) =>
     .replace(/"/g, '&quot;');
 const stripScripts = (html: string) =>
   html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
+
+function dzenSource(source: unknown): string | undefined {
+  if (typeof source !== 'string') return undefined;
+  try {
+    const url = new URL(source);
+    if (!['http:', 'https:'].includes(url.protocol)) return undefined;
+    if (!['dzen.ru', 'www.dzen.ru'].includes(url.hostname)) return undefined;
+    return url.toString();
+  } catch {
+    return undefined;
+  }
+}
+
+function cleanImportedContent(content: string, source: unknown) {
+  if (!dzenSource(source)) return content;
+  const heading = content.search(/^#\s+\S/m);
+  const article = (heading >= 0 ? content.slice(heading) : content)
+    .replace(/^(#\s+[^\r\n]+)\r?\n/gm, '$1\n\n');
+  // The imported preview repeats the opening and ends with Dzen's UI label.
+  return article
+    .split(/\r?\n\s*\r?\n/)
+    .filter((paragraph) => !/Читать\s+далее\s*$/iu.test(paragraph.trim()))
+    .join('\n\n');
+}
+
+function unwrapDzenLinks(html: string) {
+  return html.replace(/(<a\b[^>]*\bhref=)(["'])([^"']+)\2/gi,
+    (original, prefix, quote, href) => {
+      try {
+        const raw = href.replace(/&amp;/g, '&');
+        const wrapper = new URL(raw, SITE);
+        const relative = raw.startsWith('/away?');
+        if (!['http:', 'https:'].includes(wrapper.protocol) || wrapper.pathname !== '/away' ||
+          (!relative && !['dzen.ru', 'www.dzen.ru'].includes(wrapper.hostname))) return original;
+        const destination = wrapper.searchParams.get('to');
+        if (!destination) return original;
+        const url = new URL(destination);
+        if (!['http:', 'https:'].includes(url.protocol)) return original;
+        return `${prefix}"${escapeHtml(url.toString())}"`;
+      } catch {
+        return original;
+      }
+    });
+}
 
 // относительные картинки из md/html
 function collectLocalImages(text: string): string[] {
@@ -153,6 +174,12 @@ function rewriteImagePaths(text: string, mapping: Map<string, string>) {
   return t;
 }
 
+function imageOutputIsCurrent(file: string, sourceMtime: number) {
+  if (!fs.existsSync(file)) return false;
+  const output = fs.statSync(file);
+  return output.isFile() && output.size > 0 && output.mtimeMs >= sourceMtime;
+}
+
 async function ensureVariants(
   absSrc: string,
   outDir: string,
@@ -161,6 +188,7 @@ async function ensureVariants(
 ): Promise<string[]> {
   const keep: string[] = [];
   const nameNoExt = baseName.replace(/\.[^.]+$/, '');
+  const sourceMtime = fs.statSync(absSrc).mtimeMs;
   const probe = sharp(absSrc);
   const meta = await probe.metadata();
   const targetWidths = [
@@ -169,13 +197,13 @@ async function ensureVariants(
   for (const targetW of targetWidths) {
     const avifOut = path.join(outDir, `${nameNoExt}-${targetW}.avif`);
     const webpOut = path.join(outDir, `${nameNoExt}-${targetW}.webp`);
-    if (!fs.existsSync(avifOut) || fs.statSync(avifOut).size === 0) {
+    if (!imageOutputIsCurrent(avifOut, sourceMtime)) {
       await sharp(absSrc)
         .resize({ width: targetW, withoutEnlargement: true })
         .avif({ quality: AVIF_Q })
         .toFile(avifOut);
     }
-    if (!fs.existsSync(webpOut) || fs.statSync(webpOut).size === 0) {
+    if (!imageOutputIsCurrent(webpOut, sourceMtime)) {
       await sharp(absSrc)
         .resize({ width: targetW, withoutEnlargement: true })
         .webp({ quality: WEBP_Q })
@@ -189,7 +217,7 @@ async function ensureVariants(
 
 async function ensureOgFromCover(absSrc: string, outDir: string) {
   const ogPath = path.join(outDir, 'og.jpg');
-  if (fs.existsSync(ogPath)) return 'og.jpg';
+  if (imageOutputIsCurrent(ogPath, fs.statSync(absSrc).mtimeMs)) return 'og.jpg';
   await sharp(absSrc)
     .resize(1200, 630, { fit: 'cover', position: 'attention' })
     .jpeg({ quality: 85, progressive: true })
@@ -206,7 +234,12 @@ async function cleanupVariants(dir: string, allow: Set<string>) {
   }
 }
 
-function replaceImgWithPicture(html: string, slug: string, coverBase?: string) {
+function replaceImgWithPicture(
+  html: string,
+  slug: string,
+  variants: Map<string, string[]>,
+  coverBase?: string
+) {
   return html.replace(
     /<img\s+([^>]*?)src=["'](\/blog\/[^"']+)["']([^>]*)>/gi,
     (_m, pre, src, post) => {
@@ -215,28 +248,41 @@ function replaceImgWithPicture(html: string, slug: string, coverBase?: string) {
       const file = m[1];
       const nameNoExt = file.replace(/\.[^.]+$/, '');
       const isCover = coverBase && file === coverBase;
-      const widths = isCover ? COVER_W : INLINE_W;
-      const avifSrcset = widths
-        .map((w) => `/blog/${slug}/${nameNoExt}-${w}.avif ${w}w`)
-        .join(', ');
-      const webpSrcset = widths
-        .map((w) => `/blog/${slug}/${nameNoExt}-${w}.webp ${w}w`)
+      const alt =
+        (pre + ' ' + post).match(/\balt=["']([^"']*)["']/i)?.[1] || '';
+      if (!fs.existsSync(path.join(BLOG_DIR, slug, file))) {
+        if (!alt.trim()) return '';
+        console.warn(`[content] Missing image with alt text: ${src}`);
+        return _m;
+      }
+      const available = variants.get(file) || [];
+      const forFormat = (format: 'avif' | 'webp') => available
+        .map((name) => {
+          const match = name.match(/^(.*)-(\d+)\.(avif|webp)$/);
+          return match && match[1] === nameNoExt && match[3] === format
+            ? { name, width: Number(match[2]) } : undefined;
+        })
+        .filter((entry): entry is { name: string; width: number } => !!entry)
+        .sort((a, b) => a.width - b.width);
+      const avif = forFormat('avif');
+      const webp = forFormat('webp');
+      if (!avif.length && !webp.length) return _m;
+      const srcset = (files: { name: string; width: number }[]) => files
+        .map(({ name, width }) => `/blog/${slug}/${name} ${width}w`)
         .join(', ');
       const sizes = isCover
         ? '(max-width: 1360px) 100vw, 1280px'
         : '(max-width: 900px) 100vw, 820px';
-      const alt =
-        (pre + ' ' + post).match(/\balt=["']([^"']*)["']/i)?.[1] || '';
       const title = (pre + ' ' + post).match(/\btitle=["']([^"']*)["']/i)?.[1];
       const cls = (pre + ' ' + post).match(/\bclass=["']([^"']*)["']/i)?.[1];
       const titleAttr = title ? ` title="${escapeHtml(title)}"` : '';
       const classAttr = cls ? ` class="${escapeHtml(cls)}"` : '';
-      const fallback = `/blog/${slug}/${nameNoExt}-${
-        widths[Math.floor(widths.length / 2)]
-      }.webp`;
+      const fallback = webp.length
+        ? `/blog/${slug}/${webp[Math.floor(webp.length / 2)].name}`
+        : src;
       return `<picture>
-  <source type="image/avif" srcset="${avifSrcset}" sizes="${sizes}">
-  <source type="image/webp" srcset="${webpSrcset}" sizes="${sizes}">
+  ${avif.length ? `<source type="image/avif" srcset="${srcset(avif)}" sizes="${sizes}">` : ''}
+  ${webp.length ? `<source type="image/webp" srcset="${srcset(webp)}" sizes="${sizes}">` : ''}
   <img${classAttr} src="${fallback}" alt="${escapeHtml(
         alt
       )}"${titleAttr} loading="lazy" decoding="async">
@@ -253,11 +299,13 @@ function postHash(mdPath: string, slug: string) {
   if (fs.existsSync(imgDir)) {
     const files = fg
       .sync(['**/*.*'], { cwd: imgDir, onlyFiles: true, dot: false })
+      .filter((file) => !['index.html', 'post-ssr.css', 'og.jpg'].includes(file) &&
+        !/-\d+\.(avif|webp)$/.test(file))
       .sort();
     const combo = files.map((f) => fileHash(path.join(imgDir, f))).join('|');
     imgsHash = sha1(combo);
   }
-  return sha1(`html-seo-v2|${mdHash}|${imgsHash}`);
+  return sha1(`html-seo-v4|${mdHash}|${imgsHash}`);
 }
 
 function loadManifest(): Record<string, PostMeta> {
@@ -427,9 +475,25 @@ function htmlTemplate(opts: {
   articleHtml: string; // sanitized
   date?: string;
   updated?: string;
+  source?: string;
+  tags?: string[];
 }) {
   const canonical = absUrl(SITE, opts.canonicalPath);
   const ogAbs = opts.ogImage ? absUrl(SITE, opts.ogImage) : undefined;
+  const published = opts.date ? new Date(opts.date) : undefined;
+  const publishedDate = published && !Number.isNaN(published.getTime())
+    ? `<span>Опубликовано: <time datetime="${escapeHtml(opts.date!)}">${published.toLocaleDateString('ru-RU', {
+      day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Moscow',
+    })}</time></span>` : '';
+  const source = dzenSource(opts.source);
+  const sourceLink = source
+    ? `<span>Источник: <a href="${escapeHtml(source)}" target="_blank" rel="noopener noreferrer">Дзен</a></span>` : '';
+  const articleMeta = [publishedDate, sourceLink].filter(Boolean).join(' · ');
+  const relatedServices = relatedServicesForText([opts.title, ...(opts.tags || [])].join(' '));
+  const relatedNavigation = relatedServices.length
+    ? `<nav class="article-links" aria-label="Услуги по теме статьи">${relatedServices
+      .map(({ href, label }) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`)
+      .join(' · ')}</nav>` : '';
 
   const jsonLdBlogPosting = {
     '@context': 'https://schema.org',
@@ -440,10 +504,11 @@ function htmlTemplate(opts: {
     dateModified: opts.updated || opts.date,
     mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
     image: ogAbs,
-    author: { '@type': 'Organization', name: BRAND_NAME },
+    author: { '@type': 'Organization', name: BRAND_NAME, url: `${canonicalSite()}/` },
     publisher: {
       '@type': 'Organization',
       name: BRAND_NAME,
+      url: `${canonicalSite()}/`,
       logo: { '@type': 'ImageObject', url: absUrl(SITE, BRAND_LOGO) },
     },
   };
@@ -451,7 +516,7 @@ function htmlTemplate(opts: {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: BRAND_NAME,
-    url: SITE,
+    url: `${canonicalSite()}/`,
     logo: absUrl(SITE, BRAND_LOGO),
   };
 
@@ -481,9 +546,12 @@ ${
 <body>
 <main>
 <nav aria-label="Навигация"><a href="/">Арти Клиник</a> · <a href="/services">Услуги</a> · <a href="/blog">Все статьи</a></nav>
+${articleMeta ? `<p class="post-meta">${articleMeta}</p>` : ''}
 <article>
 ${opts.articleHtml}
 </article>
+${relatedNavigation}
+<nav class="article-links" aria-label="Услуги и стоимость"><a href="/services">Услуги клиники</a> · <a href="/price-list">Стоимость услуг</a></nav>
 </main>
 </body>
 </html>`;
@@ -537,13 +605,16 @@ async function main() {
     ensureDir(blogDir);
 
     // 1) локальные картинки → копировать и переписать пути
-    const locals = collectLocalImages(content);
+    const cleanedContent = cleanImportedContent(content, data.source);
+    const locals = collectLocalImages(cleanedContent);
     const mapping = copyImages(mdDir, slug, locals);
-    let contentRewritten = rewriteImagePaths(content, mapping);
+    let contentRewritten = rewriteImagePaths(cleanedContent, mapping);
 
     // 2) cover
     let cover = data.cover as string | undefined;
     let coverBaseName: string | undefined;
+    const variants = new Map<string, string[]>();
+    const coverVariants = new Set<string>();
 
     if (cover && !isAbsUrl(cover) && !isRooted(cover)) {
       // относительный рядом с md
@@ -554,7 +625,9 @@ async function main() {
       if (fs.existsSync(srcAbs)) {
         if (!fs.existsSync(dstAbs) || fileHash(dstAbs) !== fileHash(srcAbs))
           fs.copyFileSync(srcAbs, dstAbs);
-        await ensureVariants(dstAbs, blogDir, fileName, COVER_W);
+        const keep = await ensureVariants(dstAbs, blogDir, fileName, COVER_W);
+        variants.set(fileName, keep);
+        keep.forEach((file) => coverVariants.add(file));
         await ensureOgFromCover(dstAbs, blogDir);
         cover = `/blog/${slug}/${fileName}`;
       }
@@ -564,7 +637,9 @@ async function main() {
       coverBaseName = fileName;
       const abs = path.join(PUBLIC_DIR, cover.replace(/^\//, '')); // ВАЖНО: Windows-friendly
       if (fs.existsSync(abs)) {
-        await ensureVariants(abs, blogDir, fileName, COVER_W);
+        const keep = await ensureVariants(abs, blogDir, fileName, COVER_W);
+        variants.set(fileName, keep);
+        keep.forEach((file) => coverVariants.add(file));
         await ensureOgFromCover(abs, blogDir);
       }
     }
@@ -597,6 +672,7 @@ async function main() {
     }
 
     const allow = new Set<string>(['index.html', 'post-ssr.css']);
+    coverVariants.forEach((file) => allow.add(file));
     if (coverBaseName) allow.add(coverBaseName);
     for (const file of inlineNames) allow.add(file);
 
@@ -604,22 +680,20 @@ async function main() {
     for (const file of inlineNames) {
       const abs = path.join(blogDir, file);
       if (!fs.existsSync(abs)) continue;
+      if (file === coverBaseName && variants.has(file)) continue;
       const keep = await ensureVariants(abs, blogDir, file, INLINE_W);
+      variants.set(file, keep);
       keep.forEach((k) => allow.add(k));
     }
     // cover варианты и og.jpg
     if (coverBaseName) {
-      for (const w of COVER_W) {
-        allow.add(`${coverBaseName.replace(/\.[^.]+$/, '')}-${w}.avif`);
-        allow.add(`${coverBaseName.replace(/\.[^.]+$/, '')}-${w}.webp`);
-      }
       allow.add('og.jpg');
     }
 
     // 4) HTML
     const bodyHtml = md.render(contentRewritten);
     const bodyHtmlSafe = stripScripts(
-      replaceImgWithPicture(bodyHtml, slug, coverBaseName)
+      unwrapDzenLinks(replaceImgWithPicture(bodyHtml, slug, variants, coverBaseName))
     );
 
     // 5) hash/мета
@@ -633,7 +707,7 @@ async function main() {
       date: data.date as string | undefined,
       updated: data.updated as string | undefined,
       cover,
-      excerpt: (data.excerpt as string) || excerptFrom(contentRewritten),
+      excerpt: (typeof data.excerpt === 'string' ? excerptFrom(data.excerpt) : '') || excerptFrom(contentRewritten),
       tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
       source: data.source as string | undefined,
       hash: h,
@@ -670,6 +744,8 @@ async function main() {
         articleHtml: bodyHtmlSafe,
         date: meta.date,
         updated: meta.updated,
+        source: meta.source,
+        tags: meta.tags,
       });
       fs.writeFileSync(htmlPath, html, 'utf-8');
     }

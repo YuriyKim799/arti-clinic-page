@@ -130,9 +130,6 @@ export const doctors: Doctor[] = [
       },
     ],
 
-    moreInfoTitle: 'Подробнее о специалисте',
-    moreInfo: chiefDoctorMoreInfo, // потом заменишь на kimMoreInfo
-
     photo: {
       src: kimAAphoto, 
       avatarSrc: kimAAavatar,

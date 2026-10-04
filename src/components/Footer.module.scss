@@ -30,6 +30,18 @@
   text-decoration: underline;
 }
 
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+
+  a {
+    color: $muted;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
 .logoIcon {
   width: 145px;
   height: 145px;

@@ -3,22 +3,17 @@ import { Link } from 'react-router-dom';
 import { servicesData } from '../data/services';
 import styles from './ServicesIndex.module.scss';
 import SeoAuto from '@/components/SeoAuto';
+import { CLINIC_SHARE_IMAGE, SITE_ORIGIN } from '@/data/clinic';
 
 export const ServicesIndex: React.FC = () => {
-  const site = import.meta.env.VITE_SITE_URL || 'https://articlinic.ru';
+  const site = SITE_ORIGIN;
 
   return (
     <>
       <SeoAuto
-        title="Услуги Арти Клиник — лечение болей в спине, кинезиотейпирование, лечебный массаж, рефлексотерапия, фармакопунктура, ударно-волновая терапия, мануальная терапия"
+        title="Услуги и программы лечения в Москве — Арти Клиник"
         description="Все услуги клиники: диагностика и лечение межпозвонковых грыж, неврология, рефлексотерапия, ЛФК, мануальная терапия. Москва, ул. 1812 года, д.3., помещ. 5/1"
-        images={{
-          url: `${site}/og-services/index-1200x630.jpg`, // при желании поставь свой путь
-          width: 1200,
-          height: 630,
-          alt: 'Услуги Arti Clinic',
-          type: 'image/jpeg',
-        }}
+        images={CLINIC_SHARE_IMAGE}
         jsonLd={[
           {
             '@context': 'https://schema.org',
@@ -35,6 +30,12 @@ export const ServicesIndex: React.FC = () => {
               {
                 '@type': 'ListItem',
                 position: 1,
+                name: 'Главная',
+                item: `${site}/`,
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
                 name: 'Услуги',
                 item: `${site}/services`,
               },
@@ -43,6 +44,9 @@ export const ServicesIndex: React.FC = () => {
         ]}
       />
       <main className={`section container`}>
+        <nav aria-label="Хлебные крошки">
+          <Link to="/">Главная</Link> / <span aria-current="page">Услуги</span>
+        </nav>
         <h1 className="section-title">Услуги Арти Клиник</h1>
         <div className={styles.grid}>
           {servicesData.map((s) => (
@@ -57,6 +61,7 @@ export const ServicesIndex: React.FC = () => {
             </article>
           ))}
         </div>
+        <p><Link to="/price-list">Цены на консультации и лечение</Link></p>
       </main>
     </>
   );

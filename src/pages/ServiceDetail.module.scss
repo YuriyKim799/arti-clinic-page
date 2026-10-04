@@ -8,6 +8,27 @@
   margin-bottom: 16px;
 }
 
+.breadcrumbs,
+.relatedLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  overflow-wrap: anywhere;
+
+  a {
+    color: $blue-soft-600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.relatedLinks {
+  margin-top: 24px;
+}
+
 .backLink {
   color: #2b2b2b;
   padding: 8px 12px;

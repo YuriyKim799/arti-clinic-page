@@ -9,6 +9,7 @@ import {
 } from '@/data/priceList';
 import RecordButton from '@/components/RecordButton/RecordButton';
 import SeoAuto from '@/components/SeoAuto';
+import { CLINIC_SHARE_IMAGE, SITE_ORIGIN } from '@/data/clinic';
 
 export default function PriceListPage() {
   const offerCatalog = useMemo(buildOfferCatalogJsonLd, []);
@@ -32,20 +33,14 @@ export default function PriceListPage() {
     return () => io.disconnect();
   }, []);
 
-  const site = import.meta.env.VITE_SITE_URL || 'https://articlinic.ru';
+  const site = SITE_ORIGIN;
 
   return (
     <>
       <SeoAuto
-        title="Прайс-лист — Arti Clinic"
+        title="Цены на консультации и лечение в Москве — Арти Клиник"
         description="Актуальные цены на консультации, мануальную терапию, рефлексотерапию, массаж, физиотерапию и комплексные лечебные программы."
-        images={{
-          url: `${site}/og/price-1200x630.jpg`,
-          width: 1200,
-          height: 630,
-          alt: 'Прайс-лист Arti Clinic',
-          type: 'image/jpeg',
-        }}
+        images={CLINIC_SHARE_IMAGE}
         jsonLd={[
           offerCatalog, // твой OfferCatalog
           {

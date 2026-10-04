@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Link, useLocation } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { servicesData } from '@/data/services';
 import styles from './ServiceDetail.module.scss';
 import { NavBar } from '@/components/NavBar';
@@ -8,6 +8,8 @@ import TelegramButton from '@/components/TelegramButton/TelegramButton';
 import { Footer } from '@/components/Footer';
 import SeoAuto from '@/components/SeoAuto';
 import RecordButton from '@/components/RecordButton/RecordButton';
+import { CLINIC_ID, CLINIC_SHARE_IMAGE, SITE_ORIGIN } from '@/data/clinic';
+import { HashLink } from 'react-router-hash-link';
 
 type Params = { slug?: string };
 
@@ -38,9 +40,7 @@ export const ServiceDetail: React.FC = () => {
   const { slug } = useParams<Params>();
   const service = servicesData.find((s) => s.slug === slug);
 
-  const { pathname } = useLocation();
-  const site = import.meta.env.VITE_SITE_URL || 'https://articlinic.ru';
-  const url = new URL(pathname || '/', site).toString();
+  const site = SITE_ORIGIN;
 
   if (!service) {
     return (
@@ -49,13 +49,7 @@ export const ServiceDetail: React.FC = () => {
           title="Услуга не найдена — Arti Clinic"
           description="К сожалению, такой страницы нет. Проверьте адрес или вернитесь к списку услуг."
           robots="noindex, nofollow"
-          images={{
-            url: `${site}/og/404-1200x630.jpg`,
-            width: 1200,
-            height: 630,
-            alt: 'Страница не найдена',
-            type: 'image/jpeg',
-          }}
+          images={CLINIC_SHARE_IMAGE}
         />
         <main className="section container">
           <h1 className="section-title">Услуга не найдена</h1>
@@ -68,21 +62,25 @@ export const ServiceDetail: React.FC = () => {
     );
   }
 
-  const title = `${service.title} — Arti Clinic, Москва`;
+  const url = `${site}/services/${service.slug}`;
+  const title = service.seoTitle || `${service.title.replace(/^Программа «(.+)»\.?$/, '$1')} в Москве — Арти Клиник`;
   const description =
-    service.short ??
+    service.seoDescription ?? service.short ??
     (service.full || '').replace(/\s+/g, ' ').trim().slice(0, 160);
 
-  // если нет своей OG-картинки — используем дефолт/по слагу
-  const ogUrl =
-    (service as any).ogImage || `${site}/og-services/${service.slug}.jpg`;
+  const ogUrl = new URL(service.img, site).toString();
 
   const serviceJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: service.title,
     description,
-    provider: { '@type': 'MedicalClinic', name: 'Арти Клиник' },
+    provider: {
+      '@type': 'MedicalClinic',
+      '@id': CLINIC_ID,
+      name: 'Арти Клиник',
+      url: `${site}/`,
+    },
     areaServed: 'Москва',
     url,
   };
@@ -94,10 +92,16 @@ export const ServiceDetail: React.FC = () => {
       {
         '@type': 'ListItem',
         position: 1,
+        name: 'Главная',
+        item: `${site}/`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
         name: 'Услуги',
         item: `${site}/services`,
       },
-      { '@type': 'ListItem', position: 2, name: service.title, item: url },
+      { '@type': 'ListItem', position: 3, name: service.title, item: url },
     ],
   };
 
@@ -106,12 +110,11 @@ export const ServiceDetail: React.FC = () => {
       <SeoAuto
         title={title}
         description={description}
+        canonical={url}
         images={{
           url: ogUrl,
-          width: 1200,
-          height: 630,
           alt: service.title,
-          type: 'image/jpeg',
+          type: 'image/webp',
         }}
         jsonLd={[serviceJsonLd, breadcrumbsJsonLd]}
         ogType="website"
@@ -120,9 +123,13 @@ export const ServiceDetail: React.FC = () => {
       <NavBar />
       <main className={`section ${styles.page}`}>
         <div className={`container ${styles.wrapper}`}>
-          <Link to="/" className={styles.backLink}>
-            ← Главная
-          </Link>
+          <nav className={styles.breadcrumbs} aria-label="Хлебные крошки">
+            <Link to="/">Главная</Link>
+            <span aria-hidden="true">/</span>
+            <Link to="/services">Услуги</Link>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{service.title}</span>
+          </nav>
           <header className={styles.header}>
             <h1 className={styles.title}>{service.title}</h1>
             {service.short && <p className="muted">{service.short}</p>}
@@ -242,6 +249,11 @@ export const ServiceDetail: React.FC = () => {
             <WhatsAppButton phone="+79998310636" variant="primary" />
             <TelegramButton to="@Artiklinic" variant="primary" />
           </div>
+          <nav className={styles.relatedLinks} aria-label="Дополнительная информация">
+            <Link to="/price-list">Стоимость консультаций и лечения</Link>
+            <Link to="/services">Все услуги клиники</Link>
+            <HashLink smooth to="/#specialists">Специалисты Арти Клиник</HashLink>
+          </nav>
         </div>
       </main>
       <Footer />
