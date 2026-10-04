@@ -176,7 +176,7 @@ export default function ContactForm() {
 
     setLoading(true);
     try {
-      // отправляем на наш бэкенд, который уже стучится в Telegram Bot API
+      // Облачный обработчик принимает заявку и отправляет уведомление клинике.
       const res = await fetch(
         'https://functions.yandexcloud.net/d4ehvps5uj8pkr10vkjs',
         {
@@ -196,12 +196,22 @@ export default function ContactForm() {
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data?.error || 'Ошибка отправки');
+        throw new Error(
+          res.status >= 500
+            ? 'Сервер записи не подтвердил отправку заявки. Пожалуйста, свяжитесь с нами по телефону +7 (499) 148-17-24.'
+            : data?.error || 'Ошибка отправки'
+        );
       }
 
       setSent(true);
-    } catch (e: any) {
-      setError(e?.message || 'Не удалось отправить. Попробуйте ещё раз.');
+    } catch (e: unknown) {
+      setError(
+        e instanceof TypeError
+          ? 'Не удалось получить ответ от сервера записи. Проверьте подключение к интернету или позвоните нам: +7 (499) 148-17-24.'
+          : e instanceof Error
+            ? e.message
+            : 'Не удалось отправить. Попробуйте ещё раз.'
+      );
     } finally {
       setLoading(false);
     }
@@ -291,7 +301,11 @@ export default function ContactForm() {
         {loading ? 'Отправка…' : 'Записаться'}
       </button>
 
-      {error && <p className={styles.error}>{error}</p>}
+      {error && (
+        <p className={styles.error} role="alert">
+          {error}
+        </p>
+      )}
     </form>
   );
 }

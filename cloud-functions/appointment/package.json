@@ -1,0 +1,11 @@
+{
+  "name": "arti-clinic-appointment",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test index.test.cjs send-mail.test.cjs"
+  },
+  "dependencies": {
+    "nodemailer": "10.0.14"
+  }
+}
