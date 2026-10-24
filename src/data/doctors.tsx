@@ -4,14 +4,13 @@ import chiefDocImage from '@/assets/chief-doc.jpg';
 import chiefDocAvatar from '@/assets/chief-doc-avatar.webp';
 import kimAAphoto from '@/assets/kimAAnevr.jpg';
 import kimAAavatar from '@/assets/kimAAnevr-avatar.webp';
-import { chiefDoctorMoreInfo } from '@/data/chiefDoctorMoreInfo';
 
 export const doctors: Doctor[] = [
   {
     id: 'tyan-viktoria',
     name: 'Тян Виктория Николаевна',
     position: 'Главный врач',
-    primarySpecialty: 'Неврология · Мануальная терапия · Рефлексотерапия',
+    primarySpecialty: 'Неврология · Мануальная терапия · Рефлексотерапия · Реабилитация',
 
     bio: (
       <>
@@ -57,9 +56,6 @@ export const doctors: Doctor[] = [
       },
     ],
 
-    moreInfoTitle: 'О главном и ведущем враче Арти Клиник',
-    moreInfo: chiefDoctorMoreInfo,
-
     photo: {
       src: chiefDocImage,
       avatarSrc: chiefDocAvatar,
@@ -86,8 +82,7 @@ export const doctors: Doctor[] = [
     id: 'kim-alina',
     name: 'Ким Алина Александровна',
     position: 'Врач-невролог',
-    primarySpecialty: 'Неврология · Реабилитация',
-
+    primarySpecialty: 'Неврология · Мануальная терапия · Рефлексотерапия · Реабилитация',
     bio: (
       <>
         <p>
@@ -140,15 +135,15 @@ export const doctors: Doctor[] = [
       jpg1x: kimAAphoto,
     },
 
-    docs: kimDocs, // если документов нет — поставь []
-    experience: '10 лет',
+    docs: kimDocs,
+    experience: '10+ лет',
     // rating: 5.0,
     // reviewsCount: 12,
 
     facts: [
-      // { label: 'Фокус', value: 'Невропатии' },
-      // { label: 'Подход', value: 'Доказательный' },
-      // { label: 'Курс', value: '6–10' },
+     { label: 'Приём', value: 'Обязательный осмотр' },
+      { label: 'Подход', value: 'Без операции' },
+      { label: 'Фокус', value: 'Боль/грыжи' },
     ],
   },
 ];

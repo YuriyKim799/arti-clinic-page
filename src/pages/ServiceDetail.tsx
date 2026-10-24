@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { servicesData } from '@/data/services';
 import styles from './ServiceDetail.module.scss';
@@ -9,7 +9,11 @@ import { Footer } from '@/components/Footer';
 import SeoAuto from '@/components/SeoAuto';
 import RecordButton from '@/components/RecordButton/RecordButton';
 import { CLINIC_ID, CLINIC_SHARE_IMAGE, SITE_ORIGIN } from '@/data/clinic';
-import { HashLink } from 'react-router-hash-link';
+import { doctorProfiles } from '@/data/doctorProfiles';
+import { doctors } from '@/data/doctors';
+import { neurologistConsultationPrices, primaryConsultationMinimum, rubleAmount } from '@/data/neurologistConsultation';
+
+const NeurologistConsultation = lazy(() => import('@/components/NeurologistConsultation'));
 
 type Params = { slug?: string };
 
@@ -63,12 +67,23 @@ export const ServiceDetail: React.FC = () => {
   }
 
   const url = `${site}/services/${service.slug}`;
+  const isNeurologistConsultation = service.slug === 'nevrolog';
   const title = service.seoTitle || `${service.title.replace(/^Программа «(.+)»\.?$/, '$1')} в Москве — Арти Клиник`;
   const description =
     service.seoDescription ?? service.short ??
     (service.full || '').replace(/\s+/g, ' ').trim().slice(0, 160);
 
   const ogUrl = new URL(service.img, site).toString();
+  const offers = isNeurologistConsultation ? neurologistConsultationPrices.flatMap((item) => {
+    const price = rubleAmount(item.price);
+    return price === null ? [] : [{
+      '@type': 'Offer',
+      name: item.title,
+      price,
+      priceCurrency: 'RUB',
+      url: `${url}#consultation-prices`,
+    }];
+  }) : undefined;
 
   const serviceJsonLd = {
     '@context': 'https://schema.org',
@@ -83,6 +98,7 @@ export const ServiceDetail: React.FC = () => {
     },
     areaServed: 'Москва',
     url,
+    offers,
   };
 
   const breadcrumbsJsonLd = {
@@ -111,7 +127,7 @@ export const ServiceDetail: React.FC = () => {
         title={title}
         description={description}
         canonical={url}
-        images={{
+        images={isNeurologistConsultation ? CLINIC_SHARE_IMAGE : {
           url: ogUrl,
           alt: service.title,
           type: 'image/webp',
@@ -133,10 +149,18 @@ export const ServiceDetail: React.FC = () => {
           <header className={styles.header}>
             <h1 className={styles.title}>{service.title}</h1>
             {service.short && <p className="muted">{service.short}</p>}
+            {isNeurologistConsultation && (
+              <div className={styles.consultationIntro}>
+                {primaryConsultationMinimum !== undefined && (
+                  <a href="#consultation-prices">Первичный приём от {primaryConsultationMinimum.toLocaleString('ru-RU')} ₽</a>
+                )}
+                <RecordButton variant="primary">Записаться к неврологу</RecordButton>
+              </div>
+            )}
           </header>
 
           <section className={styles.sectionBlock}>
-            <h2>Описание</h2>
+            <h2>{isNeurologistConsultation ? 'Как проходит приём невролога' : 'Описание'}</h2>
             <div style={{ whiteSpace: 'pre-line' }}>
               {formatText(service.full)}
             </div>
@@ -150,6 +174,10 @@ export const ServiceDetail: React.FC = () => {
               />
             )}
           </section>
+
+          {isNeurologistConsultation && (
+            <Suspense fallback={null}><NeurologistConsultation /></Suspense>
+          )}
 
           {(service.symptoms?.trim() || service.symptomsImage?.src) && (
             <section className={styles.sectionBlock}>
@@ -252,8 +280,19 @@ export const ServiceDetail: React.FC = () => {
           <nav className={styles.relatedLinks} aria-label="Дополнительная информация">
             <Link to="/price-list">Стоимость консультаций и лечения</Link>
             <Link to="/services">Все услуги клиники</Link>
-            <HashLink smooth to="/#specialists">Специалисты Арти Клиник</HashLink>
+            <Link to="/doctors">Специалисты Арти Клиник</Link>
           </nav>
+          {!isNeurologistConsultation && doctorProfiles.some(profile => profile.serviceSlugs.includes(service.slug)) && (
+            <section className={styles.sectionBlock} aria-labelledby="service-doctors-title">
+              <h2 id="service-doctors-title">Врачи направления</h2>
+              <ul className={styles.list}>
+                {doctorProfiles.filter(profile => profile.serviceSlugs.includes(service.slug)).map(profile => {
+                  const doctor = doctors.find(({ id }) => id === profile.slug);
+                  return doctor ? <li key={profile.slug}><Link to={`/doctors/${profile.slug}`}>{doctor.name} — профиль и документы</Link></li> : null;
+                })}
+              </ul>
+            </section>
+          )}
         </div>
       </main>
       <Footer />

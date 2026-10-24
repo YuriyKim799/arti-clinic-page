@@ -678,8 +678,9 @@ export default function SeoAuto({
           <script
             key={key}
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(obj) }}
-          />
+          >
+            {JSON.stringify(obj).replace(/</g, '\\u003c')}
+          </script>
         );
       })}
     </Helmet>

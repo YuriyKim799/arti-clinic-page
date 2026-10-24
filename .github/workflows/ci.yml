@@ -102,6 +102,12 @@ jobs:
       - name: Run tests (if present)
         run: npm test --if-present
 
+      - name: Check neurologist consultation page
+        run: npm run check:consultation
+
+      - name: Check doctor profiles and navigation
+        run: npm run check:doctors
+
       - name: Install AWS CLI
         run: |
           python3 -m pip install --user --upgrade pip awscli

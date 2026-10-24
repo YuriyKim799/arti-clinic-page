@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { servicesData } from '../data/services';
-import styles from './ServicesIndex.module.scss';
+import ServiceCards from '@/components/ServiceCards';
 import SeoAuto from '@/components/SeoAuto';
 import { CLINIC_SHARE_IMAGE, SITE_ORIGIN } from '@/data/clinic';
 
 export const ServicesIndex: React.FC = () => {
   const site = SITE_ORIGIN;
+  const services = [...servicesData].sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0));
 
   return (
     <>
@@ -48,19 +49,7 @@ export const ServicesIndex: React.FC = () => {
           <Link to="/">Главная</Link> / <span aria-current="page">Услуги</span>
         </nav>
         <h1 className="section-title">Услуги Арти Клиник</h1>
-        <div className={styles.grid}>
-          {servicesData.map((s) => (
-            <article key={s.slug} className={styles.card}>
-              <h2 className={styles.title}>
-                <Link to={`/services/${s.slug}`}>{s.title}</Link>
-              </h2>
-              <p className={styles.excerpt}>{s.short}</p>
-              <Link to={`/services/${s.slug}`} className={styles.more}>
-                Подробнее →
-              </Link>
-            </article>
-          ))}
-        </div>
+        <ServiceCards items={services} headingLevel={2} />
         <p><Link to="/price-list">Цены на консультации и лечение</Link></p>
       </main>
     </>

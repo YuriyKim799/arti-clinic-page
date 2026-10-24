@@ -463,22 +463,23 @@
 
 .header {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 16px;
-  align-items: flex-end;
+  justify-content: start;
+  margin-bottom: 4px;
 }
 
 .headerLeft {
-  max-width: 680px;
+  width: 100%;
+  max-width: 760px;
+  min-width: 0;
 }
 
 .kicker {
-  font-size: 12px;
+  font-size: 18px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--cd-muted);
-  margin-bottom: 6px;
+  margin: 0 0 14px;
+  line-height: 1.6;
 }
 
 .title {
@@ -488,38 +489,12 @@
 }
 
 .subtitle {
-  margin-top: 8px;
+  margin: 12px auto 0;
   max-width: 560px;
   font-size: 14px;
   color: var(--cd-muted);
   line-height: 1.55;
-}
-
-.headerRight {
-  flex-shrink: 0;
-}
-
-.allButton {
-  border: 0;
-  border-radius: 999px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #2f7a55, #1f5e40);
-  color: #fff;
-  cursor: pointer;
-  box-shadow: 0 14px 30px rgba(31, 94, 64, 0.3);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 18px 40px rgba(31, 94, 64, 0.36);
-  }
-
-  &:focus-visible {
-    outline: 2px solid rgba(28, 92, 255, 0.25);
-    outline-offset: 3px;
-  }
+  text-align: center;
 }
 
 /* Аватарки */
@@ -539,7 +514,7 @@
   align-items: center;
   gap: 6px;
   padding: 6px 10px;
-  border-radius: 25px;
+  border-radius: 10px;
   cursor: pointer;
   transition: transform 0.18s ease, background 0.18s ease;
   min-width: 76px;
@@ -557,11 +532,9 @@
 .avatarImageWrap {
   width: 100px;
   height: 100px;
-  border-radius: 25px;
+  border-radius: 10px;
   overflow: hidden;
   background: #fff;
-  // border: 1px solid rgba(12, 18, 32, 0.1);
-  // box-shadow: 0 10px 22px rgba(14, 23, 38, 0.08);
   display: grid;
   place-items: center;
   position: relative;
@@ -638,9 +611,21 @@
 }
 
 /* Левая колонка */
+.featuresStack {
+  display: grid;
+  min-width: 0;
+}
+
 .featuresColumn {
+  grid-area: 1 / 1;
   display: grid;
   gap: 12px;
+}
+
+/* Скрытые панели сохраняют место для самой высокой карточки. */
+.inactivePanel {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .featureCard {
@@ -713,6 +698,7 @@
 
 /* Правая колонка */
 .doctorColumn {
+  display: grid;
   min-width: 0;
 }
 
@@ -723,6 +709,7 @@
 }
 
 .doctorCard {
+  grid-area: 1 / 1;
   background: var(--cd-card);
   border-radius: var(--cd-radius-xl);
   border: 1px solid var(--cd-border);
@@ -826,9 +813,11 @@
 .doctorInfo {
   position: relative;
   z-index: 1;
+  align-self: stretch;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  justify-content: space-between;
 }
 
 .doctorTitleBlock {
@@ -936,6 +925,7 @@
 }
 
 .moreLink {
+  position: relative;
   border: 0;
   background: transparent;
   padding: 0;
@@ -944,19 +934,43 @@
   font-weight: 700;
   color: var(--cd-ink);
   cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: all 200ms ease;
+  text-decoration: none;
+  transition: transform 500ms ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    left: 0;
+    height: 2px;
+    background: currentColor;
+    pointer-events: none;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms ease;
+  }
   
   &:hover {
-    transform: scale(1.1);
-    text-decoration-thickness: 2px;
+    transform: translateX(5px);
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    transform: scaleX(1);
   }
 
   &:focus-visible {
     outline: 2px solid rgba(28, 92, 255, 0.25);
     outline-offset: 3px;
     border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &,
+    &::after {
+      transition: none;
+    }
   }
 }
 
@@ -982,13 +996,9 @@
   overflow: hidden;
   display: grid;
   place-items: center;
-  padding: 6px;
-  background: radial-gradient(
-    circle at 20% 0%,
-    rgba(229, 240, 255, 0.95),
-    rgba(229, 231, 235, 0.9)
-  );
-  border: 1px solid rgba(12, 18, 32, 0.1);
+  padding: 0;
+  background: transparent;
+  border: 0;
   max-height: 410px;
   align-self: stretch;
 }
@@ -1041,6 +1051,7 @@
 @media (max-width: 979px) {
   .doctorCard {
     min-height: 0;
+    grid-template-rows: auto minmax(0, 1fr);
   }
 
   .doctorPhotoCard {
@@ -1074,161 +1085,4 @@
   font-size: 12px;
   font-weight: 800;
   opacity: 0.92;
-}
-
-/* ✅ Документы — бар без превью */
-.docsBar {
-  margin-top: 10px;
-  border-radius: 16px;
-  border: 1px solid rgba(12, 18, 32, 0.1);
-  background: rgba(15, 23, 42, 0.02);
-  padding: 12px 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.docsBarLeft {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-}
-
-.docsBarIcon {
-  width: 36px;
-  height: 36px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  color: rgba(12, 18, 32, 0.78);
-  background: rgba(28, 92, 255, 0.08);
-  border: 1px solid rgba(28, 92, 255, 0.16);
-  box-shadow: 0 10px 22px rgba(28, 92, 255, 0.1);
-  flex: 0 0 auto;
-}
-
-.docsBarText {
-  min-width: 0;
-  display: grid;
-  gap: 2px;
-}
-
-.docsBarTitle {
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: -0.01em;
-}
-
-.docsBarSub {
-  font-size: 11px;
-  color: var(--cd-muted);
-  line-height: 1.35;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 520px;
-}
-
-.docsBarButton {
-  border-radius: 999px;
-  border: 0;
-  padding: 9px 14px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  background: linear-gradient(135deg, #9da0a7, #6375a9);
-  color: #fff;
-  box-shadow: 0 10px 24px rgba(28, 92, 255, 0.22);
-  transition: transform 0.14s ease, box-shadow 0.14s ease;
-  flex: 0 0 auto;
-
-  &:hover {
-    transform: scale(1.1);
-    box-shadow: 0 14px 30px rgba(28, 92, 255, 0.28);
-  }
-
-  &:focus-visible {
-    outline: 2px solid rgba(28, 92, 255, 0.25);
-    outline-offset: 3px;
-  }
-}
-
-/* Модалка */
-.modalBackdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 18, 22, 0.55);
-  backdrop-filter: blur(6px);
-  display: grid;
-  place-items: center;
-  z-index: 1000;
-}
-
-.modal {
-  position: relative;
-  width: min(760px, 92vw);
-  max-height: 86vh;
-  overflow: auto;
-  background: rgba(255, 255, 255, 0.98);
-  border-radius: 18px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.26);
-  padding: 24px 24px 20px;
-  border: 1px solid rgba(12, 18, 32, 0.1);
-}
-
-.modalTitle {
-  font-size: clamp(18px, 2.2vw, 22px);
-  font-weight: 900;
-  margin: 0 0 12px;
-  outline: none;
-}
-
-.modalContent {
-  color: #111827;
-  font-size: 15px;
-  line-height: 1.65;
-}
-
-.modalContent p + p {
-  margin-top: 0.85em;
-}
-
-.modalClose {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  border: 0;
-  background: transparent;
-  font-size: 26px;
-  line-height: 1;
-  cursor: pointer;
-  color: #6b7280;
-
-  &:hover {
-    color: #111827;
-  }
-
-  &:focus-visible {
-    outline: 2px solid rgba(28, 92, 255, 0.25);
-    border-radius: 10px;
-  }
-}
-
-/* Документы в модалке */
-.docsModalBody {
-  margin-top: 6px;
-}
-
-.docsPlaceholder {
-  height: 280px;
-  border-radius: 18px;
-  background: rgba(148, 163, 184, 0.12);
-}
-
-.docsModalHint {
-  margin-top: 10px;
-  font-size: 12px;
-  color: var(--cd-muted);
 }

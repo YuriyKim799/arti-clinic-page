@@ -9,7 +9,13 @@ const site = (process.env.SITE_ORIGIN || 'https://articlinic.ru').replace(/\/$/,
 const serviceSource = fs.readFileSync('src/data/services.ts', 'utf8');
 const slugs = [...serviceSource.matchAll(/\bslug:\s*['"]([^'"]+)['"]/g)].map(m => m[1]);
 if (!slugs.length || slugs.some(slug => !/^[a-z0-9-]+$/.test(slug))) throw Error('Invalid service routes');
-const routes = ['/', '/services', ...slugs.map(s => `/services/${s}`), '/price-list', '/blog', '/agreement', '/politic'];
+const doctorSource = fs.readFileSync('src/data/doctorProfiles.tsx', 'utf8');
+const doctorSlugs = [...doctorSource.matchAll(/\bslug:\s*['"]([^'"]+)['"]/g)].map(m => m[1]);
+if (!doctorSlugs.length || doctorSlugs.some(slug => !/^[a-z0-9-]+$/.test(slug)) ||
+  new Set(doctorSlugs).size !== doctorSlugs.length) throw Error('Invalid doctor routes');
+const routes = ['/', '/services', ...slugs.map(s => `/services/${s}`),
+  '/doctors', ...doctorSlugs.map(slug => `/doctors/${slug}`),
+  '/price-list', '/blog', '/agreement', '/politic'];
 const posts = JSON.parse(fs.readFileSync(path.join(dist, 'posts.json'), 'utf8'));
 const types: Record<string, string> = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml' };
 // Serve the untouched shell for every app route; never render a previously saved snapshot.

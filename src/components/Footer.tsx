@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
               <Link to="/services">Услуги</Link>
               <Link to="/price-list">Цены</Link>
               <Link to="/blog">Блог</Link>
-              <HashLink smooth to="/#specialists">Врачи</HashLink>
+              <Link to="/doctors">Врачи</Link>
               <HashLink smooth to="/#contact">Контакты</HashLink>
             </nav>
             <Link to="/politic" className={styles.copy}>

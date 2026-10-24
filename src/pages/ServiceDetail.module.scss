@@ -8,6 +8,21 @@
   margin-bottom: 16px;
 }
 
+.consultationIntro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-top: 20px;
+
+  a {
+    color: #365f79;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
 .breadcrumbs,
 .relatedLinks {
   display: flex;

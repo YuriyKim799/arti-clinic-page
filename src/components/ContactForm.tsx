@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useId, useRef, useState } from 'react';
 import styles from './ContactForm.module.scss';
 import { Link } from 'react-router-dom';
+import { contactRequests, type AppointmentType } from '@/data/contactRequests';
 
 const PHONE_PREFIX = '+7';
 const LOCAL_MAX = 10; // 10 локальных цифр
@@ -50,8 +51,15 @@ const formatPhone = (local: string) => {
   return res;
 };
 
-export default function ContactForm() {
-  const [form, setForm] = useState({ name: '', phone: '', agree: false });
+type ContactFormProps = {
+  appointmentType?: AppointmentType;
+};
+
+export default function ContactForm({ appointmentType = 'appointment' }: ContactFormProps) {
+  const request = appointmentType === 'appointment' ? null : contactRequests[appointmentType];
+  const requiresEmail = request !== null;
+  const agreementId = `agreement-${useId()}`;
+  const [form, setForm] = useState({ name: '', email: '', phone: '', agree: false });
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -166,6 +174,10 @@ export default function ContactForm() {
       setError('Проверьте корректность имени и телефона.');
       return;
     }
+    if (requiresEmail && !/^[^\s<>@,;]+@[^\s<>@,;]+\.[^\s<>@,;]+$/.test(form.email.trim())) {
+      setError('Укажите корректный email.');
+      return;
+    }
     if (!form.agree) {
       setError('Необходимо согласие на обработку персональных данных.');
       return;
@@ -185,6 +197,11 @@ export default function ContactForm() {
           body: JSON.stringify({
             name: form.name.trim(),
             phone: form.phone,
+            ...(requiresEmail ? {
+              email: form.email.trim(),
+              appointment_type: appointmentType,
+              doctor: 'kim-alina',
+            } : {}),
             page_text: pagePretty.text, // НОВОЕ: "https://.../price-list — Рефлексотерапевтические массажи"
             page_section: pagePretty.section, // НОВОЕ: "Рефлексотерапевтические массажи" (если нужно)
             page: typeof window !== 'undefined' ? window.location.href : '',
@@ -203,6 +220,13 @@ export default function ContactForm() {
         );
       }
 
+      if (requiresEmail) {
+        const confirmation = await res.json().catch(() => null);
+        if (confirmation?.ok !== true) {
+          throw new Error('Сервер записи не подтвердил отправку заявки. Пожалуйста, свяжитесь с нами по телефону +7 (499) 148-17-24.');
+        }
+      }
+
       setSent(true);
     } catch (e: unknown) {
       setError(
@@ -219,27 +243,48 @@ export default function ContactForm() {
 
   if (sent) {
     return (
-      <div className={styles.thanks}>
-        <h3>Спасибо! Заявка отправлена.</h3>
-        <p className="muted">Мы свяжемся с вами в ближайшее время.</p>
+      <div className={styles.thanks} role="status">
+        <h3>{request?.successTitle || 'Спасибо! Заявка отправлена.'}</h3>
+        <p className="muted">{request?.successDescription || 'Мы свяжемся с вами в ближайшее время.'}</p>
       </div>
     );
   }
 
   return (
-    <form id="record" onSubmit={handleSubmit} className={styles.form}>
+    <form id={requiresEmail ? `${appointmentType}-form` : 'record'} onSubmit={handleSubmit} className={styles.form} aria-busy={loading}>
       <label>
-        Имя*
+        {requiresEmail ? 'ФИО*' : 'Имя*'}
         <input
           type="text"
           name="name"
-          placeholder="Ваше имя"
+          placeholder={requiresEmail ? 'Фамилия, имя, отчество' : 'Ваше имя'}
           autoComplete="name"
+          autoFocus={requiresEmail}
+          maxLength={100}
           value={form.name}
           onChange={handleChange}
           required
         />
       </label>
+
+      {requiresEmail && (
+        <label>
+          Email*
+          <input
+            type="email"
+            name="email"
+            placeholder="you@example.ru"
+            autoComplete="email"
+            inputMode="email"
+            autoCapitalize="none"
+            spellCheck={false}
+            maxLength={254}
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+        </label>
+      )}
 
       <label>
         Телефон*
@@ -263,13 +308,13 @@ export default function ContactForm() {
         <div className={styles.agreementCheckbox}>
           <input
             type="checkbox"
-            id="agreement_main"
+            id={agreementId}
             name="agree"
             required
             checked={form.agree}
             onChange={handleChange}
           />
-          <label htmlFor="agreement_main">
+          <label htmlFor={agreementId}>
             <span>
               Я даю{' '}
               <Link to="/agreement">
@@ -298,7 +343,7 @@ export default function ContactForm() {
       </div>
 
       <button type="submit" className="btn btn--primary" disabled={loading}>
-        {loading ? 'Отправка…' : 'Записаться'}
+        {loading ? 'Отправка…' : requiresEmail ? 'Отправить заявку' : 'Записаться'}
       </button>
 
       {error && (

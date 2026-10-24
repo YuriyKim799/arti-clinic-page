@@ -1,0 +1,359 @@
+@use '../styles/variables' as *;
+
+.section {
+  padding-block: 16px 48px;
+}
+
+.card {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 36px 64px;
+  padding: clamp(24px, 4.5vw, 56px);
+  overflow: hidden;
+  color: #244857;
+  background: linear-gradient(325deg, $bg, $beige-100 65%, $blue-soft);
+  // border: 1px solid #b8d1df;
+  border-radius: 32px;
+  box-shadow: 0 20px 50px rgba(53, 91, 116, .1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 520px;
+    height: 520px;
+    inset: -370px auto auto -160px;
+    border: 1px solid rgba(255, 255, 255, .35);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(10deg, rgba(255, 255, 255, .18), transparent 70%);
+    pointer-events: none;
+  }
+}
+
+.lavaBackground {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+
+  &[data-ready='true'] { opacity: 1; }
+}
+
+.content {
+  min-width: 0;
+  align-self: center;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 24px;
+  color: #244857;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .13em;
+  line-height: 1.6;
+  text-transform: uppercase;
+
+  &::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    flex-shrink: 0;
+    background: currentColor;
+  }
+}
+
+.title {
+  max-width: 10ch;
+  margin: 0;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+
+.description {
+  max-width: 43ch;
+  margin: 22px 0 28px;
+  color: #244857;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.details {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 14px 20px;
+  color: #f5fbff;
+  background: #254d64;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: background .2s ease;
+
+  svg { flex-shrink: 0; }
+  &:hover { background: #1a3c52; }
+}
+
+.booking {
+  min-height: 48px;
+  padding: 14px 18px;
+  color: #244857;
+  background: rgba(255, 255, 255, .65);
+  border-color: #7d9fb3;
+  line-height: 1.4;
+
+  &:hover {
+    background: #fff;
+    border-color: #5d8198;
+  }
+}
+
+.details, .booking, .doctorsLink {
+  &:focus-visible {
+    outline: 2px solid #214f6a;
+    outline-offset: 5px;
+  }
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  color: #244857;
+  font-size: 12px;
+  line-height: 1.6;
+
+  svg { flex-shrink: 0; }
+}
+
+.summary {
+  min-width: 0;
+  padding: 30px;
+  color: #243e4c;
+  background: rgba(255, 255, 255, .88);
+  border: 1px solid rgba(255, 255, 255, .6);
+  border-radius: 22px;
+}
+
+.summaryTitle {
+  margin: 0 0 24px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.steps {
+  display: grid;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  h4 {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  p {
+    margin: 0;
+    color: #616f75;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+}
+
+.stepNumber {
+  padding-top: 2px;
+  color: #718e9d;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+
+.priceRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid #dce1df;
+
+  > span {
+    max-width: 12ch;
+    color: #616f75;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+}
+
+.price {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -.04em;
+  white-space: nowrap;
+
+  span {
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  grid-column: 1 / -1;
+  min-width: 0;
+  padding-top: 26px;
+  border-top: 1px solid rgba(54, 90, 113, .22);
+
+  p {
+    margin: 0;
+    color: #244857;
+    font-size: 12px;
+    line-height: 1.6;
+
+    span {
+      display: block;
+      color: #244857;
+      font-size: 13px;
+      font-weight: 500;
+    }
+  }
+}
+
+.avatars {
+  display: flex;
+  flex-shrink: 0;
+  padding-left: 8px;
+
+  img {
+    width: 44px;
+    height: 44px;
+    margin-left: -8px;
+    object-fit: cover;
+    background: $beige-100;
+    border: 2px solid #dcecf4;
+    border-radius: 50%;
+  }
+}
+
+.doctorsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 44px;
+  margin-left: auto;
+  color: #244857;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: none;
+
+  svg { flex-shrink: 0; }
+
+  &:hover .doctorsLinkText::after,
+  &:focus-visible .doctorsLinkText::after {
+    transform: scaleX(1);
+  }
+}
+
+.doctorsLinkText {
+  position: relative;
+  min-width: 0;
+  overflow-wrap: anywhere;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -4px;
+    left: 0;
+    height: 2px;
+    background: currentColor;
+    pointer-events: none;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms ease;
+  }
+}
+
+@media (max-width: 1100px) {
+  .card { gap: 30px; }
+  .summary { padding: 24px; }
+}
+
+@media (max-width: 760px) {
+  .card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+    border-radius: 24px;
+  }
+
+  .title { max-width: none; }
+  .description { max-width: 50ch; }
+  .eyebrow { margin-bottom: 18px; }
+  .footer { flex-wrap: wrap; padding-top: 22px; }
+  .doctorsLink { width: 100%; margin: 0; }
+}
+
+@media (max-width: 420px) {
+  .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .summary { padding: 22px 18px; }
+  .price { font-size: 28px; }
+  .doctorsLink { gap: 10px; font-size: clamp(14px, calc(5vw - 2px), 16px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .details { transition: none; }
+  .doctorsLinkText::after { transition: none; }
+}

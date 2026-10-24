@@ -11,6 +11,8 @@ import NotFound from '@/pages/NotFound';
 import PriceListPage from '@/pages/PriceListPage/PriceListPage';
 const BlogIndex = React.lazy(() => import('@/pages/BlogIndex'));
 const BlogPost = React.lazy(() => import('@/pages/BlogPost'));
+const DoctorsIndex = React.lazy(() => import('@/pages/DoctorsIndex'));
+const DoctorDetail = React.lazy(() => import('@/pages/DoctorDetail'));
 import CookieConsentModal from '@/components/CookieConsent/CookieConsentModal';
 
 const App: React.FC = () => {
@@ -18,10 +20,13 @@ const App: React.FC = () => {
     <>
       <div className={styles.app}>
         <ScrollToTop />
+        <React.Suspense fallback={<div className="container" role="status" style={{ padding: '40px 0' }}>Загрузка страницы…</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<ServicesIndex />} />
           <Route path="/services/:slug" element={<ServiceDetail />} />
+          <Route path="/doctors" element={<DoctorsIndex />} />
+          <Route path="/doctors/:slug" element={<DoctorDetail />} />
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="*" element={<NotFound />} />
@@ -29,6 +34,7 @@ const App: React.FC = () => {
           <Route path="/politic" element={<PoliticPage />} />
           <Route path="/price-list" element={<PriceListPage />} />
         </Routes>
+        </React.Suspense>
         <CookieConsentModal />
       </div>
     </>

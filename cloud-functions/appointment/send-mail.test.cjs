@@ -29,6 +29,30 @@ test('Mail.ru TLS, valid MIME email and connection cleanup', async t => {
   assert.deepEqual(await sendMail(auth, message), { accepted: ['recipient@example.org'] });
   assert.equal(close.mock.callCount(), 1);
 });
+
+test('one SMTP envelope contains both configured recipients and preserves partial acceptance', async t => {
+  t.mock.method(SMTPConnection.prototype, 'connect', cb => cb());
+  t.mock.method(SMTPConnection.prototype, 'login', (credentials, cb) => {
+    assert.deepEqual(credentials, { user: auth.user, pass: auth.password });
+    cb();
+  });
+  const outcome = { accepted: ['recipient@example.org'], rejected: ['copy@example.org'] };
+  const send = t.mock.method(SMTPConnection.prototype, 'send', (envelope, buffer, cb) => {
+    assert.deepEqual(envelope.to, ['recipient@example.org', 'copy@example.org']);
+    assert.equal(envelope.from, auth.user);
+    assert.match(buffer.toString(), /multipart\/alternative/);
+    assert.doesNotMatch(buffer.toString(), /fake-password/);
+    cb(null, outcome);
+  });
+  const close = t.mock.method(SMTPConnection.prototype, 'close', () => {});
+  const response = await sendMail(auth, {
+    ...message,
+    to: [{ address: 'recipient@example.org' }, { address: 'copy@example.org' }],
+  });
+  assert.deepEqual(response, outcome);
+  assert.equal(send.mock.callCount(), 1);
+  assert.equal(close.mock.callCount(), 1);
+});
 for (const stage of ['connect', 'login', 'send']) {
   test(`20-second deadline closes stalled ${stage} without retry`, async t => {
     t.mock.timers.enable({ apis: ['setTimeout'] });

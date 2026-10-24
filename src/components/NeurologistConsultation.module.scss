@@ -1,0 +1,101 @@
+@use '../styles/variables' as *;
+
+.section {
+  @include card;
+  padding: clamp(18px, 3vw, 28px);
+  margin: 16px 0;
+  scroll-margin-top: calc(var(--nav-h, 90px) + 16px);
+
+  h2 { margin: 0 0 16px; }
+  p { line-height: 1.7; }
+  a { color: #365f79; text-decoration: underline; text-underline-offset: 3px; }
+}
+
+.tableWrap { width: 100%; overflow-x: auto; }
+.prices {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: clamp(13px, 1.5vw, 16px);
+
+  th, td {
+    padding: 16px 12px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid $line;
+    overflow-wrap: anywhere;
+  }
+  thead { background: $beige-100; }
+  tbody th { font-weight: 500; width: 55%; }
+}
+.caption { text-align: left; color: $muted; font-size: 14px; padding-bottom: 12px; }
+.priceDoctor { display: block; margin-top: 6px; font-size: 0.88em; color: $muted; }
+.amount { white-space: nowrap; font-weight: 700; }
+.note { color: $muted; font-size: 14px; }
+
+.doctors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.doctor { display: flex; flex-direction: column; min-width: 0; border: 1px solid $line; border-radius: $radius-lg; padding: 20px; }
+.profileLink { align-self: flex-start; margin-top: auto; }
+.doctorHeader {
+  display: flex; gap: 16px; align-items: center;
+  > div { min-width: 0; }
+  h3 { @include h3; margin: 0 0 8px; overflow-wrap: anywhere; }
+  p { margin: 4px 0; }
+  img { width: 96px; height: 96px; object-fit: cover; object-position: center 20%; border-radius: 50%; flex: 0 0 auto; }
+}
+.specialty { font-size: 14px; color: #365f79; }
+.bio { font-size: 15px; line-height: 1.7; }
+.list { padding-left: 24px; line-height: 1.7; li + li { margin-top: 12px; } }
+.urgent { border-left: 3px solid $blue-soft-600; background: $beige-100; padding: 16px 20px; margin-top: 24px; h3 { margin: 0 0 8px; } p { margin: 0; } }
+.links { display: flex; flex-wrap: wrap; gap: 16px 24px; line-height: 1.7; }
+
+.section a.mapPreview {
+  display: block;
+  width: 100%;
+  max-width: 650px;
+  margin: 20px 0;
+  overflow: hidden;
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  background: $beige-100;
+  color: #244857;
+  text-decoration: none;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+
+  img { display: block; width: 100%; height: auto; }
+
+  &:hover {
+    border-color: $blue-soft-600;
+    box-shadow: $shadow;
+
+    .mapCaption > span:first-child { text-decoration: underline; text-underline-offset: 4px; }
+  }
+
+  &:focus-visible { outline: 2px solid $blue-soft-600; outline-offset: 4px; }
+}
+
+.mapCaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+
+  svg { flex-shrink: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section a.mapPreview { transition: none; }
+}
+
+@media (max-width: 760px) {
+  .doctors { grid-template-columns: 1fr; }
+}
+@media (max-width: 420px) {
+  .prices th, .prices td { padding: 12px 6px; }
+  .prices tbody th { width: 42%; }
+  .doctor { padding: 16px; }
+  .doctorHeader { gap: 12px; img { width: 72px; height: 72px; } }
+}

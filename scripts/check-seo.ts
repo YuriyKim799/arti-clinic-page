@@ -170,10 +170,44 @@ function routeKey(route: string): string {
   return route.replace(/\/index\.html$/i, '/').replace(/\/+$/, '') || '/';
 }
 
+function hasSchemaType(value: unknown, type: string): boolean {
+  if (Array.isArray(value)) return value.some(child => hasSchemaType(child, type));
+  if (!value || typeof value !== 'object') return false;
+  const object = value as Record<string, unknown>;
+  if (object['@type'] === type || (Array.isArray(object['@type']) && object['@type'].includes(type))) return true;
+  return Object.values(object).some(child => hasSchemaType(child, type));
+}
+
+function schemaEntities(value: unknown): Record<string, unknown>[] {
+  if (Array.isArray(value)) return value.flatMap(schemaEntities);
+  if (!value || typeof value !== 'object') return [];
+  const entity = value as Record<string, unknown>;
+  return [entity, ...schemaEntities(entity['@graph'])];
+}
+
+function entityHasType(entity: Record<string, unknown>, type: string): boolean {
+  const types = entity['@type'];
+  return types === type || (Array.isArray(types) && types.includes(type));
+}
+
 let routes: Page[] = [];
 try { routes = parseJson<Page[]>(fs.readFileSync('.cache/routes.json', 'utf8'), 'routes manifest') ?? []; }
 catch { fail('routes manifest', 'missing .cache/routes.json; run prerender before the SEO check'); }
 if (!Array.isArray(routes)) { fail('routes manifest', 'expected an array of routes'); routes = []; }
+
+const doctorRoutes = ['/doctors'];
+try {
+  const source = fs.readFileSync('src/data/doctorProfiles.tsx', 'utf8');
+  const slugs = [...source.matchAll(/\bslug:\s*['"]([^'"]+)['"]/g)].map(match => match[1]);
+  if (!slugs.length || slugs.some(slug => !/^[a-z0-9-]+$/.test(slug)) || new Set(slugs).size !== slugs.length) {
+    fail('doctor profiles', 'invalid or duplicate profile slugs');
+  } else {
+    doctorRoutes.push(...slugs.map(slug => `/doctors/${slug}`));
+  }
+} catch { fail('doctor profiles', 'missing or unreadable src/data/doctorProfiles.tsx'); }
+for (const route of doctorRoutes) {
+  if (!routes.some(page => routeKey(page.route) === route)) fail(route, 'doctor page missing from prerender manifest');
+}
 
 const posts = parseJson<{ slug: string }[]>(read('posts.json'), 'posts.json') ?? [];
 const articles: Page[] = Array.isArray(posts)
@@ -207,6 +241,9 @@ for (const raw of sitemapUrls) {
 }
 for (const article of articles) {
   if (!sitemapRoutes.has(routeKey(article.route))) fail(article.route, 'article missing from sitemap');
+}
+for (const route of doctorRoutes) {
+  if (!sitemapRoutes.has(route)) fail(route, 'doctor page missing from sitemap');
 }
 
 for (const { route, file } of pages.values()) {
@@ -253,6 +290,8 @@ for (const { route, file } of pages.values()) {
       if (pathname === null) continue;
       if (routeKey(pathname) === '/away' || routeKey(pathname) === '/articlinic') {
         fail(route, `imported Dzen navigation link: ${attrs.href}`);
+      } else if (/\.(?:avif|webp|jpe?g|png|gif|svg|bmp|tiff?|pdf)$/i.test(pathname)) {
+        imageExists(attrs.href, base, route, 'document href');
       } else if (!pages.has(routeKey(pathname))) {
         fail(route, `internal link has no generated route: ${attrs.href}`);
       }
@@ -266,6 +305,20 @@ for (const { route, file } of pages.values()) {
     if (schema !== null) schemas.push(schema);
   }
   schemas.forEach(schema => checkSchemaImages(schema, base, route));
+  if (!schemas.length) fail(route, 'structured data missing from initial HTML');
+  if (route.startsWith('/services/') && !schemas.some(schema => hasSchemaType(schema, 'Service'))) {
+    fail(route, 'Service structured data missing from initial HTML');
+  }
+  if (/^\/doctors\/[^/]+\/?$/.test(route)) {
+    const entities = schemas.flatMap(schemaEntities);
+    if (!schemas.some(schema => hasSchemaType(schema, 'Person'))) {
+      fail(route, 'Person structured data missing from initial HTML');
+    }
+    if (!entities.some(entity => !entityHasType(entity, 'Person') &&
+      (entityHasType(entity, 'MedicalClinic') || entityHasType(entity, 'Organization')))) {
+      fail(route, 'separate clinic or organization structured data missing from initial HTML');
+    }
+  }
   if (route.startsWith('/blog/') && (!pageTags.some(tag => tag.name === 'article') || !schemas.length)) {
     fail(route, 'article content or structured data missing');
   }

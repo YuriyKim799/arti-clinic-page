@@ -1,5 +1,6 @@
 // src/pages/PriceListPage/PriceListPage.tsx
 import React, { useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './PriceListPage.module.scss';
 import PriceListTabsPro from '@/components/PriceList/PriceListTabsPro';
 import {
@@ -95,6 +96,7 @@ export default function PriceListPage() {
             <div className={styles.card}>
               <header className={styles.cardHead}>
                 <h2 className={styles.cardTitle}>Стоимость услуг</h2>
+                <p><Link to="/services/nevrolog">Приём невролога: врачи, подготовка и запись →</Link></p>
                 <p className={styles.cardNote}>
                   Обновлено: <time>01.12.2025</time>
                 </p>

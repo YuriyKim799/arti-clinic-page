@@ -1,43 +1,17 @@
 import React from 'react';
-import styles from './Services.module.scss';
 import { servicesData } from '../data/services';
-import { Link } from 'react-router-dom';
-
-const updateWaveOrigin: React.PointerEventHandler<HTMLElement> = (event) => {
-  const rect = event.currentTarget.getBoundingClientRect();
-  event.currentTarget.style.setProperty('--wave-x', `${event.clientX - rect.left}px`);
-  event.currentTarget.style.setProperty('--wave-y', `${event.clientY - rect.top}px`);
-};
+import ServiceCards from './ServiceCards';
 
 export const Services: React.FC = () => {
-  const list = [...servicesData].sort(
-    (a, b) => (b.priority ?? 0) - (a.priority ?? 0)
-  );
+  const list = servicesData
+    .filter(({ slug }) => slug !== 'nevrolog')
+    .sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0));
 
   return (
-    <section id="services" className={`section ${styles.section}`}>
+    <section id="services" className="section">
       <div className="container">
         <h2 className="section-title">Услуги</h2>
-        <div className={styles.grid}>
-          {list.map((s) => (
-            <Link
-              key={s.slug}
-              to={`/services/${s.slug}`}
-              className={`${styles.card} ${styles.clickHintCard}`}
-              aria-label={s.title}
-              onPointerMove={updateWaveOrigin}
-              onPointerEnter={updateWaveOrigin}
-            >
-              <div className={styles.imageWrap}>
-                <img src={s.img} alt={s.title} loading="lazy" />
-              </div>
-              <div className={styles.cardBody}>
-                <h3 className={styles.cardTitle}>{s.title}</h3>
-                <p className={styles.cardText}>{s.short}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <ServiceCards items={list} />
       </div>
     </section>
   );

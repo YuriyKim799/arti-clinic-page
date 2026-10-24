@@ -5,23 +5,31 @@
 }
 
 .trigger {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: clamp(14px, 3vw, 28px);
+  width: 100%;
   max-width: 100%;
   padding: clamp(18px, 2.5vw, 26px);
-  border: 1px solid rgba(191, 171, 132, 0.75);
+  border: 1px solid rgba($blue-soft, .65);
   border-radius: 20px;
-  background: linear-gradient(125deg, #173e4e, #315f72 68%, #527f94);
-  box-shadow: 0 12px 28px rgba(23, 62, 78, 0.16), inset 0 1px 0 rgba(255, 248, 232, 0.2);
-  color: #faf5eb;
+  background: linear-gradient(125deg, #244857, #315f72 68%, #527f94);
+  box-shadow: 0 12px 28px rgba(36, 72, 87, .16), inset 0 1px 0 rgba(245, 242, 237, .2);
+  color: $bg;
   font: inherit;
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .triggerText {
+  position: relative;
+  z-index: 3;
   display: grid;
   gap: 9px;
   min-width: 0;
@@ -35,28 +43,30 @@
 }
 
 .hint {
-  font-size: clamp(11px, 1.1vw, 13px);
+  font-size: clamp(12px, 1.1vw, 14px);
   font-weight: 400;
   line-height: 1.5;
   color: #e2eaf0;
 }
 
 .arrow {
+  position: relative;
+  z-index: 3;
   display: grid;
   place-items: center;
   flex: 0 0 44px;
   height: 44px;
-  border: 1px solid rgba(232, 218, 191, 0.55);
+  border: 1px solid rgba($blue-soft, .7);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
-  color: #eee0c4;
+  color: $bg;
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 @media (hover: hover) {
   .trigger:hover {
     transform: translateY(-2px);
-    border-color: #d4c09a;
+    border-color: $blue-soft;
     box-shadow: 0 16px 34px rgba(23, 62, 78, 0.24);
 
     .arrow {
@@ -66,85 +76,13 @@
   }
 }
 
-.trigger:focus-visible,
-.close:focus-visible {
+.trigger:focus-visible {
   outline: 3px solid $blue-soft-600;
   outline-offset: 4px;
 }
 
 .trigger:active {
   transform: translateY(0);
-}
-
-.dialog {
-  position: fixed;
-  width: min(760px, calc(100% - 32px));
-  max-height: 86vh;
-  max-height: 86dvh;
-  margin: auto;
-  padding: clamp(22px, 4vw, 40px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  border: 1px solid #d5cbb8;
-  border-radius: 24px;
-  background: linear-gradient(145deg, #fffcf6, #f2f6f7);
-  color: $text;
-  box-shadow: 0 28px 80px rgba(12, 34, 44, 0.3);
-
-  &::backdrop {
-    background: rgba(13, 30, 39, 0.6);
-    backdrop-filter: blur(5px);
-  }
-}
-
-.close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 1px solid rgba(49, 95, 114, 0.18);
-  border-radius: 50%;
-  background: #fff;
-  color: #17495a;
-  cursor: pointer;
-
-  &:hover {
-    background: #e5eef2;
-  }
-}
-
-.eyebrow {
-  margin: 0 40px 10px 0;
-  color: #537280;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.dialogTitle {
-  margin: 0 28px 22px 0;
-  color: #17495a;
-  font-size: clamp(22px, 3vw, 30px);
-  line-height: 1.25;
-}
-
-.copy {
-  font-size: clamp(14px, 1.4vw, 16px);
-  line-height: 1.75;
-  overflow-wrap: anywhere;
-
-  p {
-    margin: 0 0 18px;
-  }
-
-  p:last-child {
-    margin-bottom: 0;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,5 +1,13 @@
 // src/data/priceList.ts
-export type PriceItem = { title: string; price: string };
+export type PriceItem = {
+  title: string;
+  price: string;
+  neurologyConsultation?: {
+    visit: 'consultation' | 'primary' | 'repeat';
+    durationMinutes?: number;
+    doctorId?: string;
+  };
+};
 export type PriceCategory = { title: string; items: PriceItem[] };
 
 export const slugify = (s: string) =>
@@ -18,31 +26,37 @@ export const PRICE_CATEGORIES: PriceCategory[] = [
         title:
           'Консультация главного врача Тян Виктории Николаевны Доктора медицинских наук, профессора (невролога, рефлексотерапевта, мануального терапевта) до 60 минут',
         price: '8500₽',
+        neurologyConsultation: { visit: 'consultation', durationMinutes: 60, doctorId: 'tyan-viktoria' },
       },
       {
         title:
           'Консультация главного врача Тян Виктории Николаевны Доктора медицинских наук, профессора (невролога, рефлексотерапевта, мануального терапевта) до 30 минут',
         price: '6000₽',
+        neurologyConsultation: { visit: 'consultation', durationMinutes: 30, doctorId: 'tyan-viktoria' },
       },
       {
         title:
           'Прием первичный (осмотр, консультация) врача-невролога / рефлексотерапевта / мануального терапевта) до 60 минут',
         price: '6000₽',
+        neurologyConsultation: { visit: 'primary', durationMinutes: 60 },
       },
       {
         title:
           'Прием первичный (осмотр, консультация) врача-невролога / рефлексотерапевта / мануального терапевта) до 30 минут',
         price: '4000₽',
+        neurologyConsultation: { visit: 'primary', durationMinutes: 30 },
       },
       {
         title:
           'Прием повторный (осмотр, консультация) главного врача Тян Виктории Николаевны Доктора медицинских наук, профессора (невролога, рефлексотерапевта, мануального терапевта)',
         price: '5000₽',
+        neurologyConsultation: { visit: 'repeat', doctorId: 'tyan-viktoria' },
       },
       {
         title:
           'Прием повторный (осмотр, консультация) врача-невролога / рефлексотерапевта / мануального терапевта)',
         price: '3000₽',
+        neurologyConsultation: { visit: 'repeat' },
       },
     ],
   },

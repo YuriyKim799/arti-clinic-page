@@ -24,6 +24,9 @@
   color: inherit;
   text-decoration: none;
   cursor: pointer;
+}
+
+.clickHintCard {
   --wave-x: 50%;
   --wave-y: 50%;
 }
@@ -78,6 +81,9 @@
 }
 .card:hover .imageWrap img {
   transform: scale(1.04);
+}
+.portraitImage {
+  object-position: center 20%;
 }
 .cardBody {
   position: relative;

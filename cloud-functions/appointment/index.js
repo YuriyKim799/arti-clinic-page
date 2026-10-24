@@ -5,6 +5,22 @@ const ORIGINS = (ALLOWED_ORIGINS || 'https://articlinic.ru')
   .split(',').map(s => s.trim()).filter(Boolean);
 const MAX_BODY_BYTES = 4 * 1024;
 const MIN_FILL_MS = 900;
+const ONLINE_DOCTOR_ID = 'kim-alina';
+const ONLINE_DOCTOR_NAME = 'Ким Алина Александровна';
+
+function isPatientEmail(value) {
+  if (typeof value !== 'string' || /[\r\n]/.test(value)) return false;
+  const address = value.trim();
+  if (address.length > 254) return false;
+  const parts = address.split('@');
+  if (parts.length !== 2) return false;
+  const [local, domain] = parts;
+  return Boolean(local) && local.length <= 64 &&
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+$/.test(local) &&
+    !local.startsWith('.') && !local.endsWith('.') && !local.includes('..') &&
+    typeof domain === 'string' && domain.includes('.') &&
+    domain.split('.').every(label => /^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$/.test(label));
+}
 
 const escapeHtml = (s = '') => s.replace(/[&<>"']/g, ch => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
@@ -47,9 +63,11 @@ exports.handler = async (event) => {
   if (method !== 'POST') return reply(405, { ok: false });
   const smtpUser = (process.env.SMTP_USER || '').trim();
   const smtpPassword = process.env.SMTP_PASSWORD;
-  const mailTo = (process.env.MAIL_TO || 'kimskiy@mail.ru').trim();
+  const configuredRecipients = (process.env.MAIL_TO || 'kimskiy@mail.ru,yurakakim777@gmail.com')
+    .split(/[;,]/).map(address => address.trim()).filter(Boolean);
+  const mailTo = [...new Map(configuredRecipients.map(address => [address.toLowerCase(), address])).values()];
   const isMailbox = value => /^[^\s<>@,;]+@[^\s<>@,;]+\.[^\s<>@,;]+$/.test(value);
-  if (!isMailbox(smtpUser) || !smtpPassword || !isMailbox(mailTo)) {
+  if (!isMailbox(smtpUser) || !smtpPassword || mailTo.length === 0 || mailTo.some(address => !isMailbox(address))) {
     console.error(JSON.stringify({ event: 'appointment_config_missing' }));
     return reply(500, { ok: false, error: 'Сервис записи временно недоступен.' });
   }
@@ -76,9 +94,32 @@ exports.handler = async (event) => {
   const pageText = String(data.page_text || '').trim().slice(0, 300);
   if (!name || !phone) return reply(400, { ok: false, error: 'Укажите имя и телефон.' });
 
+  const isOnline = data.appointment_type === 'online-consultation';
+  const isExerciseCollection = data.appointment_type === 'exercise-collection';
+  const requiresEmail = isOnline || isExerciseCollection;
+  if (requiresEmail && data.doctor !== ONLINE_DOCTOR_ID) {
+    return reply(400, { ok: false, error: isExerciseCollection
+      ? 'Сборник упражнений выбранного врача недоступен.'
+      : 'Онлайн-консультация у выбранного врача недоступна.' });
+  }
+  if (requiresEmail && (typeof data.name !== 'string' || typeof data.phone !== 'string')) {
+    return reply(400, { ok: false, error: 'Укажите ФИО и телефон.' });
+  }
+  if (requiresEmail && !isPatientEmail(data.email)) {
+    return reply(400, { ok: false, error: 'Укажите корректный email.' });
+  }
+  const email = requiresEmail ? data.email.trim() : '';
+  const nameLabel = requiresEmail ? 'ФИО' : 'Имя';
+  const requestType = isExerciseCollection ? 'Покупка сборника упражнений' : 'Онлайн-консультация';
+
   const lines = [
     '📬 <b>Новая заявка</b>',
-    `<b>Имя:</b> ${escapeHtml(name)}`,
+    ...(requiresEmail ? [
+      `<b>Тип заявки:</b> ${requestType}`,
+      `<b>Врач:</b> ${ONLINE_DOCTOR_NAME}`,
+    ] : []),
+    `<b>${nameLabel}:</b> ${escapeHtml(name)}`,
+    ...(requiresEmail ? [`<b>Email:</b> ${escapeHtml(email)}`] : []),
     `<b>Телефон:</b> ${escapeHtml(phone)}`,
   ];
   const pageLine = humanizePage(page, pageText);
@@ -92,17 +133,27 @@ exports.handler = async (event) => {
       user: smtpUser, password: smtpPassword,
     }, {
       from: { name: 'Арти Клиник — запись с сайта', address: smtpUser },
-      to: { address: mailTo },
-      subject: 'Новая заявка на запись — Арти Клиник',
-      text: ['Новая заявка', `Имя: ${name}`, `Телефон: ${phone}`,
+      to: mailTo.map(address => ({ address })),
+      subject: isExerciseCollection ? 'Заявка на сборник упражнений — Арти Клиник'
+        : isOnline ? `Онлайн-консультация — ${ONLINE_DOCTOR_NAME} — Арти Клиник` : 'Новая заявка на запись — Арти Клиник',
+      text: ['Новая заявка',
+        ...(requiresEmail ? [`Тип заявки: ${requestType}`, `Врач: ${ONLINE_DOCTOR_NAME}`] : []),
+        `${nameLabel}: ${name}`, ...(requiresEmail ? [`Email: ${email}`] : []), `Телефон: ${phone}`,
         ...(page ? [`Страница: ${page}`, ...(pageText ? [pageText] : [])] : [])].join('\n'),
       html: lines.map(line => `<p>${line}</p>`).join('\n'),
     });
-    if (!result?.accepted?.some(address => address.toLowerCase() === mailTo.toLowerCase())) {
+    const acceptedAddresses = new Set((Array.isArray(result?.accepted) ? result.accepted : [])
+      .filter(address => typeof address === 'string').map(address => address.toLowerCase()));
+    const acceptedCount = mailTo.filter(address => acceptedAddresses.has(address.toLowerCase())).length;
+    if (acceptedCount === 0) {
       console.error(JSON.stringify({ event: 'mail_rejected' }));
       return reply(502, { ok: false, error: 'Не удалось подтвердить отправку. Позвоните в клинику: +7 (499) 148-17-24.' });
     }
-    console.info(JSON.stringify({ event: 'mail_send_completed', elapsedMs: Date.now() - startedAt }));
+    if (acceptedCount < mailTo.length) {
+      console.error(JSON.stringify({ event: 'mail_partial_delivery', acceptedCount, recipientCount: mailTo.length }));
+    }
+    console.info(JSON.stringify({ event: 'mail_send_completed', acceptedCount,
+      recipientCount: mailTo.length, elapsedMs: Date.now() - startedAt }));
     return reply(200, { ok: true });
   } catch (error) {
     const timedOut = error?.code === 'ETIMEDOUT';

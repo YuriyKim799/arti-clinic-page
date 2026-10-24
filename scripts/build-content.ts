@@ -39,6 +39,10 @@ const sha1 = (buf: Buffer | string) =>
   crypto.createHash('sha1').update(buf).digest('hex');
 const read = (file: string) => fs.readFileSync(file, 'utf-8');
 const fileHash = (file: string) => sha1(fs.readFileSync(file));
+const CONTENT_RENDER_DEPENDENCIES_HASH = sha1([
+  path.join(ROOT, 'src', 'data', 'seoTopics.ts'),
+  path.join(ROOT, 'scripts', 'content-excerpt.ts'),
+].map(fileHash).join('|'));
 
 function slugify(s: string) {
   return s
@@ -305,7 +309,7 @@ function postHash(mdPath: string, slug: string) {
     const combo = files.map((f) => fileHash(path.join(imgDir, f))).join('|');
     imgsHash = sha1(combo);
   }
-  return sha1(`html-seo-v4|${mdHash}|${imgsHash}`);
+  return sha1(`html-seo-v4|${CONTENT_RENDER_DEPENDENCIES_HASH}|${mdHash}|${imgsHash}`);
 }
 
 function loadManifest(): Record<string, PostMeta> {
@@ -349,6 +353,14 @@ function getServiceSlugs() {
   return [...source.matchAll(/\bslug:\s*['"]([^'"]+)['"]/g)].map((m) => m[1]);
 }
 
+function getDoctorProfileSlugs() {
+  const source = read(path.join(ROOT, 'src', 'data', 'doctorProfiles.tsx'));
+  const slugs = [...source.matchAll(/\bslug:\s*['"]([^'"]+)['"]/g)].map((match) => match[1]);
+  if (!slugs.length || slugs.some((slug) => !/^[a-z0-9-]+$/.test(slug)) ||
+    new Set(slugs).size !== slugs.length) throw Error('Invalid doctor profile routes');
+  return slugs;
+}
+
 function sitemapUrl(pathname: string, lastmod?: string) {
   const loc = `${canonicalSite()}${pathname}`;
   const lastmodTag = lastmod ? `<lastmod>${xmlEscape(lastmod)}</lastmod>` : '';
@@ -358,12 +370,14 @@ function sitemapUrl(pathname: string, lastmod?: string) {
 }
 
 function saveSitemap(list: Omit<PostMeta, 'hash'>[]) {
-  const staticPaths = ['/', '/blog', '/services', '/price-list'];
+  const staticPaths = ['/', '/blog', '/services', '/doctors', '/price-list'];
   const servicePaths = getServiceSlugs().map((slug) => `/services/${slug}`);
+  const doctorPaths = getDoctorProfileSlugs().map((slug) => `/doctors/${slug}`);
 
   const urls = [
     ...staticPaths.map((pathname) => sitemapUrl(pathname)),
     ...servicePaths.map((pathname) => sitemapUrl(canonicalPath(pathname))),
+    ...doctorPaths.map((pathname) => sitemapUrl(canonicalPath(pathname))),
     ...list.map((post) => {
       const lastmodSource = post.updated || post.date;
       return sitemapUrl(

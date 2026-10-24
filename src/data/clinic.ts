@@ -4,6 +4,13 @@ export const SITE_ORIGIN = (
 
 export const CLINIC_ID = `${SITE_ORIGIN}/#clinic`;
 
+const clinicSchedule = [
+  { days: 'Mo-Sa', label: 'Пн–Сб', opens: '09:00', closes: '20:00' },
+  { days: 'Su', label: 'Вс', opens: '10:00', closes: '18:00' },
+];
+export const CLINIC_SCHEDULE_TEXT = clinicSchedule
+  .map(({ label, opens, closes }) => `${label} ${opens}–${closes}`).join(' · ');
+
 export const CLINIC_SHARE_IMAGE = {
   url: '/images/clinic-share.jpg',
   width: 1200,
@@ -30,7 +37,7 @@ export const clinicJsonLd = {
     streetAddress: 'ул. 1812 года, д. 3, помещение 5/1',
   },
   medicalSpecialty: 'https://schema.org/Neurologic',
-  openingHours: ['Mo-Sa 09:00-20:00', 'Su 10:00-18:00'],
+  openingHours: clinicSchedule.map(({ days, opens, closes }) => `${days} ${opens}-${closes}`),
   sameAs: ['https://t.me/Artiklinic', 'https://yandex.ru/maps/org/19149709238'],
   image: `${SITE_ORIGIN}${CLINIC_SHARE_IMAGE.url}`,
   logo: `${SITE_ORIGIN}/images/clinic-logo.png`,

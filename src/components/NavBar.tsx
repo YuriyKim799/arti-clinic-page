@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom';
 import styles from './NavBar.module.scss';
 import LogoIcon from '@/components/LogoIcon/LogoIcon';
 import { HashLink } from 'react-router-hash-link';
-import RecordModal from './RecordModal';
 import RecordButton from './RecordButton/RecordButton';
 
 export const NavBar: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const [recordOpen, setRecordOpen] = useState(false);
 
   const navId = `primary-navigation-${useId()}`; // уникальный id для aria-controls
   const burgerRef = useRef<HTMLButtonElement>(null);
@@ -93,13 +91,6 @@ export const NavBar: React.FC = () => {
             Записаться
           </RecordButton>
         </nav>
-
-        {recordOpen && (
-          <RecordModal
-            isOpen={recordOpen}
-            onClose={() => setRecordOpen(false)}
-          />
-        )}
       </div>
     </div>
   );

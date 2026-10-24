@@ -4,6 +4,7 @@ import { useInView } from '../useInView';
 import IconPhone from '@/icons/IconPhone';
 import IconStatPhone from '@/icons/IconStatPhone';
 import ContactForm from './ContactForm';
+import { CLINIC_SCHEDULE_TEXT } from '@/data/clinic';
 import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
 import TelegramButton from '@/components/TelegramButton/TelegramButton';
 
@@ -67,7 +68,7 @@ export const Contact: React.FC = () => {
             <p className="muted">
               Адрес: г.Москва, ул.1812 года, д.3 (вход со двора)
             </p>
-            <p className="muted">Пн–Сб 09:00–20:00 · Вс 10:00–18:00</p>
+            <p className="muted">{CLINIC_SCHEDULE_TEXT}</p>
 
             <div className={styles.mapWrap} aria-label="Карта проезда">
               {isIntersecting ? (
