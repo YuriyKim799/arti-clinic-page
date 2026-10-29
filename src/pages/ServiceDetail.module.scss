@@ -108,3 +108,17 @@
   margin-top: 16px;
   flex-wrap: wrap;
 }
+
+.readingList {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.6;
+
+  a {
+    color: $blue-soft-600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}

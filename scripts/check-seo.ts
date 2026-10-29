@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { relatedArticlesForService } from '../src/data/seoTopics';
 
 type Page = { route: string; file: string };
 type Tag = { name: string; attributes: Record<string, string> };
@@ -190,6 +191,58 @@ function entityHasType(entity: Record<string, unknown>, type: string): boolean {
   return types === type || (Array.isArray(types) && types.includes(type));
 }
 
+function visibleText(html: string): string {
+  // Block elements and <br> separate text; inline emphasis does not add space
+  // before punctuation (e.g. </strong>, or </strong>;).
+  const text = html.replace(/<\/?(?:p|div|br|li|ul|ol|h[1-6]|section|article|blockquote)\b[^>]*>/gi, ' ')
+    .replace(/<[^>]*>/g, '');
+  return decodeEntities(text).replace(/\s+/g, ' ').trim();
+}
+
+function checkServiceAnswerData(html: string, schemas: unknown[], route: string, pageTags: Tag[]): void {
+  const entities = schemas.flatMap(schemaEntities);
+  const pageUrl = site + routeKey(route);
+  const service = entities.find(entity => entityHasType(entity, 'Service'));
+  const medicalPage = entities.find(entity => entityHasType(entity, 'MedicalWebPage'));
+  if (service?.['@id'] !== `${pageUrl}#service`) fail(route, 'stable Service identity missing');
+  if (medicalPage?.['@id'] !== `${pageUrl}#webpage`) fail(route, 'MedicalWebPage identity missing');
+  const mainEntity = medicalPage?.mainEntity as Record<string, unknown> | undefined;
+  if (mainEntity?.['@id'] !== service?.['@id']) fail(route, 'medical page must identify the visible service');
+  const publisher = medicalPage?.publisher as Record<string, unknown> | undefined;
+  if (publisher?.['@id'] !== `${site}/#clinic` ||
+    !entities.some(entity => entityHasType(entity, 'MedicalClinic') && entity['@id'] === publisher?.['@id'])) {
+    fail(route, 'medical page publisher must identify the separate clinic');
+  }
+
+  const faqSection = html.match(/<section\b[^>]*\bid=["']service-faq["'][^>]*>([\s\S]*?)<\/section>/i);
+  const faqSchema = entities.find(entity => entityHasType(entity, 'FAQPage'));
+  if (faqSection) {
+    if (!faqSchema) { fail(route, 'visible FAQ has no FAQPage structured data'); return; }
+    const visibleQuestions = [...faqSection[1].matchAll(/<details\b[^>]*>([\s\S]*?)<\/details>/gi)].map(match => {
+      const summary = match[1].match(/<summary\b[^>]*>([\s\S]*?)<\/summary>/i);
+      return { question: visibleText(summary?.[1] || ''), answer: visibleText(match[1].replace(summary?.[0] || '', '')) };
+    });
+    const questions = Array.isArray(faqSchema.mainEntity) ? faqSchema.mainEntity : [];
+    if (visibleQuestions.length !== questions.length) fail(route, 'FAQPage question count differs from visible FAQ');
+    visibleQuestions.forEach((visible, index) => {
+      const question = questions[index] as Record<string, unknown> | undefined;
+      const answer = question?.acceptedAnswer as Record<string, unknown> | undefined;
+      if (question?.['@type'] !== 'Question' || question.name !== visible.question ||
+        answer?.['@type'] !== 'Answer' || answer.text !== visible.answer) {
+        fail(route, `FAQPage answer ${index + 1} differs from visible question/answer`);
+      }
+    });
+  } else if (faqSchema) fail(route, 'FAQPage data has no visible FAQ section');
+
+  const slug = routeKey(route).split('/').pop() || '';
+  // The neurologist page already has its own curated reading section.
+  for (const article of slug === 'nevrolog' ? [] : relatedArticlesForService(slug)) {
+    if (!pageTags.some(tag => tag.name === 'a' && tag.attributes.href === article.href)) {
+      fail(route, `related article lacks an ordinary link: ${article.href}`);
+    }
+  }
+}
+
 let routes: Page[] = [];
 try { routes = parseJson<Page[]>(fs.readFileSync('.cache/routes.json', 'utf8'), 'routes manifest') ?? []; }
 catch { fail('routes manifest', 'missing .cache/routes.json; run prerender before the SEO check'); }
@@ -309,6 +362,7 @@ for (const { route, file } of pages.values()) {
   if (route.startsWith('/services/') && !schemas.some(schema => hasSchemaType(schema, 'Service'))) {
     fail(route, 'Service structured data missing from initial HTML');
   }
+  if (route.startsWith('/services/')) checkServiceAnswerData(html, schemas, route, pageTags);
   if (/^\/doctors\/[^/]+\/?$/.test(route)) {
     const entities = schemas.flatMap(schemaEntities);
     if (!schemas.some(schema => hasSchemaType(schema, 'Person'))) {

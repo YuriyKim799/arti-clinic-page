@@ -8,10 +8,11 @@ import TelegramButton from '@/components/TelegramButton/TelegramButton';
 import { Footer } from '@/components/Footer';
 import SeoAuto from '@/components/SeoAuto';
 import RecordButton from '@/components/RecordButton/RecordButton';
-import { CLINIC_ID, CLINIC_SHARE_IMAGE, SITE_ORIGIN } from '@/data/clinic';
+import { CLINIC_ID, CLINIC_SHARE_IMAGE, SITE_ORIGIN, clinicJsonLd } from '@/data/clinic';
 import { doctorProfiles } from '@/data/doctorProfiles';
 import { doctors } from '@/data/doctors';
 import { neurologistConsultationPrices, primaryConsultationMinimum, rubleAmount } from '@/data/neurologistConsultation';
+import { relatedArticlesForService } from '@/data/seoTopics';
 
 const NeurologistConsultation = lazy(() => import('@/components/NeurologistConsultation'));
 
@@ -38,6 +39,11 @@ function formatText(text: string) {
       ))}
     </p>
   ));
+}
+
+// Match the visible answer renderer: ** marks emphasis, paragraphs/br add space.
+function plainAnswer(text: string): string {
+  return text.replace(/\*\*/g, '').replace(/\s+/g, ' ').trim();
 }
 
 export const ServiceDetail: React.FC = () => {
@@ -68,6 +74,7 @@ export const ServiceDetail: React.FC = () => {
 
   const url = `${site}/services/${service.slug}`;
   const isNeurologistConsultation = service.slug === 'nevrolog';
+  const relatedArticles = isNeurologistConsultation ? [] : relatedArticlesForService(service.slug);
   const title = service.seoTitle || `${service.title.replace(/^Программа «(.+)»\.?$/, '$1')} в Москве — Арти Клиник`;
   const description =
     service.seoDescription ?? service.short ??
@@ -88,6 +95,7 @@ export const ServiceDetail: React.FC = () => {
   const serviceJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
+    '@id': `${url}#service`,
     name: service.title,
     description,
     provider: {
@@ -98,12 +106,40 @@ export const ServiceDetail: React.FC = () => {
     },
     areaServed: 'Москва',
     url,
+    mainEntityOfPage: { '@id': `${url}#webpage` },
     offers,
+  };
+
+  const faqJsonLd = service.faq?.length ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${url}#service-faq`,
+    isPartOf: { '@id': `${url}#webpage` },
+    mainEntity: service.faq.map((item, index) => ({
+      '@type': 'Question',
+      '@id': `${url}#service-question-${index + 1}`,
+      name: item.q.replace(/\s+/g, ' ').trim(),
+      acceptedAnswer: { '@type': 'Answer', text: plainAnswer(item.a) },
+    })),
+  } : undefined;
+
+  const pageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    '@id': `${url}#webpage`,
+    url, name: title, description, inLanguage: 'ru-RU',
+    about: { '@id': `${url}#service` },
+    mainEntity: { '@id': `${url}#service` },
+    publisher: { '@id': CLINIC_ID },
+    breadcrumb: { '@id': `${url}#breadcrumbs` },
+    ...(faqJsonLd ? { hasPart: { '@id': faqJsonLd['@id'] } } : {}),
+    ...(relatedArticles.length ? { relatedLink: relatedArticles.map(article => new URL(article.href, site).href) } : {}),
   };
 
   const breadcrumbsJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
+    '@id': `${url}#breadcrumbs`,
     itemListElement: [
       {
         '@type': 'ListItem',
@@ -132,7 +168,7 @@ export const ServiceDetail: React.FC = () => {
           alt: service.title,
           type: 'image/webp',
         }}
-        jsonLd={[serviceJsonLd, breadcrumbsJsonLd]}
+        jsonLd={[pageJsonLd, serviceJsonLd, clinicJsonLd, breadcrumbsJsonLd, ...(faqJsonLd ? [faqJsonLd] : [])]}
         ogType="website"
       />
 
@@ -259,16 +295,25 @@ export const ServiceDetail: React.FC = () => {
             )}
 
           {service.faq && service.faq.length > 0 && (
-            <section className={styles.sectionBlock}>
+            <section id="service-faq" className={styles.sectionBlock}>
               <h2>Частые вопросы</h2>
               <div className={styles.faq}>
                 {service.faq.map((f: { q: string; a: string }, i: number) => (
-                  <details key={i} className={styles.q}>
+                  <details key={i} id={`service-question-${i + 1}`} className={styles.q}>
                     <summary>{f.q}</summary>
                     <div>{formatText(f.a)}</div>
                   </details>
                 ))}
               </div>
+            </section>
+          )}
+
+          {relatedArticles.length > 0 && (
+            <section className={styles.sectionBlock} aria-labelledby="service-reading-title">
+              <h2 id="service-reading-title">Материалы по теме</h2>
+              <ul className={styles.readingList}>
+                {relatedArticles.map(article => <li key={article.href}><Link to={article.href}>{article.label}</Link></li>)}
+              </ul>
             </section>
           )}
 

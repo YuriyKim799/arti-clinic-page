@@ -97,8 +97,11 @@ export const doctorProfiles: DoctorProfile[] = [
       source: 'Ким А. А., Данилов Ал. Б. Бюллетень Российской ассоциации мануальной медицины, 2023, с. 17–18.',
     }],
     reviewsUrl: 'https://yandex.ru/medicine/doctor/kim_alina_LuDpCQFf0vKGt',
-    identitySources: ['https://yandex.ru/medicine/doctor/kim_alina_LuDpCQFf0vKGt'],
-    sources: [{ title: 'Профиль Ким Алины Александровны в Яндекс Медицине', href: 'https://yandex.ru/medicine/doctor/kim_alina_LuDpCQFf0vKGt' }],
+    identitySources: ['https://yandex.ru/medicine/doctor/kim_alina_LuDpCQFf0vKGt', 'https://alinakim.site/'],
+    sources: [
+      { title: 'Профиль Ким Алины Александровны в Яндекс Медицине', href: 'https://yandex.ru/medicine/doctor/kim_alina_LuDpCQFf0vKGt' },
+      { title: 'Персональный сайт Ким Алины Александровны', href: 'https://alinakim.site/' },
+    ],
     career: [{ year: '2023', text: 'В научной публикации о лечении хронической неспецифической боли в спине указана как аспирант кафедры нервных болезней ИПО Сеченовского университета. Сведения относятся к моменту публикации.' }],
   },
 ];
