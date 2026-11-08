@@ -21,14 +21,13 @@ export function publishBlogRedirects(directory = 'public', dryRun = false) {
     const destination = `${site}/blog/${to}/`;
     for (const key of [`blog/${from}`, `blog/${from}/`, `blog/${from}/index.html`]) {
       if (dryRun) {
-        console.log(`[blog redirects] ${key} -> ${destination} (website redirect metadata)`);
+        console.log(`[blog redirects] ${key} -> ${destination} (HTML fallback; HTTP 301 is configured in CDN)`);
         continue;
       }
       execFileSync('aws', [
         's3api', 'put-object', '--body', body, '--bucket', bucket!, '--key', key,
         '--endpoint-url', 'https://storage.yandexcloud.net',
         '--content-type', 'text/html; charset=utf-8', '--cache-control', 'no-store',
-        '--website-redirect-location', destination,
       ], { stdio: ['ignore', 'ignore', 'inherit'] });
     }
   }
@@ -49,7 +48,8 @@ async function checkPublishedBlogRedirects() {
   console.log('[blog redirects] Published article redirects return HTTP 301 and the expected Location');
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+const normalizeEntrypoint = (filename: string) => process.platform === 'win32' ? path.resolve(filename).toLowerCase() : path.resolve(filename);
+if (process.argv[1] && normalizeEntrypoint(process.argv[1]) === normalizeEntrypoint(fileURLToPath(import.meta.url))) {
   if (process.argv.includes('--check-published')) await checkPublishedBlogRedirects();
   else publishBlogRedirects('public', process.argv.includes('--dry-run'));
 }

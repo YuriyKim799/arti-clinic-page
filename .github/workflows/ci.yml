@@ -43,7 +43,6 @@ jobs:
               - 'public/sitemap.xml'
               - 'public/rss-dzen.xml'
               - 'scripts/build-content.ts'
-              - 'scripts/publish-blog-redirects.ts'
               - 'scripts/content-excerpt.ts'
               - 'src/data/blogRedirects.json'
               - 'src/data/seoTopics.ts'
@@ -182,13 +181,18 @@ jobs:
           aws s3 cp public/${{ env.INDEXNOW_KEY }}.txt s3://$YC_BUCKET/${{ env.INDEXNOW_KEY }}.txt --endpoint-url https://storage.yandexcloud.net --cache-control "no-store" --only-show-errors
 
       # === Purge CDN для критичных путей через REST API ===
-      - name: Get IAM token (for CDN purge)
+      - name: Get IAM token for CDN rules and cache purge
         if: success() && env.YC_CDN_ID != ''
         id: iam_token_app
         uses: yc-actions/yc-iam-token@v1
         with:
           yc-sa-json-credentials: ${{ env.YC_SA_JSON_CREDENTIALS }}
         continue-on-error: true
+
+      - name: Configure permanent article redirects in CDN
+        env:
+          IAM_TOKEN: ${{ steps.iam_token_app.outputs.token }}
+        run: npx tsx scripts/configure-blog-redirects.ts
 
       - name: Purge CDN cache for app pages
         if: success() && env.YC_CDN_ID != ''
@@ -357,7 +361,7 @@ jobs:
             echo "skip: no public/rss-dzen.xml"
           fi
 
-      - name: Publish permanent article redirects
+      - name: Publish article redirect HTML entry points
         run: npx tsx scripts/publish-blog-redirects.ts
 
       - name: Prepare IndexNow key file
