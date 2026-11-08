@@ -1,5 +1,6 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
 
 const headings = {
   app: { success: '✅ Сайт опубликован: приложение', failure: '❌ Ошибка публикации приложения' },
@@ -27,6 +28,35 @@ export function buildDeploymentMessage(scope, status, env = process.env) {
   ].join('\n');
 }
 
+/** Use curl's runner proxy/TLS configuration; all process output stays captured. */
+export function curlTransport(url, init, execute = execFileSync) {
+  if (!/^https:\/\/api\.telegram\.org\/bot\d+:[A-Za-z0-9_-]+\/sendMessage$/.test(url)) {
+    throw Error('Invalid Telegram notification endpoint');
+  }
+  let output;
+  try {
+    output = execute('curl', [
+      '--silent', '--show-error', '--proto', '=https', '--max-time', '20',
+      '--request', 'POST', '--header', 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8',
+      '--data-binary', '@-', '--write-out', '\n%{http_code}', '--url', url,
+    ], {
+      input: init.body.toString(), encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'],
+      timeout: 25000, maxBuffer: 1024 * 1024, windowsHide: true,
+    });
+  } catch {
+    throw Error('Telegram curl request failed or timed out; delivery was not confirmed');
+  }
+  const separator = output.lastIndexOf('\n');
+  const code = output.slice(separator + 1).trim();
+  if (separator < 0 || !/^[2-5][0-9]{2}$/.test(code)) throw Error('Telegram curl returned an invalid HTTP status');
+  const status = Number(code);
+  return {
+    ok: status >= 200 && status < 300,
+    status,
+    json: async () => JSON.parse(output.slice(0, separator)),
+  };
+}
+
 /** Sends one request; ambiguous network failures are not retried to avoid duplicate notifications. */
 export async function sendDeploymentNotification(scope, status, options = {}) {
   const env = options.env ?? process.env;
@@ -38,7 +68,7 @@ export async function sendDeploymentNotification(scope, status, options = {}) {
   }
   let response;
   try {
-    response = await (options.fetch ?? globalThis.fetch)(`https://api.telegram.org/bot${token}/sendMessage`, {
+    response = await (options.fetch ?? curlTransport)(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
       body: new URLSearchParams({ chat_id: chat, text }),

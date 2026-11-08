@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { buildDeploymentMessage, sendDeploymentNotification } from './notify-telegram.mjs';
+import { buildDeploymentMessage, curlTransport, sendDeploymentNotification } from './notify-telegram.mjs';
 
 const env = {
   TELEGRAM_BOT_TOKEN: '123456:test_token', TELEGRAM_CHAT_ID: '-123456789',
@@ -78,5 +78,61 @@ test('missing or malformed credentials fail before any request without disclosin
       throw Error('Must not be called');
     } }), /credentials are missing or invalid/);
     assert.equal(called, false);
+  }
+});
+
+test('curl sends encoded form through stdin over HTTPS, captures output and accepts confirmed JSON', async () => {
+  let calls = 0;
+  const result = await sendDeploymentNotification('app', 'success', {
+    env, fetch: (url, init) => curlTransport(url, init, (command, args, options) => {
+      calls++;
+      assert.equal(command, 'curl');
+      assert.equal(args[args.indexOf('--proto') + 1], '=https');
+      assert.equal(args[args.indexOf('--max-time') + 1], '20');
+      assert.equal(args[args.indexOf('--data-binary') + 1], '@-');
+      assert.equal(args[args.indexOf('--url') + 1], 'https://api.telegram.org/bot123456:test_token/sendMessage');
+      assert.ok(!args.some(arg => ['-L', '--location', '--retry'].includes(arg)));
+      assert.ok(!args.includes(env.TELEGRAM_CHAT_ID));
+      assert.equal(options.timeout, 25000);
+      assert.equal(options.windowsHide, true);
+      assert.equal(options.shell, undefined);
+      assert.deepEqual(options.stdio, ['pipe', 'pipe', 'pipe']);
+      const form = new URLSearchParams(options.input);
+      assert.equal(form.get('chat_id'), env.TELEGRAM_CHAT_ID);
+      assert.equal(form.get('text'), buildDeploymentMessage('app', 'success', env));
+      return '{"ok":true,"result":{"message_id":654}}\n200';
+    }),
+  });
+  assert.equal(calls, 1);
+  assert.equal(result.messageId, 654);
+});
+
+test('curl HTTP errors and API failures are rejected by the same delivery validation', async () => {
+  for (const raw of ['{"ok":true,"result":{"message_id":1}}\n400', '{"ok":false,"description":"DO-NOT-PRINT"}\n200']) {
+    await assert.rejects(sendDeploymentNotification('routing', 'success', {
+      env, fetch: (url, init) => curlTransport(url, init, () => raw),
+    }), /delivery was not confirmed/);
+  }
+});
+
+test('curl rejects missing/invalid status, invalid JSON and transport errors without disclosing captured details', async () => {
+  for (const raw of ['{"ok":true}', '{"ok":true}\n000', 'DO-NOT-PRINT\n200']) {
+    await assert.rejects(sendDeploymentNotification('app', 'success', {
+      env, fetch: (url, init) => curlTransport(url, init, () => raw),
+    }), /delivery was not confirmed/);
+  }
+  assert.throws(() => curlTransport('https://api.telegram.org/bot123456:test_token/sendMessage', { body: new URLSearchParams({ chat_id: env.TELEGRAM_CHAT_ID }) }, () => {
+    throw Object.assign(Error(env.TELEGRAM_BOT_TOKEN), { stderr: `sensitive ${env.TELEGRAM_CHAT_ID}` });
+  }), error => {
+    assert.match(error.message, /curl request failed/);
+    assert.ok(!error.message.includes(env.TELEGRAM_BOT_TOKEN));
+    assert.ok(!error.message.includes(env.TELEGRAM_CHAT_ID));
+    return true;
+  });
+});
+
+test('curl refuses non-Telegram or non-HTTPS endpoints before executing a process', () => {
+  for (const url of ['http://api.telegram.org/bot123:test/sendMessage', 'https://example.com/bot123:test/sendMessage', 'https://api.telegram.org/bot123:test/sendMessage?token=secret']) {
+    assert.throws(() => curlTransport(url, { body: new URLSearchParams() }, () => { throw Error('Must not execute'); }), /Invalid Telegram notification endpoint/);
   }
 });
