@@ -223,6 +223,10 @@ jobs:
           IAM_TOKEN: ${{ steps.iam_token_app.outputs.token }}
         run: |
           set -e
+          if [[ ! "$YC_CDN_ID" =~ ^[0-9]+$ ]] || [ -z "$IAM_TOKEN" ]; then
+            echo '::notice::Optional CDN purge skipped: a numeric CDN resource ID and IAM token are required. The main site is served by Object Storage.'
+            exit 0
+          fi
           curl -fsS -X POST -H "Authorization: Bearer $IAM_TOKEN" -H "Content-Type: application/json" --data-binary @.cache/cdn-purge.json "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge"
         continue-on-error: true
 
@@ -231,10 +235,7 @@ jobs:
           node --input-type=module -e "import fs from 'node:fs'; const routes=JSON.parse(fs.readFileSync('.cache/routes.json','utf8')); for(const {route} of routes){const r=await fetch('https://articlinic.ru'+route,{signal:AbortSignal.timeout(15000)});if(r.status!==200)throw Error(route+': HTTP '+r.status);} const missing=await fetch('https://articlinic.ru/seo-nonexistent-check-404');if(missing.status!==404)throw Error('Unknown route must return 404');"
 
       - name: Check article redirects after publishing
-        run: |
-          if ! npx tsx scripts/publish-blog-redirects.ts --check-published; then
-            echo '::warning::Article redirects are not confirmed yet. Cloud CDN cache purging can take up to 15 minutes. Repeat the published redirect check after propagation.'
-          fi
+        run: npx tsx scripts/publish-blog-redirects.ts --check-published
 
       - name: IndexNow submit after application deployment
         if: env.INDEXNOW_KEY != ''
@@ -243,15 +244,13 @@ jobs:
 
       - name: Notify Telegram (success)
         if: success() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
-        run: |
-          MSG="✅ Успешное развертывание приложения%0ARepo: ${{ github.repository }}%0ABranch: ${{ github.ref_name }}%0ACommit: ${{ github.sha }}%0AActor: ${{ github.actor }}%0ARun: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}";
-          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}"             --data-urlencode "text=$MSG"
+        run: node scripts/notify-telegram.mjs app success
+        continue-on-error: true
 
       - name: Notify Telegram (failure)
         if: failure() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
-        run: |
-          MSG="❌ Ошибка при развертывании приложения%0ARepo: ${{ github.repository }}%0ABranch: ${{ github.ref_name }}%0ACommit: ${{ github.sha }}%0AActor: ${{ github.actor }}%0ARun: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}";
-          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}"             --data-urlencode "text=$MSG"
+        run: node scripts/notify-telegram.mjs app failure
+        continue-on-error: true
 
   routing:
     name: Update article redirects without rebuilding the app
@@ -265,6 +264,8 @@ jobs:
       YC_BUCKET: ${{ secrets.YC_BUCKET }}
       SITE_ORIGIN: https://articlinic.ru
       INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       AWS_MAX_ATTEMPTS: '10'
       AWS_RETRY_MODE: standard
       AWS_EC2_METADATA_DISABLED: 'true'
@@ -301,6 +302,14 @@ jobs:
       - name: Submit published addresses to IndexNow
         if: env.INDEXNOW_KEY != ''
         run: npx tsx scripts/indexnow.ts
+        continue-on-error: true
+      - name: Notify Telegram (success)
+        if: success() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
+        run: node scripts/notify-telegram.mjs routing success
+        continue-on-error: true
+      - name: Notify Telegram (failure)
+        if: failure() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
+        run: node scripts/notify-telegram.mjs routing failure
         continue-on-error: true
 
   content:
@@ -467,17 +476,19 @@ jobs:
           IAM_TOKEN: ${{ steps.iam_token_content.outputs.token }}
         run: |
           set -e
+          if [[ ! "$YC_CDN_ID" =~ ^[0-9]+$ ]] || [ -z "$IAM_TOKEN" ]; then
+            echo '::notice::Optional CDN purge skipped: a numeric CDN resource ID and IAM token are required. The main site is served by Object Storage.'
+            exit 0
+          fi
           curl -fsS -X POST -H "Authorization: Bearer $IAM_TOKEN" -H "Content-Type: application/json" --data-binary @.cache/content-cdn-purge.json "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge"
         continue-on-error: true
 
       - name: Notify Telegram (success)
         if: success() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
-        run: |
-          MSG="✅ Успешная синхронизация контента%0ARepo: ${{ github.repository }}%0ABranch: ${{ github.ref_name }}%0ACommit: ${{ github.sha }}%0AActor: ${{ github.actor }}%0ARun: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}";
-          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}"             --data-urlencode "text=$MSG"
+        run: node scripts/notify-telegram.mjs content success
+        continue-on-error: true
 
       - name: Notify Telegram (failure)
         if: failure() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
-        run: |
-          MSG="❌ Ошибка при синхронизации контента%0ARepo: ${{ github.repository }}%0ABranch: ${{ github.ref_name }}%0ACommit: ${{ github.sha }}%0AActor: ${{ github.actor }}%0ARun: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}";
-          curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}"             --data-urlencode "text=$MSG"
+        run: node scripts/notify-telegram.mjs content failure
+        continue-on-error: true
