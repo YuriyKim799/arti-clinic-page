@@ -86,10 +86,7 @@ try {
   }
   fs.mkdirSync('.cache', { recursive: true });
   fs.writeFileSync('.cache/routes.json', JSON.stringify(manifest, null, 2));
-  fs.writeFileSync('.cache/cdn-purge.json', JSON.stringify({ paths: [...new Set([
-    ...manifest.flatMap(({ route }) => route === '/' ? ['/', '/index.html'] : [route, route + '/', route + '/index.html']),
-    '/robots.txt', '/sitemap.xml', '/posts.json', '/rss-dzen.xml', '/404.html',
-  ])] }));
+  fs.writeFileSync('.cache/cdn-purge.json', JSON.stringify({ paths: ['/*'] }));
   console.log(`[prerender] ${manifest.length} pages + 404.html`);
 } finally {
   await browser?.close();

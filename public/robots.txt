@@ -12,4 +12,5 @@ Clean-param: yclid&gclid&fbclid /
 Clean-param: from&ref&referrer /
 Clean-param: ybaip&etext&erid&yabizcmpgn&utm_candidate&utm_referer&utm_ya_campaign /
 Clean-param: yqppel /
+Clean-param: _ym_debug&phpinfo&yprqee /
 

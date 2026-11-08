@@ -43,7 +43,9 @@ jobs:
               - 'public/sitemap.xml'
               - 'public/rss-dzen.xml'
               - 'scripts/build-content.ts'
+              - 'scripts/publish-blog-redirects.ts'
               - 'scripts/content-excerpt.ts'
+              - 'src/data/blogRedirects.json'
               - 'src/data/seoTopics.ts'
               - 'public/images/**'
               - 'scripts/make-webp.ts'
@@ -194,13 +196,18 @@ jobs:
           IAM_TOKEN: ${{ steps.iam_token_app.outputs.token }}
         run: |
           set -e
-          echo 'Purging CDN: /, /index.html, /sitemap.xml, /rss-dzen.xml, /posts.json, /robots.txt'
-          curl -fsS -X POST -H "Authorization: Bearer $IAM_TOKEN" -H "Content-Type: application/json" --data-binary @.cache/cdn-purge.json "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
+          curl -fsS -X POST -H "Authorization: Bearer $IAM_TOKEN" -H "Content-Type: application/json" --data-binary @.cache/cdn-purge.json "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge"
         continue-on-error: true
 
       - name: Check published page status codes
         run: |
           node --input-type=module -e "import fs from 'node:fs'; const routes=JSON.parse(fs.readFileSync('.cache/routes.json','utf8')); for(const {route} of routes){const r=await fetch('https://articlinic.ru'+route,{signal:AbortSignal.timeout(15000)});if(r.status!==200)throw Error(route+': HTTP '+r.status);} const missing=await fetch('https://articlinic.ru/seo-nonexistent-check-404');if(missing.status!==404)throw Error('Unknown route must return 404');"
+
+      - name: Check article redirects after publishing
+        run: |
+          if ! npx tsx scripts/publish-blog-redirects.ts --check-published; then
+            echo '::warning::Article redirects are not confirmed yet. Cloud CDN cache purging can take up to 15 minutes. Repeat the published redirect check after propagation.'
+          fi
 
       - name: IndexNow submit after application deployment
         if: env.INDEXNOW_KEY != ''
@@ -350,6 +357,9 @@ jobs:
             echo "skip: no public/rss-dzen.xml"
           fi
 
+      - name: Publish permanent article redirects
+        run: npx tsx scripts/publish-blog-redirects.ts
+
       - name: Prepare IndexNow key file
         if: env.INDEXNOW_KEY != ''
         run: npx tsx scripts/indexnow.ts --prepare-key
@@ -365,23 +375,22 @@ jobs:
         run: npx tsx scripts/indexnow.ts
         continue-on-error: true
 
-      # 7) Purge CDN только для /posts.json и /sitemap.xml через REST API
+      # 7) Обновляем индексы, изменённые статьи и перенаправления в CDN
       - name: Get IAM token (for posts.json purge)
-        if: success() && env.YC_CDN_ID != ''
+        if: success() && needs.detect.outputs.app != 'true' && env.YC_CDN_ID != ''
         id: iam_token_content
         uses: yc-actions/yc-iam-token@v1
         with:
           yc-sa-json-credentials: ${{ env.YC_SA_JSON_CREDENTIALS }}
         continue-on-error: true
 
-      - name: Purge CDN cache for posts.json
-        if: success() && env.YC_CDN_ID != ''
+      - name: Purge CDN cache for content
+        if: success() && needs.detect.outputs.app != 'true' && env.YC_CDN_ID != ''
         env:
           IAM_TOKEN: ${{ steps.iam_token_content.outputs.token }}
         run: |
           set -e
-          echo 'Purging CDN: /posts.json, /sitemap.xml, /rss-dzen.xml'
-          curl -fsS -X POST             -H "Authorization: Bearer $IAM_TOKEN"             -H "Content-Type: application/json"             -d '{"paths":["/posts.json","/sitemap.xml","/rss-dzen.xml"]}'             "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge" || true
+          curl -fsS -X POST -H "Authorization: Bearer $IAM_TOKEN" -H "Content-Type: application/json" --data-binary @.cache/content-cdn-purge.json "https://cdn.api.cloud.yandex.net/cdn/v1/cache/${YC_CDN_ID}:purge"
         continue-on-error: true
 
       - name: Notify Telegram (success)

@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { publishBlogRedirects } from './publish-blog-redirects';
 
 const bucket = process.env.YC_BUCKET;
 const dryRun = process.argv.includes('--dry-run');
@@ -18,3 +19,4 @@ for (const { route, file } of routes) {
   }
 }
 console.log(`[routes] ${dryRun ? 'Validated' : 'Published'} ${routes.length - 1} application routes`);
+publishBlogRedirects('dist', dryRun);

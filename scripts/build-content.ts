@@ -8,6 +8,7 @@ import MarkdownIt from 'markdown-it';
 import sharp from 'sharp';
 import { excerptFrom } from './content-excerpt';
 import { relatedServicesForText } from '../src/data/seoTopics';
+import blogRedirects from '../src/data/blogRedirects.json';
 
 type PostMeta = {
   slug: string;
@@ -595,6 +596,12 @@ async function main() {
 
   const nextManifest: Record<string, PostMeta> = {};
   const slugsSet = new Set<string>();
+  const redirects: Record<string, string> = blogRedirects;
+  for (const [from, to] of Object.entries(redirects)) {
+    if (![from, to].every(slug => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) || from === to || Object.hasOwn(redirects, to)) {
+      throw Error(`Invalid article redirect: ${from} -> ${to}`);
+    }
+  }
   let changed = 0;
 
   for (const rel of mdFiles) {
@@ -608,6 +615,7 @@ async function main() {
       console.warn(`[content] Пропуск ${rel}: пустой slug`);
       continue;
     }
+    if (Object.hasOwn(redirects, slug)) continue;
     if (slugsSet.has(slug)) {
       console.warn(`[content] Дубликат slug ${slug} в ${rel} — пропускаю.`);
       continue;
@@ -775,10 +783,30 @@ async function main() {
       const perPostJson = path.join(POSTS_DIR, `${slug}.json`);
       if (fs.existsSync(perPostJson)) fs.rmSync(perPostJson);
       const blogDir = path.join(BLOG_DIR, slug);
-      if (fs.existsSync(blogDir))
+      if (fs.existsSync(blogDir) && !Object.hasOwn(redirects, slug))
         fs.rmSync(blogDir, { recursive: true, force: true });
     }
   }
+
+  // Retired articles keep a usable static entry until website redirects are published.
+  for (const [from, to] of Object.entries(redirects)) {
+    if (!nextManifest[to]) throw Error(`Article redirect target is missing: ${to}`);
+    const redirectDirectory = path.join(BLOG_DIR, from);
+    ensureDir(redirectDirectory);
+    const destination = `/blog/${to}/`;
+    fs.writeFileSync(path.join(redirectDirectory, 'index.html'), `<!doctype html>
+<html lang="ru"><head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Обновлённая статья — Арти Клиник</title>
+<link rel="canonical" href="${escapeHtml(absUrl(SITE, destination))}" />
+<meta http-equiv="refresh" content="0;url=${destination}" />
+</head><body><p><a href="${destination}">Открыть обновлённую статью</a></p></body></html>`, 'utf8');
+    fs.rmSync(path.join(POSTS_DIR, `${from}.json`), { force: true });
+    fs.rmSync(path.join(redirectDirectory, 'post.html'), { force: true });
+  }
+  fs.writeFileSync(path.join(CACHE_DIR, 'content-cdn-purge.json'), JSON.stringify({ paths: [
+    '/blog/*', '/posts/*', '/posts.json*', '/sitemap.xml*', '/rss-dzen.xml*',
+  ] }));
 
   // список постов
   const list = Object.values(nextManifest)

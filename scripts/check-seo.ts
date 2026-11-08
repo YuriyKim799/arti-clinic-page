@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import blogRedirects from '../src/data/blogRedirects.json';
 import { relatedArticlesForService } from '../src/data/seoTopics';
 
 type Page = { route: string; file: string };
@@ -295,6 +296,26 @@ for (const raw of sitemapUrls) {
 for (const article of articles) {
   if (!sitemapRoutes.has(routeKey(article.route))) fail(article.route, 'article missing from sitemap');
 }
+const rss = read('rss-dzen.xml');
+for (const [from, to] of Object.entries(blogRedirects)) {
+  const route = `/blog/${from}/`;
+  const target = `/blog/${to}/`;
+  if (articles.some(article => article.route === route) || sitemapRoutes.has(routeKey(route))) {
+    fail(route, 'retired article is still listed in posts.json or sitemap');
+  }
+  if (rss?.includes(`<link>${site + route}</link>`)) fail(route, 'retired article is still listed in RSS');
+  if (!articles.some(article => article.route === target)) fail(route, 'redirect target article is missing');
+  if (fs.existsSync(path.join(dist, 'posts', `${from}.json`))) fail(route, 'stale retired article JSON remains');
+  const html = read(`blog/${from}/index.html`, route);
+  if (html) {
+    const redirectTags = tags(html);
+    if (!redirectTags.some(tag => tag.name === 'link' && tag.attributes.rel === 'canonical' &&
+      tag.attributes.href === site + target)) fail(route, 'redirect fallback has an incorrect canonical');
+    if (!redirectTags.some(tag => tag.name === 'meta' && tag.attributes['http-equiv'] === 'refresh' &&
+      tag.attributes.content === `0;url=${target}`)) fail(route, 'redirect fallback must immediately open the target');
+    if (redirectTags.some(tag => tag.name === 'article')) fail(route, 'retired article content remains in redirect fallback');
+  }
+}
 for (const route of doctorRoutes) {
   if (!sitemapRoutes.has(route)) fail(route, 'doctor page missing from sitemap');
 }
@@ -394,6 +415,15 @@ if (robots !== null) {
   } catch { fail('robots.txt', 'missing public/robots.txt source'); }
 }
 if (fs.existsSync('robots.txt')) fail('robots.txt', 'duplicate root source; use public/robots.txt');
+for (const manifest of ['.cache/content-cdn-purge.json', '.cache/cdn-purge.json']) {
+  try {
+    const { paths } = JSON.parse(fs.readFileSync(manifest, 'utf8'));
+    if (!Array.isArray(paths) || !paths.length || paths.length > 10 ||
+      paths.some(value => typeof value !== 'string' || !value.startsWith('/'))) {
+      fail(manifest, 'CDN cache purge must contain between one and ten file paths');
+    }
+  } catch { fail(manifest, 'missing or invalid CDN cache purge manifest'); }
+}
 
 if (errors.size) {
   console.error(`[seo] ${errors.size} validation errors:`);

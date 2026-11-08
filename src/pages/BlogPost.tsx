@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
 import { fetchPosts, fetchPostHtml } from '@/lib/fetchPosts';
 import type { PostCard } from '@/lib/postTypes';
 import './BlogPost.scss';
@@ -8,6 +8,7 @@ import { Footer } from '@/components/Footer';
 import SeoAuto from '@/components/SeoAuto';
 import { CLINIC_SHARE_IMAGE, SITE_ORIGIN } from '@/data/clinic';
 import { relatedServicesForText } from '@/data/seoTopics';
+import blogRedirects from '@/data/blogRedirects.json';
 
 type State =
   | { status: 'loading' }
@@ -47,11 +48,16 @@ function extractArticle(html: string, title: string): string {
 
 export default function BlogPost() {
   const { slug = '' } = useParams();
+  const location = useLocation();
+  const redirectSlug = Object.hasOwn(blogRedirects, slug)
+    ? blogRedirects[slug as keyof typeof blogRedirects]
+    : undefined;
   const [state, setState] = useState<State>({ status: 'loading' });
   const site = SITE_ORIGIN;
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (redirectSlug) return;
     let alive = true;
     setState({ status: 'loading' });
 
@@ -91,7 +97,7 @@ export default function BlogPost() {
     return () => {
       alive = false;
     };
-  }, [slug]);
+  }, [slug, redirectSlug]);
 
   // Прогрессивные улучшения для вёрстки контента (адаптивность таблиц/iframes/картинок/внешние ссылки)
   useEffect(() => {
@@ -149,6 +155,10 @@ export default function BlogPost() {
       } catch {}
     });
   }, [state.status, site]); // <-- фикс: зависим от status, а не от state.html
+
+  if (redirectSlug) {
+    return <Navigate replace to={`/blog/${redirectSlug}/${location.search}${location.hash}`} />;
+  }
 
   if (state.status === 'loading') {
     return (

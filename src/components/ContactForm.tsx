@@ -63,6 +63,7 @@ export default function ContactForm({ appointmentType = 'appointment' }: Contact
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const submittingRef = useRef(false);
   const phoneRef = useRef<HTMLInputElement>(null);
 
   const hpRef = useRef<HTMLInputElement>(null);
@@ -167,6 +168,7 @@ export default function ContactForm({ appointmentType = 'appointment' }: Contact
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submittingRef.current) return;
     setError(null);
 
     const localDigits = extractLocalDigits(form.phone);
@@ -186,6 +188,7 @@ export default function ContactForm({ appointmentType = 'appointment' }: Contact
     const href = typeof window !== 'undefined' ? window.location.href : '';
     const pagePretty = prettyPage(href);
 
+    submittingRef.current = true;
     setLoading(true);
     try {
       // Облачный обработчик принимает заявку и отправляет уведомление клинике.
@@ -220,11 +223,9 @@ export default function ContactForm({ appointmentType = 'appointment' }: Contact
         );
       }
 
-      if (requiresEmail) {
-        const confirmation = await res.json().catch(() => null);
-        if (confirmation?.ok !== true) {
-          throw new Error('Сервер записи не подтвердил отправку заявки. Пожалуйста, свяжитесь с нами по телефону +7 (499) 148-17-24.');
-        }
+      const confirmation = await res.json().catch(() => null);
+      if (confirmation?.ok !== true) {
+        throw new Error('Сервер записи не подтвердил отправку заявки. Пожалуйста, свяжитесь с нами по телефону +7 (499) 148-17-24.');
       }
 
       setSent(true);
@@ -237,6 +238,7 @@ export default function ContactForm({ appointmentType = 'appointment' }: Contact
             : 'Не удалось отправить. Попробуйте ещё раз.'
       );
     } finally {
+      submittingRef.current = false;
       setLoading(false);
     }
   };

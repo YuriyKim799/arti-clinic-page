@@ -8,6 +8,23 @@ const MIN_FILL_MS = 900;
 const ONLINE_DOCTOR_ID = 'kim-alina';
 const ONLINE_DOCTOR_NAME = 'Ким Алина Александровна';
 
+function hostname(url) {
+  try {
+    const parsed = new URL(url);
+    if (!['http:', 'https:'].includes(parsed.protocol) || parsed.username || parsed.password) return '';
+    return parsed.hostname.toLowerCase().replace(/^www\./, '');
+  } catch {
+    return '';
+  }
+}
+
+const ALLOWED_HOSTS = new Set(ORIGINS.map(hostname).filter(Boolean));
+
+function isPatientPhone(phone) {
+  if (typeof phone !== 'string' || phone.length > 50 || !/^[+0-9 ()-]+$/.test(phone)) return false;
+  return /^(?:\+7|7|8)?\d{10}$/.test(phone.replace(/[ ()-]/g, ''));
+}
+
 function isPatientEmail(value) {
   if (typeof value !== 'string' || /[\r\n]/.test(value)) return false;
   const address = value.trim();
@@ -30,7 +47,7 @@ function humanizePage(page, pageText) {
   if (!page) return '';
   try {
     const u = new URL(page);
-    if (!['http:', 'https:'].includes(u.protocol)) return escapeHtml(pageText || page);
+    if (!ALLOWED_HOSTS.has(hostname(page))) return escapeHtml(pageText || page);
     const hash = u.hash ? decodeURIComponent(u.hash.slice(1)) : '';
     const section = hash.replace(/[-_]+/g, ' ').replace(/\s+/g, ' ').trim();
     const base = `${u.origin}${u.pathname}`;
@@ -67,7 +84,8 @@ exports.handler = async (event) => {
     .split(/[;,]/).map(address => address.trim()).filter(Boolean);
   const mailTo = [...new Map(configuredRecipients.map(address => [address.toLowerCase(), address])).values()];
   const isMailbox = value => /^[^\s<>@,;]+@[^\s<>@,;]+\.[^\s<>@,;]+$/.test(value);
-  if (!isMailbox(smtpUser) || !smtpPassword || mailTo.length === 0 || mailTo.some(address => !isMailbox(address))) {
+  if (!isMailbox(smtpUser) || !smtpPassword ||
+    mailTo.length === 0 || mailTo.some(address => !isMailbox(address))) {
     console.error(JSON.stringify({ event: 'appointment_config_missing' }));
     return reply(500, { ok: false, error: 'Сервис записи временно недоступен.' });
   }
@@ -81,33 +99,43 @@ exports.handler = async (event) => {
   try { data = JSON.parse(raw); } catch { return reply(400, { ok: false, error: 'Некорректный JSON.' }); }
   if (!data || typeof data !== 'object' || Array.isArray(data)) return reply(400, { ok: false });
 
-  const website = String(data.website ?? '').trim();
-  const t0 = Number(data.t0) || 0;
-  if (website) return reply(204);
-  if (t0 && Date.now() - t0 < MIN_FILL_MS) {
+  if (data.website !== undefined && typeof data.website !== 'string') {
+    return reply(400, { ok: false, error: 'Некорректный запрос.' });
+  }
+  if (data.website?.trim()) return reply(204);
+  const t0 = data.t0;
+  if (!Number.isFinite(t0) || t0 <= 0) {
+    return reply(400, { ok: false, error: 'Обновите страницу и отправьте форму ещё раз.' });
+  }
+  if (Date.now() - t0 < MIN_FILL_MS) {
     return reply(429, { ok: false, error: 'Подождите несколько секунд и отправьте форму ещё раз.' });
   }
 
-  const name = String(data.name || '').trim().slice(0, 100);
-  const phone = String(data.phone || '').trim().slice(0, 50);
-  const page = String(data.page || '').trim().slice(0, 300);
-  const pageText = String(data.page_text || '').trim().slice(0, 300);
-  if (!name || !phone) return reply(400, { ok: false, error: 'Укажите имя и телефон.' });
+  if (typeof data.name !== 'string' || !data.name.trim() || data.name.trim().length > 100 ||
+    /[\u0000-\u001f\u007f]/.test(data.name) || !isPatientPhone(data.phone)) {
+    return reply(400, { ok: false, error: 'Проверьте корректность имени и телефона.' });
+  }
+  const name = data.name.trim();
+  const phone = data.phone.trim();
+  const page = typeof data.page === 'string' ? data.page.trim().slice(0, 300) : '';
+  const pageText = typeof data.page_text === 'string' ? data.page_text.trim().slice(0, 300) : '';
 
-  const isOnline = data.appointment_type === 'online-consultation';
-  const isExerciseCollection = data.appointment_type === 'exercise-collection';
+  const appointmentType = data.appointment_type === undefined ? 'appointment' : data.appointment_type;
+  if (!['appointment', 'online-consultation', 'exercise-collection'].includes(appointmentType)) {
+    return reply(400, { ok: false, error: 'Некорректный тип заявки.' });
+  }
+  const isOnline = appointmentType === 'online-consultation';
+  const isExerciseCollection = appointmentType === 'exercise-collection';
   const requiresEmail = isOnline || isExerciseCollection;
   if (requiresEmail && data.doctor !== ONLINE_DOCTOR_ID) {
     return reply(400, { ok: false, error: isExerciseCollection
       ? 'Сборник упражнений выбранного врача недоступен.'
       : 'Онлайн-консультация у выбранного врача недоступна.' });
   }
-  if (requiresEmail && (typeof data.name !== 'string' || typeof data.phone !== 'string')) {
-    return reply(400, { ok: false, error: 'Укажите ФИО и телефон.' });
-  }
   if (requiresEmail && !isPatientEmail(data.email)) {
     return reply(400, { ok: false, error: 'Укажите корректный email.' });
   }
+
   const email = requiresEmail ? data.email.trim() : '';
   const nameLabel = requiresEmail ? 'ФИО' : 'Имя';
   const requestType = isExerciseCollection ? 'Покупка сборника упражнений' : 'Онлайн-консультация';

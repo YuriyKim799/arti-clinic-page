@@ -83,6 +83,14 @@ HTTP 404). После публикации и проверки HTTP 200 ново
 Фотография клиники и логотип для метаданных находятся в `public/images`.
 При изменении шаблона статей обновляйте версию кеша в `scripts/build-content.ts`.
 
+Объединённые статьи перечислены в `src/data/blogRedirects.json`.
+Сборка исключает старый адрес из списка статей, sitemap и RSS, а публикация
+устанавливает `website-redirect-location` для постоянного перенаправления.
+Для HTTP 301 требуется website endpoint Object Storage в источнике CDN
+либо соответствующее правило перенаправления CDN. После публикации и
+распространения очистки кеша проверьте результат командой
+`npx tsx scripts/publish-blog-redirects.ts --check-published`.
+
 Единственный исходник robots.txt — `public/robots.txt`.
 Данные маршрутов сборки находятся в `.cache/routes.json`.
 `scripts/publish-routes.ts` публикует HTML с `Content-Type: text/html` по точным

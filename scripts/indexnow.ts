@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import blogRedirects from '../src/data/blogRedirects.json';
 
 const site = (process.env.SITE_ORIGIN || 'https://articlinic.ru').replace(/\/$/, '');
 const key = process.env.INDEXNOW_KEY || '';
@@ -12,7 +13,10 @@ if (prepare) {
   console.log('[indexnow] Key file prepared; publish it before submitting URLs.');
 } else {
   const sitemap = fs.readFileSync('public/sitemap.xml', 'utf8');
-  const urls = [...new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].replace(/&amp;/g, '&')))];
+  const urls = [...new Set([
+    ...[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].replace(/&amp;/g, '&')),
+    ...Object.keys(blogRedirects).map(slug => `${site}/blog/${slug}/`),
+  ])];
   if (!urls.length || urls.some(url => new URL(url).origin !== site)) throw Error('Sitemap is empty or contains another origin');
   if (dryRun) {
     console.log(`[indexnow] ${urls.length} URLs validated; no requests sent.`);

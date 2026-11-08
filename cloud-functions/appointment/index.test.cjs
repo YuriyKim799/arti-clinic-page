@@ -9,15 +9,16 @@ const { handler } = require('./index');
 function event(data = {}) {
   return { httpMethod: 'POST', headers: { Origin: 'https://articlinic.ru' },
     body: JSON.stringify({ name: 'Тест <имя>', phone: '+7 (000) 000-00-00',
-      page: 'https://articlinic.ru/#contact', website: '', t0: Date.now() - 5000, ...data }) };
+      page: 'https://articlinic.ru/#contact', website: '', t0: Date.now() - 5000,
+      ...data }) };
 }
 function setup(t, impl = async () => { throw Error('Unexpected send'); }) {
   const logs = [];
   t.mock.method(console, 'info', value => logs.push(value));
   t.mock.method(console, 'error', value => logs.push(value));
   t.mock.method(console, 'warn', value => logs.push(value));
-  t.mock.method(globalThis, 'fetch', () => { throw Error('Unexpected HTTP request'); });
-  return { send: t.mock.method(mailer, 'sendMail', impl), logs };
+  const http = t.mock.method(globalThis, 'fetch', () => { throw Error('Unexpected HTTP request'); });
+  return { send: t.mock.method(mailer, 'sendMail', impl), http, logs };
 }
 const accepted = async () => ({ accepted: ['recipient@example.org'] });
 test('sends escaped HTML and plain text only to configured recipient', async t => {
@@ -373,4 +374,127 @@ test('exercise collection keeps honeypot and time-trap checks without sending ma
   assert.equal((await handler(exerciseRequest({ website: 'spam', email: undefined }))).statusCode, 204);
   assert.equal((await handler(exerciseRequest({ t0: Date.now() }))).statusCode, 429);
   assert.equal(send.mock.callCount(), 0);
+});
+
+const requestFactories = [event, onlineRequest, exerciseRequest];
+
+test('all forms validate contact types, lengths and Russian phone formats before SMTP', async t => {
+  const { send } = setup(t);
+  const invalidFields = [
+    { name: {} }, { name: [] }, { name: 1 }, { name: null }, { name: '' },
+    { name: 'a'.repeat(101) }, { name: 'Name\r\nExtra' },
+    { phone: {} }, { phone: [] }, { phone: 79990000000 }, { phone: null },
+    { phone: 'spam' }, { phone: '+7 (999) 000-00-00 text' }, { phone: '123' },
+    { phone: '19990000000' }, { phone: '+89990000000' }, { phone: '+799900000000' },
+    { phone: '9990000000\n' }, { phone: ' '.repeat(51) + '9990000000' },
+  ];
+  for (const fields of invalidFields) {
+    for (const request of requestFactories) assert.equal((await handler(request(fields))).statusCode, 400);
+  }
+  assert.equal(send.mock.callCount(), 0);
+});
+
+test('all forms accept formatted +7, 8 and ten-digit phones and names in different scripts', async t => {
+  const { send } = setup(t, accepted);
+  const phones = ['+7 (999) 000-00-00', '8 (499) 123-45-67', '7 999 000 00 00', '9990000000', '(499) 123-45-67'];
+  const names = ['Алина', "Anne-Marie O’Connor", '山田'];
+  for (const phone of phones) {
+    for (const request of requestFactories) assert.equal((await handler(request({ phone }))).statusCode, 200);
+  }
+  for (const name of names) assert.equal((await handler(event({ name }))).statusCode, 200);
+  assert.equal(send.mock.callCount(), phones.length * requestFactories.length + names.length);
+});
+
+test('legacy missing type and explicit appointment are accepted, unknown types are rejected', async t => {
+  const { send } = setup(t, accepted);
+  for (const appointment_type of [null, '', 'unknown', 'ONLINE-CONSULTATION', {}, [], 1, false]) {
+    assert.equal((await handler(event({ appointment_type }))).statusCode, 400);
+  }
+  assert.equal(send.mock.callCount(), 0);
+  assert.equal((await handler(event())).statusCode, 200);
+  assert.equal((await handler(event({ appointment_type: 'appointment' }))).statusCode, 200);
+  assert.equal(send.mock.callCount(), 2);
+});
+
+test('only configured site URLs become hyperlinks in the HTML notification', async t => {
+  let expectedLink;
+  const { send } = setup(t, async (_auth, message) => {
+    assert.equal(message.html.includes('<a href='), expectedLink);
+    return accepted();
+  });
+  for (const [page, allowed] of [
+    ['https://articlinic.ru/doctors/kim-alina#doctor-prices', true],
+    ['https://www.articlinic.ru/#contact', true],
+    ['http://localhost:5173/services/nevrolog', true],
+    ['https://other.example/advertisement', false],
+    ['https://articlinic.ru.other.example/', false],
+    ['https://attacker@articlinic.ru/', false],
+    ['javascript:alert(1)', false],
+    ['%invalid-uri', false],
+  ]) {
+    expectedLink = allowed;
+    assert.equal((await handler(event({ page, page_text: 'Страница <источник>' }))).statusCode, 200);
+  }
+  assert.equal(send.mock.callCount(), 8);
+});
+
+
+test('all three forms send with postal settings and no external HTTP verification', async t => {
+  const { send, http } = setup(t, accepted);
+  for (const request of requestFactories) {
+    const result = await handler(request());
+    assert.equal(result.statusCode, 200);
+    assert.deepEqual(JSON.parse(result.body), { ok: true });
+  }
+  assert.equal(send.mock.callCount(), requestFactories.length);
+  assert.equal(http.mock.callCount(), 0);
+});
+
+test('all forms reject missing or malformed form timestamps before SMTP', async t => {
+  const { send } = setup(t);
+  for (const t0 of [undefined, null, 0, -1, 'invalid', '', [], {}, true, { toString: null }]) {
+    for (const request of requestFactories) {
+      assert.equal((await handler(request({ t0 }))).statusCode, 400);
+    }
+  }
+  assert.equal(send.mock.callCount(), 0);
+});
+
+test('all forms retain the minimum fill time and reject future timestamps', async t => {
+  const { send } = setup(t);
+  for (const t0 of [Date.now(), Date.now() + 60000]) {
+    for (const request of requestFactories) {
+      assert.equal((await handler(request({ t0 }))).statusCode, 429);
+    }
+  }
+  assert.equal(send.mock.callCount(), 0);
+});
+
+test('long-open forms remain valid without an age limit', async t => {
+  const { send } = setup(t, accepted);
+  for (const request of requestFactories) {
+    assert.equal((await handler(request({ t0: Date.now() - 30 * 24 * 60 * 60 * 1000 }))).statusCode, 200);
+  }
+  assert.equal(send.mock.callCount(), requestFactories.length);
+});
+
+test('honeypot validates its type and rejects malformed JSON values safely', async t => {
+  const { send } = setup(t);
+  for (const website of [null, 1, [], {}, true, { toString: null }]) {
+    for (const request of requestFactories) {
+      assert.equal((await handler(request({ website }))).statusCode, 400);
+    }
+  }
+  for (const request of requestFactories) {
+    assert.equal((await handler(request({ website: '  spam  ' }))).statusCode, 204);
+  }
+  assert.equal(send.mock.callCount(), 0);
+});
+
+test('missing or blank honeypot values keep the normal request flow', async t => {
+  const { send } = setup(t, accepted);
+  for (const website of [undefined, '', '  ']) {
+    for (const request of requestFactories) assert.equal((await handler(request({ website }))).statusCode, 200);
+  }
+  assert.equal(send.mock.callCount(), requestFactories.length * 3);
 });
