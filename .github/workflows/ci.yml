@@ -16,11 +16,15 @@ jobs:
     outputs:
       app: ${{ steps.filter.outputs.app }}
       content: ${{ steps.filter.outputs.content }}
+      maintenance: ${{ steps.scope.outputs.maintenance }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: dorny/paths-filter@v3
         id: filter
         with:
+          list-files: json
           filters: |
             app:
               - 'src/**'
@@ -50,10 +54,34 @@ jobs:
               - 'scripts/make-webp.ts'
               - 'scripts/indexnow.ts'
 
+      - name: Detect routing-only maintenance
+        id: scope
+        env:
+          APP_FILES: ${{ steps.filter.outputs.app_files }}
+          BASE_SHA: ${{ github.event.before }}
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          const files = JSON.parse(process.env.APP_FILES || '[]');
+          const allowed = new Set(['.github/workflows/ci.yml', 'scripts/publish-blog-redirects.ts', 'scripts/publish-blog-redirects.test.ts', 'scripts/configure-blog-redirects.ts', 'scripts/configure-blog-redirects.test.ts', 'package.json']);
+          let maintenance = files.includes('scripts/publish-blog-redirects.ts') && files.every(file => allowed.has(file));
+          if (maintenance && files.includes('package.json')) {
+            try {
+              const before = JSON.parse(execFileSync('git', ['show', `${process.env.BASE_SHA}:package.json`], {encoding:'utf8', stdio:['ignore','pipe','pipe']}));
+              const after = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+              delete before.scripts.test; delete after.scripts.test;
+              maintenance = JSON.stringify(before) === JSON.stringify(after);
+            } catch { maintenance = false; }
+          }
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `maintenance=${maintenance}\n`);
+          console.log(maintenance ? 'Only routing publication and its tests changed' : 'Use normal build and deployment');
+          NODE
+
   app:
     name: Build & Deploy App
     needs: [detect, content]
-    if: always() && needs.detect.outputs.app == 'true' && (needs.content.result == 'success' || needs.content.result == 'skipped')
+    if: always() && needs.detect.outputs.app == 'true' && needs.detect.outputs.maintenance != 'true' && (needs.content.result == 'success' || needs.content.result == 'skipped')
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -181,18 +209,13 @@ jobs:
           aws s3 cp public/${{ env.INDEXNOW_KEY }}.txt s3://$YC_BUCKET/${{ env.INDEXNOW_KEY }}.txt --endpoint-url https://storage.yandexcloud.net --cache-control "no-store" --only-show-errors
 
       # === Purge CDN для критичных путей через REST API ===
-      - name: Get IAM token for CDN rules and cache purge
+      - name: Get IAM token for optional CDN cache purge
         if: success() && env.YC_CDN_ID != ''
         id: iam_token_app
         uses: yc-actions/yc-iam-token@v1
         with:
           yc-sa-json-credentials: ${{ env.YC_SA_JSON_CREDENTIALS }}
         continue-on-error: true
-
-      - name: Configure permanent article redirects in CDN
-        env:
-          IAM_TOKEN: ${{ steps.iam_token_app.outputs.token }}
-        run: npx tsx scripts/configure-blog-redirects.ts
 
       - name: Purge CDN cache for app pages
         if: success() && env.YC_CDN_ID != ''
@@ -229,6 +252,56 @@ jobs:
         run: |
           MSG="❌ Ошибка при развертывании приложения%0ARepo: ${{ github.repository }}%0ABranch: ${{ github.ref_name }}%0ACommit: ${{ github.sha }}%0AActor: ${{ github.actor }}%0ARun: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}";
           curl -s --max-time 10 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}"             --data-urlencode "text=$MSG"
+
+  routing:
+    name: Update article redirects without rebuilding the app
+    needs: [detect, content]
+    if: always() && needs.detect.outputs.maintenance == 'true' && (needs.content.result == 'success' || needs.content.result == 'skipped')
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ru-central1
+      YC_BUCKET: ${{ secrets.YC_BUCKET }}
+      SITE_ORIGIN: https://articlinic.ru
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+      AWS_MAX_ATTEMPTS: '10'
+      AWS_RETRY_MODE: standard
+      AWS_EC2_METADATA_DISABLED: 'true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Install deps
+        run: npm ci
+      - name: Check routing tests and TypeScript
+        run: |
+          npm test
+          npx tsc --noEmit
+      - name: Install AWS CLI
+        run: |
+          python3 -m pip install --user --upgrade pip awscli
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+      - name: Read currently published content indexes
+        run: |
+          for file in posts.json sitemap.xml rss-dzen.xml; do
+            aws s3 cp "s3://$YC_BUCKET/$file" "public/$file" --endpoint-url https://storage.yandexcloud.net --only-show-errors
+          done
+      - name: Configure permanent article redirects in bucket hosting
+        run: npx tsx scripts/publish-blog-redirects.ts
+      - name: Verify public article redirects
+        run: |
+          for attempt in 1 2 3; do
+            if npx tsx scripts/publish-blog-redirects.ts --check-published; then exit 0; fi
+            if [ "$attempt" -lt 3 ]; then sleep 20; fi
+          done
+          exit 1
+      - name: Submit published addresses to IndexNow
+        if: env.INDEXNOW_KEY != ''
+        run: npx tsx scripts/indexnow.ts
+        continue-on-error: true
 
   content:
     name: Build & Sync Content
@@ -361,7 +434,7 @@ jobs:
             echo "skip: no public/rss-dzen.xml"
           fi
 
-      - name: Publish article redirect HTML entry points
+      - name: Configure permanent article redirects in bucket hosting
         run: npx tsx scripts/publish-blog-redirects.ts
 
       - name: Prepare IndexNow key file
